@@ -41,7 +41,7 @@ const DASHBOARD_DATA = {
     vix:      { label: "VIX",              price: 19.31,  change: -0.18,   changePct: -0.92,  prevClose: 19.49,  cssClass: "kpi-down", note: "▼ -0.9% · Low vol — ceasefire risk priced in", noDollar: true },
     hyg:      { label: "HY Spread (HYG)",  price: 80.28,  change: 0.09,  changePct: 0.11, prevClose: 80.19,  cssClass: "kpi-flat", note: "▲ +0.1% · Credit steady — no stress signal" },
     gold:     { label: "Gold Spot",        price: 4785.5,   change: -32.5,   changePct: -0.67, prevClose: 4818,   cssClass: "kpi-down",   note: "▼ -0.7% · $4,786 · Safe-haven demand easing on ceasefire", formatComma: true },
-    brentWtiSpread: { label: "Brent–WTI Spread", price: -1.91, change: -3.42, changePct: -226.49, prevClose: 1.51, cssClass: "kpi-down", note: "Spread $-1.91 (-226.5%) · WTI > Brent ANOMALY persists — US supply disruption premium", noDollar: false },
+    brentWtiSpread: { label: "Brent–WTI Spread", price: -1.91, change: -3.42, changePct: -3.42, prevClose: 1.51, cssClass: "kpi-down", note: "Spread $-1.91 · WTI > Brent ANOMALY · Normalizing on ceasefire", noDollar: false },
     ita:      { label: "ITA (Defense ETF)", price: 231.76, change: -0.41,   changePct: -0.18,  prevClose: 232.17, cssClass: "kpi-flat", note: "▼ -0.2% · Defense sector pullback on peace hopes" }
   },
 
@@ -950,16 +950,16 @@ const DASHBOARD_DATA = {
 
   // ── CHART DATA (consolidates data.js + charts.js hardcoded data) ───────────
   chartData: {
-    labels: ['Feb 28', 'Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14', 'Mar 15', 'Mar 16', 'Mar 17', 'Mar 18', 'Mar 19', 'Mar 20', 'Mar 21', 'Mar 23', 'Mar 24', 'Mar 25', 'Mar 26', 'Mar 27', 'Mar 30', 'Mar 31', 'Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9', 'Apr 10', 'Apr 10'],
-    brent: [73.2, 80.1, 86.4, 91.7, 94.3, 89.5, 88.0, 91.2, 94.0, 95.4, 90.3, 91.98, 95.8, 100.46, 103.14, 103.14, 106.11, 101.6, 108.52, 116.45, 106.93, 112.89, 101.34, 103.5, 100.59, 105.61, 109.97, 107.9, 107.6, 101.22, 109.37, 109.03, 109.03, 109.03, 108.28, 110.47, 102.5, 95.02, 98.22, 96.06],
-    vix: [22.1, 26.4, 28.9, 30.2, 31.8, 30.1, 29.4, 28.7, 27.6, 26.9, 25.8, 24.93, 25.72, 27.29, 27.19, 27.19, 26.13, 22.24, 23.23, 25.93, 24.82, 26.78, 24.48, 26.77, 25.25, 27.15, 28.63, 30.51, 28.62, 24.23, 27.72, 23.87, 23.87, 23.87, 23.88, 25.71, 21.5, 21.23, 21.28, 19.31],
-    hyg: [80.0, 79.1, 78.3, 77.8, 77.4, 77.8, 78.1, 78.5, 79.0, 79.3, 79.6, 80.1, 79.9, 79.36, 79.2, 79.2, 79.2, 79.75, 79.68, 79.4, 79.66, 78.92, 79.53, 79.19, 79.52, 79.42, 78.9, 78.72, 78.82, 79.56, 79.37, 79.56, 79.56, 79.56, 79.63, 79.55, 79.9, 80.14, 80.19, 80.28],
-    sp500: [6050, 5940, 5870, 5820, 5790, 5810, 5840, 5870, 5910, 6100, 6250, 6310, 6781, 6672, 6632, 6632, 6632, 6734.51, 6682.77, 6624.7, 6606.49, 6506.48, 6631.26, 6546.85, 6605.87, 6591.9, 6477.26, 6368.85, 6343.72, 6528.52, 6575.32, 6582.69, 6582.69, 6582.69, 6608.75, 6578.67, 6720.0, 6779.38, 6782.81, 6824.66],
-    taco: [45, 40, 35, 30, 26, 22, 18, 15, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 6, 7, 8, 7, 7, 7, 8, 12, 9, 10, 8, 7, 9, 6, 15, 18, 18, 18],
-    strikeLabels: ['28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '10 Apr'],
+    labels: ['Feb 28', 'Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14', 'Mar 15', 'Mar 16', 'Mar 17', 'Mar 18', 'Mar 19', 'Mar 20', 'Mar 21', 'Mar 23', 'Mar 24', 'Mar 25', 'Mar 26', 'Mar 27', 'Mar 30', 'Mar 31', 'Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9', 'Apr 10'],
+    brent: [73.2, 80.1, 86.4, 91.7, 94.3, 89.5, 88.0, 91.2, 94.0, 95.4, 90.3, 91.98, 95.8, 100.46, 103.14, 103.14, 106.11, 101.6, 108.52, 116.45, 106.93, 112.89, 101.34, 103.5, 100.59, 105.61, 109.97, 107.9, 107.6, 101.22, 109.37, 109.03, 109.03, 109.03, 108.28, 110.47, 102.5, 95.02, 96.06],
+    vix: [22.1, 26.4, 28.9, 30.2, 31.8, 30.1, 29.4, 28.7, 27.6, 26.9, 25.8, 24.93, 25.72, 27.29, 27.19, 27.19, 26.13, 22.24, 23.23, 25.93, 24.82, 26.78, 24.48, 26.77, 25.25, 27.15, 28.63, 30.51, 28.62, 24.23, 27.72, 23.87, 23.87, 23.87, 23.88, 25.71, 21.5, 21.23, 19.31],
+    hyg: [80.0, 79.1, 78.3, 77.8, 77.4, 77.8, 78.1, 78.5, 79.0, 79.3, 79.6, 80.1, 79.9, 79.36, 79.2, 79.2, 79.2, 79.75, 79.68, 79.4, 79.66, 78.92, 79.53, 79.19, 79.52, 79.42, 78.9, 78.72, 78.82, 79.56, 79.37, 79.56, 79.56, 79.56, 79.63, 79.55, 79.9, 80.14, 80.28],
+    sp500: [6050, 5940, 5870, 5820, 5790, 5810, 5840, 5870, 5910, 6100, 6250, 6310, 6781, 6672, 6632, 6632, 6632, 6734.51, 6682.77, 6624.7, 6606.49, 6506.48, 6631.26, 6546.85, 6605.87, 6591.9, 6477.26, 6368.85, 6343.72, 6528.52, 6575.32, 6582.69, 6582.69, 6582.69, 6608.75, 6578.67, 6720.0, 6779.38, 6824.66],
+    taco: [45, 40, 35, 30, 26, 22, 18, 15, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 6, 7, 8, 7, 7, 7, 8, 12, 9, 10, 8, 7, 9, 6, 15, 18, 18],
+    strikeLabels: ['28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr'],
     strikes: {
-      us: [500, 600, 550, 450, 400, 420, 380, 500, 480, 450, 430, 420, 490, 520, 600, 580, 620, 290, 480, 510, 500, 520, 530, 540, 550, 550, 580, 600, 580, 560, 500, 520, 480, 500, 510, 550, 600, 100, 0, 0, 0],
-      iran: [200, 150, 100, 60, 40, 30, 25, 35, 30, 25, 20, 18, 35, 40, 38, 42, 45, 30, 35, 40, 50, 55, 65, 60, 55, 70, 75, 70, 65, 60, 50, 55, 50, 55]
+      us: [500, 600, 550, 450, 400, 420, 380, 500, 480, 450, 430, 420, 490, 520, 600, 580, 620, 290, 480, 510, 500, 520, 530, 540, 550, 550, 580, 600, 580, 560, 500, 520, 480, 500, 510, 550, 600, 100, 0, 0],
+      iran: [200, 150, 100, 60, 40, 30, 25, 35, 30, 25, 20, 18, 35, 40, 38, 42, 45, 30, 35, 40, 50, 55, 65, 60, 55, 70, 75, 70, 65, 60, 50, 55, 50, 55, 0, 0, 0, 0, 0, 0]
     },
     hormuzLabels: ['26 Feb', '27 Feb', '28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '26 Mar', '27 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '10 Apr'],
     hormuzTransits: [24, 24, 37, 4, 6, 5, 3, 4, 5, 5, 5, 5, 5, 2, 0, 1, 1, 1, 0, 4, 5, 4, 3, 2, 2, 2, 0, 6, 6, 8, 3, 4, 4, 5, 6, 5, 1, 4, 4, 3, 2, 5, 8, 4, 4],
@@ -1350,9 +1350,9 @@ const DASHBOARD_DATA = {
     latest: {
       date: '2026-04-10',
       day: 42,
-      dubizzle: 26496,
-      dubicars: 26312,
-      yallamotor: 38327
+      dubizzle: { total: 26496, changePct: -0.5 },
+      dubicars: { total: 26312, changePct: -2.8 },
+      yallamotor: { total: 38327, changePct: 2.0 }
     },
     luxury: {
       date: '2026-04-10',
@@ -3254,12 +3254,12 @@ const DASHBOARD_DATA = {
           }
         ],
         marketImpacts: {
-          brent_range: '$88-$95',
-          vix_range: '18-21',
-          taco_trajectory: 'Rises from 18 to 22-28',
-          gold_direction: 'down',
-          sp500_direction: 'up',
-          hyg_direction: 'up'
+          brentRange: '$88-$95',
+          vixRange: '18-21',
+          tacoTrajectory: 'Rises from 18 to 22-28',
+          goldDirection: 'down',
+          sp500Direction: 'up',
+          hygDirection: 'up'
         },
         confirmationTrigger: 'Joint statement from Islamabad mentioning \'framework\' or \'principles\' by Apr 12. Hormuz transits above 8/day sustained for 48h.',
         disconfirmationTrigger: 'Witkoff leaves Islamabad without joint statement. Iran closes Hormuz again. Attack reported on GCC territory.',
@@ -3288,12 +3288,12 @@ const DASHBOARD_DATA = {
           }
         ],
         marketImpacts: {
-          brent_range: '$95-$102',
-          vix_range: '20-24',
-          taco_trajectory: 'Holds 16-20',
-          gold_direction: 'stable',
-          sp500_direction: 'stable',
-          hyg_direction: 'stable'
+          brentRange: '$95-$102',
+          vixRange: '20-24',
+          tacoTrajectory: 'Holds 16-20',
+          goldDirection: 'stable',
+          sp500Direction: 'stable',
+          hygDirection: 'stable'
         },
         confirmationTrigger: 'No joint statement by Apr 12. Witkoff returns to DC. Oil remains in $95-100 range. VIX holds 20-22.',
         disconfirmationTrigger: 'Framework announced (→ Scenario 1). Major Lebanon escalation triggers Iran response (→ Scenario 3).',
@@ -3327,12 +3327,12 @@ const DASHBOARD_DATA = {
           }
         ],
         marketImpacts: {
-          brent_range: '$108-$120',
-          vix_range: '28-38',
-          taco_trajectory: 'Crashes from 18 to 5-8',
-          gold_direction: 'up',
-          sp500_direction: 'down',
-          hyg_direction: 'down'
+          brentRange: '$108-$120',
+          vixRange: '28-38',
+          tacoTrajectory: 'Crashes from 18 to 5-8',
+          goldDirection: 'up',
+          sp500Direction: 'down',
+          hygDirection: 'down'
         },
         confirmationTrigger: 'Iran delegation leaves Islamabad. Hormuz closed. Attacks resume on GCC territory. Brent breaks $105.',
         disconfirmationTrigger: 'Israel pauses Beirut strikes during talks. Iran maintains Hormuz at 4+/day. No GCC attacks for 72h.',
@@ -3361,12 +3361,12 @@ const DASHBOARD_DATA = {
           }
         ],
         marketImpacts: {
-          brent_range: '$82-$88',
-          vix_range: '16-19',
-          taco_trajectory: 'Rises from 18 to 35-45',
-          gold_direction: 'down',
-          sp500_direction: 'up',
-          hyg_direction: 'up'
+          brentRange: '$82-$88',
+          vixRange: '16-19',
+          tacoTrajectory: 'Rises from 18 to 35-45',
+          goldDirection: 'down',
+          sp500Direction: 'up',
+          hygDirection: 'up'
         },
         confirmationTrigger: 'Joint US-Iran statement mentioning comprehensive framework, Lebanon, AND enrichment caps. Brent drops below $90. VIX below 19.',
         disconfirmationTrigger: 'Talks end without comprehensive statement. Lebanon excluded from any framework. Enrichment dispute unresolved.',
@@ -3829,12 +3829,12 @@ const DASHBOARD_DATA = {
   ],
 
   hyperliquid: {
-    price: '$96.70',
-    tradBrent: '$98.22',
-    spread: '-$1.52 (-1.55%)',
-    volume: '$716M 24h',
+    price: '$94.86',
+    tradBrent: '$96.06',
+    spread: '-1.20 (-1.2%)',
+    volume: '$680M 24h',
     badge: '24/7 MARKET',
-    commentary: 'HL BrentOIL at $96.70 — recovering sharply (+7.3%) but still $1.52 below traditional Brent ($98.22). Spread narrowing from D40\'s -$8.27 chasm. OI collapsed to $313M from $559M ATH — massive deleveraging as ceasefire removed leveraged oil longs. Volume $716M remains extremely elevated. The HL-Brent convergence continues but is incomplete — the residual $1.52 discount suggests 24/7 markets still price slightly more optimism (or less Lebanon risk) than traditional markets. OI drawdown = healthy derisking.',
+    commentary: 'HL BrentOIL at $94.86 — trading at $1.20 discount to traditional Brent ($96.06). Spread narrowing as ceasefire normalizes 24/7 vs traditional market gap. OI at $310M, down from $559M ATH — deleveraging post-ceasefire. Volume remains elevated at ~$680M/day.',
     chartLabels: ['D23', 'D24', 'D25', 'D26', 'D27', 'D28', 'D29', 'D30', 'D31', 'D32', 'D33', 'D34', 'D35', 'D36', 'D37', 'D38', 'D39', 'D40', 'D41', 'D42'],
     chartHL: [109.5, 109.89, 110.7, 111.5, 109.22, 108.5, 109.8, 110.2, 109.5, 109.94, 110.3, 108.6, 107.2, 104.5, 95.2, 88.4, 90.1, 94.23, 96.7, 96.7],
     chartTrad: [109.97, 110.3, 111.09, 111.75, 109.5, 108.93, 110.15, 110.5, 109.03, 109.03, 109.03, 107.8, 106.5, 103.0, 94.75, 88.01, 91.5, 95.02, 98.22, 98.22],
