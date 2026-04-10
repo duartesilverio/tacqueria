@@ -16,6 +16,9 @@ whale-layout-spec.md
 # Legacy deploy script (now using Cloudflare Pages)
 deploy.sh
 
+# Environment / secrets
+.env
+
 # OS
 .DS_Store
 Thumbs.db

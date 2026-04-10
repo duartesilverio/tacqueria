@@ -12,7 +12,7 @@ const DASHBOARD_DATA = {
   // ── META ────────────────────────────────────────────────────────────────────
   meta: {
     version: "3.9.2",
-    timestamp: "10 Apr 2026 09:20 HKT",
+    timestamp: "10 Apr 2026 19:58 HKT",
     day: 42,
     dayDate: "10 APR 2026",
     threatLevel: "ELEVATED",
@@ -35,53 +35,53 @@ const DASHBOARD_DATA = {
   // ── FINANCIAL KPIs — Market Signals Tab ─────────────────────────────────────
   // NOTE: Wednesday 18 Mar — Full market day. Brent spiked to $108.52 on South Pars attack. Gold crashed. Equities red. VIX bounced.
   kpis: {
-    brent:    { label: "Brent (ICE)",      price: 98.22, change: 3.47,   changePct: 3.66,  prevClose: 94.75, cssClass: "kpi-up",   note: "▲ +3.7% · Rebounding from ceasefire crash · Still -10% from pre-ceasefire $109 · HL $96.70" },
-    wti:      { label: "WTI (NYMEX)",      price: 99.86,  change: 5.45,   changePct: 5.77,  prevClose: 94.41,  cssClass: "kpi-up",   note: "▲ +5.8% · WTI premium persists (-$1.64 spread) · Normalizing" },
-    tnx:      { label: "US 10Y Yield",     price: 4.3,   change: 0.006,   changePct: 0.14,  prevClose: 4.294,   cssClass: "kpi-flat", note: "4.30% · Flat · Ceasefire narrative not yet shifting Fed pricing", isPercent: true },
-    vix:      { label: "VIX",              price: 21.28,  change: 0.24,   changePct: 1.14,  prevClose: 21.04,  cssClass: "kpi-up", note: "▲ Slight uptick on ceasefire fragility · Lebanon risk repricing", noDollar: true },
-    hyg:      { label: "HY Spread (HYG)",  price: 80.19,  change: 0.47,  changePct: 0.59, prevClose: 79.72,  cssClass: "kpi-up", note: "▲ +0.6% · Credit rally continuing but cautious" },
-    gold:     { label: "Gold Spot",        price: 4770.6,   change: -6.8,   changePct: -0.14, prevClose: 4777.4,   cssClass: "kpi-flat",   note: "Flat · Safe-haven demand easing on ceasefire · $4,771", formatComma: true },
-    brentWtiSpread: { label: "Brent–WTI Spread", price: -1.64, change: 0.63, changePct: -27.75, prevClose: -2.27, cssClass: "kpi-flat", note: "WTI premium persists at -$1.64 but narrowing · Brent recovering · Anomaly fading", noDollar: false },
-    ita:      { label: "ITA (Defense ETF)", price: 232.17, change: 8.86,   changePct: 3.97,  prevClose: 223.31, cssClass: "kpi-up", note: "▲ +4% · Defense rally on ceasefire fragility concerns" }
+    brent:    { label: "Brent (ICE)",      price: 96.06, change: 0.14,   changePct: 0.15,  prevClose: 95.92, cssClass: "kpi-flat",   note: "▲ +0.1% · Ceasefire relief · Hormuz: Partially Closed" },
+    wti:      { label: "WTI (NYMEX)",      price: 97.97,  change: 3.56,   changePct: 3.77,  prevClose: 94.41,  cssClass: "kpi-up",   note: "▲ +3.8% · WTI premium persists (spread $-1.91)" },
+    tnx:      { label: "US 10Y Yield",     price: 4.29,   change: 0.0,   changePct: 0.05,  prevClose: 4.29,   cssClass: "kpi-flat", note: "4.29% · → +0.1% · Yield steady amid ceasefire uncertainty", isPercent: true },
+    vix:      { label: "VIX",              price: 19.31,  change: -0.18,   changePct: -0.92,  prevClose: 19.49,  cssClass: "kpi-down", note: "▼ -0.9% · Low vol — ceasefire risk priced in", noDollar: true },
+    hyg:      { label: "HY Spread (HYG)",  price: 80.28,  change: 0.09,  changePct: 0.11, prevClose: 80.19,  cssClass: "kpi-flat", note: "▲ +0.1% · Credit steady — no stress signal" },
+    gold:     { label: "Gold Spot",        price: 4785.5,   change: -32.5,   changePct: -0.67, prevClose: 4818,   cssClass: "kpi-down",   note: "▼ -0.7% · $4,786 · Safe-haven demand easing on ceasefire", formatComma: true },
+    brentWtiSpread: { label: "Brent–WTI Spread", price: -1.91, change: -3.42, changePct: -226.49, prevClose: 1.51, cssClass: "kpi-down", note: "Spread $-1.91 (-226.5%) · WTI > Brent ANOMALY persists — US supply disruption premium", noDollar: false },
+    ita:      { label: "ITA (Defense ETF)", price: 231.76, change: -0.41,   changePct: -0.18,  prevClose: 232.17, cssClass: "kpi-flat", note: "▼ -0.2% · Defense sector pullback on peace hopes" }
   },
 
   // ── COMPACT MARKET STRIP (Overview tab) ─────────────────────────────────────
   marketStrip: [
     {
       label: 'Brent',
-      value: '$98.22',
-      delta: '▲ +3.7% · Rebounding',
-      color: 'green'
-    },
-    {
-      label: 'VIX',
-      value: '21.28',
-      delta: '▲ +1.1% · Fragility',
-      color: 'amber'
+      value: '$96.06',
+      delta: '+0.1%',
+      color: '#22c55e'
     },
     {
       label: 'S&P 500',
-      value: '6,783',
-      delta: '▲ +2.5% · Talks optimism',
-      color: 'green'
+      value: '$6,824.66',
+      delta: '+0.6%',
+      color: '#22c55e'
+    },
+    {
+      label: 'VIX',
+      value: '19.31',
+      delta: '-0.9%',
+      color: '#ef4444'
     },
     {
       label: 'Gold',
-      value: '$4,771',
-      delta: '→ Flat · Haven easing',
-      color: 'grey'
-    },
-    {
-      label: 'HYG',
-      value: '80.19',
-      delta: '▲ +0.6% · Credit rally',
-      color: 'green'
+      value: '$4,785.50',
+      delta: '-0.7%',
+      color: '#ef4444'
     },
     {
       label: '10Y',
-      value: '4.30%',
-      delta: '→ Flat · Holding',
-      color: 'grey'
+      value: '4.29',
+      delta: '+0.1%',
+      color: '#94a3b8'
+    },
+    {
+      label: 'HYG',
+      value: '$80.28',
+      delta: '+0.1%',
+      color: '#22c55e'
     }
   ],
 
@@ -950,34 +950,34 @@ const DASHBOARD_DATA = {
 
   // ── CHART DATA (consolidates data.js + charts.js hardcoded data) ───────────
   chartData: {
-    labels: ['Feb 28', 'Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14', 'Mar 15', 'Mar 16', 'Mar 17', 'Mar 18', 'Mar 19', 'Mar 20', 'Mar 21', 'Mar 23', 'Mar 24', 'Mar 25', 'Mar 26', 'Mar 27', 'Mar 30', 'Mar 31', 'Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9', 'Apr 10'],
-    brent: [73.2, 80.1, 86.4, 91.7, 94.3, 89.5, 88.0, 91.2, 94.0, 95.4, 90.3, 91.98, 95.8, 100.46, 103.14, 103.14, 106.11, 101.6, 108.52, 116.45, 106.93, 112.89, 101.34, 103.5, 100.59, 105.61, 109.97, 107.9, 107.6, 101.22, 109.37, 109.03, 109.03, 109.03, 108.28, 110.47, 102.5, 95.02, 98.22],
-    vix: [22.1, 26.4, 28.9, 30.2, 31.8, 30.1, 29.4, 28.7, 27.6, 26.9, 25.8, 24.93, 25.72, 27.29, 27.19, 27.19, 26.13, 22.24, 23.23, 25.93, 24.82, 26.78, 24.48, 26.77, 25.25, 27.15, 28.63, 30.51, 28.62, 24.23, 27.72, 23.87, 23.87, 23.87, 23.88, 25.71, 21.5, 21.23, 21.28],
-    hyg: [80.0, 79.1, 78.3, 77.8, 77.4, 77.8, 78.1, 78.5, 79.0, 79.3, 79.6, 80.1, 79.9, 79.36, 79.2, 79.2, 79.2, 79.75, 79.68, 79.4, 79.66, 78.92, 79.53, 79.19, 79.52, 79.42, 78.9, 78.72, 78.82, 79.56, 79.37, 79.56, 79.56, 79.56, 79.63, 79.55, 79.9, 80.14, 80.19],
-    sp500: [6050, 5940, 5870, 5820, 5790, 5810, 5840, 5870, 5910, 6100, 6250, 6310, 6781, 6672, 6632, 6632, 6632, 6734.51, 6682.77, 6624.7, 6606.49, 6506.48, 6631.26, 6546.85, 6605.87, 6591.9, 6477.26, 6368.85, 6343.72, 6528.52, 6575.32, 6582.69, 6582.69, 6582.69, 6608.75, 6578.67, 6720.0, 6779.38, 6782.81],
-    taco: [45, 40, 35, 30, 26, 22, 18, 15, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 6, 7, 8, 7, 7, 7, 8, 12, 9, 10, 8, 7, 9, 6, 15, 18, 18],
-    strikeLabels: ['28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr'],
+    labels: ['Feb 28', 'Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14', 'Mar 15', 'Mar 16', 'Mar 17', 'Mar 18', 'Mar 19', 'Mar 20', 'Mar 21', 'Mar 23', 'Mar 24', 'Mar 25', 'Mar 26', 'Mar 27', 'Mar 30', 'Mar 31', 'Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9', 'Apr 10', 'Apr 10'],
+    brent: [73.2, 80.1, 86.4, 91.7, 94.3, 89.5, 88.0, 91.2, 94.0, 95.4, 90.3, 91.98, 95.8, 100.46, 103.14, 103.14, 106.11, 101.6, 108.52, 116.45, 106.93, 112.89, 101.34, 103.5, 100.59, 105.61, 109.97, 107.9, 107.6, 101.22, 109.37, 109.03, 109.03, 109.03, 108.28, 110.47, 102.5, 95.02, 98.22, 96.06],
+    vix: [22.1, 26.4, 28.9, 30.2, 31.8, 30.1, 29.4, 28.7, 27.6, 26.9, 25.8, 24.93, 25.72, 27.29, 27.19, 27.19, 26.13, 22.24, 23.23, 25.93, 24.82, 26.78, 24.48, 26.77, 25.25, 27.15, 28.63, 30.51, 28.62, 24.23, 27.72, 23.87, 23.87, 23.87, 23.88, 25.71, 21.5, 21.23, 21.28, 19.31],
+    hyg: [80.0, 79.1, 78.3, 77.8, 77.4, 77.8, 78.1, 78.5, 79.0, 79.3, 79.6, 80.1, 79.9, 79.36, 79.2, 79.2, 79.2, 79.75, 79.68, 79.4, 79.66, 78.92, 79.53, 79.19, 79.52, 79.42, 78.9, 78.72, 78.82, 79.56, 79.37, 79.56, 79.56, 79.56, 79.63, 79.55, 79.9, 80.14, 80.19, 80.28],
+    sp500: [6050, 5940, 5870, 5820, 5790, 5810, 5840, 5870, 5910, 6100, 6250, 6310, 6781, 6672, 6632, 6632, 6632, 6734.51, 6682.77, 6624.7, 6606.49, 6506.48, 6631.26, 6546.85, 6605.87, 6591.9, 6477.26, 6368.85, 6343.72, 6528.52, 6575.32, 6582.69, 6582.69, 6582.69, 6608.75, 6578.67, 6720.0, 6779.38, 6782.81, 6824.66],
+    taco: [45, 40, 35, 30, 26, 22, 18, 15, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 6, 7, 8, 7, 7, 7, 8, 12, 9, 10, 8, 7, 9, 6, 15, 18, 18, 18],
+    strikeLabels: ['28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '10 Apr'],
     strikes: {
-      us: [500, 600, 550, 450, 400, 420, 380, 500, 480, 450, 430, 420, 490, 520, 600, 580, 620, 290, 480, 510, 500, 520, 530, 540, 550, 550, 580, 600, 580, 560, 500, 520, 480, 500, 510, 550, 600, 100, 0, 0],
+      us: [500, 600, 550, 450, 400, 420, 380, 500, 480, 450, 430, 420, 490, 520, 600, 580, 620, 290, 480, 510, 500, 520, 530, 540, 550, 550, 580, 600, 580, 560, 500, 520, 480, 500, 510, 550, 600, 100, 0, 0, 0],
       iran: [200, 150, 100, 60, 40, 30, 25, 35, 30, 25, 20, 18, 35, 40, 38, 42, 45, 30, 35, 40, 50, 55, 65, 60, 55, 70, 75, 70, 65, 60, 50, 55, 50, 55]
     },
-    hormuzLabels: ['26 Feb', '27 Feb', '28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '26 Mar', '27 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr'],
-    hormuzTransits: [24, 24, 37, 4, 6, 5, 3, 4, 5, 5, 5, 5, 5, 2, 0, 1, 1, 1, 0, 4, 5, 4, 3, 2, 2, 2, 0, 6, 6, 8, 3, 4, 4, 5, 6, 5, 1, 4, 4, 3, 2, 5, 8, 4],
+    hormuzLabels: ['26 Feb', '27 Feb', '28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '26 Mar', '27 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '10 Apr'],
+    hormuzTransits: [24, 24, 37, 4, 6, 5, 3, 4, 5, 5, 5, 5, 5, 2, 0, 1, 1, 1, 0, 4, 5, 4, 3, 2, 2, 2, 0, 6, 6, 8, 3, 4, 4, 5, 6, 5, 1, 4, 4, 3, 2, 5, 8, 4, 4],
     etfs: {
       ITA: {
-        prices: [215, 218, 222, 226, 229, 227, 230, 233, 235, 237, 234, 236, 239, 241, 243, 243, 243, 229, 231, 230, 227, 223, 226, 221, 226, 226, 228, 216, 211, 219, 224, 222, 222, 222, 223, 223, 235, 232, 232]
+        prices: [215, 218, 222, 226, 229, 227, 230, 233, 235, 237, 234, 236, 239, 241, 243, 243, 243, 229, 231, 230, 227, 223, 226, 221, 226, 226, 228, 216, 211, 219, 224, 222, 222, 222, 223, 223, 235, 232, 232, 232]
       },
       XLE: {
-        prices: [82, 84, 87, 90, 93, 91, 89, 91, 94, 96, 93, 94, 96, 97, 98, 98, 98, 96, 100, 100, 100, 59, 60, 61, 61, 61, 62, 63, 62, 61, 59, 59, 59, 59, 59, 60, 58, 57, 58]
+        prices: [82, 84, 87, 90, 93, 91, 89, 91, 94, 96, 93, 94, 96, 97, 98, 98, 98, 96, 100, 100, 100, 59, 60, 61, 61, 61, 62, 63, 62, 61, 59, 59, 59, 59, 59, 60, 58, 57, 58, 57]
       },
       XOP: {
-        prices: [130, 134, 138, 143, 148, 145, 142, 144, 149, 153, 150, 151, 154, 156, 158, 158, 158, 155, 162, 165, 175, 177, 176, 180, 182, 182, 185, 188, 185, 182, 175, 178, 178, 178, 177, 182, 174, 169, 172]
+        prices: [130, 134, 138, 143, 148, 145, 142, 144, 149, 153, 150, 151, 154, 156, 158, 158, 158, 155, 162, 165, 175, 177, 176, 180, 182, 182, 185, 188, 185, 182, 175, 178, 178, 178, 177, 182, 174, 169, 172, 168]
       },
       GLD: {
-        prices: [490, 493, 496, 500, 503, 505, 504, 506, 508, 510, 509, 511, 512, 514, 515, 515, 500, 501, 487, 472, 426, 413, 411, 404, 416, 416, 420, 415, 415, 430, 438, 429, 429, 429, 431, 427, 432, 435, 435]
+        prices: [490, 493, 496, 500, 503, 505, 504, 506, 508, 510, 509, 511, 512, 514, 515, 515, 500, 501, 487, 472, 426, 413, 411, 404, 416, 416, 420, 415, 415, 430, 438, 429, 429, 429, 431, 427, 432, 435, 435, 438]
       },
       TLT: {
-        prices: [87, 88, 89, 90, 91, 91, 90, 90, 91, 91, 90, 90, 91, 91, 91, 91, 91, 92, 91, 90, 87, 86, 86, 86, 87, 87, 86, 86, 87, 87, 86, 87, 87, 87, 87, 86, 87, 87, 87]
+        prices: [87, 88, 89, 90, 91, 91, 90, 90, 91, 91, 90, 90, 91, 91, 91, 91, 91, 92, 91, 90, 87, 86, 86, 86, 87, 87, 86, 86, 87, 87, 86, 87, 87, 87, 87, 86, 87, 87, 87, 87]
       }
     }
   ,
@@ -1336,7 +1336,7 @@ const DASHBOARD_DATA = {
       {
         date: '2026-04-10',
         day: 42,
-        dubizzle: 26506,
+        dubizzle: 26496,
         dubicars: 26312,
         yallamotor: 38327,
         source: 'live'
@@ -1350,7 +1350,7 @@ const DASHBOARD_DATA = {
     latest: {
       date: '2026-04-10',
       day: 42,
-      dubizzle: 26506,
+      dubizzle: 26496,
       dubicars: 26312,
       yallamotor: 38327
     },
@@ -2305,190 +2305,500 @@ const DASHBOARD_DATA = {
     },
     timeline: [
       {
-        day: 1,
         date: 'Feb 28',
-        summary: 'Trump: \'The future is yours to take.\' Operation Epic Fury begins.',
-        score: 35
+        dayBadge: 'Day 1',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Trump: \'The future is yours to take.\' Operation Epic Fury begins.',
+            tacoImpact: {
+              score: 35,
+              detail: 'TACO 35'
+            }
+          }
+        ]
       },
       {
-        day: 2,
         date: 'Mar 1',
-        summary: 'Trump: \'Four weeks, or less.\' Pentagon: targeting IRGC infrastructure.',
-        score: 30
+        dayBadge: 'Day 2',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Trump: \'Four weeks, or less.\' Pentagon: targeting IRGC infrastructure.',
+            tacoImpact: {
+              score: 30,
+              detail: 'TACO 30'
+            }
+          }
+        ]
       },
       {
-        day: 3,
         date: 'Mar 2',
-        summary: 'Iran: \'Crushing response.\' Khamenei defiant. Trump: escalation warnings.',
-        score: 25
+        dayBadge: 'Day 3',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Iran: \'Crushing response.\' Khamenei defiant. Trump: escalation warnings.',
+            tacoImpact: {
+              score: 25,
+              detail: 'TACO 25'
+            }
+          }
+        ]
       },
       {
-        day: 4,
         date: 'Mar 3',
-        summary: 'Pentagon: \'Ahead of schedule.\' Iran: \'Sacred defense.\' Hormuz threats.',
-        score: 22
+        dayBadge: 'Day 4',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Pentagon: \'Ahead of schedule.\' Iran: \'Sacred defense.\' Hormuz threats.',
+            tacoImpact: {
+              score: 22,
+              detail: 'TACO 22'
+            }
+          }
+        ]
       },
       {
-        day: 5,
         date: 'Mar 4',
-        summary: 'Trump: \'Going very well.\' Iran FM: \'Diplomatic options remain.\' Mixed.',
-        score: 28
+        dayBadge: 'Day 5',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Trump: \'Going very well.\' Iran FM: \'Diplomatic options remain.\' Mixed.',
+            tacoImpact: {
+              score: 28,
+              detail: 'TACO 28'
+            }
+          }
+        ]
       },
       {
-        day: 6,
         date: 'Mar 5',
-        summary: 'Trump: \'Obliteration like nobody\'s seen.\' Max escalation rhetoric. IRGC defiant.',
-        score: 10
+        dayBadge: 'Day 6',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Trump: \'Obliteration like nobody\'s seen.\' Max escalation rhetoric. IRGC defiant.',
+            tacoImpact: {
+              score: 10,
+              detail: 'TACO 10'
+            }
+          }
+        ]
       },
       {
-        day: 7,
         date: 'Mar 6',
-        summary: 'Pentagon: targeting nuclear sites. Iran: \'Sacred defense continues.\' Houthi threats.',
-        score: 15
+        dayBadge: 'Day 7',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Pentagon: targeting nuclear sites. Iran: \'Sacred defense continues.\' Houthi threats.',
+            tacoImpact: {
+              score: 15,
+              detail: 'TACO 15'
+            }
+          }
+        ]
       },
       {
-        day: 8,
         date: 'Mar 7',
-        summary: 'Trump: \'They have nothing left.\' Iran: \'We will never surrender.\' Parallel realities.',
-        score: 18
+        dayBadge: 'Day 8',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Trump: \'They have nothing left.\' Iran: \'We will never surrender.\' Parallel realities.',
+            tacoImpact: {
+              score: 18,
+              detail: 'TACO 18'
+            }
+          }
+        ]
       },
       {
-        day: 9,
         date: 'Mar 8',
-        summary: 'Weekend lull. Both sides consolidating. Diplomatic chatter via Oman.',
-        score: 30
+        dayBadge: 'Day 9',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Weekend lull. Both sides consolidating. Diplomatic chatter via Oman.',
+            tacoImpact: {
+              score: 30,
+              detail: 'TACO 30'
+            }
+          }
+        ]
       },
       {
-        day: 10,
         date: 'Mar 9',
-        summary: 'Gulf states hedging. UAE quiet. Qatar mediating. Low rhetoric day.',
-        score: 35
+        dayBadge: 'Day 10',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Gulf states hedging. UAE quiet. Qatar mediating. Low rhetoric day.',
+            tacoImpact: {
+              score: 35,
+              detail: 'TACO 35'
+            }
+          }
+        ]
       },
       {
-        day: 11,
         date: 'Mar 10',
-        summary: 'Trump: \'Almost done.\' Iran: \'Resistance continues.\' Strike tempo declining.',
-        score: 32
+        dayBadge: 'Day 11',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Trump: \'Almost done.\' Iran: \'Resistance continues.\' Strike tempo declining.',
+            tacoImpact: {
+              score: 32,
+              detail: 'TACO 32'
+            }
+          }
+        ]
       },
       {
-        day: 12,
         date: 'Mar 11',
-        summary: 'Pentagon: \'Phase 2 transition.\' Iran: regional allies activated. Houthis strike.',
-        score: 25
+        dayBadge: 'Day 12',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Pentagon: \'Phase 2 transition.\' Iran: regional allies activated. Houthis strike.',
+            tacoImpact: {
+              score: 25,
+              detail: 'TACO 25'
+            }
+          }
+        ]
       },
       {
-        day: 13,
         date: 'Mar 12',
-        summary: 'Trump: \'Big progress.\' Iran FM: back-channel signals. De-escalation hints.',
-        score: 38
+        dayBadge: 'Day 13',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Trump: \'Big progress.\' Iran FM: back-channel signals. De-escalation hints.',
+            tacoImpact: {
+              score: 38,
+              detail: 'TACO 38'
+            }
+          }
+        ]
       },
       {
-        day: 14,
         date: 'Mar 13',
-        summary: 'Mixed signals. Strike reduction but Hormuz posturing. Gulf states nervous.',
-        score: 35
+        dayBadge: 'Day 14',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Mixed signals. Strike reduction but Hormuz posturing. Gulf states nervous.',
+            tacoImpact: {
+              score: 35,
+              detail: 'TACO 35'
+            }
+          }
+        ]
       },
       {
-        day: 15,
         date: 'Mar 14',
-        summary: 'Trump: \'They\'re getting HAMMERED.\' Iran: \'God will protect.\' Escalatory.',
-        score: 20
+        dayBadge: 'Day 15',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Trump: \'They\'re getting HAMMERED.\' Iran: \'God will protect.\' Escalatory.',
+            tacoImpact: {
+              score: 20,
+              detail: 'TACO 20'
+            }
+          }
+        ]
       },
       {
-        day: 17,
         date: 'Mar 16',
-        summary: 'Weekend. Low activity. Back-channel reports via Swiss/Oman.',
-        score: 40
+        dayBadge: 'Day 17',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Weekend. Low activity. Back-channel reports via Swiss/Oman.',
+            tacoImpact: {
+              score: 40,
+              detail: 'TACO 40'
+            }
+          }
+        ]
       },
       {
-        day: 19,
         date: 'Mar 18',
-        summary: 'Pentagon: TEL hunt accelerating. Iran: drone production surge. Mixed.',
-        score: 30
+        dayBadge: 'Day 19',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Pentagon: TEL hunt accelerating. Iran: drone production surge. Mixed.',
+            tacoImpact: {
+              score: 30,
+              detail: 'TACO 30'
+            }
+          }
+        ]
       },
       {
-        day: 21,
         date: 'Mar 20',
-        summary: 'Trump: deadline approaching. Iran: \'No surrender under fire.\' Standoff.',
-        score: 25
+        dayBadge: 'Day 21',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Trump: deadline approaching. Iran: \'No surrender under fire.\' Standoff.',
+            tacoImpact: {
+              score: 25,
+              detail: 'TACO 25'
+            }
+          }
+        ]
       },
       {
-        day: 23,
         date: 'Mar 22',
-        summary: 'Pentagon: \'Running low on everything.\' Iran attrition severe. Mixed.',
-        score: 32
+        dayBadge: 'Day 23',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Pentagon: \'Running low on everything.\' Iran attrition severe. Mixed.',
+            tacoImpact: {
+              score: 32,
+              detail: 'TACO 32'
+            }
+          }
+        ]
       },
       {
-        day: 26,
         date: 'Mar 25',
-        summary: 'Bibi energy strike push. Trump resists. Internal coalition tension.',
-        score: 28
+        dayBadge: 'Day 26',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Bibi energy strike push. Trump resists. Internal coalition tension.',
+            tacoImpact: {
+              score: 28,
+              detail: 'TACO 28'
+            }
+          }
+        ]
       },
       {
-        day: 29,
         date: 'Mar 28',
-        summary: 'Iran proxy surge — joint Hezbollah-Houthi-IRGC attacks. Escalatory.',
-        score: 15
+        dayBadge: 'Day 29',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Iran proxy surge — joint Hezbollah-Houthi-IRGC attacks. Escalatory.',
+            tacoImpact: {
+              score: 15,
+              detail: 'TACO 15'
+            }
+          }
+        ]
       },
       {
-        day: 31,
         date: 'Mar 30',
-        summary: 'Deadline approaching. Both sides hardening positions. Low rhetoric.',
-        score: 22
+        dayBadge: 'Day 31',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Deadline approaching. Both sides hardening positions. Low rhetoric.',
+            tacoImpact: {
+              score: 22,
+              detail: 'TACO 22'
+            }
+          }
+        ]
       },
       {
-        day: 33,
         date: 'Apr 1',
-        summary: 'Deadline passed. No deal. US-Israel coordination fraying. Netanyahu pushing energy strikes.',
-        score: 18
+        dayBadge: 'Day 33',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Deadline passed. No deal. US-Israel coordination fraying. Netanyahu pushing energy strikes.',
+            tacoImpact: {
+              score: 18,
+              detail: 'TACO 18'
+            }
+          }
+        ]
       },
       {
-        day: 35,
         date: 'Apr 3',
-        summary: 'Trump: core objectives nearing completion. Pivot language emerging.',
-        score: 40
+        dayBadge: 'Day 35',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Trump: core objectives nearing completion. Pivot language emerging.',
+            tacoImpact: {
+              score: 40,
+              detail: 'TACO 40'
+            }
+          }
+        ]
       },
       {
-        day: 36,
         date: 'Apr 4',
-        summary: 'Israel ready to strike energy. Trump resisting. Sync collapsed to 20%.',
-        score: 25
+        dayBadge: 'Day 36',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Israel ready to strike energy. Trump resisting. Sync collapsed to 20%.',
+            tacoImpact: {
+              score: 25,
+              detail: 'TACO 25'
+            }
+          }
+        ]
       },
       {
-        day: 37,
         date: 'Apr 5',
-        summary: 'Weekend pre-deadline. Quiet. Back-channels active. Both sides posturing.',
-        score: 35
+        dayBadge: 'Day 37',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Weekend pre-deadline. Quiet. Back-channels active. Both sides posturing.',
+            tacoImpact: {
+              score: 35,
+              detail: 'TACO 35'
+            }
+          }
+        ]
       },
       {
-        day: 38,
         date: 'Apr 6',
-        summary: 'Final pre-ceasefire rhetoric. Iran signals conditional openness. US hawk pressure.',
-        score: 38
+        dayBadge: 'Day 38',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Final pre-ceasefire rhetoric. Iran signals conditional openness. US hawk pressure.',
+            tacoImpact: {
+              score: 38,
+              detail: 'TACO 38'
+            }
+          }
+        ]
       },
       {
-        day: 39,
         date: 'Apr 7',
-        summary: 'Last attacks pre-ceasefire. Both sides preparing for truce. Houthi final strike.',
-        score: 42
+        dayBadge: 'Day 39',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'Last attacks pre-ceasefire. Both sides preparing for truce. Houthi final strike.',
+            tacoImpact: {
+              score: 42,
+              detail: 'TACO 42'
+            }
+          }
+        ]
       },
       {
-        day: 40,
         date: 'Apr 8',
-        summary: 'CEASEFIRE ANNOUNCED. Attacks stop. Hormuz reopening. Historic moment.',
-        score: 75
+        dayBadge: 'Day 40',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'CEASEFIRE ANNOUNCED. Attacks stop. Hormuz reopening. Historic moment.',
+            tacoImpact: {
+              score: 75,
+              detail: 'TACO 75'
+            }
+          }
+        ]
       },
       {
-        day: 41,
         date: 'Apr 9',
-        summary: 'SILENCE on Iran. Trump focused on tariffs. Tacit compliance. No escalation. Ceasefire holding.',
-        score: 65
+        dayBadge: 'Day 41',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'SILENCE on Iran. Trump focused on tariffs. Tacit compliance. No escalation. Ceasefire holding.',
+            tacoImpact: {
+              score: 65,
+              detail: 'TACO 65'
+            }
+          }
+        ]
       },
       {
-        day: 42,
         date: 'Apr 10',
-        summary: 'ISLAMABAD TALKS. Hegseth: \'regime out of options.\' Iran: \'enrichment won\'t be curtailed.\' Both sides claim victory. Incompatible. Lebanon escalation: Netanyahu kills 112 in Beirut. UK pushes Lebanon inclusion. Witkoff (not Rubio) for US.',
-        score: 48
+        dayBadge: 'Day 42',
+        entries: [
+          {
+            platform: 'Summary',
+            time: '',
+            tag: 'MIXED',
+            quote: 'ISLAMABAD TALKS. Hegseth: \'regime out of options.\' Iran: \'enrichment won\'t be curtailed.\' Both sides claim victory. Incompatible. Lebanon escalation: Netanyahu kills 112 in Beirut. UK pushes Lebanon inclusion. Witkoff (not Rubio) for US.',
+            tacoImpact: {
+              score: 48,
+              detail: 'TACO 48'
+            }
+          }
+        ]
       }
     ],
     patterns: [
@@ -3338,38 +3648,38 @@ const DASHBOARD_DATA = {
       steps: [
         {
           label: 'Oil Price Increase',
-          value: '+34.2%',
-          detail: 'Brent $98.22 vs pre-war $73.20 = +34.2% increase (UP from +29.8% at ceasefire low of $95.02)',
+          value: '+31.2%',
+          detail: '$96.06 vs $73.20 baseline',
           color: '#f59e0b'
         },
         {
           label: 'Energy CPI Impact',
-          value: '+7.9%',
-          detail: '34.2% × 0.23 (Dallas Fed elasticity coefficient) = 7.9% energy CPI increase',
+          value: '+7.18%',
+          detail: 'Fed passthrough coefficient: 0.23',
           color: '#f59e0b'
         },
         {
           label: 'Headline Direct',
-          value: '+0.55%',
-          detail: '7.9% × 0.07 (BLS energy weight) = 0.55% direct headline CPI impact',
+          value: '+0.50pp',
+          detail: 'BLS energy weight: 7%',
           color: '#f59e0b'
         },
         {
-          label: 'Second-Round Effects',
-          value: '+0.70%',
-          detail: '0.55% × 1.27 (second-round multiplier) = 0.70%',
+          label: 'With Second-Round',
+          value: '+0.79pp',
+          detail: '×1.27 multiplier + 0.15pp food',
           color: '#f59e0b'
         },
         {
-          label: 'Total War Premium',
-          value: '+0.85%',
-          detail: '0.70% + 0.15pp (food acceleration) = +0.85% total war CPI premium (UP from +0.76% at $95)',
-          color: '#ef4444'
+          label: 'Estimated CPI',
+          value: '3.2%',
+          detail: '2.4% baseline + 0.79pp war premium',
+          color: '#f59e0b'
         }
       ],
       result: {
-        headline: '~3.25%',
-        explanation: 'With Brent rebounding to $98.22 (ceasefire fragility + Lebanon risk), the oil-to-CPI passthrough model estimates headline CPI at ~3.25% — UP from ~3.16% at ceasefire low ($95.02). The oil rebound is partially reversing ceasefire CPI relief. If Brent stabilizes at $95-98: CPI ~3.15-3.25%. If talks succeed and Brent drops to $88: CPI ~3.00%. If ceasefire breaks and Brent snaps to $108: CPI ~3.50%.'
+        headline: '~3.2%',
+        explanation: 'Brent at $96.06 (+31.2% vs pre-war baseline). Oil-to-CPI passthrough model estimates headline CPI at ~3.2% (war premium +0.79pp over 2.4% baseline).'
       },
       methodology: 'Dallas Fed elasticity (10% oil → +0.23% energy CPI) × BLS energy weight (7%) × second-round multiplier (1.27) + food acceleration (0.15pp). Source: FEDS Notes 2024, Dallas Fed Working Paper 2023.'
     },
@@ -3482,7 +3792,7 @@ const DASHBOARD_DATA = {
 
   troopCounter: [
     {
-      value: '52,000+',
+      value: '50,000+',
       label: 'US Troops (ceasefire posture)',
       color: '#f59e0b'
     },
@@ -3502,12 +3812,12 @@ const DASHBOARD_DATA = {
       color: '#ef4444'
     },
     {
-      value: '21,000+',
+      value: '13,000+',
       label: 'Targets Struck (thru D40)',
       color: '#f59e0b'
     },
     {
-      value: '14+',
+      value: '13+',
       label: 'US KIA (confirmed + F-15E MIA)',
       color: '#ef4444'
     },
