@@ -373,7 +373,7 @@
 
         if (e.tacoImpact) {
           // Impact score class
-          var impScore = (e.tacoImpact.score || '').toLowerCase();
+          var impScore = String(e.tacoImpact.score || '').toLowerCase();
           var impClass = 'impact-moderate';
           if (impScore === 'terminal') impClass = 'impact-terminal';
           else if (impScore === 'severe') impClass = 'impact-severe';
@@ -422,8 +422,8 @@
   function renderHyperliquid() {
     var hl = D.hyperliquid;
     if (!hl) return;
-    setHTML('#hl-price', '$' + hl.price);
-    setHTML('#hl-trad-brent', '$' + hl.tradBrent);
+    setHTML('#hl-price', hl.price);
+    setHTML('#hl-trad-brent', hl.tradBrent);
     var spread = hl.spread;
     var spreadColor = parseFloat(spread) < 0 ? '#22c55e' : '#ef4444';
     var spreadEl = document.getElementById('hl-spread');

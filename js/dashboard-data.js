@@ -2844,10 +2844,10 @@ const DASHBOARD_DATA = {
   // ── 10. MARKET SIGNALS ───────────────────────────────────────────────────────
   marketSignals: {
     futuresCurve: {
-      m1: '$98.22',
-      m6: '$92.50',
-      m12: '$86.80',
-      commentary: 'Backwardation STEEPENING on ceasefire fragility. M1 at $98.22 — rebounding from ceasefire crash. M6 at ~$92.50 implies markets expect gradual normalization but not fast. M12 at ~$86.80 implies long-term peace pricing. The $11.42 backwardation (M1-M12) reflects: short-term Hormuz uncertainty + Lebanon risk vs long-term deal expectation.'
+      m1: '$96.06',
+      m6: '$88.50',
+      m12: '$83.00',
+      commentary: 'Backwardation steady at $13.06 (M1-M12). M1 at $96.06 — ceasefire + talks keeping front month below $100. M6 at ~$88.50 implies markets expect gradual normalization. M12 at ~$83.00 implies long-term peace pricing but still well above pre-war ($73). The curve shape reflects: short-term Hormuz/Lebanon uncertainty vs long-term deal expectation.'
     },
     riskReversal: {
       oneMonth: '+3.8',
@@ -2899,12 +2899,12 @@ const DASHBOARD_DATA = {
       commentary: 'Massive speculative deleveraging since ceasefire. WTI net long down ~50K contracts, Brent down ~70K. Managed money exiting war-trade positions. Remaining longs are structural, not speculative. If ceasefire collapses, repositioning would create explosive upside move. Current positioning = healthy for sustained recovery.'
     },
     brentWtiSpread: {
-      current: '-$1.64',
+      current: '-$1.91',
       preWar: '+$3.50',
-      widening: '-$5.14 inversion (narrowing from -$5.10 peak)',
-      brentPrice: '$98.22',
-      wtiPrice: '$99.86',
-      commentary: 'WTI premium NARROWING to -$1.64 from -$5.10 peak inversion. The ceasefire is gradually normalizing the Brent-WTI relationship. WTI still slightly above Brent — reflects US strategic reserve dynamics and domestic pricing. Full normalization (Brent premium) expected when Hormuz fully stabilizes and ME supply resumes. Spread should return to +$2-4 within weeks if ceasefire holds.'
+      widening: '-$5.41 inversion (normalizing on ceasefire)',
+      brentPrice: '$96.06',
+      wtiPrice: '$97.97',
+      commentary: 'WTI premium at $1.91 — Brent $96.06 vs WTI $97.97. The inversion persists but is narrowing from -$5.10 peak. The ceasefire is gradually normalizing the Brent-WTI relationship. WTI still above Brent — reflects US strategic reserve dynamics and domestic pricing. Full normalization (Brent premium) expected when Hormuz fully stabilizes and ME supply resumes.'
     },
     optionsIntelligence: {
       badge: 'UPSIDE REPRICING',

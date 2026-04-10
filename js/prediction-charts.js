@@ -10,8 +10,8 @@ function initMicrostructureCharts() {
   if (fcCtx) {
     new Chart(fcCtx.getContext('2d'), {
       type: 'line',
-      data: { labels: ['Apr (M1)', 'May (M2)', 'Jun (M3)', 'Jul (M4)', 'Sep (M6)', 'Dec (M9)', 'Mar27 (M12)'], datasets: [
-        { label: 'Day 13 (12 Mar)', data: [98.27, 96.10, 94.30, 92.80, 89.40, 86.20, 82.15], borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.08)', borderWidth: 2.5, pointRadius: 4, fill: true, tension: 0.3 },
+      data: { labels: ['Jun (M1)', 'Jul (M2)', 'Aug (M3)', 'Sep (M4)', 'Dec (M6)', 'Mar27 (M9)', 'Jun27 (M12)'], datasets: [
+        { label: 'Day 42 (10 Apr) — Ceasefire', data: [96.06, 94.50, 92.80, 91.20, 88.50, 85.80, 83.00], borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.08)', borderWidth: 2.5, pointRadius: 4, fill: true, tension: 0.3 },
         { label: 'Pre-war baseline', data: [73.80, 73.50, 73.20, 72.90, 72.40, 71.80, 71.20], borderColor: '#475569', borderDash: [5,4], borderWidth: 1.5, pointRadius: 3, fill: false, tension: 0.3 }
       ]},
       options: {
@@ -30,9 +30,9 @@ function initMicrostructureCharts() {
   if (osCtx) {
     new Chart(osCtx.getContext('2d'), {
       type: 'line',
-      data: { labels: ['D1','D2','D3','D4','D5','D6','D7','D8','D9','D10','D11','D12','D13'], datasets: [
-        { label: '1M Risk Reversal', data: [-0.5,2.1,4.8,8.2,7.6,6.3,5.9,5.4,4.2,4.5,4.7,4.9,4.8], borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.08)', borderWidth: 2.5, pointRadius: 3, fill: true, tension: 0.4 },
-        { label: '3M Risk Reversal', data: [-0.5,1.2,2.8,4.1,3.8,3.5,3.4,3.2,2.8,2.9,3.0,2.9,2.9], borderColor: '#f59e0b', borderWidth: 2, borderDash: [5,4], pointRadius: 3, fill: false, tension: 0.4 }
+      data: { labels: ['D1','D3','D5','D7','D9','D11','D13','D15','D17','D19','D21','D23','D25','D27','D29','D31','D33','D35','D37','D39','D41','D42'], datasets: [
+        { label: '1M Risk Reversal', data: [-0.5,4.8,7.6,5.9,4.2,4.7,4.8,5.2,5.4,6.8,6.2,5.8,5.5,5.1,4.8,4.5,4.2,3.8,2.8,3.2,3.6,3.8], borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.08)', borderWidth: 2.5, pointRadius: 3, fill: true, tension: 0.4 },
+        { label: '3M Risk Reversal', data: [-0.5,2.8,3.8,3.4,2.8,3.0,2.9,3.1,3.2,3.8,3.5,3.3,3.1,3.0,2.8,2.7,2.6,2.5,2.2,2.5,2.8,2.9], borderColor: '#f59e0b', borderWidth: 2, borderDash: [5,4], pointRadius: 3, fill: false, tension: 0.4 }
       ]},
       options: {
         responsive: true, maintainAspectRatio: false,
@@ -54,12 +54,12 @@ function initMicrostructureCharts() {
   if (cdsCtx) {
     new Chart(cdsCtx.getContext('2d'), {
       type: 'line',
-      data: { labels: ['Pre-war','D1','D3','D5','D7','D9','D11','D13'], datasets: [
-        { label: 'Saudi Arabia', data: [42,55,62,70,78,82,86,88],       borderColor: '#f59e0b', borderWidth: 2, pointRadius: 3, fill: false, tension: 0.4 },
-        { label: 'UAE',          data: [35,42,48,55,60,65,70,72],       borderColor: '#38bdf8', borderWidth: 2, pointRadius: 3, fill: false, tension: 0.4 },
-        { label: 'Israel',       data: [78,95,108,120,132,142,150,156], borderColor: '#ef4444', borderWidth: 2.5, pointRadius: 3, fill: false, tension: 0.4 },
-        { label: 'Iraq',         data: [195,220,245,268,282,295,304,310],borderColor: '#8b5cf6', borderWidth: 2, pointRadius: 3, fill: false, tension: 0.4 },
-        { label: 'Qatar',        data: [38,40,42,45,48,50,52,54],       borderColor: '#22c55e', borderWidth: 2, borderDash: [5,4], pointRadius: 3, fill: false, tension: 0.4 }
+      data: { labels: ['Pre-war','D1','D5','D9','D13','D17','D19','D23','D27','D31','D35','D39','D42'], datasets: [
+        { label: 'Saudi Arabia', data: [52,55,70,82,88,92,95,98,100,96,92,88,85],       borderColor: '#f59e0b', borderWidth: 2, pointRadius: 3, fill: false, tension: 0.4 },
+        { label: 'UAE',          data: [45,42,55,65,72,78,120,115,110,105,100,98,95],    borderColor: '#38bdf8', borderWidth: 2, pointRadius: 3, fill: false, tension: 0.4 },
+        { label: 'Israel',       data: [78,95,120,142,156,168,175,180,178,172,165,158,152], borderColor: '#ef4444', borderWidth: 2.5, pointRadius: 3, fill: false, tension: 0.4 },
+        { label: 'Iran',         data: [450,620,980,1400,1850,2200,2950,2800,2600,2400,2250,2150,2100],borderColor: '#8b5cf6', borderWidth: 2, pointRadius: 3, fill: false, tension: 0.4 },
+        { label: 'Qatar',        data: [48,40,45,50,54,58,62,68,72,74,73,72,72],         borderColor: '#22c55e', borderWidth: 2, borderDash: [5,4], pointRadius: 3, fill: false, tension: 0.4 }
       ]},
       options: {
         responsive: true, maintainAspectRatio: false,
@@ -76,9 +76,9 @@ function initMicrostructureCharts() {
   if (cftcCtx) {
     new Chart(cftcCtx.getContext('2d'), {
       type: 'bar',
-      data: { labels: ['4-Feb','11-Feb','18-Feb','25-Feb','4-Mar','10-Mar (war)'], datasets: [
-        { label: 'WTI Net Long (K contracts)',   data: [182,179,176,185,210,218], backgroundColor: 'rgba(245,158,11,0.5)', borderColor: '#f59e0b', borderWidth: 1.5, borderRadius: 3 },
-        { label: 'Brent Net Long (K contracts)', data: [155,152,158,160,182,196], backgroundColor: 'rgba(56,189,248,0.4)',  borderColor: '#38bdf8', borderWidth: 1.5, borderRadius: 3 }
+      data: { labels: ['4-Feb','18-Feb','4-Mar','11-Mar','18-Mar','25-Mar','1-Apr','8-Apr (ceasefire)'], datasets: [
+        { label: 'WTI Net Long (K contracts)',   data: [182,176,210,235,248,252,240,185], backgroundColor: 'rgba(245,158,11,0.5)', borderColor: '#f59e0b', borderWidth: 1.5, borderRadius: 3 },
+        { label: 'Brent Net Long (K contracts)', data: [155,158,182,265,280,275,258,195], backgroundColor: 'rgba(56,189,248,0.4)',  borderColor: '#38bdf8', borderWidth: 1.5, borderRadius: 3 }
       ]},
       options: {
         responsive: true, maintainAspectRatio: false,
@@ -98,9 +98,9 @@ function initMicrostructureCharts() {
   if (bwsCtx) {
     new Chart(bwsCtx.getContext('2d'), {
       type: 'line',
-      data: { labels: ['Pre-war','D1','D3','D5','D7','D9','D11','D13','D15','D17','D19'], datasets: [
-        { label: 'Brent–WTI Spread ($)', data: [3.4,6.9,8.5,5.2,3.2,5.4,1.7,4.7,5.0,5.1,17.6], borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.10)', borderWidth: 2.5, pointRadius: 4, fill: true, tension: 0.35 },
-        { label: 'Pre-war normal', data: [3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4], borderColor: '#475569', borderDash: [5,4], borderWidth: 1.5, pointRadius: 0, fill: false }
+      data: { labels: ['Pre-war','D1','D3','D5','D7','D9','D11','D13','D15','D17','D19','D21','D23','D25','D27','D29','D31','D33','D35','D37','D39','D41','D42'], datasets: [
+        { label: 'Brent–WTI Spread ($)', data: [3.4,6.9,8.5,5.2,3.2,5.4,1.7,4.7,5.0,5.1,17.6,14.2,10.5,8.3,6.2,4.8,3.5,2.8,1.5,-3.8,-5.1,-1.5,-1.9], borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.10)', borderWidth: 2.5, pointRadius: 3, fill: true, tension: 0.35 },
+        { label: 'Pre-war normal', data: [3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4], borderColor: '#475569', borderDash: [5,4], borderWidth: 1.5, pointRadius: 0, fill: false }
       ]},
       options: {
         responsive: true, maintainAspectRatio: false,
@@ -108,7 +108,9 @@ function initMicrostructureCharts() {
         plugins: { legend: lgnd, tooltip: ttOpts,
           annotation: { annotations: {
             danger: { type: 'line', yMin: 15, yMax: 15, borderColor: 'rgba(239,68,68,0.3)', borderWidth: 1, borderDash: [3,3],
-              label: { content: 'Structural dislocation', display: true, position: 'end', font: { size: 8 }, color: '#ef4444', padding: 2 } }
+              label: { content: 'Structural dislocation', display: true, position: 'end', font: { size: 8 }, color: '#ef4444', padding: 2 } },
+            ceasefire: { type: 'line', xMin: 18.5, xMax: 18.5, borderColor: 'rgba(34,197,94,0.4)', borderWidth: 1.5, borderDash: [4,3],
+              label: { content: 'Ceasefire', display: true, position: 'start', font: { size: 8 }, color: '#22c55e', padding: 2 } }
           }}
         },
         scales: { x: gridX, y: { grid: gridY.grid, title: { display: true, text: '$/barrel spread', font: { size: 9 }, color: '#475569' },
