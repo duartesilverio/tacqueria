@@ -1,0 +1,276 @@
+/* ========================================
+   DUBAI WATCH — Used Car Panic Index
+   ======================================== */
+
+/* ── KPI ROW ──────────────────────────────── */
+.dubai-kpi-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.dubai-kpi {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+  text-align: center;
+}
+
+.dubai-kpi-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-1);
+}
+
+.dubai-kpi-value {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.dubai-kpi-delta {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  margin-top: 2px;
+}
+
+.dubai-kpi-delta.up { color: var(--color-red); }
+.dubai-kpi-delta.down { color: var(--color-green); }
+.dubai-kpi-delta.flat { color: var(--color-text-faint); }
+
+.dubai-kpi-sub {
+  font-size: 0.65rem;
+  color: var(--color-text-faint);
+  margin-top: 2px;
+}
+
+/* ── MAIN 2-COL GRID ─────────────────────── */
+.dubai-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.dubai-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+/* ── CHART CONTAINERS ─────────────────────── */
+.dubai-chart-wrap {
+  position: relative;
+  height: 280px;
+}
+
+.dubai-chart-wrap canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ── LUXURY BREAKDOWN ─────────────────────── */
+.dubai-luxury-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.dubai-luxury-platform {
+  background: var(--color-surface-offset);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+
+.dubai-luxury-platform h4 {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.dubai-luxury-total {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-amber);
+  margin-bottom: var(--space-2);
+}
+
+.dubai-luxury-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: 4px;
+}
+
+.dubai-luxury-bar-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--color-text-muted);
+  width: 70px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.dubai-luxury-bar-track {
+  flex: 1;
+  height: 14px;
+  background: var(--color-surface-2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.dubai-luxury-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.dubai-luxury-bar-count {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--color-text-faint);
+  width: 35px;
+  flex-shrink: 0;
+}
+
+/* ── DATA SPARSITY NOTE ───────────────────── */
+.dubai-data-note {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-amber);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.dubai-data-note-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-amber);
+  margin-bottom: var(--space-2);
+}
+
+.dubai-data-note p {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.dubai-data-reasons {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-2) 0 0 0;
+}
+
+.dubai-data-reasons li {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  padding-left: var(--space-3);
+  position: relative;
+}
+
+.dubai-data-reasons li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--color-amber);
+  font-weight: 700;
+}
+
+/* ── PLATFORM TABLE ───────────────────────── */
+.dubai-snapshot-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+}
+
+.dubai-snapshot-table th {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-faint);
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  font-weight: 500;
+}
+
+.dubai-snapshot-table td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+  color: var(--color-text-muted);
+}
+
+.dubai-snapshot-table tr:last-child td {
+  border-bottom: none;
+}
+
+.dubai-snapshot-table .source-tag {
+  font-size: 0.55rem;
+  padding: 1px 5px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.source-tag.live {
+  background: var(--color-green-bg);
+  color: var(--color-green);
+  border: 1px solid var(--color-green-border);
+}
+
+.source-tag.wayback {
+  background: var(--color-amber-bg);
+  color: var(--color-amber);
+  border: 1px solid var(--color-amber-border);
+}
+
+/* ── SOURCES ROW ──────────────────────────── */
+.dubai-sources {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.dubai-sources a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.dubai-sources a:hover {
+  text-decoration: underline;
+}
+
+/* ── RESPONSIVE ───────────────────────────── */
+@media (max-width: 900px) {
+  .dubai-kpi-row {
+    grid-template-columns: 1fr;
+  }
+  .dubai-grid {
+    grid-template-columns: 1fr;
+  }
+  .dubai-luxury-grid {
+    grid-template-columns: 1fr;
+  }
+}

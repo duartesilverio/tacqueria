@@ -1,0 +1,400 @@
+/* =============================================
+   TRUMP RHETORIC TRACKER
+   ============================================= */
+
+.rhetoric-tracker-card {
+  margin-bottom: var(--space-6);
+}
+
+.rhetoric-intro {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-5);
+  padding: var(--space-3) var(--space-4);
+  border-left: 3px solid var(--color-red);
+  background: var(--color-surface-offset);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* Sentiment Distribution Bar */
+.rhetoric-sentiment-bar {
+  display: flex;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: var(--space-6);
+  border: 1px solid var(--color-border);
+}
+
+.sentiment-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  transition: width 0.6s ease;
+}
+
+.sentiment-segment span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 var(--space-2);
+}
+
+.sentiment-max-escalation { background: var(--color-red); }
+.sentiment-escalation { background: #dc6843; }
+.sentiment-mixed { background: var(--color-amber); color: #1a1a1a; text-shadow: none; }
+.sentiment-deescalation { background: var(--color-green); }
+
+/* Rhetoric Timeline */
+.rhetoric-timeline {
+  position: relative;
+  padding-left: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.rhetoric-timeline::before {
+  content: '';
+  position: absolute;
+  left: 72px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-border);
+}
+
+.rhetoric-day {
+  position: relative;
+  margin-bottom: var(--space-5);
+}
+
+.rhetoric-day:last-child {
+  margin-bottom: 0;
+}
+
+.rhetoric-date-marker {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  position: relative;
+}
+
+.rhetoric-date-marker::before {
+  content: '';
+  position: absolute;
+  left: calc(72px - var(--space-4) - 4px);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-red);
+  border: 2px solid var(--color-surface);
+  z-index: 1;
+}
+
+.rhetoric-date {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text);
+  min-width: 56px;
+}
+
+.rhetoric-day-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: var(--color-surface-offset);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+.rhetoric-entries {
+  padding-left: calc(72px - var(--space-4) + 16px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.rhetoric-entry {
+  background: var(--color-surface-offset);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  border-left: 3px solid var(--color-border);
+  transition: border-color 0.2s ease;
+}
+
+.rhetoric-entry.rhetoric-max-escalation { border-left-color: var(--color-red); }
+.rhetoric-entry.rhetoric-escalation { border-left-color: #dc6843; }
+.rhetoric-entry.rhetoric-mixed { border-left-color: var(--color-amber); }
+.rhetoric-entry.rhetoric-deescalation { border-left-color: var(--color-green); }
+
+.rhetoric-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.rhetoric-platform {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.platform-truth {
+  background: rgba(114, 46, 209, 0.15);
+  color: #a855f7;
+  border: 1px solid rgba(114, 46, 209, 0.3);
+}
+
+.platform-press {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.rhetoric-time {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--color-text-faint);
+}
+
+.rhetoric-tag {
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.tag-max-escalation { background: var(--color-red); color: #fff; }
+.tag-escalation { background: #dc6843; color: #fff; }
+.tag-mixed { background: var(--color-amber); color: #1a1a1a; }
+.tag-deescalation { background: var(--color-green); color: #fff; }
+
+.rhetoric-quote {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--color-text);
+  margin: 0 0 var(--space-2) 0;
+  padding: 0;
+  border: none;
+  font-style: italic;
+}
+
+.rhetoric-taco-impact {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.impact-label {
+  font-weight: 700;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 10px;
+}
+
+.impact-score {
+  font-weight: 800;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin: 0 2px;
+}
+
+.impact-terminal { background: var(--color-red); color: #fff; }
+.impact-severe { background: rgba(239, 68, 68, 0.2); color: var(--color-red); }
+.impact-negative { background: rgba(220, 104, 67, 0.2); color: #dc6843; }
+.impact-moderate { background: rgba(245, 158, 11, 0.2); color: var(--color-amber); }
+.impact-positive { background: rgba(16, 185, 129, 0.2); color: var(--color-green); }
+
+/* Rhetoric Pattern Analysis */
+.rhetoric-analysis {
+  margin-bottom: var(--space-5);
+}
+
+.rhetoric-analysis h4 {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.rhetoric-patterns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-3);
+}
+
+.pattern-card {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--color-surface-offset);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.pattern-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pattern-content h5 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-1);
+}
+
+.pattern-content p {
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Rhetoric Score Summary */
+.rhetoric-score-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.rhetoric-score-box {
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  text-align: center;
+}
+
+.rhetoric-score-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-2);
+}
+
+.rhetoric-score-value {
+  display: block;
+  font-size: var(--text-xl);
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--color-text);
+}
+
+.rhetoric-score-red {
+  color: var(--color-red);
+}
+
+.rhetoric-score-max {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.rhetoric-score-annotation {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--color-text-faint);
+}
+
+/* TACO table new indicator highlight */
+.rhetoric-row-highlight {
+  background: rgba(114, 46, 209, 0.06);
+}
+
+.rhetoric-row-highlight td {
+  border-top: 1px solid rgba(114, 46, 209, 0.2);
+  border-bottom: 1px solid rgba(114, 46, 209, 0.2);
+}
+
+.new-indicator-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: rgba(114, 46, 209, 0.2);
+  color: #a855f7;
+  margin-left: var(--space-1);
+  vertical-align: middle;
+}
+
+.rhetoric-link {
+  color: #a855f7;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+.rhetoric-link:hover {
+  text-decoration: underline;
+}
+
+/* Mobile adjustments for rhetoric */
+@media (max-width: 768px) {
+  .rhetoric-timeline::before {
+    left: 12px;
+  }
+
+  .rhetoric-date-marker::before {
+    left: 8px;
+  }
+
+  .rhetoric-entries {
+    padding-left: 28px;
+  }
+
+  .rhetoric-meta {
+    gap: var(--space-1);
+  }
+
+  .rhetoric-sentiment-bar {
+    height: 22px;
+  }
+
+  .sentiment-segment span {
+    font-size: 8px;
+  }
+
+  .rhetoric-patterns {
+    grid-template-columns: 1fr;
+  }
+
+  .rhetoric-score-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

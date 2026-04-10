@@ -1,0 +1,24 @@
+# Build & research scripts (not needed for static site)
+scripts/
+
+# Backup files
+*.bak
+*.bak2
+
+# Screenshots / design assets
+*.png
+
+# Spec & guide docs (development only)
+UPDATE_GUIDE.md
+netanyahu-watch-spec.md
+whale-layout-spec.md
+
+# Legacy deploy script (now using Cloudflare Pages)
+deploy.sh
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Tool caches
+.claude/

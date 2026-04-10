@@ -1,0 +1,482 @@
+/* ===== WHALE WATCH — PREDICTION MARKET BETTOR TRACKING ===== */
+
+/* ── 2-COLUMN GRID WRAPPER ─────────────────────────────── */
+.whale-volume-grid {
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.whale-volume-grid .whale-left-col {
+  min-width: 0;
+}
+
+.whale-volume-grid .whale-right-col {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Make right-col section-cards fill naturally */
+.whale-right-col .section-card {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1100px) {
+  .whale-volume-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── HEADER & CONTROLS ──────────────────────────────────── */
+#whale-watch-section {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.whale-watch-header {
+  margin-bottom: var(--space-3);
+}
+
+.whale-watch-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.whale-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.whale-update-ts {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--color-text-faint);
+}
+
+.whale-refresh-btn {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-weight: 600;
+}
+.whale-refresh-btn:hover {
+  background: var(--color-surface-3);
+  color: var(--color-text);
+  border-color: var(--color-text-faint);
+}
+
+/* ── LOADING STATE ──────────────────────────────────────── */
+.whale-loading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) 0;
+  font-size: 0.72rem;
+  color: var(--color-text-faint);
+}
+
+.whale-loading-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-amber);
+  border-radius: 50%;
+  animation: whale-spin 0.8s linear infinite;
+}
+
+@keyframes whale-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── SUMMARY CARDS ──────────────────────────────────────── */
+.whale-summary-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+}
+
+@media (max-width: 600px) {
+  .whale-summary-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.whale-stat-card {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--space-2) var(--space-3);
+}
+
+.whale-stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: var(--space-1);
+}
+
+.whale-stat-value {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.whale-stat-sub {
+  font-size: 0.65rem;
+  color: var(--color-text-faint);
+  margin-top: 4px;
+}
+
+.whale-buy-tag {
+  font-size: 0.55rem;
+  padding: 1px 5px;
+  background: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+  border-radius: 4px;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+/* ── BUY/SELL BARS ──────────────────────────────────────── */
+.whale-stat-bar,
+.whale-mini-bar {
+  display: flex;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 6px;
+  background: var(--color-surface-3);
+}
+
+.whale-mini-bar {
+  height: 4px;
+  width: 60px;
+  margin-top: 0;
+}
+
+.whale-bar-buy {
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  transition: width 0.5s ease;
+}
+
+.whale-bar-sell {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+  transition: width 0.5s ease;
+}
+
+/* ── SECTION SUBTITLE ───────────────────────────────────── */
+.whale-section-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 var(--space-2) 0;
+}
+
+/* ── FLOW ANALYSIS GRID ─────────────────────────────────── */
+.whale-flow-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+}
+
+@media (max-width: 600px) {
+  .whale-flow-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.whale-flow-card {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--space-3);
+}
+
+.whale-flow-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
+.whale-flow-vol {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.whale-flow-bar {
+  display: flex;
+  height: 5px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--color-surface-3);
+  margin-bottom: 6px;
+}
+
+.whale-flow-meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+}
+
+.whale-flow-trades {
+  font-size: 0.6rem;
+  color: var(--color-text-faint);
+  margin-top: 4px;
+}
+
+/* ── TRADE FEED ─────────────────────────────────────────── */
+.whale-trade-feed {
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.whale-trade-feed::-webkit-scrollbar {
+  width: 5px;
+}
+
+.whale-trade-feed::-webkit-scrollbar-thumb {
+  background: var(--color-surface-3);
+  border-radius: 3px;
+}
+
+.whale-trade-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--color-border);
+  transition: background 0.15s;
+}
+
+.whale-trade-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.whale-trade-row.whale-mega {
+  background: rgba(239, 68, 68, 0.04);
+  border-left: 3px solid #ef4444;
+}
+
+.whale-trade-row.whale-shark {
+  background: rgba(245, 158, 11, 0.03);
+  border-left: 3px solid var(--color-amber);
+}
+
+.whale-trade-row.whale-notable {
+  border-left: 3px solid transparent;
+}
+
+.whale-trade-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.whale-trade-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.whale-trade-top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.whale-trade-amount {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.whale-side-buy { color: #22c55e; }
+.whale-side-sell { color: #ef4444; }
+
+.whale-trade-market {
+  font-size: 0.65rem;
+  padding: 1px 7px;
+  border: 1px solid;
+  border-radius: 10px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.whale-trade-outcome {
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  color: var(--color-text-faint);
+}
+
+.whale-trade-bottom {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: 3px;
+}
+
+.whale-wallet-link {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--color-text-faint);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+
+.whale-wallet-link:hover {
+  opacity: 1;
+  color: var(--color-amber);
+  text-decoration: underline;
+}
+
+.whale-trade-time {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--color-text-faint);
+  opacity: 0.5;
+}
+
+/* ── TOP WALLETS TABLE ──────────────────────────────────── */
+.whale-wallet-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.72rem;
+}
+
+.whale-wallet-table thead th {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.whale-wallet-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  vertical-align: middle;
+}
+
+.whale-wallet-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.whale-tier-mega td:first-child {
+  color: #ef4444;
+  font-weight: 700;
+}
+
+.whale-tier-shark td:first-child {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+/* ── EMPTY STATE ────────────────────────────────────────── */
+.whale-empty {
+  text-align: center;
+  padding: var(--space-4);
+  color: var(--color-text-faint);
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+/* ── DISCLAIMER ─────────────────────────────────────────── */
+.whale-disclaimer {
+  margin-top: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.whale-disclaimer p {
+  font-size: 0.62rem;
+  color: var(--color-text-faint);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.whale-disclaimer a {
+  color: var(--color-text-muted);
+}
+
+/* ── RIGHT COLUMN COMPACTNESS ─────────────────────── */
+/* Volume intel bubble chart: stack vertically in narrow col */
+.whale-right-col .section-card div[style*="3fr 2fr"] {
+  grid-template-columns: 1fr !important;
+}
+
+/* Signal grid: 2 cols max in right column */
+.whale-right-col .predmkt-signal-grid {
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: var(--space-2) !important;
+}
+
+.whale-right-col .signal-card .signal-prob {
+  font-size: 1.3rem;
+}
+
+/* Charts row: stack vertically */
+.whale-right-col .predmkt-charts-row {
+  grid-template-columns: 1fr !important;
+  gap: var(--space-3) !important;
+}
+
+/* Compact the liquidity table in right col */
+.whale-right-col .data-table {
+  font-size: 0.68rem !important;
+}
+
+/* ── LIGHT THEME OVERRIDES ──────────────────────────────── */
+[data-theme="light"] .whale-trade-row:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="light"] .whale-trade-row.whale-mega {
+  background: rgba(239, 68, 68, 0.06);
+}
+
+[data-theme="light"] .whale-trade-row.whale-shark {
+  background: rgba(245, 158, 11, 0.05);
+}
+
+[data-theme="light"] .whale-wallet-table tr:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="light"] .whale-wallet-table td {
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+}

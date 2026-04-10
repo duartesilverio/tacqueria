@@ -1,0 +1,602 @@
+/* ============================================================
+   CEASEFIRE ANALYTICS — Styles for Demand Matrix + Compromise Zone
+   ============================================================ */
+
+/* ── Summary KPI Row ─────────────────────────────────────── */
+#ca-summary-kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.ca-kpi-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.ca-kpi-label {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-faint);
+  margin-bottom: 4px;
+}
+
+.ca-kpi-value {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.ca-kpi-detail {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* ── Demand Matrix Two-Column Layout ─────────────────────── */
+#ca-demand-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.ca-demand-column {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.ca-demand-col-header {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ca-demand-col-title {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.ca-demand-col-count {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--color-text-faint);
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 2px 7px;
+}
+
+/* ── Individual Demand Row ───────────────────────────────── */
+.ca-demand-item {
+  padding: 8px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  display: grid;
+  grid-template-columns: 18px 1fr auto;
+  gap: 8px;
+  align-items: start;
+  cursor: default;
+  transition: background 0.12s ease;
+}
+
+.ca-demand-item:last-child {
+  border-bottom: none;
+}
+
+.ca-demand-item:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+.ca-demand-num {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--color-text-faint);
+  font-weight: 600;
+  padding-top: 1px;
+  text-align: right;
+}
+
+.ca-demand-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.ca-demand-text {
+  font-size: 0.72rem;
+  color: var(--color-text);
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+.ca-demand-detail {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.ca-demand-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.ca-status-pill {
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.ca-prob-badge {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: var(--color-text-faint);
+  white-space: nowrap;
+}
+
+.ca-dealbreaker-tag {
+  font-family: var(--font-mono);
+  font-size: 0.48rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #7c3aed;
+  border: 1px solid rgba(124,58,237,0.3);
+  border-radius: 4px;
+  padding: 1px 5px;
+  background: rgba(124,58,237,0.06);
+}
+
+/* ── Ceasefire Threshold Bar ─────────────────────────────── */
+#ca-threshold-bar {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.ca-threshold-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.ca-threshold-side {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ca-threshold-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-faint);
+  margin-bottom: 4px;
+}
+
+.ca-threshold-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ca-progress-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.ca-progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.ca-threshold-numbers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.ca-thresh-current {
+  font-weight: 700;
+}
+
+.ca-thresh-sep {
+  color: var(--color-text-faint);
+  font-size: 0.6rem;
+}
+
+.ca-thresh-needed {
+  color: var(--color-text-faint);
+}
+
+/* ── Compromise Zone ─────────────────────────────────────── */
+#ca-compromise-zone {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.ca-compromise-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: var(--space-3);
+}
+
+.ca-compromise-prob {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ca-prob-big {
+  font-size: 1.6rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  line-height: 1;
+}
+
+.ca-prob-label {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-faint);
+  line-height: 1.3;
+}
+
+.ca-mvd-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.ca-mvd-side {
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.ca-mvd-label {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 8px;
+}
+
+.ca-mvd-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ca-mvd-item {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+}
+
+.ca-mvd-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+/* ── Blockers ────────────────────────────────────────────── */
+#ca-blockers {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: var(--space-3);
+}
+
+.ca-blocker-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.ca-blocker-row:last-child {
+  border-bottom: none;
+}
+
+.ca-blocker-severity {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.ca-blocker-issue {
+  font-size: 0.72rem;
+  color: var(--color-text);
+  line-height: 1.45;
+}
+
+.ca-blocker-resolution {
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* ── Compromise Scenarios ────────────────────────────────── */
+.ca-scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+.ca-scenario-card {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: var(--color-surface-offset);
+}
+
+.ca-scenario-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.ca-scenario-name {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+}
+
+.ca-scenario-prob {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.ca-scenario-desc {
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  margin-bottom: 6px;
+}
+
+.ca-scenario-market {
+  font-size: 0.62rem;
+  color: var(--color-text-faint);
+  font-style: italic;
+}
+
+/* ── China Factor ────────────────────────────────────────── */
+#ca-china-factor {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.ca-china-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: var(--space-3);
+}
+
+.ca-game-state-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px;
+  margin-bottom: var(--space-3);
+}
+
+.ca-game-cell {
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-border);
+  border-radius: 7px;
+  padding: 9px 11px;
+}
+
+.ca-game-cell-label {
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-faint);
+  margin-bottom: 4px;
+}
+
+.ca-game-cell-text {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+}
+
+/* ── Violation Impact ────────────────────────────────────── */
+#ca-violations {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.ca-violation-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 10px 13px;
+  border-left: 3px solid;
+}
+
+.ca-violation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.ca-violation-risk {
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.ca-violation-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.ca-violation-impact {
+  font-size: 0.67rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  margin-bottom: 4px;
+}
+
+.ca-violation-demand {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--color-text-faint);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 4px;
+  margin-top: 4px;
+}
+
+/* ── Bottom Line ─────────────────────────────────────────── */
+#ca-bottom-line {
+  background: rgba(99,102,241,0.05);
+  border: 1px solid rgba(99,102,241,0.15);
+  border-radius: 8px;
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.ca-bottom-line-label {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #818cf8;
+  margin-bottom: 8px;
+}
+
+.ca-bottom-line-text {
+  font-size: 0.78rem;
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+/* ── Category Chip ───────────────────────────────────────── */
+.ca-category-chip {
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.05);
+  color: var(--color-text-faint);
+  border: 1px solid rgba(255,255,255,0.08);
+  white-space: nowrap;
+}
+
+/* ── Progress Bars for probability columns ───────────────── */
+.ca-prob-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--color-text-faint);
+}
+
+.ca-prob-track-sm {
+  width: 36px;
+  height: 4px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.ca-prob-fill-sm {
+  height: 100%;
+  border-radius: 2px;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  #ca-demand-grid {
+    grid-template-columns: 1fr;
+  }
+  .ca-mvd-grid {
+    grid-template-columns: 1fr;
+  }
+  .ca-threshold-grid {
+    grid-template-columns: 1fr;
+  }
+  .ca-blocker-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}

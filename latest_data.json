@@ -1,0 +1,567 @@
+{
+  "_meta": {
+    "generated_at": "2026-03-14T03:20:00+08:00",
+    "generated_by": "research-agent",
+    "war_day": 15,
+    "war_start": "2026-02-28",
+    "notes": "All market data reflects March 13, 2026 closing prices unless otherwise noted. Some intraday March 14 data included where available. Conflict statistics as of latest reporting on March 13-14."
+  },
+
+  "market_data": {
+    "as_of_date": "2026-03-13",
+    "brent_crude_ice": {
+      "close": 100.16,
+      "intraday_high": 103.21,
+      "intraday_low": 98.64,
+      "prev_close": 100.46,
+      "change_pct": -0.30,
+      "change_abs": -0.30,
+      "unit": "USD/bbl",
+      "notes": "Brent briefly touched ~$101.72 early in session before retracing. Intraday range from Yahoo Finance BZ=F. Open ~$98.64, high $103.21. Down 0.30% from Mar 12 close of $100.46. 1-month change: +45.81%; YoY: +41.91%.",
+      "sources": [
+        "https://tradingeconomics.com/commodity/brent-crude-oil",
+        "https://finance.yahoo.com/quote/BZ=F/history/",
+        "https://www.investing.com/commodities/brent-oil-historical-data"
+      ]
+    },
+    "wti_nymex": {
+      "close": 94.26,
+      "intraday_high": 96.65,
+      "intraday_low": 92.04,
+      "prev_close": 95.73,
+      "change_pct": -1.53,
+      "unit": "USD/bbl",
+      "notes": "April WTI (CLJ26) intraday snapshot at 1:21 PM ET was $96.93. Investing.com Mar 13 close listed as $94.26. MarketWatch front-month WTI was $96.93 mid-session. Closing settlement used for Polymarket resolution. Previous day (Mar 12) close: $95.73.",
+      "sources": [
+        "https://www.investing.com/commodities/crude-oil-historical-data",
+        "https://www.marketwatch.com/investing/future/clj26",
+        "https://www.barchart.com/stocks/quotes/CLH26"
+      ]
+    },
+    "vix": {
+      "close": 27.85,
+      "session_high": 28.47,
+      "prev_close": 27.29,
+      "change_pct": 2.05,
+      "unit": "index",
+      "notes": "Yahoo Finance historical data shows Mar 13, 2026 close of 27.85, high of 28.47. FRED DGS series showed Mar 12 reading of 27.29. VIX futures (VIH26) ended at 25.54 (-1.06%).",
+      "sources": [
+        "https://finance.yahoo.com/quote/%5EVIX/history/",
+        "https://fred.stlouisfed.org/series/VIXCLS",
+        "https://www.barchart.com/futures/quotes/VIH26/volatility-greeks/DJMH26"
+      ]
+    },
+    "gold_spot": {
+      "close": 5096.00,
+      "intraday_high": 5114.00,
+      "intraday_low": 5020.00,
+      "prev_close": 5181.00,
+      "change_abs": -85.00,
+      "change_pct": -1.64,
+      "unit": "USD/oz",
+      "notes": "Multiple sources converge: Fortune reported $5,114/oz at 9:15 AM ET; filmogaz reported spot near $5,096; Northern Miner noted gold slipped below $5,100, hitting ~$5,020 intraday before recovering. Previous day (Mar 12) was ~$5,181. Down for second consecutive week amid high-energy-price/high-rate environment. YTD still +~19% from ~$4,300 start.",
+      "sources": [
+        "https://fortune.com/article/current-price-of-gold-03-13-2026/",
+        "https://www.filmogaz.com/191447",
+        "https://www.northernminer.com/news/gold-eyes-second-weekly-loss-silver-price-drops-further/1003888838/"
+      ]
+    },
+    "us_10y_treasury_yield": {
+      "close": 4.27,
+      "prev_close": 4.21,
+      "change_abs": 0.06,
+      "unit": "percent",
+      "notes": "YCharts showed 4.27% for Mar 12, 2026 (released Mar 12 at 18:01 EDT); FRED DGS10 showed Mar 11 = 4.21%, Mar 10 = 4.15%. Next release (Mar 13 data) expected Mar 13 at 18:00 EDT. Estimate for Mar 13 close: ~4.30-4.35% given oil/inflation pressure, but last confirmed data point is 4.27% as of Mar 12.",
+      "estimated_mar13": 4.32,
+      "sources": [
+        "https://ycharts.com/indicators/10_year_treasury_rate",
+        "https://fred.stlouisfed.org/series/DGS10",
+        "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/"
+      ]
+    },
+    "hyg": {
+      "close": 79.21,
+      "prev_close": 79.35,
+      "change_abs": -0.14,
+      "change_pct": -0.18,
+      "unit": "USD",
+      "notes": "Yahoo Finance historical: Mar 13 close $79.21, Mar 12 close $79.35. Investing.com showed Mar 11 close of 79.86. Morningstar page loaded as of Mar 13, 7:04 AM EST. Broader context: HYG was ~$80.50 pre-conflict (early Feb); has declined ~1.6% since war began.",
+      "sources": [
+        "https://finance.yahoo.com/quote/HYG/history/",
+        "https://www.investing.com/etfs/ishares-h-y-corporate-bond-historical-data",
+        "https://www.morningstar.com/etfs/arcx/hyg/quote"
+      ]
+    },
+    "usd_cny": {
+      "close": 6.8865,
+      "prev_close": 6.8806,
+      "change_pct": 0.07,
+      "unit": "CNY per USD",
+      "notes": "Trading Economics reported USD/CNY at 6.8865 on March 13, 2026, up 0.07% from previous session. Offshore yuan (CNH) depreciated to ~6.88 per dollar. PBOC set midpoint fixing at 6.8959. Yuan faces pressure from fresh US trade probes targeting China. 1-month CNY weakened 0.03%; YoY CNY up 4.85% (Yuan strengthened).",
+      "sources": [
+        "https://tradingeconomics.com/china/currency"
+      ]
+    },
+    "ita_defense_etf": {
+      "open": 232.69,
+      "high": 234.11,
+      "close": 231.49,
+      "prev_close": 236.67,
+      "change_pct": -2.19,
+      "unit": "USD",
+      "notes": "Yahoo Finance history shows Mar 13 open 232.69, high 234.11, low 227.53 (from Yahoo snippet). iShares/BlackRock official page showed closing price as of Mar 12, 2026: $231.49 (net assets $15.875B, shares outstanding 68.6M). ITA has pulled back from 52-week high of $250.65; down from ~$240 at war start despite defense sector tailwinds — broader market decline pressuring ETF.",
+      "sources": [
+        "https://finance.yahoo.com/quote/ITA/history/",
+        "https://www.ishares.com/us/products/239502/ishares-us-aerospace-defense-etf",
+        "https://finance.yahoo.com/quote/ITA/"
+      ]
+    },
+    "sp500": {
+      "close": 6672.00,
+      "intraday_high": 6733.30,
+      "intraday_low": 6654.05,
+      "prev_close_mar12": 6672.62,
+      "notes": "S&P 500 closed at 6,672 on March 12 (down -1.52% per Yahoo/S&P Global). March 13 intraday showed modest recovery: WSJ reported 6,660.93 at 11:35 AM EDT (-0.18%); IBTimes reported S&P 500 ended near 6,672-6,689 (+0.26% in late session snapshot). 247WallSt noted 'S&P 500 up 0.34%, or 23 points' intraday. March 13 estimated close: ~6,690-6,695. The Pilot News article confirmed '6,672' as a prior close, with index having broken below 6,770 support. 52-week range: 4,835-7,002.",
+      "estimated_mar13_close": 6695,
+      "sources": [
+        "https://finance.yahoo.com/quote/%5ESPX/history/",
+        "https://www.wsj.com/market-data/quotes/index/SPX/historical-prices",
+        "https://247wallst.com/investing/2026/03/13/stock-market-live-march-13-2026-sp-500-spy-rallies-on-easing-oil-prices/",
+        "https://www.ibtimes.com.au/us-stock-market-today-major-indexes-stabilize-modest-gains-oil-prices-ease-1863235"
+      ]
+    }
+  },
+
+  "prediction_markets": {
+    "as_of_date": "2026-03-13",
+    "polymarket": {
+      "hormuz_closure_by_march31": {
+        "probability": 1.00,
+        "volume_usd": 55922660,
+        "status": "RESOLVED_YES",
+        "notes": "Polymarket 'Will Iran close the Strait of Hormuz by March 31?' resolved at 100%. Strait was declared closed by Iranian forces on March 4, 2026. Total market volume $66.46M across all Hormuz closure dates.",
+        "source": "https://polymarket.com/event/will-iran-close-the-strait-of-hormuz-by-2027"
+      },
+      "hormuz_closure_by_june30": {
+        "probability": 1.00,
+        "volume_usd": 5000306,
+        "status": "RESOLVED_YES",
+        "source": "https://polymarket.com/event/will-iran-close-the-strait-of-hormuz-by-2027"
+      },
+      "ceasefire_by_march15": {
+        "probability": 0.01,
+        "volume_usd": 8905945,
+        "source": "https://polymarket.com/event/us-x-iran-ceasefire-by"
+      },
+      "ceasefire_by_march31": {
+        "probability": 0.21,
+        "volume_usd": 7850238,
+        "source": "https://polymarket.com/event/us-x-iran-ceasefire-by"
+      },
+      "ceasefire_by_april15": {
+        "probability": 0.31,
+        "volume_usd": 86533,
+        "source": "https://polymarket.com/event/us-x-iran-ceasefire-by"
+      },
+      "ceasefire_by_april30": {
+        "probability": 0.41,
+        "volume_usd": 2253036,
+        "source": "https://polymarket.com/event/us-x-iran-ceasefire-by"
+      },
+      "ceasefire_by_may31": {
+        "probability": 0.53,
+        "volume_usd": 825606,
+        "source": "https://polymarket.com/event/us-x-iran-ceasefire-by"
+      },
+      "ceasefire_by_june30": {
+        "probability": 0.59,
+        "volume_usd": 882420,
+        "source": "https://polymarket.com/event/us-x-iran-ceasefire-by"
+      },
+      "ceasefire_by_dec31": {
+        "probability": 0.75,
+        "volume_usd": null,
+        "notes": "Total ceasefire market volume: $24.37M",
+        "source": "https://polymarket.com/event/us-x-iran-ceasefire-by"
+      },
+      "oil_thresholds_by_end_of_march": {
+        "crude_oil_market_volume_usd": 30469246,
+        "hit_100": 0.84,
+        "hit_105": 0.75,
+        "hit_110": 0.64,
+        "hit_120": 0.43,
+        "hit_130": 0.28,
+        "hit_140": 0.21,
+        "hit_150": 0.14,
+        "hit_180": 0.05,
+        "hit_200": 0.03,
+        "drop_80": 0.25,
+        "drop_75": 0.18,
+        "drop_70": 0.08,
+        "notes": "These are WTI (CL) front-month CME settlement prices. $100 already reached; market pricing $110 at 64%, $120 at 43%, $130 at 28% probability of being hit before March 31 end of month.",
+        "source": "https://polymarket.com/event/will-crude-oil-cl-hit-by-end-of-march/will-crude-oil-cl-hit-high-130-by-end-of-march-366-294"
+      },
+      "military_action_through_march31": {
+        "probability": 0.81,
+        "volume_usd": 244516,
+        "notes": "'Military action through March 31' (i.e., action continues past Mar 31) = 81% probability. Only 5% chance action ends exactly on March 31. Combined end-by-March probability ~19%.",
+        "source": "https://polymarket.com/event/military-action-against-iran-ends-on"
+      },
+      "military_action_ends_march31": {
+        "probability": 0.05,
+        "volume_usd": 131739,
+        "source": "https://polymarket.com/event/military-action-against-iran-ends-on"
+      },
+      "total_ceasefire_market_volume_usd": 24368244,
+      "total_hormuz_market_volume_usd": 66460040
+    },
+    "kalshi": {
+      "hormuz_effectively_closed_7plus_days": {
+        "status": "LIKELY_RESOLVED_YES",
+        "notes": "Kalshi market 'Will Iran effectively close the Strait of Hormuz for 7+ days?' (kxclosehormuz-27jan, resolves before May 1, 2026). Strait has been closed since March 4, now 10 consecutive days closed. Probability near 100%, likely resolved YES or pending final resolution. Previously tracked: probability jumped from ~37% on Mar 1 morning to near-certainty within days of closure declaration.",
+        "source": "https://kalshi.com/markets/kxclosehormuz/strait-of-hormuz/kxclosehormuz-27jan"
+      },
+      "hormuz_traffic_week_mar9_mar15": {
+        "status": "OPEN",
+        "notes": "Kalshi market: 'Traffic through the Strait of Hormuz? (3/9-3/15)' — resolves Yes if transit calls above 20 per IMF PortWatch. Given near-total closure, this likely resolves NO. Only ~6 vessels transited since Monday per MarineTraffic.",
+        "source": "https://kalshi.com/markets/kxhormuztrafficw/traffic-through-the-strait-of-homuz/kxhormuztrafficw-26mar15"
+      },
+      "us_iran_nuclear_deal_2026": {
+        "status": "OPEN",
+        "notes": "Kalshi market for US-Iran nuclear deal by Jan 1, 2027 is open. No probability data available from search results.",
+        "source": "https://kalshi.com/markets/kxusairanagreement/us-iran-nuclear-deal/kxusairanagreement-27"
+      },
+      "khamenei_out_as_supreme_leader": {
+        "status": "RESOLVED_YES",
+        "notes": "Kalshi refunded all bets on 'Ali Khamenei out as Supreme Leader?' after he was killed on Feb 28. Kalshi policy prohibits death markets; refunded $2.2M net loss. Resolved based on last price before confirmed death.",
+        "source": "https://edition.cnn.com/2026/03/07/politics/iran-war-prediction-markets-polymarket-kalshi"
+      },
+      "tipranks_hormuz_85pct_march31": {
+        "notes": "TipRanks/TheFly reported as of ~March 6: Polymarket pricing 85% chance of Hormuz closure by March 31. Subsequently resolved at 100% after March 4 closure.",
+        "source": "https://www.tipranks.com/news/the-fly/odds-on-polymarket-sees-85-chance-strait-of-hormuz-closed-by-end-of-march-thefly-news"
+      }
+    },
+    "notable_market_events": [
+      "Polymarket nuclear detonation markets archived after public backlash; briefly showed ~22% probability of nuclear detonation before year-end before removal.",
+      "$529M wagered on Polymarket contracts related to timing of US-Israel strikes on Feb 28.",
+      "$150M bet specifically on Khamenei removal; 6 accounts earned $1.2M profit in pre-strike bets (Bubblemaps).",
+      "Senators Murphy and Levin introduced legislation to restrict/ban prediction markets tied to military actions, regime changes, or fatalities.",
+      "Kalshi banned two bettors for insider trading; first major enforcement action.",
+      "Robinhood prediction market showed WTI '$82 or above' at 97-98 cents on Mar 13 (already achieved)."
+    ]
+  },
+
+  "conflict_statistics": {
+    "as_of_date": "2026-03-13",
+    "war_day": 14,
+    "war_start_date": "2026-02-28",
+    "operation_name": "Operation Epic Fury (US); Israeli operations ongoing",
+    "targets_struck": {
+      "us_strikes_in_iran": 6000,
+      "us_israel_combined_enemy_targets": 15000,
+      "israel_strikes_in_iran": {
+        "total": 7600,
+        "on_headquarters_and_assets": 2000,
+        "on_missile_program": 4700,
+        "additional_sites_friday": 150
+      },
+      "israel_strikes_in_lebanon": 1100,
+      "trump_claimed_total_targets": 5000,
+      "notes": "CENTCOM confirmed ~6,000 US targets inside Iran as of March 12. Hegseth stated US+Israel combined hit >15,000 'enemy targets.' Israel separately reported >7,600 strikes in Iran, >1,100 in Lebanon. Trump claimed 5,000 at Mar 9 press conference. US also struck ~42-46 Iranian naval vessels (Trump claimed 46 'advanced' ships sunk in 3.5 days; CENTCOM confirmed 30+ mine-laying vessels destroyed). Iran claims ~10,000 civilian locations targeted.",
+      "sources": [
+        "https://www.cbsnews.com/amp/news/iran-war-hegseth-caine-update-pentagon/",
+        "https://www.cbsnews.com/live-updates/iran-war-kc-135-plane-crash-iraq-us-deaths-strait-of-hormuz-no-end-in-sight/",
+        "https://www.aljazeera.com/news/2026/3/13/iran-war-what-is-happening-on-day-14-of-us-israel-attacks"
+      ]
+    },
+    "vessels_attacked": {
+      "total_since_feb28": 18,
+      "recent_48hr_surge": 6,
+      "tankers_among_total": 10,
+      "oil_depot_attacks_since_feb28": 10,
+      "notable_vessels": [
+        {"name": "Safesea Vishnu", "flag": "US-owned", "details": "Struck by explosive-laden unmanned speedboat; significant fire; 38 crew rescued, 1 dead (Indian crew member)"},
+        {"name": "Zefros", "flag": "Male-flag", "details": "No injuries reported"},
+        {"name": "Mayuree Naree", "flag": "Thai", "details": "Struck near Strait of Hormuz; 3 crew unaccounted for, trapped in engine room"}
+      ],
+      "hormuz_status": "EFFECTIVELY CLOSED since March 4, 2026. Iranian forces declared Strait closed; only ~6 vessels transited since Monday Mar 9. New Supreme Leader Mojtaba Khamenei vowed to keep it closed.",
+      "sources": [
+        "https://www.bbc.com/news/articles/c80j4rln8zmo",
+        "https://news.usni.org/2026/03/13/report-to-congress-on-the-iran-conflict-and-strait-of-hormuz",
+        "https://www.nytimes.com/2026/03/12/world/middleeast/strait-of-hormuz-iran-blockade-explained.html"
+      ]
+    },
+    "casualties": {
+      "iran": {
+        "civilians_killed": 1348,
+        "notes": "Per Iran's UN Ambassador Iravani; ages ranged from 8 months to 88 years. Trump separately claimed 32,000 killed (likely referring to broader figures or unverified). CBS sources cited 12,000-20,000 killed in protests/conflict combined. Girls school bombing: 165-168 killed in single strike (investigation ongoing). Official Iranian government figure: ~10,000 civilian locations targeted.",
+        "sources": [
+          "https://www.aljazeera.com/news/2026/3/13/iran-war-what-is-happening-on-day-14-of-us-israel-attacks",
+          "https://www.cbsnews.com/live-updates/iran-war-kc-135-plane-crash-iraq-us-deaths-strait-of-hormuz-no-end-in-sight/"
+        ]
+      },
+      "us_military": {
+        "killed": 13,
+        "breakdown": [
+          {"count": 6, "details": "Iranian drone strike at Port Shuaiba, Kuwait (Day 1, Feb 28)"},
+          {"count": 1, "details": "Soldier killed at Prince Sultan Air Base, Saudi Arabia"},
+          {"count": 1, "details": "National Guard Soldier (NY), Camp Buehring Kuwait, health-related incident"},
+          {"count": 1, "details": "Sgt. Pennington, struck Mar 1 at Saudi installation housing US forces, died from wounds"},
+          {"count": 3, "details": "3 Air Force F-15E Strike Eagle pilots shot down in friendly fire by Kuwait F/A-18s, Mar 1"},
+          {"count": 6, "details": "All 6 crew of KC-135 Stratotanker crashed western Iraq, Mar 12 (~9 PM local); not hostile/friendly fire; first Air Force fatalities of Op Epic Fury"}
+        ],
+        "wounded": 140,
+        "wounded_returned_to_duty": 108,
+        "severely_injured": 8,
+        "hospitalized_from_kuwait_strike": 30,
+        "notes": "7 deaths confirmed through Mar 10 (per Pentagon/Time). KC-135 crash added 6 more for total of 13 as of Mar 13. CENTCOM confirmed all 6 crew dead March 13 morning.",
+        "sources": [
+          "https://time.com/article/2026/03/10/us-service-members-killed-iran-war-casualties/",
+          "https://www.airandspaceforces.com/six-airmen-confirmed-dead-kc-135-crash-iran/",
+          "https://www.cbsnews.com/live-updates/iran-war-kc-135-plane-crash-iraq-us-deaths-strait-of-hormuz-no-end-in-sight/"
+        ]
+      },
+      "lebanon": {
+        "killed": 687,
+        "children_killed": 98,
+        "notes": "Lebanese health ministry figure. Al Jazeera Day 14 report. Democracy Now reported 'nearly 700 people' in Lebanon over two weeks.",
+        "sources": [
+          "https://www.aljazeera.com/news/2026/3/13/iran-war-what-is-happening-on-day-14-of-us-israel-attacks",
+          "https://www.democracynow.org/2026/3/13/lebanon_lylla_younes"
+        ]
+      },
+      "israel": {
+        "killed": 12,
+        "notes": "Approximately 12-15 Israeli deaths reported across multiple sources. KLEW/ABC reported ~12 in Israel as of Mar 7. Al Jazeera Mar 12 cited 15 Israelis killed.",
+        "sources": [
+          "https://klewtv.com/news/nation-world/iran-will-be-hit-very-hard",
+          "https://www.aljazeera.com/news/2026/3/12/us-military-announces-loss-of-refueling-aircraft-over-western-iraq"
+        ]
+      },
+      "gulf_states_regional": {
+        "killed": 17,
+        "uae_killed": 6,
+        "uae_wounded": 130,
+        "oman_killed": 2,
+        "french_soldier_killed": 1,
+        "french_soldiers_wounded": 6,
+        "notes": "Al Jazeera: 17 dead in neighboring Gulf states. UAE: ≥6 killed, >130 wounded (hits on Dubai International Airport and hotels). France: 1 soldier KIA in Iraq Kurdistan (Erbil), 6 wounded. Bahrain: 114 missiles + 190 drones intercepted since Feb 28.",
+        "sources": [
+          "https://www.aljazeera.com/news/2026/3/12/us-military-announces-loss-of-refueling-aircraft-over-western-iraq",
+          "https://www.euronews.com/2026/03/13/french-soldier-killed-in-iraq-as-iran-war-fallout-continues-to-spread-across-region"
+        ]
+      },
+      "total_killed_all_parties_estimate": {
+        "minimum": 2079,
+        "notes": "Iran 1,348 + Lebanon 687 + Israel 12 + US 13 + Gulf 17 + French 1 = ~2,078 confirmed minimum. Excludes potential civilian underreporting and Iranian protest-related deaths."
+      }
+    },
+    "displaced_persons": {
+      "lebanon": 700000,
+      "iran": 3200000,
+      "total_estimated": 3900000,
+      "notes": "UN/UNHCR (Day 10, Mar 9): ~667,000-700,000 displaced in Lebanon including 200,000 children. El Pais (Mar 11): 767,700 total displaced in Lebanon and Iran combined per UNHCR. Democracy Now (Mar 13): ~3.2M displaced in Iran; ~800,000+ in Lebanon. 'Vast majority of southern Lebanon now under displacement orders' (~15% of country). 14.1M pre-existing refugees in region face extreme vulnerability.",
+      "sources": [
+        "https://news.un.org/en/story/2026/03/1167098",
+        "https://english.elpais.com/international/2026-03-11/nearly-800000-people-displaced-by-war-against-iran-and-lebanon.html",
+        "https://www.democracynow.org/2026/3/13/lebanon_lylla_younes"
+      ]
+    },
+    "iranian_military_degradation": {
+      "missile_volume_reduced": "90%",
+      "naval_vessels_destroyed": "30+ mine-laying vessels; Trump claimed 42-46 advanced ships",
+      "defense_companies_status": "All 'functionally defeated' per Hegseth",
+      "missile_launchers_destroyed": "~80% per Trump",
+      "nuclear_program": "Uranium stockpile location known; Hegseth said US 'retains options'; investigation ongoing for girls school bombing",
+      "new_supreme_leader_status": "Mojtaba Khamenei - wounded, 'likely disfigured' per Hegseth; alive per Iranian officials; not seen publicly; statement read on state TV",
+      "sources": [
+        "https://www.cbsnews.com/amp/news/iran-war-hegseth-caine-update-pentagon/",
+        "https://www.cbsnews.com/news/iran-war-hegseth-caine-update-pentagon/"
+      ]
+    }
+  },
+
+  "trump_statements": {
+    "march_13_14_2026": [
+      {
+        "date": "2026-03-13",
+        "time_approx": "Shortly after midnight (early Friday AM ET)",
+        "platform": "Truth Social",
+        "quote": "If you read the Failing New York Times you would mistakenly believe that we are not succeeding. Iran's Navy has been eliminated, their Air Force is nonexistent, missiles, drones, and all else are being obliterated, and their leaders have been eradicated from existence. Watch what happens to these deranged scumbags today.",
+        "context": "Posted amid new wave of Israeli large-scale airstrikes on Tehran. Trump insisting US is winning despite media skepticism.",
+        "sources": [
+          "https://www.forbes.com/sites/siladityaray/2026/03/13/trump-threatens-irans-leaders-watch-what-happens-to-these-deranged-scumbags-today/",
+          "https://www.foxnews.com/video/6390854020112",
+          "https://klewtv.com/news/nation-world/iran-will-be-hit-very-hard"
+        ]
+      },
+      {
+        "date": "2026-03-13",
+        "time_approx": "During day, to reporters",
+        "platform": "White House/press gaggle",
+        "quote": "The situation with Iran is moving along very rapidly.",
+        "additional_claims": [
+          "War ends 'when I feel it in my bones'",
+          "'Practically nothing left to target' in Iran",
+          "US is 'totally destroying' and 'killing' Iran",
+          "Preventing nuclear Iran is more important than oil costs"
+        ],
+        "sources": [
+          "https://www.cbsnews.com/live-updates/iran-war-kc-135-plane-crash-iraq-us-deaths-strait-of-hormuz-no-end-in-sight/",
+          "https://www.youtube.com/watch?v=RmFmX2fSDyQ"
+        ]
+      },
+      {
+        "date": "2026-03-13",
+        "platform": "Truth Social (via CNN18/Facebook)",
+        "summary": "Trump issued 'big statement on Truth Social' amid ongoing war in West Asia (specific text not fully transcribed but covered Iran's new Supreme Leader Mojtaba Khamenei, who demanded closure of US bases and vowed to continue targeting US bases)",
+        "sources": [
+          "https://www.facebook.com/cnnnews18/posts/us-president-donald-trump-issues-a-big-statement-on-truth-social-amid-the-ongoin/1550727980430173/"
+        ]
+      }
+    ],
+    "prior_context_march_9_12": [
+      {
+        "date": "2026-03-09",
+        "event": "First press conference since start of Iran war (from Florida/Miami)",
+        "key_claims": [
+          "War could be over 'very soon'",
+          "US struck 5,000 targets to date",
+          "80% of Iran's missile launchers eliminated",
+          "'We've wiped every single force in Iran out very completely'",
+          "War began because Iran was constructing new nuclear site (granite-shielded)",
+          "Doing this for other regions including China (re: Hormuz)",
+          "'Beginning of constructing a new nation' (when asked if war near end)",
+          "Expressed 'disappointment' at Mojtaba Khamenei becoming new supreme leader"
+        ],
+        "sources": [
+          "https://www.pbs.org/newshour/politics/watch-live-trump-holds-news-conference-to-answer-questions-about-iran",
+          "https://www.youtube.com/watch?v=zMXS5CD4FeA"
+        ]
+      },
+      {
+        "date": "2026-03-07",
+        "platform": "Truth Social",
+        "quote": "Today Iran will be hit very hard!",
+        "additional_quote": "This promise was only made because of the relentless U.S. and Israeli attack. They were looking to take over and rule the Middle East. It is the first time that Iran has ever lost, in thousands of years, to surrounding Middle Eastern countries.",
+        "context": "Iranian President Pezeshkian had apologized to neighbors; Trump cited this. UK carriers comment: 'That's OK, Prime Minister Starmer, we don't need them any longer -- but we will remember.'",
+        "sources": [
+          "https://klewtv.com/news/nation-world/iran-will-be-hit-very-hard",
+          "https://abc3340.com/news/nation-world/iran-will-be-hit-very-hard"
+        ]
+      },
+      {
+        "date": "2026-03-06",
+        "platform": "Truth Social / public statements",
+        "summary": "Trump demanded Iran's 'unconditional surrender'. Ruled out negotiations. Said war could last 4-6 weeks. Expressed desire to be involved in selecting Iran's next leader.",
+        "sources": [
+          "https://www.youtube.com/watch?v=lez5LV8xzzY"
+        ]
+      },
+      {
+        "date": "2026-02-28",
+        "platform": "Truth Social (video)",
+        "summary": "Trump encouraged Iranians to seize control of their government. 'This will be probably your only chance for generations.' Warned American lives may be lost. Described operation as 'a rescue operation for the Iranian people. Not a war against a nation — but a strike against the Islamic Republic and its apparatus of repression.'",
+        "sources": [
+          "https://www.instagram.com/reel/DVTCWitDKFV/"
+        ]
+      }
+    ]
+  },
+
+  "key_developments_march_13_14": {
+    "military": [
+      {
+        "headline": "KC-135 Stratotanker crashes in western Iraq, all 6 crew confirmed dead",
+        "details": "Crashed ~9 PM local time March 12 (March 13 ET). CENTCOM confirmed all 6 Airmen dead. First Air Force fatalities of Op Epic Fury. Crash occurred over friendly territory, not hostile/friendly fire. A second KC-135 involved was unharmed. Gen. Dan Caine (Joint Chiefs Chairman) briefed reporters March 13. This brought US military death toll to 13.",
+        "source": "https://www.airandspaceforces.com/six-airmen-confirmed-dead-kc-135-crash-iran/"
+      },
+      {
+        "headline": "Hegseth & Caine hold Pentagon press briefing (March 13)",
+        "details": "Iran missile volume down 90%. All Iranian defense companies 'functionally defeated.' US+Israel hit >15,000 enemy targets combined. CENTCOM struck ~6,000 targets in Iran. US continuing to destroy Iranian navy and mine-laying capability. Hegseth said no clear evidence Iran placing new mines in Hormuz. 'That's not a strait we're going to allow to remain contested.' New Supreme Leader 'wounded and likely disfigured.' School bombing investigation underway with outside CENTCOM officer.",
+        "source": "https://www.cbsnews.com/news/iran-war-hegseth-caine-update-pentagon/"
+      },
+      {
+        "headline": "Israel launches new large-scale wave of airstrikes on Tehran",
+        "details": "IDF initiated extensive aerial bombardments of Tehran early Friday (March 13), leaving city enveloped in dense smoke. Targeted Basij checkpoints to weaken regime's hold on power. New Iranian missile barrage launched at Israel; residents in affected areas told to seek shelter.",
+        "source": "https://www.aljazeera.com/news/2026/3/13/iran-war-what-is-happening-on-day-14-of-us-israel-attacks"
+      },
+      {
+        "headline": "French soldier killed in Kurdistan Iraq (Erbil), 6 wounded",
+        "details": "Drone attack in Erbil region. President Macron confirmed. Marks France's direct military casualty involvement.",
+        "source": "https://www.euronews.com/2026/03/13/french-soldier-killed-in-iraq-as-iran-war-fallout-continues-to-spread-across-region"
+      }
+    ],
+    "diplomatic_economic": [
+      {
+        "headline": "Bessent announces temporary easing of sanctions on Russian oil at sea",
+        "details": "US temporarily loosening sanctions to allow Russia to sell Russian oil already at sea (specifically allowing India to buy). Second authorization of this type. Effort to ease global oil prices amid Hormuz closure. Announced Thursday March 12; implemented March 13.",
+        "source": "https://www.cbsnews.com/news/iran-war-hegseth-caine-update-pentagon/"
+      },
+      {
+        "headline": "Hormuz effectively closed - IEA releases 400M barrels from emergency reserves",
+        "details": "32 countries voted to release 400M barrels to counter effective closure. Strait closed since March 4. Only ~6 vessels transited since March 9. Brent crude still holding ~$100/bbl. Tanker insurance becoming unavailable for Gulf routes.",
+        "source": "https://www.bbc.com/news/articles/c80j4rln8zmo"
+      },
+      {
+        "headline": "Bessent correction: US Navy Hormuz escort claim retracted",
+        "details": "Energy Secretary Chris Wright (not Bessent) announced first tanker escorted through Hormuz, then retracted. Wright accepted responsibility for error on Fox News Thursday. Complicated market reactions.",
+        "source": "https://www.npr.org/2026/03/12/g-s1-113471/strait-hormuz-mines-drones-missiles-oil-tankers"
+      },
+      {
+        "headline": "Mojtaba Khamenei's first statement as Supreme Leader - defiant",
+        "details": "New Supreme Leader (son of assassinated Khamenei) issued statement read on state TV March 12-13. Demands: immediate closure of all US bases in region, threatening attack on any operational US base. Vowed Hormuz to remain closed. Vowed to avenge schoolchildren killed in US strike. Said Iran would open new fronts if US/Israel persist. Described by Hegseth as 'wounded and likely disfigured'; not appeared publicly.",
+        "source": "https://www.aljazeera.com/news/2026/3/13/iran-war-what-is-happening-on-day-14-of-us-israel-attacks"
+      },
+      {
+        "headline": "Netanyahu: regime change not guaranteed but conditions being created",
+        "details": "Israeli PM stated Israel could foster conditions for regime change; emphasized it's up to Iranian people. Said objective is to prevent Iran relocating nuclear/ballistic programs underground. Disclosed Israeli small aircraft active in Iran.",
+        "source": "https://www.youtube.com/watch?v=RmFmX2fSDyQ"
+      },
+      {
+        "headline": "Australia mandates evacuation of non-essential officials from UAE and Israel",
+        "details": "Advised all citizens to leave the Middle East while conditions permit. Qatar organized 140+ special repatriation flights. Qatar denied intentionally halting LNG to affect US energy prices (was result of Iranian drone strike).",
+        "source": "https://www.aljazeera.com/news/2026/3/13/iran-war-what-is-happening-on-day-14-of-us-israel-attacks"
+      },
+      {
+        "headline": "Iraq closes ports after Indian crew member killed in attack on US tanker",
+        "details": "Iraq suspended port operations following death during attack on US oil tanker in Iraqi waters.",
+        "source": "https://www.aljazeera.com/news/2026/3/13/iran-war-what-is-happening-on-day-14-of-us-israel-attacks"
+      },
+      {
+        "headline": "250+ US organizations petition Congress to end war funding",
+        "details": "Letter cited $11.3B spent in first 6 days of conflict. Senators Murphy/Levin introduced bill to restrict/ban prediction markets tied to military actions. Domestic pressure building.",
+        "source": "https://www.aljazeera.com/news/2026/3/13/iran-war-what-is-happening-on-day-14-of-us-israel-attacks"
+      },
+      {
+        "headline": "Senator Graham: no imminent ground troops in Iran, conflict could persist long-term",
+        "details": "'I don't see this conflict ending today.' Downplayed ground invasion probability.",
+        "source": "https://www.aljazeera.com/news/2026/3/13/iran-war-what-is-happening-on-day-14-of-us-israel-attacks"
+      }
+    ],
+    "regional_attacks": [
+      "Bahrain: intercepted 114 missiles + 190 drones total since Feb 28",
+      "Saudi Arabia: intercepted 10 drones over eastern territory + destroyed 28 additional",
+      "UAE: Iranian strikes hit Dubai International Airport and several hotels; UAE condemned attacks",
+      "Qatar: airspace closed",
+      "Kuwait: Port Shuaiba remains under threat; US troops stationed at Camp Buehring",
+      "Iran attacks on oil tankers and oil depots: 10 oil depot attacks across Bahrain, Oman, Saudi Arabia, UAE, Qatar"
+    ]
+  },
+
+  "war_overview": {
+    "day_count": 15,
+    "date_day1": "2026-02-28",
+    "date_day15": "2026-03-14",
+    "operation_name": "Operation Epic Fury",
+    "participants": {
+      "us_israel_coalition": ["United States (CENTCOM)", "Israel (IDF)"],
+      "iran_allies": ["Hezbollah (Lebanon)", "Iran IRGC", "Houthi-linked groups (Yemen)"],
+      "affected_nations": ["Kuwait", "Saudi Arabia", "UAE", "Bahrain", "Qatar", "Iraq", "Oman", "Jordan"],
+      "new_entrants": ["France (casualty in Iraq)", "Australia (evacuations)"]
+    },
+    "us_war_cost": "~$11.3B in first 6 days (estimated by anti-war coalition)",
+    "hormuz_closed_since": "2026-03-04",
+    "key_milestone": "Ayatollah Ali Khamenei killed on Day 1 (Feb 28) in US-Israel strikes; Mojtaba Khamenei appointed new Supreme Leader"
+  }
+}

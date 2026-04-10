@@ -1,0 +1,369 @@
+/* ========================================
+   BIBI WATCH — Netanyahu Rhetoric Monitor
+   ======================================== */
+
+/* 2-column grid matching Jiang Watch layout */
+.bibi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.bibi-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Aggression badge variants */
+.bibi-aggression-high {
+  color: var(--color-red);
+  text-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
+}
+
+.bibi-aggression-med {
+  color: var(--color-amber);
+  text-shadow: 0 0 8px rgba(245, 158, 11, 0.3);
+}
+
+.bibi-aggression-low {
+  color: var(--color-green);
+  text-shadow: 0 0 8px rgba(34, 197, 94, 0.3);
+}
+
+/* SYNC zone badges */
+.sync-lockstep {
+  background: var(--color-green-bg);
+  color: var(--color-green);
+  border: 1px solid var(--color-green-border);
+}
+
+.sync-aligned {
+  background: rgba(96, 165, 250, 0.08);
+  color: var(--color-primary);
+  border: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+.sync-diverging {
+  background: var(--color-amber-bg);
+  color: var(--color-amber);
+  border: 1px solid var(--color-amber-border);
+}
+
+.sync-decoupled {
+  background: var(--color-red-bg);
+  color: var(--color-red);
+  border: 1px solid var(--color-red-border);
+}
+
+/* Rhetoric timeline entries */
+.rhetoric-entry {
+  padding: var(--space-3);
+  background: var(--color-surface-2);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--color-border);
+  transition: background var(--transition-interactive);
+}
+
+.rhetoric-entry:hover {
+  background: var(--color-surface-offset);
+}
+
+.rhetoric-entry.agg-high { border-left-color: var(--color-red); }
+.rhetoric-entry.agg-med  { border-left-color: var(--color-amber); }
+.rhetoric-entry.agg-low  { border-left-color: var(--color-green); }
+
+.rhetoric-date {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-1);
+}
+
+.rhetoric-quote {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: 1.55;
+  margin-bottom: var(--space-2);
+  font-style: italic;
+}
+
+.rhetoric-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.rhetoric-meta-item {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+/* Aggression score inline badge */
+.agg-score {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+}
+
+/* Prediction matrix table styling */
+.prediction-matrix {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.prediction-matrix th {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  padding: var(--space-2) var(--space-3);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.prediction-matrix td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+  color: var(--color-text);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  vertical-align: top;
+}
+
+.prediction-matrix tr:hover td {
+  background: var(--color-surface-2);
+}
+
+.prediction-matrix .hit-rate {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* SYNC chart container — centerpiece */
+.sync-chart-wrap {
+  position: relative;
+  min-height: 320px;
+}
+
+.sync-chart-wrap canvas {
+  width: 100% !important;
+}
+
+/* Aggression chart container */
+.agg-chart-wrap {
+  position: relative;
+  min-height: 240px;
+}
+
+/* Probability shift cards */
+.prob-shift-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.prob-shift-card {
+  padding: var(--space-3);
+  background: var(--color-surface-2);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.prob-shift-name {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.prob-shift-values {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.prob-shift-old {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-faint);
+  text-decoration: line-through;
+}
+
+.prob-shift-arrow {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+}
+
+.prob-shift-new {
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.prob-shift-new.shift-up { color: var(--color-red); }
+.prob-shift-new.shift-down { color: var(--color-green); }
+
+.prob-shift-bar {
+  height: 6px;
+  background: var(--color-surface-offset);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-top: var(--space-2);
+}
+
+.prob-shift-fill {
+  height: 100%;
+  border-radius: var(--radius-sm);
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* SYNC score current display */
+.sync-current {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--color-surface-2);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-subtle);
+  margin-bottom: var(--space-4);
+}
+
+.sync-score-big {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.sync-label-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.sync-trend {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+}
+
+/* Rhetoric timeline scrollable area */
+.rhetoric-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: var(--space-2);
+}
+
+.rhetoric-timeline::-webkit-scrollbar {
+  width: 4px;
+}
+
+.rhetoric-timeline::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.rhetoric-timeline::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 2px;
+}
+
+/* Iran response row inside rhetoric entry */
+.rhetoric-response {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border-subtle);
+  margin-top: var(--space-2);
+}
+
+.rhetoric-response strong {
+  color: var(--color-red);
+}
+
+/* SYNC legend */
+.sync-zones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.sync-zone-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.sync-zone-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Sources block for bibi tab using existing dashboard patterns */
+.bibi-sources {
+  margin-top: var(--space-4);
+  padding: var(--space-3);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  font-size: var(--text-xs);
+  line-height: 1.6;
+}
+
+.bibi-sources .sources-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-1);
+}
+
+.bibi-sources a {
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+
+.bibi-sources a:hover {
+  border-bottom-color: var(--color-primary);
+}
+
+.bibi-sources .src-sep {
+  color: var(--color-text-faint);
+  margin: 0 4px;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .bibi-grid {
+    grid-template-columns: 1fr;
+  }
+  .prob-shift-grid {
+    grid-template-columns: 1fr;
+  }
+}
