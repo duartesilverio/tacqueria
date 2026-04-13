@@ -1,0 +1,98 @@
+name: Daily Dashboard Update
+
+on:
+  schedule:
+    # 14:00 UTC = 22:00 HKT — after US market close
+    - cron: '0 14 * * *'
+  workflow_dispatch:
+    inputs:
+      day_override:
+        description: 'Override day number (leave empty for auto-calculate)'
+        required: false
+        type: string
+      weekend:
+        description: 'Force weekend mode (skip FMP)'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  update-dashboard:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Calculate day number
+        id: day
+        run: |
+          if [ -n "${{ inputs.day_override }}" ]; then
+            DAY="${{ inputs.day_override }}"
+          else
+            # Day 1 = Feb 28, 2026. Calculate days since then.
+            WAR_START=$(date -d "2026-02-27" +%s)
+            TODAY=$(date +%s)
+            DAY=$(( (TODAY - WAR_START) / 86400 ))
+          fi
+
+          # Detect weekend (Sat=6, Sun=0)
+          DOW=$(date +%u)
+          WEEKEND="false"
+          if [ "$DOW" = "6" ] || [ "$DOW" = "7" ]; then
+            WEEKEND="true"
+          fi
+          if [ "${{ inputs.weekend }}" = "true" ]; then
+            WEEKEND="true"
+          fi
+
+          echo "day=$DAY" >> $GITHUB_OUTPUT
+          echo "weekend=$WEEKEND" >> $GITHUB_OUTPUT
+          echo "Day: $DAY, Weekend: $WEEKEND, DOW: $DOW"
+
+      - name: Create .env file
+        run: |
+          echo "FMP_API_KEY=${{ secrets.FMP_API_KEY }}" > .env
+          echo "PERPLEXITY_API_KEY=${{ secrets.PERPLEXITY_API_KEY }}" >> .env
+
+      - name: Collect data
+        run: |
+          ARGS="--day ${{ steps.day.outputs.day }}"
+          if [ "${{ steps.day.outputs.weekend }}" = "true" ]; then
+            ARGS="$ARGS --weekend"
+          fi
+          python scripts/collect-data.py $ARGS
+        env:
+          PYTHONIOENCODING: utf-8
+
+      - name: Merge raw into data
+        run: python scripts/merge-raw-into-data.py --day ${{ steps.day.outputs.day }}
+        env:
+          PYTHONIOENCODING: utf-8
+
+      - name: Validate and fix data
+        run: python scripts/validate-and-fix-data.py scripts/day-${{ steps.day.outputs.day }}-data.json --fix
+        env:
+          PYTHONIOENCODING: utf-8
+
+      - name: Update dashboard
+        run: python scripts/update-dashboard.py scripts/day-${{ steps.day.outputs.day }}-data.json
+        env:
+          PYTHONIOENCODING: utf-8
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add js/dashboard-data.js scripts/day-*.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Day ${{ steps.day.outputs.day }} update -- automated pipeline"
+            git push
+          fi

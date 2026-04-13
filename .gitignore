@@ -1,5 +1,12 @@
-# Build & research scripts (not needed for static site)
-scripts/
+# Data files (generated, large)
+scripts/day-*-raw.json
+scripts/day-*-data.json
+
+# Legacy build scripts (keep pipeline scripts tracked)
+scripts/build-*.py
+scripts/build_*.py
+scripts/complete_*.py
+scripts/add-*.py
 
 # Backup files
 *.bak
