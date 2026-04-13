@@ -11,25 +11,25 @@ const DASHBOARD_DATA = {
 
   // ── META ────────────────────────────────────────────────────────────────────
   meta: {
-    version: "3.9.2",
+    version: "4.0.0",
     timestamp: "13 Apr 2026 09:35 HKT",
-    day: 42,
-    dayDate: "10 APR 2026",
-    threatLevel: "ELEVATED",
-    threatClass: "threat-amber",      // CSS class
-    tacoScore: 18,
+    day: 45,
+    dayDate: "13 APR 2026",
+    threatLevel: "HIGH",
+    threatClass: "threat-red",
+    tacoScore: 12,
     tacoMax: 100,
     tacoPrev: 18,
-    tacoPrevDay: 41,
-    tacoRegime: "ISLAMABAD TALKS UNDERWAY · CEASEFIRE FRAGILE · BRENT $98",
-    tacoRegimeLabel: "CEASEFIRE DAY 2: Islamabad talks underway (Araghchi → Pakistan). Brent $98.22 (+3.7%). WTI $99.86 (+5.8%). VIX 21.28 (+0.1%). S&P 6,783 (+2.5%). HL $96.70 (+7.3%), OI $313M. Attacks ZERO Apr 8 — ceasefire nominally holds. BUT: Netanyahu intensified Beirut (112 killed), Iran closed Hormuz again briefly, both sides claim incompatible victories. Witkoff (not Rubio) leads US delegation. Nuclear enrichment dispute: Iran says no curtailment, US says removal agreed. Lebanon = flashpoint.",
-    tacoRegimeColor: "#f59e0b",
+    tacoPrevDay: 42,
+    tacoRegime: "ISLAMABAD TALKS COLLAPSE · US NAVAL BLOCKADE · BRENT $102",
+    tacoRegimeLabel: "CEASEFIRE DAY 5: Vance 21-hour marathon talks in Islamabad END WITHOUT DEAL. Trump: 'We've won — whether we make a deal makes no difference.' US announces naval blockade of Hormuz. Mojtaba Khamenei breaks silence, vows revenge for father's assassination. Netanyahu rules out Lebanon ceasefire. Brent $101.53 (+6.7%). WTI $104.17 (+7.9%). VIX 19.23 (-1.3%). Gold $4,737 (-1.1%). CPI surges to 3.3% (gasoline +21.2%). Ceasefire nominally holds but diplomatic path severely damaged.",
+    tacoRegimeColor: "#ef4444",
     tacoPhase: "ceasefire",
     tacoPhaseCeiling: 50,
-    tacoDelta: "+0.0",
-    tacoDeltaNote: "TACO HOLDS at 18. Day 42 (Apr 10, Friday): Islamabad talks underway — the first face-to-face engagement of the war. Araghchi confirmed heading to Pakistan. US delegation led by Witkoff (NOT Rubio — Iran wanted Rubio, downgrade?). Ceasefire nominally holding — attacks at ZERO on Apr 8. But the Lebanon front is the critical flashpoint: Netanyahu intensified Beirut strikes (112 killed, 300+ wounded during ceasefire), causing Iran to briefly close Hormuz again (Apr 8-9). Both sides claim incompatible victories: Iran says enrichment won't be curtailed + 10-point plan accepted; US says nuclear material removal agreed + Iran's military destroyed. Brent rebounds to $98.22 (+3.7%) — oil recovering from ceasefire crash but still $11 below pre-ceasefire peaks. VIX 21.28 (stable). Markets pricing cautious optimism. Score HOLDS at 18: talks happening = de-escalation path intact, but Lebanon risk, Hormuz fragility, and incompatible demands prevent any score increase.",
-    tacoBadgeText: "TACO → 18",
-    tacoGaugeLabel: "18 / 100"
+    tacoDelta: "-6.0",
+    tacoDeltaNote: "TACO DROPS 18 -> 12. Day 45 (Apr 13, Monday): Islamabad talks COLLAPSED after 21-hour marathon session. VP Vance presented 'final and best offer' requiring Iran to commit to no nuclear weapons — Iran rejected. Trump's rhetoric escalated sharply: 'We've won on the battlefield by killing Iranian leaders and destroying key military infrastructure.' US announces naval blockade to force Hormuz open. Mojtaba Khamenei (new Supreme Leader) broke silence to vow revenge for his father's assassination 40 days ago. Netanyahu ruled out any Lebanon ceasefire. Brent surges to $101.53 (+6.7%) — oil repricing failed diplomacy. CPI at 3.3% with gasoline +21.2% — war inflation accelerating. Score DROPS to 12: diplomatic path severely damaged, both sides hardening, naval blockade = new escalation vector. Only the nominal ceasefire prevents a crash to single digits.",
+    tacoBadgeText: "TACO -> 12",
+    tacoGaugeLabel: "12 / 100"
   },
 
   // ── FINANCIAL KPIs — Market Signals Tab ─────────────────────────────────────
@@ -1913,50 +1913,50 @@ const DASHBOARD_DATA = {
   gistBanner: {
     bullets: [
       {
-        text: 'ISLAMABAD TALKS UNDERWAY — Araghchi confirmed heading to Pakistan for first face-to-face engagement of the war. Iran Ambassador: \'critical, sensitive stage.\' US delegation led by Witkoff (NOT Rubio — possible downgrade). Framework on the table. Brent $98.22 (+3.7%), VIX 21.28.',
-        color: 'green'
-      },
-      {
-        text: 'CEASEFIRE FRAGILE — Attacks at ZERO on Apr 8 (GCC front holding). BUT: Netanyahu intensified Beirut strikes (112 killed, 300+ wounded) during ceasefire. Iran responded by briefly closing Hormuz again (Apr 8-9). Lebanon exclusion = ticking bomb.',
-        color: 'amber'
-      },
-      {
-        text: 'INCOMPATIBLE VICTORIES — Iran: \'America was defeated,\' enrichment won\'t be curtailed, 10-point plan accepted. US: nuclear material removal agreed, Iran\'s military destroyed, regime \'out of options.\' These narratives cannot coexist. Talks test which version survives.',
+        text: 'ISLAMABAD TALKS COLLAPSE — VP Vance led 21-hour marathon session. Presented \'final and best offer\' requiring Iran to commit to no nuclear weapons. Iran rejected. No deal. Trump: \'Whether we make a deal or not makes no difference — we\'ve won.\' Diplomatic path severely damaged. Brent surges to $101.53 (+6.7%).',
         color: 'red'
       },
       {
-        text: 'HORMUZ FRAGILE — Only 4 vessels through Apr 8 (DOWN from 8/day D41). Iran closed Strait again briefly responding to Israeli Beirut strikes. Lebanon linkage is the Hormuz trigger. Oil recovering at $98 but snap-back risk to $108+ if ceasefire breaks.',
+        text: 'US NAVAL BLOCKADE — Following talks collapse, US announces naval blockade to force Hormuz open. Trump: \'We\'ll open the strait even though we don\'t use it.\' Escalation vector: blockade + ceasefire is an unstable combination. Iran views this as act of war.',
+        color: 'red'
+      },
+      {
+        text: 'NEW SUPREME LEADER — Mojtaba Khamenei breaks silence 40 days after father\'s assassination. Vows revenge. \'Iran does not seek to extend the war but will not give up sovereign rights.\' Refused Hormuz restrictions. Hardline consolidation underway.',
+        color: 'red'
+      },
+      {
+        text: 'LEBANON EXCLUDED — Netanyahu rules out any ceasefire in Lebanon. Iran demands Lebanon inclusion. Disagreement is structural — no path to resolution without Lebanon. Iran may suspend upcoming talks if Israel continues ops.',
         color: 'amber'
       },
       {
-        text: 'POLYMARKET — Ceasefire 100% ($225M vol), Conflict ends 94%, Trump ends ops 78% (↓4pp), Kharg 21% (↑3pp on Lebanon risk), Leadership change 44%. Markets pricing cautious optimism but Lebanon hedge rising.',
-        color: 'green'
+        text: 'CPI 3.3% — March inflation accelerating. Energy +12.5%, gasoline +21.2%. War premium feeding directly into consumer prices. Fed trapped between rate hikes (inflation) and cuts (recession risk). $4+/gallon gasoline = political pressure on Trump.',
+        color: 'amber'
       }
     ],
     pills: [
       {
-        label: 'Brent $98.22',
+        label: 'Brent $101.53',
+        color: 'red'
+      },
+      {
+        label: 'TACO 12',
+        color: 'red'
+      },
+      {
+        label: 'VIX 19.23',
         color: 'amber'
       },
       {
-        label: 'TACO 18',
+        label: 'Talks FAILED',
+        color: 'red'
+      },
+      {
+        label: 'Naval Blockade',
+        color: 'red'
+      },
+      {
+        label: 'CPI 3.3%',
         color: 'amber'
-      },
-      {
-        label: 'VIX 21.28',
-        color: 'green'
-      },
-      {
-        label: 'Ceasefire 100%',
-        color: 'green'
-      },
-      {
-        label: 'HL $96.70',
-        color: 'amber'
-      },
-      {
-        label: 'Attacks ZERO',
-        color: 'green'
       },
       {
         label: 'Lebanon ⚠',
@@ -1969,39 +1969,39 @@ const DASHBOARD_DATA = {
   newsNow: [
     {
       label: 'TALKS',
-      title: 'Islamabad Talks Underway — First Face-to-Face of the War',
-      body: 'Iran\'s FM Araghchi confirmed heading to Pakistan for talks. Iran Ambassador: \'critical, sensitive stage.\' US delegation led by Witkoff (NOT Rubio — Iran wanted Rubio, received Witkoff). Pakistan hosting as neutral mediator. This is the most significant diplomatic development since Operation Epic Fury began. Framework on the table includes Iran\'s 10-point plan vs US nuclear demands. Resolution of enrichment dispute, Lebanon inclusion, and Hormuz normalization all on the agenda. Markets reacting positively: S&P +2.5%, Brent +3.7%.',
-      color: 'green'
-    },
-    {
-      label: 'LEBANON',
-      title: 'Netanyahu Intensifies Beirut Strikes — 112 Killed During Ceasefire',
-      body: 'Israel escalated Lebanon operations during the US-Iran ceasefire, striking Beirut and killing 112+ with 300+ wounded. Vance confirmed: Lebanon NOT covered by ceasefire. This caused Iran to briefly close Hormuz again (Apr 8-9). UK FM Cooper pushed back — \'ceasefire should cover Lebanon.\' The Lebanon exclusion is the single most dangerous threat to the ceasefire. If Israel continues escalating, Iran will respond — and the bilateral truce collapses via proxy.',
+      title: 'Islamabad Talks Collapse After 21-Hour Marathon — No Deal',
+      body: 'VP Vance led marathon 21-hour negotiation session in Islamabad ending Apr 12 without agreement. US presented \'final and best offer\' requiring fundamental commitment not to develop nuclear weapons. Iran rejected. Key sticking points: nuclear enrichment rights, Lebanon inclusion in ceasefire, Hormuz control, unfreezing of sanctioned assets. Iran demands all sanctions removed + war damages paid. Vance returned to DC empty-handed. No follow-up talks scheduled.',
       color: 'red'
     },
     {
-      label: 'NUCLEAR',
-      title: 'Iran: \'Enrichment Won\'t Be Curtailed\' — Direct Contradiction with US',
-      body: 'Iran stated flatly that nuclear enrichment will not be curtailed as part of any deal. This directly contradicts Trump\'s claim that uranium removal is agreed. Hegseth\'s press conference declared nuclear material \'seized\' and Iran\'s military \'destroyed.\' Iran\'s 10-point plan includes: acceptance of enrichment rights, removal of all sanctions, termination of UNSC resolutions, payment of war damages. US position demands nuclear material removal. These positions are irreconcilable without major concessions from one side.',
+      label: 'BLOCKADE',
+      title: 'US Announces Naval Blockade of Strait of Hormuz',
+      body: 'Following collapse of Islamabad talks, US announced naval blockade to force Hormuz open. Trump: \'We\'ll open the strait even though we don\'t use it, because we have a lot of other countries that are either afraid or weak or cheap.\' Iran views naval blockade as escalation incompatible with ceasefire. This creates a dangerous dual reality: bilateral ceasefire on attacks + active naval confrontation at Hormuz. Blockade vs Iranian sovereignty claims = potential flashpoint.',
       color: 'red'
     },
     {
-      label: 'HORMUZ',
-      title: 'Iran Closed Hormuz Again Briefly — Only 4 Transits Apr 8',
-      body: 'Iran closed the Strait of Hormuz again Wednesday night (Apr 8-9) in response to Israeli attacks on Hezbollah in Lebanon. Only 4 vessels tracked through Apr 8, down from 8/day on D41. This demonstrates the structural fragility: any escalation on the Lebanon front immediately impacts Hormuz. Ceasefire is bilateral US-Iran, but Iran uses Hormuz as leverage against ALL parties including Israel. Oil rebounded to $98.22 partly on this Hormuz uncertainty.',
-      color: 'amber'
+      label: 'IRAN',
+      title: 'New Supreme Leader Mojtaba Khamenei Breaks Silence — Vows Revenge',
+      body: 'Mojtaba Khamenei, who assumed Supreme Leader role after Ali Khamenei\'s assassination during the war, broke public silence on Apr 11 — 40 days after his father\'s death. Vowed \'strong response\' while insisting Iran does not seek to extend the war. Refuses Hormuz restrictions as sovereign right. Iranian media reports Iran may suspend upcoming talks if Israel continues military operations in Lebanon. Hardline consolidation accelerating.',
+      color: 'red'
     },
     {
-      label: 'INTEL',
-      title: 'Both Sides Claim Incompatible Victories — Deal Structure Unclear',
-      body: 'US: \'Destroyed Iran\'s military, enrichment sites neutralized, nuclear material seized.\' Hegseth: \'Regime out of options and out of time.\' Iran: \'America was defeated, accepted our 10-point plan.\' Iran\'s 10-point plan demands: non-aggression guarantee, Hormuz control, enrichment acceptance, ALL sanctions removed, war damages paid, US forces withdrawn, Lebanon ceasefire. These are fundamentally incompatible with US maximalist position. Islamabad talks test which narrative collapses first.',
+      label: 'TRUMP',
+      title: 'Trump: \'We\'ve Won — Deal Makes No Difference\'',
+      body: 'Trump escalated rhetoric sharply: \'Whether we make a deal or not makes no difference to me. We\'ve won on the battlefield by killing Iranian leaders and destroying key military infrastructure.\' Accused Iran of \'doing a poor job\' allowing oil through Hormuz. Warned against imposing tolls on ships. This rhetoric undermines any remaining diplomatic space — if the US believes it has won, Iran has no incentive to accept US terms.',
+      color: 'red'
+    },
+    {
+      label: 'CPI',
+      title: 'CPI Surges to 3.3% — Gasoline +21.2% From War',
+      body: 'March 2026 CPI at 3.3% y/y, up from baseline. Energy costs +12.5%, gasoline +21.2% with prices over $4/gallon. Core CPI at 2.6%. War premium feeding directly into consumer prices. Fed trapped: rate hikes to fight inflation risk recession, cuts risk runaway prices. With Brent now at $101+, April CPI likely to accelerate further. Political pressure mounting on Trump as gas prices become campaign issue.',
       color: 'amber'
     },
     {
       label: 'MARKETS',
-      title: 'Oil Rebounds $98 — Markets Price Cautious Optimism on Talks',
-      body: 'Brent +3.7% to $98.22, recovering from ceasefire crash but still $11 below pre-ceasefire $109. WTI +5.8% to $99.86 — spread narrowing to -$1.64. VIX 21.28 (+1.1% — slight fragility premium). S&P +2.5% to 6,783. HL BrentOIL $96.70 (+7.3%), OI $313M (down from $559M ATH — massive deleverage). Defense stocks surging: ITA +4%. Gold flat at $4,771 — haven demand easing. Markets pricing talks success at ~60-65% but hedging Lebanon risk.',
-      color: 'green'
+      title: 'Brent Surges to $101.53 — Failed Talks Repricing',
+      body: 'Brent +6.7% to $101.53 — biggest single-day move since ceasefire, breaking back above $100 on failed Islamabad talks + naval blockade. WTI +7.9% to $104.17 (WTI > Brent anomaly widening to -$2.64). VIX 19.23 (-1.3% — paradoxically low given escalation). Gold $4,737 (-1.1%). ITA $229.64 (-0.9%). Markets pricing failed diplomacy + blockade escalation. Oil snap-back risk to $108-115 if ceasefire collapses.',
+      color: 'red'
     }
   ],
 
@@ -2009,44 +2009,44 @@ const DASHBOARD_DATA = {
   analyticalSignals: [
     {
       label: 'Ceasefire Compliance',
-      value: 'DAY 2 ✓',
-      score: 7,
-      scoreColor: '#22c55e',
-      detail: 'Attacks at ZERO on Apr 8 (GCC front). Both sides demonstrating bilateral compliance. BUT: Hormuz briefly closed again over Lebanon. Day 2 compliance on the Iran-US front — Lebanon front actively escalating.'
+      value: 'DAY 5 ✓',
+      score: 5,
+      scoreColor: '#f59e0b',
+      detail: 'Ceasefire nominally holds on the bilateral US-Iran front (no attacks since D40). BUT: talks collapsed, naval blockade announced, Lebanon escalating. Ceasefire without diplomacy is a ticking clock.'
     },
     {
       label: 'Diplomatic Engagement',
-      value: 'ISLAMABAD TALKS',
-      score: 8,
-      scoreColor: '#22c55e',
-      detail: 'First face-to-face since Feb 28. Araghchi to Pakistan. Witkoff leading US delegation. Pakistan mediating. Highest diplomatic activity of the entire conflict. Framework being discussed.'
+      value: 'COLLAPSED',
+      score: 2,
+      scoreColor: '#ef4444',
+      detail: 'Vance 21-hour marathon in Islamabad ended with no deal. US \'final offer\' rejected. No follow-up talks scheduled. Iran may suspend further engagement over Lebanon. Diplomatic path severely damaged.'
     },
     {
       label: 'Hormuz Stability',
-      value: '2-4/DAY ▼',
-      score: 4,
-      scoreColor: '#f59e0b',
-      detail: 'DOWN from 8/day D41 — Iran briefly closed Strait again over Lebanon. Only 4 vessels Apr 8. Hormuz remains hostage to Lebanon front. Structural fragility confirmed.'
+      value: 'BLOCKADE',
+      score: 2,
+      scoreColor: '#ef4444',
+      detail: 'US naval blockade to force Hormuz open. Iran views as escalation. Ceasefire + blockade = contradictory signals. Flashpoint risk extremely high.'
     },
     {
       label: 'Lebanon Flashpoint',
       value: 'ESCALATING ⚠',
       score: 2,
       scoreColor: '#ef4444',
-      detail: 'Netanyahu struck Beirut — 112 killed, 300+ wounded during ceasefire. Vance: Lebanon NOT covered. UK opposes exclusion. This is the Achilles heel. Iran\'s response = Hormuz closure. If Beirut strikes continue, ceasefire collapses.'
+      detail: 'Netanyahu rules out Lebanon ceasefire entirely. Iran demands Lebanon inclusion or will suspend talks. Structural impasse — no path forward without Lebanon resolution. Israel escalating while US negotiating = undermining US position.'
     },
     {
       label: 'Narrative Coherence',
-      value: 'INCOMPATIBLE',
-      score: 3,
+      value: 'BROKEN',
+      score: 1,
       scoreColor: '#ef4444',
-      detail: 'Iran: enrichment won\'t be curtailed. US: nuclear material removal agreed. Iran: \'10-point plan accepted.\' US: \'plan is fraudulent.\' These contradictions must resolve or talks fail. Zero overlap on core issues.'
+      detail: 'Trump: \'We\'ve won.\' Mojtaba Khamenei: vows revenge. US says deal irrelevant, Iran says sovereign rights non-negotiable. Zero diplomatic overlap remaining. Both sides claiming victory = zero-sum deadlock.'
     }
   ],
 
   // ── 4. D-LIVE BOX ────────────────────────────────────────────────────────────
   dLive: {
-    label: 'D42 — ISLAMABAD TALKS (10 Apr 2026, Friday)',
+    label: 'D45 — TALKS COLLAPSE + NAVAL BLOCKADE (13 Apr 2026, Monday)',
     brentRange: '$92–$105',
     brentNote: 'Brent $98.22 rebounding from ceasefire crash. If Islamabad produces framework: $88-92. If talks stall but ceasefire holds: $95-100 range trade. If Lebanon triggers ceasefire collapse: snap-back to $108-115. Lebanon is the swing variable — not the talks themselves.',
     tacoEst: '15–25',
@@ -2056,7 +2056,7 @@ const DASHBOARD_DATA = {
 
   // ── 5. ANALYTICAL OUTLOOK ────────────────────────────────────────────────────
   analyticalOutlook: {
-    label: 'D42 Outlook — Islamabad Talks Day',
+    label: 'D45 Outlook — Post-Talks Collapse',
     basisCards: [
       {
         label: 'Islamabad Talks',
@@ -2800,10 +2800,98 @@ const DASHBOARD_DATA = {
             platform: 'Summary',
             time: '',
             tag: 'MIXED',
-            quote: 'ISLAMABAD TALKS. Hegseth: \'regime out of options.\' Iran: \'enrichment won\'t be curtailed.\' Both sides claim victory. Incompatible. Lebanon escalation: Netanyahu kills 112 in Beirut. UK pushes Lebanon inclusion. Witkoff (not Rubio) for US.',
+            quote: 'ISLAMABAD TALKS. Hegseth: \'regime out of options.\' Iran: \'enrichment won\'t be curtailed.\' Both sides claim victory. Incompatible. Lebanon escalation: Netanyahu kills 112 in Beirut.',
             tacoImpact: {
               score: 48,
               detail: 'TACO 48'
+            }
+          }
+        ]
+      },
+      {
+        date: 'Apr 11',
+        dayBadge: 'Day 43',
+        entries: [
+          {
+            platform: 'Press',
+            time: '',
+            tag: 'ESCALATION',
+            quote: 'Mojtaba Khamenei breaks 40-day silence. Vows revenge for father\'s assassination. \'Iran does not seek to extend war but will not give up sovereign rights.\'',
+            tacoImpact: {
+              score: 'severe',
+              detail: 'New Supreme Leader hardline consolidation'
+            }
+          },
+          {
+            platform: 'Press',
+            time: '',
+            tag: 'ESCALATION',
+            quote: 'Netanyahu rules out any ceasefire in Lebanon. \'No ceasefire while Hezbollah threatens Israel.\'',
+            tacoImpact: {
+              score: 'severe',
+              detail: 'Lebanon exclusion now permanent'
+            }
+          }
+        ]
+      },
+      {
+        date: 'Apr 12',
+        dayBadge: 'Day 44',
+        entries: [
+          {
+            platform: 'Press',
+            time: '',
+            tag: 'MAX ESCALATION',
+            quote: 'Vance 21-hour marathon talks in Islamabad END WITHOUT DEAL. US \'final and best offer\' rejected by Iran. Nuclear commitment demand was the dealbreaker.',
+            tacoImpact: {
+              score: 'terminal',
+              detail: 'Diplomatic path severely damaged'
+            }
+          },
+          {
+            platform: 'Truth Social',
+            time: '',
+            tag: 'MAX ESCALATION',
+            quote: 'Trump: \'Whether we make a deal or not makes no difference to me. We\'ve won. We\'ve won on the battlefield by killing Iranian leaders and destroying key military infrastructure.\'',
+            tacoImpact: {
+              score: 'terminal',
+              detail: 'Eliminates negotiating space entirely'
+            }
+          },
+          {
+            platform: 'Press',
+            time: '',
+            tag: 'ESCALATION',
+            quote: 'Trump: \'We\'ll open up the strait even though we don\'t use it, because we have a lot of other countries that are either afraid or weak or cheap.\'',
+            tacoImpact: {
+              score: 'severe',
+              detail: 'Naval blockade threat — act of war'
+            }
+          },
+          {
+            platform: 'Press',
+            time: '',
+            tag: 'ESCALATION',
+            quote: 'Mojtaba Khamenei: \'Iran will not accept restrictions on Strait of Hormuz operations.\' Made clear sovereign control non-negotiable.',
+            tacoImpact: {
+              score: 'severe',
+              detail: 'Hormuz confrontation inevitable'
+            }
+          }
+        ]
+      },
+      {
+        date: 'Apr 13',
+        dayBadge: 'Day 45',
+        entries: [
+          {
+            platform: 'Press',
+            time: '',
+            tag: 'MAX ESCALATION',
+            quote: 'US announces naval blockade of Strait of Hormuz. White House declares victory in Operation Epic Fury. Iran may suspend further talks over Lebanon.',
+            tacoImpact: {
+              score: 'terminal',
+              detail: 'Blockade + ceasefire = unstable equilibrium'
             }
           }
         ]
@@ -2811,35 +2899,35 @@ const DASHBOARD_DATA = {
     ],
     patterns: [
       {
-        title: 'Incompatible Victory Narratives',
-        detail: 'Both sides claiming victory with mutually exclusive terms. US: military destroyed, nuclear material seized. Iran: America defeated, 10-point plan accepted. These cannot coexist — Islamabad talks will force a reckoning.',
-        freq: 'New pattern — ceasefire-era divergence',
+        title: 'Victory Narrative Hardening',
+        detail: 'Both sides now fully committed to incompatible victory claims. Trump: \'We\'ve won.\' Mojtaba Khamenei: vows revenge. No diplomatic overlap remaining. This is worse than pre-ceasefire rhetoric because both sides believe the war validated their position.',
+        freq: 'Intensifying D42-D45',
         icon: '⚠️'
       },
       {
-        title: 'Lebanon as Rhetoric Proxy',
-        detail: 'Lebanon has become the proxy battlefield for US-Iran rhetoric. Netanyahu escalates Beirut, Iran responds with Hormuz closure, UK pushes back. The Lebanon exclusion created a rhetorical and operational loophole that both sides exploit.',
-        freq: 'Emerging — D40-D42',
+        title: 'Diplomatic Collapse Spiral',
+        detail: '21-hour marathon talks failure followed by naval blockade announcement within 24 hours. The speed of escalation post-talks suggests US had blockade planned as contingency. Diplomacy-to-confrontation pivot in <48 hours.',
+        freq: 'New — D44-D45',
         icon: '⚠️'
       },
       {
-        title: 'Delegation Downgrade Signal',
-        detail: 'Witkoff instead of Rubio leading US delegation. Iran wanted Rubio (Secretary of State). Getting Witkoff (special envoy) suggests either: (a) Trump not fully committed to diplomatic solution, or (b) Rubio reserved for final deal. Either reading is concerning for talks success.',
-        freq: 'New — first observed D42',
+        title: 'Lebanon as Deal-Killer',
+        detail: 'Iran\'s demand for Lebanon inclusion vs Netanyahu\'s categorical refusal created an impossible triangle: US cannot deliver Lebanon ceasefire, Iran won\'t deal without it, Israel won\'t stop. This structural impasse killed the talks.',
+        freq: 'Confirmed — killed Islamabad talks',
         icon: '⚠️'
       }
     ],
     scoreSummary: {
-      current: 48,
-      previous: 65,
-      delta: -17,
-      trend: '↓ Declining from ceasefire high — incompatible claims and Lebanon escalation pulling rhetoric score down',
-      cumulative: '118 statements analyzed through D42',
-      score: '48/100 — mixed. Bilateral ceasefire rhetoric positive, Lebanon rhetoric escalatory, nuclear dispute rhetoric hostile.',
-      statementsAnalyzed: 118,
-      deescSignals: 40,
+      current: 22,
+      previous: 48,
+      delta: -26,
+      trend: '↓↓ Crashing — talks collapse + naval blockade + victory rhetoric = worst rhetoric environment since war began',
+      cumulative: '128 statements analyzed through D45',
+      score: '22/100 — hostile. Both sides claiming victory, naval blockade announced, no diplomatic space remaining.',
+      statementsAnalyzed: 128,
+      deescSignals: 12,
       platformBreakdown: {
-        truthSocial: 28,
+        truthSocial: 32,
         pentagon: 22,
         iranFM: 18,
         whiteHouse: 15,
@@ -2953,10 +3041,10 @@ const DASHBOARD_DATA = {
 
   // ── 11. OPERATIONS ───────────────────────────────────────────────────────────
   operations: {
-    badge: 'CEASEFIRE · DAY 2 — TALKS UNDERWAY',
+    badge: 'CEASEFIRE · DAY 5 — TALKS COLLAPSED · NAVAL BLOCKADE',
     kpis: [
       {
-        label: 'US Strikes D42',
+        label: 'US Strikes D45',
         value: '0',
         delta: 'ZERO — ceasefire',
         note: 'Complete cessation since D40',
