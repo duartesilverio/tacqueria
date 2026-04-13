@@ -2,8 +2,8 @@ name: Daily Dashboard Update
 
 on:
   schedule:
-    # 14:00 UTC = 22:00 HKT — after US market close
-    - cron: '0 14 * * *'
+    # 12:30 UTC = 20:30 HKT
+    - cron: '30 12 * * *'
   workflow_dispatch:
     inputs:
       day_override:
