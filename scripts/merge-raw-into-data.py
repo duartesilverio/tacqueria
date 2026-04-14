@@ -19,14 +19,44 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).resolve().parent
 
 
+def extract_json_from_dashboard_js(js_path: Path) -> dict:
+    """Extract DASHBOARD_DATA object from dashboard-data.js as a Python dict.
+    Uses node to eval the JS file and serialize DASHBOARD_DATA to JSON."""
+    import subprocess, tempfile
+    helper = Path(tempfile.mktemp(suffix=".cjs"))
+    out_json = Path(tempfile.mktemp(suffix=".json"))
+    try:
+        # Node script: eval the JS file in global scope, serialize DASHBOARD_DATA
+        # argv[2]=input js, argv[3]=output json (argv[1] is the script itself)
+        helper.write_text(
+            'const fs = require("fs");\n'
+            'const src = fs.readFileSync(process.argv[2], "utf8");\n'
+            'const data = (0, eval)(src + "; DASHBOARD_DATA");\n'
+            'fs.writeFileSync(process.argv[3], JSON.stringify(data));\n',
+            encoding="utf-8"
+        )
+        result = subprocess.run(
+            ["node", str(helper), str(js_path), str(out_json)],
+            capture_output=True, text=True, timeout=15
+        )
+        if result.returncode != 0:
+            print(f"  [WARN] node extraction failed: {result.stderr[:200]}")
+            return None
+        return json.loads(out_json.read_text(encoding="utf-8"))
+    finally:
+        helper.unlink(missing_ok=True)
+        out_json.unlink(missing_ok=True)
+
+
 def resolve_files(day: int):
     """Resolve RAW_FILE and DATA_FILE paths for the given day number.
-    If day-N-data.json doesn't exist, copy the most recent previous one as base."""
+    If day-N-data.json doesn't exist, try previous data files, then fall back
+    to extracting current state from js/dashboard-data.js."""
     raw_file = SCRIPT_DIR / f"day-{day}-raw.json"
     data_file = SCRIPT_DIR / f"day-{day}-data.json"
 
     if not data_file.exists():
-        # Find most recent previous data file as base
+        # Try 1: Find most recent previous data file as base
         candidates = sorted(SCRIPT_DIR.glob("day-*-data.json"), reverse=True)
         base = None
         for c in candidates:
@@ -42,8 +72,20 @@ def resolve_files(day: int):
             shutil.copy2(base, data_file)
             print(f"  [BASE] Copied {base.name} -> {data_file.name}")
         else:
-            print(f"  [ERROR] No base data file found for day {day}")
-            sys.exit(1)
+            # Try 2: Extract from js/dashboard-data.js (always in repo)
+            js_path = SCRIPT_DIR.parent / "js" / "dashboard-data.js"
+            if js_path.exists():
+                print(f"  [BASE] No data files found, extracting from dashboard-data.js...")
+                extracted = extract_json_from_dashboard_js(js_path)
+                if extracted:
+                    save_json(data_file, extracted)
+                    print(f"  [BASE] Extracted dashboard-data.js -> {data_file.name}")
+                else:
+                    print(f"  [ERROR] Failed to extract data from dashboard-data.js")
+                    sys.exit(1)
+            else:
+                print(f"  [ERROR] No base data file found for day {day}")
+                sys.exit(1)
 
     return raw_file, data_file
 
