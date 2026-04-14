@@ -12,7 +12,7 @@ const DASHBOARD_DATA = {
   // ── META ────────────────────────────────────────────────────────────────────
   meta: {
     version: "4.0.0",
-    timestamp: "13 Apr 2026 09:35 HKT",
+    timestamp: "14 Apr 2026 13:02 HKT",
     day: 45,
     dayDate: "13 APR 2026",
     threatLevel: "HIGH",
@@ -35,53 +35,53 @@ const DASHBOARD_DATA = {
   // ── FINANCIAL KPIs — Market Signals Tab ─────────────────────────────────────
   // NOTE: Wednesday 18 Mar — Full market day. Brent spiked to $108.52 on South Pars attack. Gold crashed. Equities red. VIX bounced.
   kpis: {
-    brent:    { label: "Brent (ICE)",      price: 101.53, change: 6.33,   changePct: 6.65,  prevClose: 95.2, cssClass: "kpi-up",   note: "▲ +6.7% · Ceasefire relief · Hormuz: Open" },
-    wti:      { label: "WTI (NYMEX)",      price: 104.17,  change: 7.6,   changePct: 7.87,  prevClose: 96.57,  cssClass: "kpi-up",   note: "▲ +7.9% · WTI premium persists (spread $-2.64)" },
-    tnx:      { label: "US 10Y Yield",     price: 4.32,   change: 0.02,   changePct: 0.56,  prevClose: 4.29,   cssClass: "kpi-up", note: "4.32% · ▲ +0.6% · Yield steady amid ceasefire uncertainty", isPercent: true },
-    vix:      { label: "VIX",              price: 19.23,  change: -0.26,   changePct: -1.33,  prevClose: 19.49,  cssClass: "kpi-down", note: "▼ -1.3% · Low vol — ceasefire risk priced in", noDollar: true },
-    hyg:      { label: "HY Spread (HYG)",  price: 79.96,  change: -0.32,  changePct: -0.4, prevClose: 80.28,  cssClass: "kpi-down", note: "▼ -0.4% · Credit widening — stress watch" },
-    gold:     { label: "Gold Spot",        price: 4736.6,   change: -50.8,   changePct: -1.06, prevClose: 4787.4,   cssClass: "kpi-down",   note: "▼ -1.1% · $4,737 · Safe-haven demand easing on ceasefire", formatComma: true },
-    brentWtiSpread: { label: "Brent–WTI Spread", price: -2.64, change: -1.27, changePct: -92.7, prevClose: -1.37, cssClass: "kpi-down", note: "Spread $-2.64 (-92.7%) · WTI > Brent ANOMALY persists — US supply disruption premium", noDollar: false },
-    ita:      { label: "ITA (Defense ETF)", price: 229.64, change: -2.12,   changePct: -0.91,  prevClose: 231.76, cssClass: "kpi-down", note: "▼ -0.9% · Defense sector pullback on peace hopes" }
+    brent:    { label: "Brent (ICE)",      price: 97.8, change: -1.56,   changePct: -1.57,  prevClose: 99.36, cssClass: "kpi-down",   note: "▼ -1.6% · Ceasefire relief · Hormuz: Contested" },
+    wti:      { label: "WTI (NYMEX)",      price: 96.74,  change: -2.34,   changePct: -2.36,  prevClose: 99.08,  cssClass: "kpi-down",   note: "▼ -2.4% · WTI premium persists (spread $1.06)" },
+    tnx:      { label: "US 10Y Yield",     price: 4.3,   change: -0.02,   changePct: -0.46,  prevClose: 4.32,   cssClass: "kpi-down", note: "4.30% · ▼ -0.5% · Yield steady amid ceasefire uncertainty", isPercent: true },
+    vix:      { label: "VIX",              price: 19.12,  change: -0.11,   changePct: -0.57,  prevClose: 19.23,  cssClass: "kpi-down", note: "▼ -0.6% · Low vol — ceasefire risk priced in", noDollar: true },
+    hyg:      { label: "HY Spread (HYG)",  price: 80.26,  change: 0.3,  changePct: 0.38, prevClose: 79.96,  cssClass: "kpi-up", note: "▲ +0.4% · Credit steady — no stress signal" },
+    gold:     { label: "Gold Spot",        price: 4797.2,   change: 29.8,   changePct: 0.63, prevClose: 4767.4,   cssClass: "kpi-up",   note: "▲ +0.6% · $4,797 · Safe-haven bid — ceasefire doubts", formatComma: true },
+    brentWtiSpread: { label: "Brent–WTI Spread", price: 1.06, change: 0.78, changePct: 278.57, prevClose: 0.28, cssClass: "kpi-up", note: "Spread $1.06 · Spread normalizing", noDollar: false },
+    ita:      { label: "ITA (Defense ETF)", price: 232.81, change: 3.17,   changePct: 1.38,  prevClose: 229.64, cssClass: "kpi-up", note: "▲ +1.4% · Defense sector — ceasefire fragility hedge" }
   },
 
   // ── COMPACT MARKET STRIP (Overview tab) ─────────────────────────────────────
   marketStrip: [
     {
       label: 'Brent',
-      value: '$101.53',
-      delta: '+6.7%',
-      color: '#22c55e'
-    },
-    {
-      label: 'S&P 500',
-      value: '$6,816.89',
-      delta: '-0.1%',
+      value: '$97.80',
+      delta: '-1.6%',
       color: '#ef4444'
     },
     {
+      label: 'S&P 500',
+      value: '$6,886.24',
+      delta: '+1.0%',
+      color: '#22c55e'
+    },
+    {
       label: 'VIX',
-      value: '19.23',
-      delta: '-1.3%',
+      value: '19.12',
+      delta: '-0.6%',
       color: '#ef4444'
     },
     {
       label: 'Gold',
-      value: '$4,736.60',
-      delta: '-1.1%',
-      color: '#ef4444'
-    },
-    {
-      label: '10Y',
-      value: '4.32',
+      value: '$4,797.20',
       delta: '+0.6%',
       color: '#22c55e'
     },
     {
-      label: 'HYG',
-      value: '$79.96',
-      delta: '-0.4%',
+      label: '10Y',
+      value: '4.30',
+      delta: '-0.5%',
       color: '#ef4444'
+    },
+    {
+      label: 'HYG',
+      value: '$80.26',
+      delta: '+0.4%',
+      color: '#22c55e'
     }
   ],
 
@@ -950,11 +950,11 @@ const DASHBOARD_DATA = {
 
   // ── CHART DATA (consolidates data.js + charts.js hardcoded data) ───────────
   chartData: {
-    labels: ['Feb 28', 'Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14', 'Mar 15', 'Mar 16', 'Mar 17', 'Mar 18', 'Mar 19', 'Mar 20', 'Mar 21', 'Mar 23', 'Mar 24', 'Mar 25', 'Mar 26', 'Mar 27', 'Mar 30', 'Mar 31', 'Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9', 'Apr 10', 'Apr 11', 'Apr 12', 'Apr 13'],
-    brent: [73.2, 80.1, 86.4, 91.7, 94.3, 89.5, 88.0, 91.2, 94.0, 95.4, 90.3, 91.98, 95.8, 100.46, 103.14, 103.14, 106.11, 101.6, 108.52, 116.45, 106.93, 112.89, 101.34, 103.5, 100.59, 105.61, 109.97, 107.9, 107.6, 101.22, 109.37, 109.03, 109.03, 109.03, 108.28, 110.47, 102.5, 95.02, 96.06, 96.06, 96.06, 101.53],
-    vix: [22.1, 26.4, 28.9, 30.2, 31.8, 30.1, 29.4, 28.7, 27.6, 26.9, 25.8, 24.93, 25.72, 27.29, 27.19, 27.19, 26.13, 22.24, 23.23, 25.93, 24.82, 26.78, 24.48, 26.77, 25.25, 27.15, 28.63, 30.51, 28.62, 24.23, 27.72, 23.87, 23.87, 23.87, 23.88, 25.71, 21.5, 21.23, 19.31, 19.31, 19.31, 19.23],
-    hyg: [80.0, 79.1, 78.3, 77.8, 77.4, 77.8, 78.1, 78.5, 79.0, 79.3, 79.6, 80.1, 79.9, 79.36, 79.2, 79.2, 79.2, 79.75, 79.68, 79.4, 79.66, 78.92, 79.53, 79.19, 79.52, 79.42, 78.9, 78.72, 78.82, 79.56, 79.37, 79.56, 79.56, 79.56, 79.63, 79.55, 79.9, 80.14, 80.28, 80.28, 80.28, 79.96],
-    sp500: [6050, 5940, 5870, 5820, 5790, 5810, 5840, 5870, 5910, 6100, 6250, 6310, 6781, 6672, 6632, 6632, 6632, 6734.51, 6682.77, 6624.7, 6606.49, 6506.48, 6631.26, 6546.85, 6605.87, 6591.9, 6477.26, 6368.85, 6343.72, 6528.52, 6575.32, 6582.69, 6582.69, 6582.69, 6608.75, 6578.67, 6720.0, 6779.38, 6824.66, 6824.66, 6824.66, 6816.89],
+    labels: ['Feb 28', 'Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14', 'Mar 15', 'Mar 16', 'Mar 17', 'Mar 18', 'Mar 19', 'Mar 20', 'Mar 21', 'Mar 23', 'Mar 24', 'Mar 25', 'Mar 26', 'Mar 27', 'Mar 30', 'Mar 31', 'Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9', 'Apr 10', 'Apr 11', 'Apr 12', 'Apr 13', 'Apr 13'],
+    brent: [73.2, 80.1, 86.4, 91.7, 94.3, 89.5, 88.0, 91.2, 94.0, 95.4, 90.3, 91.98, 95.8, 100.46, 103.14, 103.14, 106.11, 101.6, 108.52, 116.45, 106.93, 112.89, 101.34, 103.5, 100.59, 105.61, 109.97, 107.9, 107.6, 101.22, 109.37, 109.03, 109.03, 109.03, 108.28, 110.47, 102.5, 95.02, 96.06, 96.06, 96.06, 101.53, 97.8],
+    vix: [22.1, 26.4, 28.9, 30.2, 31.8, 30.1, 29.4, 28.7, 27.6, 26.9, 25.8, 24.93, 25.72, 27.29, 27.19, 27.19, 26.13, 22.24, 23.23, 25.93, 24.82, 26.78, 24.48, 26.77, 25.25, 27.15, 28.63, 30.51, 28.62, 24.23, 27.72, 23.87, 23.87, 23.87, 23.88, 25.71, 21.5, 21.23, 19.31, 19.31, 19.31, 19.23, 19.12],
+    hyg: [80.0, 79.1, 78.3, 77.8, 77.4, 77.8, 78.1, 78.5, 79.0, 79.3, 79.6, 80.1, 79.9, 79.36, 79.2, 79.2, 79.2, 79.75, 79.68, 79.4, 79.66, 78.92, 79.53, 79.19, 79.52, 79.42, 78.9, 78.72, 78.82, 79.56, 79.37, 79.56, 79.56, 79.56, 79.63, 79.55, 79.9, 80.14, 80.28, 80.28, 80.28, 79.96, 80.26],
+    sp500: [6050, 5940, 5870, 5820, 5790, 5810, 5840, 5870, 5910, 6100, 6250, 6310, 6781, 6672, 6632, 6632, 6632, 6734.51, 6682.77, 6624.7, 6606.49, 6506.48, 6631.26, 6546.85, 6605.87, 6591.9, 6477.26, 6368.85, 6343.72, 6528.52, 6575.32, 6582.69, 6582.69, 6582.69, 6608.75, 6578.67, 6720.0, 6779.38, 6824.66, 6824.66, 6824.66, 6816.89, 6886.24],
     taco: [45, 40, 35, 30, 26, 22, 18, 15, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 6, 7, 8, 7, 7, 7, 8, 12, 9, 10, 8, 7, 9, 6, 15, 18, 18, 15, 12, 12],
     strikeLabels: ['28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr'],
     strikes: {
@@ -1344,7 +1344,7 @@ const DASHBOARD_DATA = {
       {
         date: '2026-04-13',
         day: 45,
-        dubizzle: 27043,
+        dubizzle: 27349,
         dubicars: null,
         yallamotor: null,
         source: 'live'
@@ -1356,10 +1356,19 @@ const DASHBOARD_DATA = {
       yallamotor: 37583
     },
     latest: {
-      dubizzle: { total: 27043, changePct: 2.1 },
-      dubicars: { total: 26312, changePct: -2.8 },
-      yallamotor: { total: 38327, changePct: 2.0 },
-      date: '2026-04-13',
+      dubizzle: {
+        total: 27349,
+        changePct: 1.1
+      },
+      dubicars: {
+        total: 26312,
+        changePct: -2.8
+      },
+      yallamotor: {
+        total: 38327,
+        changePct: 2
+      },
+      date: '2026-04-14',
       day: 45
     },
     luxury: {
@@ -3744,38 +3753,38 @@ const DASHBOARD_DATA = {
       steps: [
         {
           label: 'Oil Price Increase',
-          value: '+38.7%',
-          detail: '$101.53 vs $73.20 baseline',
+          value: '+33.6%',
+          detail: '$97.80 vs $73.20 baseline',
           color: '#f59e0b'
         },
         {
           label: 'Energy CPI Impact',
-          value: '+8.90%',
+          value: '+7.73%',
           detail: 'Fed passthrough coefficient: 0.23',
           color: '#f59e0b'
         },
         {
           label: 'Headline Direct',
-          value: '+0.62pp',
+          value: '+0.54pp',
           detail: 'BLS energy weight: 7%',
           color: '#f59e0b'
         },
         {
           label: 'With Second-Round',
-          value: '+0.94pp',
+          value: '+0.84pp',
           detail: '×1.27 multiplier + 0.15pp food',
           color: '#f59e0b'
         },
         {
           label: 'Estimated CPI',
-          value: '3.3%',
-          detail: '2.4% baseline + 0.94pp war premium',
+          value: '3.2%',
+          detail: '2.4% baseline + 0.84pp war premium',
           color: '#f59e0b'
         }
       ],
       result: {
-        headline: '~3.3%',
-        explanation: 'Brent at $101.53 (+38.7% vs pre-war baseline). Oil-to-CPI passthrough model estimates headline CPI at ~3.3% (war premium +0.94pp over 2.4% baseline).'
+        headline: '~3.2%',
+        explanation: 'Brent at $97.8 (+33.6% vs pre-war baseline). Oil-to-CPI passthrough model estimates headline CPI at ~3.2% (war premium +0.84pp over 2.4% baseline).'
       },
       methodology: 'Dallas Fed elasticity (10% oil → +0.23% energy CPI) × BLS energy weight (7%) × second-round multiplier (1.27) + food acceleration (0.15pp). Source: FEDS Notes 2024, Dallas Fed Working Paper 2023.'
     },
@@ -3933,7 +3942,7 @@ const DASHBOARD_DATA = {
     commentary: 'HL BrentOIL at $94.86 — trading at $1.20 discount to traditional Brent ($96.06). Spread narrowing as ceasefire normalizes 24/7 vs traditional market gap. OI at $310M, down from $559M ATH — deleveraging post-ceasefire. Volume remains elevated at ~$680M/day.',
     chartLabels: ['D23', 'D24', 'D25', 'D26', 'D27', 'D28', 'D29', 'D30', 'D31', 'D32', 'D33', 'D34', 'D35', 'D36', 'D37', 'D38', 'D39', 'D40', 'D41', 'D42'],
     chartHL: [109.5, 109.89, 110.7, 111.5, 109.22, 108.5, 109.8, 110.2, 109.5, 109.94, 110.3, 108.6, 107.2, 104.5, 95.2, 88.4, 90.1, 94.23, 96.7, 96.7],
-    chartTrad: [109.97, 110.3, 111.09, 111.75, 109.5, 108.93, 110.15, 110.5, 109.03, 109.03, 109.03, 107.8, 106.5, 103.0, 94.75, 88.01, 91.5, 95.02, 98.22, 98.22],
+    chartTrad: [109.97, 110.3, 111.09, 111.75, 109.5, 108.93, 110.15, 110.5, 109.03, 109.03, 109.03, 107.8, 106.5, 103, 94.75, 88.01, 91.5, 95.02, 98.22, 98.22],
     chartSpread: [-0.43, -0.37, -0.35, -0.22, -0.25, -0.39, -0.32, -0.27, 0.47, 0.91, 1.27, 0.8, 0.7, 1.5, 0.45, 0.39, -1.4, -0.79, -1.52, -1.52]
   },
 
