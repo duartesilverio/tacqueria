@@ -456,7 +456,21 @@ def patch_dashboard(text, inp):
     
     if 'chartAppend' in inp:
         appends = inp['chartAppend']
-        
+
+        # Dedup: if this label already exists in chartData.labels, skip all appends
+        new_label = appends.get('labels')
+        if new_label is not None:
+            label_str = f"'{new_label}'" if isinstance(new_label, str) else str(new_label)
+            # Find the labels array and check if the last entry matches
+            import re as _re
+            labels_match = _re.search(r"labels:\s*\[([^\]]+)\]", text)
+            if labels_match:
+                existing = labels_match.group(1).strip()
+                last_label = existing.rsplit(',', 1)[-1].strip()
+                if last_label == label_str:
+                    print(f"  ⊘ chartAppend skipped: {label_str} already last entry in labels (dedup)")
+                    return text
+
         # Simple top-level arrays in chartData
         simple_arrays = ['labels', 'brent', 'vix', 'hyg', 'sp500', 'taco']
         for arr_name in simple_arrays:
