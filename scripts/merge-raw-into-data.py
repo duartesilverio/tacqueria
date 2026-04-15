@@ -406,6 +406,404 @@ def update_inflation_derivation(inflation_section: dict, raw_derivation: dict) -
     return updates
 
 
+# ---------------------------------------------------------------------------
+# Analytical processing — TACO, signals, rhetoric, gist, news, operations
+# ---------------------------------------------------------------------------
+
+WAR_START_DATE = datetime(2026, 2, 28)   # Day 1
+
+
+def day_to_date(day: int) -> datetime:
+    return WAR_START_DATE + timedelta(days=day - 1)
+
+
+def day_date_short(day: int) -> str:
+    d = day_to_date(day)
+    return d.strftime("%d %b").lstrip("0")
+
+
+def derive_taco_score(raw_intel: dict, raw_rhetoric: dict, raw_bca: dict) -> int:
+    """Calculate TACO score (0-50) from raw intelligence signals."""
+    score = 5  # baseline during stable ceasefire
+
+    intel = raw_intel or {}
+    rhetoric = raw_rhetoric or {}
+
+    # 1. Ceasefire status (biggest weight)
+    cf = str(intel.get("ceasefire_status", "")).lower()
+    if any(w in cf for w in ("collapse", "ended", "broken", "violated")):
+        score += 12
+    elif "ceasefire" in cf and any(w in cf for w in ("negot", "talks", "proposal")):
+        score += 5
+    elif "ceasefire" in cf:
+        score += 3
+    elif any(w in cf for w in ("active conflict", "no ceasefire", "hostilities")):
+        score += 20
+
+    # 2. Hormuz
+    hz = str(intel.get("hormuz_status", "")).lower()
+    if any(w in hz for w in ("blockade", "closed", "mined")):
+        score += 8
+    elif any(w in hz for w in ("restricted", "partial")):
+        score += 4
+
+    # 3. Rhetoric temperature
+    temp = str(rhetoric.get("overall_rhetoric_temperature", "")).lower()
+    temp_add = {"extreme": 8, "very hot": 7, "hot": 5, "warm": 3, "cool": 1}
+    score += temp_add.get(temp, 3)
+
+    # 4. Diplomatic failure signals
+    diplo = rhetoric.get("diplomatic_developments", [])
+    if isinstance(diplo, list):
+        diplo_text = " ".join(str(d) for d in diplo).lower()
+        if any(w in diplo_text for w in ("collapse", "fail", "reject", "no deal", "broke down")):
+            score += 4
+
+    # 5. Active attacks
+    houthi = intel.get("houthi_attacks_last_24h")
+    if houthi and isinstance(houthi, (int, float)) and houthi > 0:
+        score += 2
+
+    return min(score, 50)
+
+
+def update_meta_day(data: dict, day: int, taco: int) -> list[str]:
+    """Update meta section with correct day, TACO score, threat level."""
+    if "meta" not in data:
+        return []
+    meta = data["meta"]
+    updates = []
+    old_day = meta.get("day")
+    meta["day"] = day
+    updates.append(f"meta.day {old_day} -> {day}")
+
+    meta["tacoScore"] = taco
+    if taco >= 25:
+        meta["threatLevel"] = "EXTREME"
+        meta["threatClass"] = "threat-red"
+    elif taco >= 15:
+        meta["threatLevel"] = "HIGH"
+        meta["threatClass"] = "threat-red"
+    elif taco >= 8:
+        meta["threatLevel"] = "ELEVATED"
+        meta["threatClass"] = "threat-orange"
+    else:
+        meta["threatLevel"] = "MODERATE"
+        meta["threatClass"] = "threat-yellow"
+    updates.append(f"meta.taco={taco}, threat={meta['threatLevel']}")
+
+    # TACO regime line
+    cf = ""
+    for src in [data.get("_raw_intelligence", {}), data]:
+        cf = str(safe_get(src, "ceasefire_status") or "")
+        if cf:
+            break
+    brent = safe_get(data, "kpis", "brent", "price")
+    regime_parts = []
+    if cf:
+        regime_parts.append(cf.upper()[:60])
+    if brent:
+        regime_parts.append(f"BRENT ${brent}")
+    if regime_parts:
+        meta["tacoRegime"] = " · ".join(regime_parts)
+
+    return updates
+
+
+def update_analytical_signals(data: dict, raw_intel: dict, raw_rhetoric: dict, day: int) -> list[str]:
+    """Map raw intelligence to dashboard analytical signal cards."""
+    intel = raw_intel or {}
+    rhetoric = raw_rhetoric or {}
+    if not intel and not rhetoric:
+        return []
+
+    signals = []
+    cf = str(intel.get("ceasefire_status", "")).lower()
+    hz = str(intel.get("hormuz_status", "")).lower()
+    temp = str(rhetoric.get("overall_rhetoric_temperature", "")).lower()
+
+    # Ceasefire compliance
+    cf_day = max(day - 40, 0)
+    if any(w in cf for w in ("collapse", "broken", "violated")):
+        signals.append({"label": "Ceasefire Compliance", "value": "AT RISK",
+                        "score": 3, "scoreColor": "#ef4444",
+                        "detail": str(intel.get("ceasefire_status", ""))[:200]})
+    elif "ceasefire" in cf and cf_day > 0:
+        signals.append({"label": "Ceasefire Compliance", "value": f"DAY {cf_day} ✓",
+                        "score": min(5 + cf_day // 3, 8), "scoreColor": "#f59e0b",
+                        "detail": str(intel.get("ceasefire_status", ""))[:200]})
+
+    # Diplomatic engagement
+    diplo = rhetoric.get("diplomatic_developments", [])
+    diplo_text = " ".join(str(d) for d in diplo).lower() if isinstance(diplo, list) else ""
+    if any(w in diplo_text for w in ("collapse", "fail", "no deal", "rejected")):
+        signals.append({"label": "Diplomatic Engagement", "value": "COLLAPSED",
+                        "score": 2, "scoreColor": "#ef4444",
+                        "detail": str(diplo[0])[:200] if diplo else ""})
+    elif any(w in diplo_text for w in ("negotiat", "talks", "meeting", "proposal")):
+        signals.append({"label": "Diplomatic Engagement", "value": "ACTIVE",
+                        "score": 6, "scoreColor": "#f59e0b",
+                        "detail": str(diplo[0])[:200] if diplo else ""})
+
+    # Hormuz passage
+    if "blockade" in hz:
+        signals.append({"label": "Hormuz Passage", "value": "BLOCKADE",
+                        "score": 2, "scoreColor": "#ef4444",
+                        "detail": f"Hormuz: {hz.upper()}"})
+    elif "open" in hz:
+        t = intel.get("hormuz_daily_vessel_transits")
+        val = f"OPEN ({t}/day)" if t else "OPEN"
+        signals.append({"label": "Hormuz Passage", "value": val,
+                        "score": 7, "scoreColor": "#22c55e",
+                        "detail": f"Strait status: {hz}"})
+
+    # Rhetoric temperature
+    if temp:
+        t_map = {"extreme": (2, "#ef4444"), "very hot": (2, "#ef4444"),
+                 "hot": (3, "#ef4444"), "warm": (5, "#f59e0b"), "cool": (7, "#22c55e")}
+        sc, col = t_map.get(temp, (5, "#f59e0b"))
+        signals.append({"label": "Rhetoric Temperature", "value": temp.upper(),
+                        "score": sc, "scoreColor": col,
+                        "detail": "Leadership rhetoric assessment"})
+
+    if signals:
+        data["analyticalSignals"] = signals
+        return [f"analyticalSignals: {len(signals)} signals"]
+    return []
+
+
+def update_rhetoric_tracker(data: dict, raw_rhetoric: dict, day: int) -> list[str]:
+    """Add new rhetoric timeline entries and update sentiment."""
+    if not raw_rhetoric or "rhetoricTracker" not in data:
+        return []
+
+    tracker = data["rhetoricTracker"]
+    timeline = tracker.get("timeline", [])
+    updates = []
+
+    # Existing dates to avoid duplicates
+    existing = {e.get("date", "") for e in timeline}
+
+    sources = [
+        ("trump_statements", "Trump", "US"),
+        ("iran_leadership_statements", None, "IR"),
+        ("israel_statements", None, "IL"),
+    ]
+    added = 0
+    for key, default_speaker, tag in sources:
+        stmts = raw_rhetoric.get(key, [])
+        if not isinstance(stmts, list):
+            continue
+        for s in stmts:
+            date = s.get("date", day_date_short(day))
+            if date in existing:
+                continue
+            existing.add(date)
+            quote = s.get("quote_or_summary", "")
+            if not quote:
+                continue
+            speaker = default_speaker or s.get("speaker", tag)
+            if "(" in speaker:
+                speaker = speaker.split("(")[0].strip()
+            esc_words = ("destroy", "revenge", "nuclear", "war ", "blockade", "won")
+            esc = 8 if any(w in quote.lower() for w in esc_words) else 5
+            timeline.append({"date": date, "speaker": speaker,
+                             "text": quote[:250], "tag": tag, "escalation": esc})
+            added += 1
+
+    if added:
+        tracker["timeline"] = timeline
+        updates.append(f"rhetoricTracker.timeline: +{added} entries")
+
+    # Update sentiment from temperature
+    temp = str(raw_rhetoric.get("overall_rhetoric_temperature", "")).lower()
+    if temp:
+        t_scores = {"cool": 25, "warm": 40, "hot": 60, "very hot": 75, "extreme": 90}
+        sc = t_scores.get(temp, 50)
+        sent = tracker.get("sentiment", {})
+        sent["score"] = sc
+        sent["barWidth"] = f"{sc}%"
+        sent["barColor"] = "#ef4444" if sc >= 60 else ("#f59e0b" if sc >= 40 else "#22c55e")
+        sent["value"] = f"{'Escalatory' if sc >= 60 else 'Mixed'} — {temp}"
+        updates.append(f"rhetoricTracker.sentiment -> {sc}")
+
+    return updates
+
+
+def update_gist_banner(data: dict, raw_intel: dict, raw_rhetoric: dict,
+                       raw_fed: dict, kpis: dict) -> list[str]:
+    """Generate gist banner bullets from raw intelligence."""
+    if "gistBanner" not in data:
+        return []
+    intel = raw_intel or {}
+    rhetoric = raw_rhetoric or {}
+    fed = raw_fed or {}
+
+    bullets = []
+    esc_words = ("collapse", "blockade", "attack", "escalat", "reject", "strike", "nuclear")
+
+    # Key developments (most important source)
+    for dev in (intel.get("key_developments") or [])[:3]:
+        dev_s = str(dev)
+        color = "red" if any(w in dev_s.lower() for w in esc_words) else "yellow"
+        bullets.append({"text": dev_s, "color": color})
+
+    # Top diplomatic development (if not duplicate)
+    diplo = rhetoric.get("diplomatic_developments", [])
+    if isinstance(diplo, list):
+        for d in diplo[:2]:
+            d_s = str(d)
+            if not any(d_s[:35].lower() in b["text"].lower() for b in bullets):
+                color = "red" if any(w in d_s.lower() for w in esc_words) else "yellow"
+                bullets.append({"text": d_s, "color": color})
+
+    # CPI/inflation
+    cpi = fed.get("latest_cpi_headline_pct")
+    brent = safe_get(kpis, "brent", "price")
+    if cpi:
+        note = ""
+        kn = fed.get("key_notes")
+        if isinstance(kn, list) and kn:
+            note = f" {kn[0]}"
+        bullets.append({"text": f"CPI {cpi}%. Fed funds {fed.get('fed_funds_rate_current', 'N/A')}.{note}", "color": "yellow"})
+    elif brent:
+        bullets.append({"text": f"Brent ${brent}.", "color": "yellow"})
+
+    if bullets:
+        data["gistBanner"]["bullets"] = bullets[:5]
+        return [f"gistBanner: {len(bullets[:5])} bullets"]
+    return []
+
+
+def update_news_now(data: dict, raw_intel: dict, raw_rhetoric: dict) -> list[str]:
+    """Generate newsNow cards from raw intelligence and rhetoric."""
+    intel = raw_intel or {}
+    rhetoric = raw_rhetoric or {}
+    cards = []
+
+    label_map = [
+        (("ceasefire",), "CEASEFIRE"), (("block", "hormuz"), "HORMUZ"),
+        (("strike", "attack", "military", "bomb"), "MILITARY"),
+        (("nuclear",), "NUCLEAR"), (("talk", "negot", "diplom"), "TALKS"),
+    ]
+
+    def pick_label(text):
+        t = text.lower()
+        for words, lbl in label_map:
+            if any(w in t for w in words):
+                return lbl
+        return "CONFLICT"
+
+    esc_words = ("collapse", "blockade", "attack", "escalat", "reject", "fail")
+
+    for dev in (intel.get("key_developments") or [])[:4]:
+        s = str(dev)
+        title = s.split(".")[0][:90] if "." in s else s[:90]
+        color = "red" if any(w in s.lower() for w in esc_words) else "yellow"
+        cards.append({"label": pick_label(s), "title": title, "body": s, "color": color})
+
+    for d in (rhetoric.get("diplomatic_developments") or [])[:2]:
+        s = str(d)
+        if any(s[:30].lower() in c.get("body", "").lower() for c in cards):
+            continue
+        title = s.split(".")[0][:90] if "." in s else s[:90]
+        cards.append({"label": "TALKS", "title": title, "body": s, "color": "yellow"})
+
+    if cards:
+        data["newsNow"] = cards[:6]
+        return [f"newsNow: {len(cards[:6])} cards"]
+    return []
+
+
+def update_operations(data: dict, raw_intel: dict, day: int) -> list[str]:
+    """Update operations badge and KPIs from intelligence."""
+    if "operations" not in data:
+        return []
+    intel = raw_intel or {}
+    updates = []
+
+    cf = str(intel.get("ceasefire_status", ""))
+    hz = str(intel.get("hormuz_status", ""))
+
+    # Badge
+    parts = []
+    cf_day = max(day - 40, 0)
+    if "ceasefire" in cf.lower() and cf_day > 0:
+        parts.append(f"CEASEFIRE · DAY {cf_day}")
+    if any(w in cf.lower() for w in ("collapse", "no deal")):
+        parts.append("TALKS COLLAPSED")
+    elif any(w in cf.lower() for w in ("negot", "talks")):
+        parts.append("NEGOTIATIONS")
+    if "blockade" in hz.lower():
+        parts.append("NAVAL BLOCKADE")
+    if parts:
+        data["operations"]["badge"] = " — ".join(parts)
+        updates.append("operations.badge updated")
+
+    # KPIs
+    kpis = []
+    us_strikes = intel.get("us_strikes_total_cumulative")
+    if us_strikes is not None:
+        kpis.append({"label": f"US Strikes D{day}", "value": "0" if cf_day > 0 else str(us_strikes),
+                     "delta": "ZERO — ceasefire" if cf_day > 0 else f"Total: {us_strikes:,}",
+                     "note": f"Cumulative: {us_strikes:,}", "color": "green" if cf_day > 0 else "red"})
+    troops = safe_get(intel, "us_force_posture", "troops_deployed")
+    if troops:
+        kpis.append({"label": "US Troops", "value": f"{troops:,}+",
+                     "delta": "Forward deployed", "note": "CENTCOM", "color": "yellow"})
+    kia = intel.get("us_military_kia")
+    if kia is not None:
+        kpis.append({"label": "US KIA", "value": str(kia),
+                     "delta": "", "note": f"Through D{day}", "color": "red"})
+    vessels = intel.get("vessels_attacked_or_sunk")
+    if vessels:
+        kpis.append({"label": "Vessels Hit", "value": str(vessels),
+                     "delta": "Attacked/sunk", "note": "Cumulative", "color": "red"})
+    civ = intel.get("civilian_casualties_reported")
+    if civ:
+        kpis.append({"label": "Civilian Casualties", "value": f"{civ:,}+",
+                     "delta": "Reported", "note": f"Through D{day}", "color": "red"})
+    if kpis:
+        data["operations"]["kpis"] = kpis
+        updates.append(f"operations.kpis: {len(kpis)} items")
+
+    return updates
+
+
+def inject_chart_analytics(chart_append: dict, raw_intel: dict, taco: int, day: int) -> list[str]:
+    """Inject TACO score, strikes, and Hormuz data into chartAppend."""
+    updates = []
+    intel = raw_intel or {}
+    ds = day_date_short(day)
+
+    chart_append["taco"] = taco
+    updates.append(f"chartAppend.taco = {taco}")
+
+    # Strikes
+    cf = str(intel.get("ceasefire_status", "")).lower()
+    chart_append["strikeLabels"] = ds
+    if "ceasefire" in cf:
+        chart_append["strikes_us"] = 0
+        chart_append["strikes_iran"] = 0
+    else:
+        chart_append["strikes_us"] = 0
+        chart_append["strikes_iran"] = 0
+    updates.append("chartAppend.strikes set")
+
+    # Hormuz
+    transits = intel.get("hormuz_daily_vessel_transits")
+    if transits is not None:
+        chart_append["hormuzTransits"] = transits
+    elif "blockade" in str(intel.get("hormuz_status", "")).lower():
+        chart_append["hormuzTransits"] = 1
+    else:
+        chart_append["hormuzTransits"] = 4  # default moderate
+    chart_append["hormuzLabels"] = ds
+    updates.append(f"chartAppend.hormuz = {chart_append.get('hormuzTransits')}")
+
+    return updates
+
+
 # ===========================================================================
 # MAIN
 # ===========================================================================
@@ -510,6 +908,81 @@ def main():
             print("  [SKIP] inflation.derivation — no raw data")
 
     # ------------------------------------------------------------------
+    # 8. Analytical: TACO score + meta.day
+    # ------------------------------------------------------------------
+    raw_intel = raw.get("_raw_intelligence")
+    raw_rhetoric = raw.get("_raw_rhetoric")
+    raw_bca = raw.get("_raw_bca")
+    raw_fed = raw.get("_raw_fed")
+
+    taco = derive_taco_score(raw_intel, raw_rhetoric, raw_bca)
+    meta_updates = update_meta_day(data, args.day, taco)
+    all_updates.extend(meta_updates)
+    for u in meta_updates:
+        print(f"  [OK] {u}")
+
+    # ------------------------------------------------------------------
+    # 9. Analytical signals
+    # ------------------------------------------------------------------
+    sig_updates = update_analytical_signals(data, raw_intel, raw_rhetoric, args.day)
+    all_updates.extend(sig_updates)
+    for u in sig_updates:
+        print(f"  [OK] {u}")
+    if not sig_updates:
+        print("  [SKIP] analyticalSignals — no intel data")
+
+    # ------------------------------------------------------------------
+    # 10. Rhetoric tracker
+    # ------------------------------------------------------------------
+    rhet_updates = update_rhetoric_tracker(data, raw_rhetoric, args.day)
+    all_updates.extend(rhet_updates)
+    for u in rhet_updates:
+        print(f"  [OK] {u}")
+    if not rhet_updates:
+        print("  [SKIP] rhetoricTracker — no rhetoric data")
+
+    # ------------------------------------------------------------------
+    # 11. Gist banner
+    # ------------------------------------------------------------------
+    gist_updates = update_gist_banner(data, raw_intel, raw_rhetoric,
+                                       raw_fed, raw.get("kpis", {}))
+    all_updates.extend(gist_updates)
+    for u in gist_updates:
+        print(f"  [OK] {u}")
+    if not gist_updates:
+        print("  [SKIP] gistBanner — no key developments")
+
+    # ------------------------------------------------------------------
+    # 12. News cards
+    # ------------------------------------------------------------------
+    news_updates = update_news_now(data, raw_intel, raw_rhetoric)
+    all_updates.extend(news_updates)
+    for u in news_updates:
+        print(f"  [OK] {u}")
+    if not news_updates:
+        print("  [SKIP] newsNow — no developments")
+
+    # ------------------------------------------------------------------
+    # 13. Operations
+    # ------------------------------------------------------------------
+    ops_updates = update_operations(data, raw_intel, args.day)
+    all_updates.extend(ops_updates)
+    for u in ops_updates:
+        print(f"  [OK] {u}")
+    if not ops_updates:
+        print("  [SKIP] operations — no intel data")
+
+    # ------------------------------------------------------------------
+    # 14. Chart analytics (TACO, strikes, Hormuz)
+    # ------------------------------------------------------------------
+    if "chartAppend" in data:
+        chart_updates = inject_chart_analytics(
+            data["chartAppend"], raw_intel, taco, args.day)
+        all_updates.extend(chart_updates)
+        for u in chart_updates:
+            print(f"  [OK] {u}")
+
+    # ------------------------------------------------------------------
     # Save
     # ------------------------------------------------------------------
     print()
@@ -521,9 +994,8 @@ def main():
     for u in all_updates:
         print(f"    - {u}")
     print()
-    print("  Sections LEFT UNCHANGED: gistBanner, newsNow, intelligence,")
-    print("    operations, predictionMarkets, tacoSubScoresOverview,")
-    print("    pipelineBypass, and all other analytical sections.")
+    print("  Sections LEFT UNCHANGED: predictionMarkets, tacoSubScoresOverview,")
+    print("    pipelineBypass, intelligence (deep columns), arsenal.")
     print("=" * 60)
 
 
