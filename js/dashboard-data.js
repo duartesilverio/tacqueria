@@ -12,16 +12,16 @@ const DASHBOARD_DATA = {
   // ── META ────────────────────────────────────────────────────────────────────
   meta: {
     version: "4.0.0",
-    timestamp: "15 Apr 2026 14:48 HKT",
+    timestamp: "15 Apr 2026 14:56 HKT",
     day: 47,
     dayDate: "13 APR 2026",
-    threatLevel: "ELEVATED",
-    threatClass: "threat-orange",
-    tacoScore: 11,
+    threatLevel: "HIGH",
+    threatClass: "threat-red",
+    tacoScore: 19,
     tacoMax: 100,
     tacoPrev: 18,
     tacoPrevDay: 42,
-    tacoRegime: "BRENT $94.68",
+    tacoRegime: "BRENT $94.41",
     tacoRegimeLabel: "CEASEFIRE DAY 5: Vance 21-hour marathon talks in Islamabad END WITHOUT DEAL. Trump: 'We've won — whether we make a deal makes no difference.' US announces naval blockade of Hormuz. Mojtaba Khamenei breaks silence, vows revenge for father's assassination. Netanyahu rules out Lebanon ceasefire. Brent $101.53 (+6.7%). WTI $104.17 (+7.9%). VIX 19.23 (-1.3%). Gold $4,737 (-1.1%). CPI surges to 3.3% (gasoline +21.2%). Ceasefire nominally holds but diplomatic path severely damaged.",
     tacoRegimeColor: "#ef4444",
     tacoPhase: "ceasefire",
@@ -35,13 +35,13 @@ const DASHBOARD_DATA = {
   // ── FINANCIAL KPIs — Market Signals Tab ─────────────────────────────────────
   // NOTE: Wednesday 18 Mar — Full market day. Brent spiked to $108.52 on South Pars attack. Gold crashed. Equities red. VIX bounced.
   kpis: {
-    brent:    { label: "Brent (ICE)",      price: 94.68, change: -0.11,   changePct: -0.12,  prevClose: 94.79, cssClass: "kpi-flat",   note: "▼ -0.1% · Ceasefire relief · Hormuz: Open" },
-    wti:      { label: "WTI (NYMEX)",      price: 90.65,  change: -0.63,   changePct: -0.69,  prevClose: 91.28,  cssClass: "kpi-down",   note: "▼ -0.7% · WTI premium persists (spread $4.03)" },
+    brent:    { label: "Brent (ICE)",      price: 94.41, change: -0.38,   changePct: -0.4,  prevClose: 94.79, cssClass: "kpi-down",   note: "▼ -0.4% · Ceasefire relief · Hormuz: Contested" },
+    wti:      { label: "WTI (NYMEX)",      price: 90.5,  change: -0.78,   changePct: -0.85,  prevClose: 91.28,  cssClass: "kpi-down",   note: "▼ -0.8% · WTI premium persists (spread $3.91)" },
     tnx:      { label: "US 10Y Yield",     price: 4.26,   change: -0.04,   changePct: -0.95,  prevClose: 4.3,   cssClass: "kpi-down", note: "4.26% · ▼ -0.9% · Yield steady amid ceasefire uncertainty", isPercent: true },
     vix:      { label: "VIX",              price: 18.36,  change: -0.76,   changePct: -3.97,  prevClose: 19.12,  cssClass: "kpi-down", note: "▼ -4.0% · Risk repricing on ceasefire fragility", noDollar: true },
     hyg:      { label: "HY Spread (HYG)",  price: 80.5,  change: 0.24,  changePct: 0.3, prevClose: 80.26,  cssClass: "kpi-flat", note: "▲ +0.3% · Credit steady — no stress signal" },
-    gold:     { label: "Gold Spot",        price: 4840.1,   change: -10,   changePct: -0.21, prevClose: 4850.1,   cssClass: "kpi-flat",   note: "▼ -0.2% · $4,840 · Safe-haven demand easing on ceasefire", formatComma: true },
-    brentWtiSpread: { label: "Brent–WTI Spread", price: 4.03, change: 0.52, changePct: 14.81, prevClose: 3.51, cssClass: "kpi-up", note: "Spread $4.03 · Spread normalizing", noDollar: false },
+    gold:     { label: "Gold Spot",        price: 4839.5,   change: -10.6,   changePct: -0.22, prevClose: 4850.1,   cssClass: "kpi-flat",   note: "▼ -0.2% · $4,840 · Safe-haven demand easing on ceasefire", formatComma: true },
+    brentWtiSpread: { label: "Brent–WTI Spread", price: 3.91, change: 0.4, changePct: 11.4, prevClose: 3.51, cssClass: "kpi-up", note: "Spread $3.91 · Spread normalizing", noDollar: false },
     ita:      { label: "ITA (Defense ETF)", price: 235.43, change: 2.62,   changePct: 1.13,  prevClose: 232.81, cssClass: "kpi-up", note: "▲ +1.1% · Defense sector — ceasefire fragility hedge" }
   },
 
@@ -49,8 +49,8 @@ const DASHBOARD_DATA = {
   marketStrip: [
     {
       label: 'Brent',
-      value: '$94.68',
-      delta: '-0.1%',
+      value: '$94.41',
+      delta: '-0.4%',
       color: '#ef4444'
     },
     {
@@ -67,7 +67,7 @@ const DASHBOARD_DATA = {
     },
     {
       label: 'Gold',
-      value: '$4,840.10',
+      value: '$4,839.50',
       delta: '-0.2%',
       color: '#ef4444'
     },
@@ -1938,23 +1938,23 @@ const DASHBOARD_DATA = {
   gistBanner: {
     bullets: [
       {
-        text: 'Iran agreed to ceasefire and reopening of Strait of Hormuz after 38 days of major combat operations ending around April 6, 2026.',
+        text: 'Operation Epic Fury launched Feb 28, 2026: ~900 US-Israeli strikes in 12 hours targeting Iranian military infrastructure and leadership; Supreme Leader Ali Khamenei assassinated',
+        color: 'red'
+      },
+      {
+        text: 'Iran retaliated with ~170 ballistic missiles against Israel, US bases, and Gulf states; closed Strait of Hormuz',
         color: 'yellow'
       },
       {
-        text: 'US achieved objectives: destroyed Iran\'s ballistic missile/drone capabilities, navy, and defense industrial base.',
-        color: 'yellow'
+        text: 'April 3: US F-15E Strike Eagle shot down over Iran; pilot rescued same day, WSO rescued 48 hours later',
+        color: 'red'
       },
       {
-        text: 'Over 13,000 targets struck, including 450 ballistic missile targets, 600 naval targets, and 1,450 defense/industrial targets.',
-        color: 'yellow'
+        text: 'Collapse of US-Iran negotiations in Islamabad around April 13, 2026, with Netanyahu revealing real-time US-Israel coordination via JD Vance call.',
+        color: 'red'
       },
       {
-        text: 'Second round of US-Iran negotiations could begin within days.',
-        color: 'yellow'
-      },
-      {
-        text: 'Vice President JD Vance met in Islamabad ahead of US-Iran talks.',
+        text: 'Iran blames US shift to Israeli interests; US attributes failure to Iranian violations.',
         color: 'yellow'
       }
     ],
@@ -1993,39 +1993,39 @@ const DASHBOARD_DATA = {
   // ── 2. NEWS-NOW CARDS ────────────────────────────────────────────────────────
   newsNow: [
     {
-      label: 'CEASEFIRE',
-      title: 'Iran agreed to ceasefire and reopening of Strait of Hormuz after 38 days of major combat o',
-      body: 'Iran agreed to ceasefire and reopening of Strait of Hormuz after 38 days of major combat operations ending around April 6, 2026.',
+      label: 'MILITARY',
+      title: 'Operation Epic Fury launched Feb 28, 2026: ~900 US-Israeli strikes in 12 hours targeting I',
+      body: 'Operation Epic Fury launched Feb 28, 2026: ~900 US-Israeli strikes in 12 hours targeting Iranian military infrastructure and leadership; Supreme Leader Ali Khamenei assassinated',
+      color: 'yellow'
+    },
+    {
+      label: 'HORMUZ',
+      title: 'Iran retaliated with ~170 ballistic missiles against Israel, US bases, and Gulf states; cl',
+      body: 'Iran retaliated with ~170 ballistic missiles against Israel, US bases, and Gulf states; closed Strait of Hormuz',
+      color: 'yellow'
+    },
+    {
+      label: 'MILITARY',
+      title: 'April 3: US F-15E Strike Eagle shot down over Iran; pilot rescued same day, WSO rescued 48',
+      body: 'April 3: US F-15E Strike Eagle shot down over Iran; pilot rescued same day, WSO rescued 48 hours later',
       color: 'yellow'
     },
     {
       label: 'CONFLICT',
-      title: 'US achieved objectives: destroyed Iran\'s ballistic missile/drone capabilities, navy, and d',
-      body: 'US achieved objectives: destroyed Iran\'s ballistic missile/drone capabilities, navy, and defense industrial base.',
-      color: 'yellow'
-    },
-    {
-      label: 'CONFLICT',
-      title: 'Over 13,000 targets struck, including 450 ballistic missile targets, 600 naval targets, an',
-      body: 'Over 13,000 targets struck, including 450 ballistic missile targets, 600 naval targets, and 1,450 defense/industrial targets.',
-      color: 'yellow'
-    },
-    {
-      label: 'CONFLICT',
-      title: 'Iran\'s navy obliterated: 150 warships sunk, all submarines sunk, 97% naval mines eliminate',
-      body: 'Iran\'s navy obliterated: 150 warships sunk, all submarines sunk, 97% naval mines eliminated.',
+      title: 'April 5: Second F-15E crew member recovered in rescue operation; A-10 shot down, two C-130',
+      body: 'April 5: Second F-15E crew member recovered in rescue operation; A-10 shot down, two C-130s destroyed',
       color: 'yellow'
     },
     {
       label: 'TALKS',
-      title: 'Second round of US-Iran negotiations could begin within days',
-      body: 'Second round of US-Iran negotiations could begin within days.',
+      title: 'Collapse of US-Iran negotiations in Islamabad around April 13, 2026, with Netanyahu reveal',
+      body: 'Collapse of US-Iran negotiations in Islamabad around April 13, 2026, with Netanyahu revealing real-time US-Israel coordination via JD Vance call.',
       color: 'yellow'
     },
     {
       label: 'TALKS',
-      title: 'Vice President JD Vance met in Islamabad ahead of US-Iran talks',
-      body: 'Vice President JD Vance met in Islamabad ahead of US-Iran talks.',
+      title: 'Iran blames US shift to Israeli interests; US attributes failure to Iranian violations',
+      body: 'Iran blames US shift to Israeli interests; US attributes failure to Iranian violations.',
       color: 'yellow'
     }
   ],
@@ -2037,27 +2037,20 @@ const DASHBOARD_DATA = {
       value: 'DAY 7 ✓',
       score: 7,
       scoreColor: '#f59e0b',
-      detail: 'fragile two-week ceasefire holding as of April 9, 2026'
+      detail: 'Negotiations ongoing; Trump claims conflict \'close to over\'; second round of talks could begin within days. Iran rejected initial 15-point US peace plan and conditioned ceasefire on inclusion of Leban'
     },
     {
       label: 'Diplomatic Engagement',
-      value: 'ACTIVE',
-      score: 6,
-      scoreColor: '#f59e0b',
-      detail: 'Second round of US-Iran negotiations could begin within days.'
-    },
-    {
-      label: 'Hormuz Passage',
-      value: 'OPEN',
-      score: 7,
-      scoreColor: '#22c55e',
-      detail: 'Strait status: open'
+      value: 'COLLAPSED',
+      score: 2,
+      scoreColor: '#ef4444',
+      detail: 'Collapse of US-Iran negotiations in Islamabad around April 13, 2026, with Netanyahu revealing real-time US-Israel coordination via JD Vance call.'
     },
     {
       label: 'Rhetoric Temperature',
-      value: 'COOLING',
-      score: 5,
-      scoreColor: '#f59e0b',
+      value: 'HOT',
+      score: 3,
+      scoreColor: '#ef4444',
       detail: 'Leadership rhetoric assessment'
     }
   ],
@@ -2155,53 +2148,53 @@ const DASHBOARD_DATA = {
   // ── 6. KEY TRIGGERS ──────────────────────────────────────────────────────────
   keyTriggers: [
     {
-      title: 'Iran agreed to ceasefire and reopening of Strait of Hormuz after 38 days of majo',
+      title: 'Operation Epic Fury launched Feb 28, 2026: ~900 US-Israeli strikes in 12 hours t',
       titleColor: '#f59e0b',
-      body: 'Iran agreed to ceasefire and reopening of Strait of Hormuz after 38 days of major combat operations ending around April 6, 2026.'
+      body: 'Operation Epic Fury launched Feb 28, 2026: ~900 US-Israeli strikes in 12 hours targeting Iranian military infrastructure and leadership; Supreme Leader Ali Khamenei assassinated'
     },
     {
-      title: 'US achieved objectives: destroyed Iran\'s ballistic missile/drone capabilities, n',
+      title: 'Iran retaliated with ~170 ballistic missiles against Israel, US bases, and Gulf ',
       titleColor: '#f59e0b',
-      body: 'US achieved objectives: destroyed Iran\'s ballistic missile/drone capabilities, navy, and defense industrial base.'
+      body: 'Iran retaliated with ~170 ballistic missiles against Israel, US bases, and Gulf states; closed Strait of Hormuz'
     },
     {
-      title: 'Over 13,000 targets struck, including 450 ballistic missile targets, 600 naval t',
+      title: 'April 3: US F-15E Strike Eagle shot down over Iran; pilot rescued same day, WSO ',
       titleColor: '#f59e0b',
-      body: 'Over 13,000 targets struck, including 450 ballistic missile targets, 600 naval targets, and 1,450 defense/industrial targets.'
+      body: 'April 3: US F-15E Strike Eagle shot down over Iran; pilot rescued same day, WSO rescued 48 hours later'
     },
     {
       title: 'Ceasefire Status (Day 47)',
       titleColor: '#f59e0b',
-      body: 'fragile two-week ceasefire holding as of April 9, 2026'
+      body: 'Negotiations ongoing; Trump claims conflict \'close to over\'; second round of talks could begin within days. Iran rejected initial 15-point US peace plan and conditioned ceasefire on inclusion of Lebanon/Hezbollah conflict.'
     },
     {
       title: 'Hormuz Passage',
       titleColor: '#22c55e',
-      body: 'Status: open. Daily transits: None.'
+      body: 'Status: contested. Daily transits: None.'
     }
   ],
 
   // ── 7. INTELLIGENCE TAB ──────────────────────────────────────────────────────
   intelligence: {
     diplomatic: {
-      badge: 'CEASEFIRE',
-      badgeColor: '#f59e0b',
+      badge: 'TALKS',
+      badgeColor: '#22c55e',
       sections: [
         {
           title: 'Diplomatic Status — Day 47',
-          body: 'fragile two-week ceasefire holding as of April 9, 2026'
+          items: ['Negotiations ongoing; Trump claims conflict \'close to over\'; second round of talks could begin within days. Iran rejected initial 15-point US peace plan and conditioned ceasefire on inclusion of Lebanon/Hezbollah conflict.']
         },
         {
-          title: 'Second round of US-Iran negotiations could begin within days',
-          body: 'Second round of US-Iran negotiations could begin within days.'
+          title: 'Collapse of US-Iran negotiations in Islamabad around April 13, 2026, with Netany',
+          items: ['Collapse of US-Iran negotiations in Islamabad around April 13, 2026, with Netanyahu revealing real-time US-Israel coordination via JD Vance call.']
         },
         {
-          title: 'Vice President JD Vance met in Islamabad ahead of US-Iran talks',
-          body: 'Vice President JD Vance met in Islamabad ahead of US-Iran talks.'
+          title: 'Iran blames US shift to Israeli interests; US attributes failure to Iranian viol',
+          items: ['Iran blames US shift to Israeli interests; US attributes failure to Iranian violations.']
         },
         {
-          title: 'King Charles to meet President Trump during US state visit to heal rift caused b',
-          body: 'King Charles to meet President Trump during US state visit to heal rift caused by Iran war.'
+          title: 'Upcoming King Charles state visit to US starting April 27, 2026, amid strained U',
+          items: ['Upcoming King Charles state visit to US starting April 27, 2026, amid strained US-UK ties over Iran war.']
         }
       ],
       sources: [
@@ -2224,8 +2217,8 @@ const DASHBOARD_DATA = {
       badgeColor: '#22c55e',
       sections: [
         {
-          title: 'February 28: US and Israel launched Operation Epic Fury with nearly 900 strikes ',
-          body: 'February 28: US and Israel launched Operation Epic Fury with nearly 900 strikes in 12 hours, killing Supreme Leader Ali Khamenei and dozens of officials; 170 civilians killed at girls\' school near Bandar Abbas'
+          title: 'Operation Epic Fury launched Feb 28, 2026: ~900 US-Israeli strikes in 12 hours t',
+          items: ['Operation Epic Fury launched Feb 28, 2026: ~900 US-Israeli strikes in 12 hours targeting Iranian military infrastructure and leadership; Supreme Leader Ali Khamenei assassinated']
         }
       ],
       sources: [
@@ -2244,16 +2237,12 @@ const DASHBOARD_DATA = {
       ]
     },
     energy: {
-      badge: 'OIL REBOUND $98',
-      badgeColor: '#f59e0b',
+      badge: 'CONTESTED',
+      badgeColor: '#22c55e',
       sections: [
         {
-          title: 'Oil Markets — Day 42',
-          items: ['Brent $98.22 (+3.7%) — rebounding from ceasefire crash. Still $11 below pre-ceasefire $109.', 'WTI $99.86 (+5.8%) — spread narrowing to -$1.64. Inversion fading.', 'HL BrentOIL $96.70 (+7.3%), OI $313M (down from $559M ATH). Massive deleverage.', 'Oil recovering NOT falling = markets pricing ceasefire fragility. Lebanon-linked Hormuz risk keeping floor at ~$95.', 'ME production cuts: 8.8 MMb/d unchanged. Ceasefire has NOT yet eased supply disruption.']
-        },
-        {
-          title: 'Hormuz & Supply',
-          items: ['Hormuz transits: 2-4/day (DOWN from 8/day D41). Iran briefly closed again over Lebanon strikes.', 'Pipeline bypass: Petroline ~5.5M bpd (easing from ~6.5M peak). ADCOP ~1.3M bpd (still elevated).', 'Supply normalization requires: (1) Lebanon de-escalation, (2) Stable Hormuz, (3) OPEC+ adjustment.', 'War-risk premiums: easing but not removed. Insurance rates for Hormuz transit still 5-8x pre-war.']
+          title: 'Energy & Shipping — Day 47',
+          items: ['Hormuz status: CONTESTED', 'Daily transits: N/A']
         }
       ],
       sources: [
@@ -2275,41 +2264,41 @@ const DASHBOARD_DATA = {
 
   // ── 8. NEXT 48H CATALYSTS ────────────────────────────────────────────────────
   next48h: {
-    badge: 'CEASEFIRE DAY 7',
+    badge: 'NEGOTIATIONS — OUTCOME PENDING',
     catalysts: [
       {
         rank: '1',
-        title: 'Iran agreed to ceasefire and reopening of Strait of Hormuz after 38 days of majo',
+        title: 'Operation Epic Fury launched Feb 28, 2026: ~900 US-Israeli strikes in 12 hours t',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: 'Iran agreed to ceasefire and reopening of Strait of Hormuz after 38 days of major combat operations ending around April 6, 2026.',
+        body: 'Operation Epic Fury launched Feb 28, 2026: ~900 US-Israeli strikes in 12 hours targeting Iranian military infrastructure and leadership; Supreme Leader Ali Khamenei assassinated',
         color: 'yellow'
       },
       {
         rank: '2',
-        title: 'US achieved objectives: destroyed Iran\'s ballistic missile/drone capabilities, n',
+        title: 'Iran retaliated with ~170 ballistic missiles against Israel, US bases, and Gulf ',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: 'US achieved objectives: destroyed Iran\'s ballistic missile/drone capabilities, navy, and defense industrial base.',
+        body: 'Iran retaliated with ~170 ballistic missiles against Israel, US bases, and Gulf states; closed Strait of Hormuz',
         color: 'yellow'
       },
       {
         rank: '3',
         title: 'Ceasefire Compliance',
         outcomeLabel: 'HOLD vs COLLAPSE',
-        body: 'fragile two-week ceasefire holding as of April 9, 2026',
+        body: 'Negotiations ongoing; Trump claims conflict \'close to over\'; second round of talks could begin within days. Iran rejected initial 15-point US peace plan and conditioned ceasefire on inclusion of Lebanon/Hezbollah conflict.',
         color: 'yellow'
       },
       {
         rank: '4',
         title: 'Hormuz Passage',
         outcomeLabel: 'OPEN vs BLOCKADE',
-        body: 'Current status: OPEN. Transits: None/day.',
+        body: 'Current status: CONTESTED. Transits: None/day.',
         color: 'green'
       },
       {
         rank: '5',
         title: 'Diplomatic Track',
         outcomeLabel: 'RESUME vs STALL',
-        body: 'Second round of US-Iran negotiations could begin within days.. Vice President JD Vance met in Islamabad ahead of US-Iran talks.',
+        body: 'Collapse of US-Iran negotiations in Islamabad around April 13, 2026, with Netanyahu revealing real-time US-Israel coordination via JD Vance call.. Iran blames US shift to Israeli interests; US attributes failure to Iranian violations.',
         color: 'yellow'
       }
     ]
@@ -2319,11 +2308,11 @@ const DASHBOARD_DATA = {
   rhetoricTracker: {
     sentiment: {
       label: 'RHETORIC TRACKER',
-      value: 'Mixed — cooling',
-      score: 50,
+      value: 'Escalatory — hot',
+      score: 60,
       scoreNote: 'Score 48/100 — mixed. Ceasefire-positive rhetoric on bilateral front (talks happening). Escalatory on Lebanon front (Netanyahu). Incompatible victory narratives from both sides.',
-      barWidth: '50%',
-      barColor: '#f59e0b',
+      barWidth: '60%',
+      barColor: '#ef4444',
       maxEscalation: 80,
       escalation: 38,
       mixed: 34,
@@ -3053,6 +3042,20 @@ const DASHBOARD_DATA = {
         text: 'Responded fast to US blockade by exploiting gaps in Washington\'s position; regime trying to avoid escalation as negotiators aim to restart Islamabad talks.',
         tag: 'IR',
         escalation: 8
+      },
+      {
+        date: 'March 29, 2026',
+        speaker: 'Trump',
+        text: 'Iran had agreed to most of the U.S. demands; threatened to destroy all of Iran\'s power plants, oil wells and desalination plants if a deal was not reached \'shortly\' and the Hormuz strait not reopened \'immediately\'.',
+        tag: 'US',
+        escalation: 8
+      },
+      {
+        date: 'April 14, 2026',
+        speaker: 'Trump',
+        text: 'Threatening Iran demanding it reopen the Strait of Hormuz or face massive destruction, warning entire infrastructure could be wiped out and civilizations disappearing overnight.',
+        tag: 'US',
+        escalation: 5
       }
     ],
     patterns: [
@@ -3199,8 +3202,15 @@ const DASHBOARD_DATA = {
 
   // ── 11. OPERATIONS ───────────────────────────────────────────────────────────
   operations: {
-    badge: 'CEASEFIRE · DAY 7',
+    badge: 'CEASEFIRE · DAY 7 — NEGOTIATIONS',
     kpis: [
+      {
+        label: 'Vessels Hit',
+        value: '2',
+        delta: 'Attacked/sunk',
+        note: 'Cumulative',
+        color: 'red'
+      },
       {
         label: 'Civilian Casualties',
         value: '170+',
@@ -3881,13 +3891,13 @@ const DASHBOARD_DATA = {
       steps: [
         {
           label: 'Oil Price Increase',
-          value: '+29.3%',
-          detail: '$94.68 vs $73.20 baseline',
+          value: '+29.0%',
+          detail: '$94.41 vs $73.20 baseline',
           color: '#f59e0b'
         },
         {
           label: 'Energy CPI Impact',
-          value: '+6.75%',
+          value: '+6.66%',
           detail: 'Fed passthrough coefficient: 0.23',
           color: '#f59e0b'
         },
@@ -3899,20 +3909,20 @@ const DASHBOARD_DATA = {
         },
         {
           label: 'With Second-Round',
-          value: '+0.75pp',
+          value: '+0.74pp',
           detail: '×1.27 multiplier + 0.15pp food',
           color: '#f59e0b'
         },
         {
           label: 'Estimated CPI',
-          value: '3.2%',
-          detail: '2.4% baseline + 0.75pp war premium',
+          value: '3.1%',
+          detail: '2.4% baseline + 0.74pp war premium',
           color: '#f59e0b'
         }
       ],
       result: {
-        headline: '~3.2%',
-        explanation: 'Brent at $94.68 (+29.3% vs pre-war baseline). Oil-to-CPI passthrough model estimates headline CPI at ~3.2% (war premium +0.75pp over 2.4% baseline).'
+        headline: '~3.1%',
+        explanation: 'Brent at $94.41 (+29.0% vs pre-war baseline). Oil-to-CPI passthrough model estimates headline CPI at ~3.1% (war premium +0.74pp over 2.4% baseline).'
       },
       methodology: 'Dallas Fed elasticity (10% oil → +0.23% energy CPI) × BLS energy weight (7%) × second-round multiplier (1.27) + food acceleration (0.15pp). Source: FEDS Notes 2024, Dallas Fed Working Paper 2023.'
     },
@@ -4045,7 +4055,7 @@ const DASHBOARD_DATA = {
       color: '#ef4444'
     },
     {
-      value: '13,000+',
+      value: '900+',
       label: 'Targets Struck (thru D40)',
       color: '#f59e0b'
     },
@@ -4079,9 +4089,9 @@ const DASHBOARD_DATA = {
       badge: 'CEASEFIRE DAY 7',
       asOf: '2026-04-10T05:42:00+08:00',
       day: 47,
-      tacoScore: 11,
+      tacoScore: 19,
       polyCeasefire: 100,
-      headline: 'Iran agreed to ceasefire and reopening of Strait of Hormuz after 38 days of major combat operations ending around April 6, 2026.'
+      headline: 'Operation Epic Fury launched Feb 28, 2026: ~900 US-Israeli strikes in 12 hours targeting Iranian military infrastructure and leadership; Supreme Leader Ali Khamenei assassinated'
     },
     usDemands: [
       {
