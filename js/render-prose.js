@@ -634,17 +634,25 @@
 
   // ── EXECUTE ALL ────────────────────────────────────────────────────────────
 
-  if (D.gistBanner) renderGistBanner();
-  if (D.newsNow) renderNewsNow();
-  if (D.analyticalSignals) renderAnalyticalSignals();
-  if (D.dLive) renderDLive();
-  if (D.analyticalOutlook) renderAnalyticalOutlook();
-  if (D.keyTriggers) renderKeyTriggers();
-  if (D.intelligence) renderIntelligence();
-  if (D.next48h) renderNext48h();
-  if (D.rhetoricTracker) renderRhetoricTracker();
-  if (D.hyperliquid) renderHyperliquid();
-  if (D.marketSignals) renderMarketSignals();
-  if (D.operations) renderOperationsNarrative();
+  // Wrap each render call so one failure doesn't kill everything downstream
+  var renderers = [
+    ['gistBanner', renderGistBanner],
+    ['newsNow', renderNewsNow],
+    ['analyticalSignals', renderAnalyticalSignals],
+    ['dLive', renderDLive],
+    ['analyticalOutlook', renderAnalyticalOutlook],
+    ['keyTriggers', renderKeyTriggers],
+    ['intelligence', renderIntelligence],
+    ['next48h', renderNext48h],
+    ['rhetoricTracker', renderRhetoricTracker],
+    ['hyperliquid', renderHyperliquid],
+    ['marketSignals', renderMarketSignals],
+    ['operations', renderOperationsNarrative]
+  ];
+  renderers.forEach(function(r) {
+    if (D[r[0]]) {
+      try { r[1](); } catch(e) { console.error('render ' + r[0] + ':', e); }
+    }
+  });
 
 })();

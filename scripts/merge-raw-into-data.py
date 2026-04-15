@@ -920,12 +920,13 @@ def update_intelligence(data: dict, raw_intel: dict, raw_rhetoric: dict,
             sections = []
             sections.append({
                 "title": f"Diplomatic Status — Day {day}",
-                "body": cf if cf else "Status unknown"
+                "items": [cf if cf else "Status unknown"]
             })
             for dev in diplo_devs[:3]:
+                dev_s = str(dev)
                 sections.append({
-                    "title": str(dev).split(".")[0][:80] if "." in str(dev) else str(dev)[:80],
-                    "body": str(dev)
+                    "title": dev_s.split(".")[0][:80] if "." in dev_s else dev_s[:80],
+                    "items": [dev_s]
                 })
             intl["diplomatic"]["sections"] = sections
         updates.append("intelligence.diplomatic updated")
@@ -937,32 +938,39 @@ def update_intelligence(data: dict, raw_intel: dict, raw_rhetoric: dict,
         kia = intel_data.get("us_military_kia")
         sections = []
         if us_strikes is not None:
+            stats = []
+            stats.append(f"US strikes cumulative: {us_strikes:,}")
+            stats.append(f"US KIA: {kia or 'N/A'}")
+            if troops:
+                stats.append(f"Troops deployed: {troops:,}+")
             sections.append({
                 "title": f"Conflict Statistics — Day {day}",
-                "body": f"US strikes cumulative: {us_strikes:,}. US KIA: {kia or 'N/A'}. "
-                        f"Troops deployed: {troops:,}+" if troops else f"US strikes: {us_strikes:,}. KIA: {kia}."
+                "items": stats
             })
         key_devs = intel_data.get("key_developments", [])
         if isinstance(key_devs, list):
             for dev in key_devs[:2]:
                 dev_s = str(dev)
                 if any(w in dev_s.lower() for w in ("military", "strike", "attack", "force", "troop")):
-                    sections.append({"title": dev_s.split(".")[0][:80], "body": dev_s})
+                    sections.append({"title": dev_s.split(".")[0][:80], "items": [dev_s]})
         if sections:
             intl["military"]["sections"] = sections
             intl["military"]["badge"] = "CEASEFIRE" if "ceasefire" in cf_lower else "ACTIVE"
             intl["military"]["badgeColor"] = "#22c55e" if "ceasefire" in cf_lower else "#ef4444"
         updates.append("intelligence.military updated")
 
-    # Hormuz column
-    if "hormuz" in intl:
-        intl["hormuz"]["badge"] = hz.upper() if hz else "UNKNOWN"
-        intl["hormuz"]["badgeColor"] = "#ef4444" if "blockade" in hz.lower() else "#22c55e"
+    # Energy / Hormuz column (frontend key = "energy")
+    if "energy" in intl:
+        intl["energy"]["badge"] = hz.upper() if hz else "UNKNOWN"
+        intl["energy"]["badgeColor"] = "#ef4444" if "blockade" in hz.lower() else "#22c55e"
         transits = intel_data.get("hormuz_daily_vessel_transits")
-        sections = [{"title": f"Hormuz Status — Day {day}",
-                     "body": f"Status: {hz}. Daily transits: {transits or 'N/A'}."}]
-        intl["hormuz"]["sections"] = sections
-        updates.append("intelligence.hormuz updated")
+        bca_oil = bca.get("oil_supply_disruption_bpd") or bca.get("brent_note")
+        items = [f"Hormuz status: {hz}", f"Daily transits: {transits or 'N/A'}"]
+        if bca_oil:
+            items.append(str(bca_oil))
+        sections = [{"title": f"Energy & Shipping — Day {day}", "items": items}]
+        intl["energy"]["sections"] = sections
+        updates.append("intelligence.energy updated")
 
     return updates
 
