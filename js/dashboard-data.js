@@ -13,15 +13,15 @@ const DASHBOARD_DATA = {
   meta: {
     version: "4.0.0",
     timestamp: "15 Apr 2026 11:15 HKT",
-    day: 46,
+    day: 47,
     dayDate: "13 APR 2026",
     threatLevel: "ELEVATED",
     threatClass: "threat-orange",
-    tacoScore: 12,
+    tacoScore: 14,
     tacoMax: 100,
     tacoPrev: 18,
     tacoPrevDay: 42,
-    tacoRegime: "BRENT $95.14",
+    tacoRegime: "BRENT $95.34",
     tacoRegimeLabel: "CEASEFIRE DAY 5: Vance 21-hour marathon talks in Islamabad END WITHOUT DEAL. Trump: 'We've won — whether we make a deal makes no difference.' US announces naval blockade of Hormuz. Mojtaba Khamenei breaks silence, vows revenge for father's assassination. Netanyahu rules out Lebanon ceasefire. Brent $101.53 (+6.7%). WTI $104.17 (+7.9%). VIX 19.23 (-1.3%). Gold $4,737 (-1.1%). CPI surges to 3.3% (gasoline +21.2%). Ceasefire nominally holds but diplomatic path severely damaged.",
     tacoRegimeColor: "#ef4444",
     tacoPhase: "ceasefire",
@@ -35,13 +35,13 @@ const DASHBOARD_DATA = {
   // ── FINANCIAL KPIs — Market Signals Tab ─────────────────────────────────────
   // NOTE: Wednesday 18 Mar — Full market day. Brent spiked to $108.52 on South Pars attack. Gold crashed. Equities red. VIX bounced.
   kpis: {
-    brent:    { label: "Brent (ICE)",      price: 95.14, change: 0.35,   changePct: 0.37,  prevClose: 94.79, cssClass: "kpi-up",   note: "▲ +0.4% · Ceasefire relief · Hormuz: Open" },
-    wti:      { label: "WTI (NYMEX)",      price: 91.31,  change: 0.03,   changePct: 0.03,  prevClose: 91.28,  cssClass: "kpi-flat",   note: "▲ +0.0% · WTI premium persists (spread $3.83)" },
+    brent:    { label: "Brent (ICE)",      price: 95.34, change: 0.55,   changePct: 0.58,  prevClose: 94.79, cssClass: "kpi-up",   note: "▲ +0.6% · Ceasefire relief · Hormuz: Contested" },
+    wti:      { label: "WTI (NYMEX)",      price: 91.34,  change: 0.06,   changePct: 0.07,  prevClose: 91.28,  cssClass: "kpi-flat",   note: "▲ +0.1% · WTI premium persists (spread $4.00)" },
     tnx:      { label: "US 10Y Yield",     price: 4.26,   change: -0.04,   changePct: -0.91,  prevClose: 4.3,   cssClass: "kpi-down", note: "4.26% · ▼ -0.9% · Yield steady amid ceasefire uncertainty", isPercent: true },
     vix:      { label: "VIX",              price: 18.36,  change: -0.76,   changePct: -3.97,  prevClose: 19.12,  cssClass: "kpi-down", note: "▼ -4.0% · Risk repricing on ceasefire fragility", noDollar: true },
     hyg:      { label: "HY Spread (HYG)",  price: 80.5,  change: 0.24,  changePct: 0.3, prevClose: 80.26,  cssClass: "kpi-flat", note: "▲ +0.3% · Credit steady — no stress signal" },
-    gold:     { label: "Gold Spot",        price: 4842.1,   change: -8,   changePct: -0.16, prevClose: 4850.1,   cssClass: "kpi-flat",   note: "▼ -0.2% · $4,842 · Safe-haven demand easing on ceasefire", formatComma: true },
-    brentWtiSpread: { label: "Brent–WTI Spread", price: 3.83, change: 0.32, changePct: 9.12, prevClose: 3.51, cssClass: "kpi-up", note: "Spread $3.83 · Spread normalizing", noDollar: false },
+    gold:     { label: "Gold Spot",        price: 4844.7,   change: -5.4,   changePct: -0.11, prevClose: 4850.1,   cssClass: "kpi-flat",   note: "▼ -0.1% · $4,845 · Safe-haven demand easing on ceasefire", formatComma: true },
+    brentWtiSpread: { label: "Brent–WTI Spread", price: 4.0, change: 0.49, changePct: 13.96, prevClose: 3.51, cssClass: "kpi-up", note: "Spread $4.00 · Spread normalizing", noDollar: false },
     ita:      { label: "ITA (Defense ETF)", price: 235.43, change: 2.62,   changePct: 1.13,  prevClose: 232.81, cssClass: "kpi-up", note: "▲ +1.1% · Defense sector — ceasefire fragility hedge" }
   },
 
@@ -49,8 +49,8 @@ const DASHBOARD_DATA = {
   marketStrip: [
     {
       label: 'Brent',
-      value: '$95.14',
-      delta: '+0.4%',
+      value: '$95.34',
+      delta: '+0.6%',
       color: '#22c55e'
     },
     {
@@ -67,8 +67,8 @@ const DASHBOARD_DATA = {
     },
     {
       label: 'Gold',
-      value: '$4,842.10',
-      delta: '-0.2%',
+      value: '$4,844.70',
+      delta: '-0.1%',
       color: '#ef4444'
     },
     {
@@ -950,19 +950,19 @@ const DASHBOARD_DATA = {
 
   // ── CHART DATA (consolidates data.js + charts.js hardcoded data) ───────────
   chartData: {
-    labels: ['Feb 28', 'Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14', 'Mar 15', 'Mar 16', 'Mar 17', 'Mar 18', 'Mar 19', 'Mar 20', 'Mar 21', 'Mar 23', 'Mar 24', 'Mar 25', 'Mar 26', 'Mar 27', 'Mar 30', 'Mar 31', 'Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9', 'Apr 10', 'Apr 11', 'Apr 12', 'Apr 13', 'Apr 13', 'Apr 14', 'Apr 14'],
-    brent: [73.2, 80.1, 86.4, 91.7, 94.3, 89.5, 88.0, 91.2, 94.0, 95.4, 90.3, 91.98, 95.8, 100.46, 103.14, 103.14, 106.11, 101.6, 108.52, 116.45, 106.93, 112.89, 101.34, 103.5, 100.59, 105.61, 109.97, 107.9, 107.6, 101.22, 109.37, 109.03, 109.03, 109.03, 108.28, 110.47, 102.5, 95.02, 96.06, 96.06, 96.06, 101.53, 97.8, 95.87, 95.14],
-    vix: [22.1, 26.4, 28.9, 30.2, 31.8, 30.1, 29.4, 28.7, 27.6, 26.9, 25.8, 24.93, 25.72, 27.29, 27.19, 27.19, 26.13, 22.24, 23.23, 25.93, 24.82, 26.78, 24.48, 26.77, 25.25, 27.15, 28.63, 30.51, 28.62, 24.23, 27.72, 23.87, 23.87, 23.87, 23.88, 25.71, 21.5, 21.23, 19.31, 19.31, 19.31, 19.23, 19.12, 18, 18.36],
-    hyg: [80.0, 79.1, 78.3, 77.8, 77.4, 77.8, 78.1, 78.5, 79.0, 79.3, 79.6, 80.1, 79.9, 79.36, 79.2, 79.2, 79.2, 79.75, 79.68, 79.4, 79.66, 78.92, 79.53, 79.19, 79.52, 79.42, 78.9, 78.72, 78.82, 79.56, 79.37, 79.56, 79.56, 79.56, 79.63, 79.55, 79.9, 80.14, 80.28, 80.28, 80.28, 79.96, 80.26, 80.43, 80.5],
-    sp500: [6050, 5940, 5870, 5820, 5790, 5810, 5840, 5870, 5910, 6100, 6250, 6310, 6781, 6672, 6632, 6632, 6632, 6734.51, 6682.77, 6624.7, 6606.49, 6506.48, 6631.26, 6546.85, 6605.87, 6591.9, 6477.26, 6368.85, 6343.72, 6528.52, 6575.32, 6582.69, 6582.69, 6582.69, 6608.75, 6578.67, 6720.0, 6779.38, 6824.66, 6824.66, 6824.66, 6816.89, 6886.24, 6934.41, 6966.78],
-    taco: [45, 40, 35, 30, 26, 22, 18, 15, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 6, 7, 8, 7, 7, 7, 8, 12, 9, 10, 8, 7, 9, 6, 15, 18, 18, 15, 12, 12, 12],
-    strikeLabels: ['28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr'],
+    labels: ['Feb 28', 'Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14', 'Mar 15', 'Mar 16', 'Mar 17', 'Mar 18', 'Mar 19', 'Mar 20', 'Mar 21', 'Mar 23', 'Mar 24', 'Mar 25', 'Mar 26', 'Mar 27', 'Mar 30', 'Mar 31', 'Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9', 'Apr 10', 'Apr 11', 'Apr 12', 'Apr 13', 'Apr 13', 'Apr 14', 'Apr 14', 'Apr 15'],
+    brent: [73.2, 80.1, 86.4, 91.7, 94.3, 89.5, 88.0, 91.2, 94.0, 95.4, 90.3, 91.98, 95.8, 100.46, 103.14, 103.14, 106.11, 101.6, 108.52, 116.45, 106.93, 112.89, 101.34, 103.5, 100.59, 105.61, 109.97, 107.9, 107.6, 101.22, 109.37, 109.03, 109.03, 109.03, 108.28, 110.47, 102.5, 95.02, 96.06, 96.06, 96.06, 101.53, 97.8, 95.87, 95.14, 95.34],
+    vix: [22.1, 26.4, 28.9, 30.2, 31.8, 30.1, 29.4, 28.7, 27.6, 26.9, 25.8, 24.93, 25.72, 27.29, 27.19, 27.19, 26.13, 22.24, 23.23, 25.93, 24.82, 26.78, 24.48, 26.77, 25.25, 27.15, 28.63, 30.51, 28.62, 24.23, 27.72, 23.87, 23.87, 23.87, 23.88, 25.71, 21.5, 21.23, 19.31, 19.31, 19.31, 19.23, 19.12, 18, 18.36, 18.36],
+    hyg: [80.0, 79.1, 78.3, 77.8, 77.4, 77.8, 78.1, 78.5, 79.0, 79.3, 79.6, 80.1, 79.9, 79.36, 79.2, 79.2, 79.2, 79.75, 79.68, 79.4, 79.66, 78.92, 79.53, 79.19, 79.52, 79.42, 78.9, 78.72, 78.82, 79.56, 79.37, 79.56, 79.56, 79.56, 79.63, 79.55, 79.9, 80.14, 80.28, 80.28, 80.28, 79.96, 80.26, 80.43, 80.5, 80.5],
+    sp500: [6050, 5940, 5870, 5820, 5790, 5810, 5840, 5870, 5910, 6100, 6250, 6310, 6781, 6672, 6632, 6632, 6632, 6734.51, 6682.77, 6624.7, 6606.49, 6506.48, 6631.26, 6546.85, 6605.87, 6591.9, 6477.26, 6368.85, 6343.72, 6528.52, 6575.32, 6582.69, 6582.69, 6582.69, 6608.75, 6578.67, 6720.0, 6779.38, 6824.66, 6824.66, 6824.66, 6816.89, 6886.24, 6934.41, 6966.78, 6966.78],
+    taco: [45, 40, 35, 30, 26, 22, 18, 15, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 6, 7, 8, 7, 7, 7, 8, 12, 9, 10, 8, 7, 9, 6, 15, 18, 18, 15, 12, 12, 12, 14],
+    strikeLabels: ['28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr'],
     strikes: {
-      us: [500, 600, 550, 450, 400, 420, 380, 500, 480, 450, 430, 420, 490, 520, 600, 580, 620, 290, 480, 510, 500, 520, 530, 540, 550, 550, 580, 600, 580, 560, 500, 520, 480, 500, 510, 550, 600, 100, 0, 0, 0, 0, 0, 0],
+      us: [500, 600, 550, 450, 400, 420, 380, 500, 480, 450, 430, 420, 490, 520, 600, 580, 620, 290, 480, 510, 500, 520, 530, 540, 550, 550, 580, 600, 580, 560, 500, 520, 480, 500, 510, 550, 600, 100, 0, 0, 0, 0, 0, 0, 0],
       iran: [200, 150, 100, 60, 40, 30, 25, 35, 30, 25, 20, 18, 35, 40, 38, 42, 45, 30, 35, 40, 50, 55, 65, 60, 55, 70, 75, 70, 65, 60, 50, 55, 50, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     },
-    hormuzLabels: ['26 Feb', '27 Feb', '28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '26 Mar', '27 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr'],
-    hormuzTransits: [24, 24, 37, 4, 6, 5, 3, 4, 5, 5, 5, 5, 5, 2, 0, 1, 1, 1, 0, 4, 5, 4, 3, 2, 2, 2, 0, 6, 6, 8, 3, 4, 4, 5, 6, 5, 1, 4, 4, 3, 2, 5, 8, 4, 5, 5, 2, 4],
+    hormuzLabels: ['26 Feb', '27 Feb', '28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '26 Mar', '27 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr'],
+    hormuzTransits: [24, 24, 37, 4, 6, 5, 3, 4, 5, 5, 5, 5, 5, 2, 0, 1, 1, 1, 0, 4, 5, 4, 3, 2, 2, 2, 0, 6, 6, 8, 3, 4, 4, 5, 6, 5, 1, 4, 4, 3, 2, 5, 8, 4, 5, 5, 2, 4, 4],
     etfs: {
       ITA: {
         prices: [215, 218, 222, 226, 229, 227, 230, 233, 235, 237, 234, 236, 239, 241, 243, 243, 243, 229, 231, 230, 227, 223, 226, 221, 226, 226, 228, 216, 211, 219, 224, 222, 222, 222, 223, 223, 235, 232, 232, 232, 230, 233]
@@ -1930,23 +1930,23 @@ const DASHBOARD_DATA = {
   gistBanner: {
     bullets: [
       {
-        text: 'Operation Epic Fury commenced on Feb 28, 2026, with US and Israeli strikes on Iranian targets.',
-        color: 'red'
-      },
-      {
-        text: 'Iranian Supreme Leader Ali Khamenei killed in initial strikes.',
-        color: 'red'
-      },
-      {
-        text: 'Over 13,000 US strikes on Iranian military targets, including missiles, navy, and industrial base.',
-        color: 'red'
-      },
-      {
-        text: 'US and Iran weighing another round of peace talks in Pakistan to extend two-week ceasefire before April 21 expiry.',
+        text: 'Two-week ceasefire announced April 7 but at risk of failure with no US force withdrawals[2]',
         color: 'yellow'
       },
       {
-        text: 'US and Iran traded nuclear proposals: US seeks 20-year moratorium, Iran proposes five-year suspension.',
+        text: 'US naval blockade of Iranian ports and Strait of Hormuz effective April 13[4][6]',
+        color: 'red'
+      },
+      {
+        text: 'US-Iran peace talks ended in deadlock in Pakistan[4][6]',
+        color: 'yellow'
+      },
+      {
+        text: 'Negotiations between U.S. and Iran in Islamabad collapsed on April 12, 2026',
+        color: 'red'
+      },
+      {
+        text: 'Trump imposed naval blockade on Iranian ports effective April 13, 2026',
         color: 'red'
       }
     ],
@@ -1985,39 +1985,39 @@ const DASHBOARD_DATA = {
   // ── 2. NEWS-NOW CARDS ────────────────────────────────────────────────────────
   newsNow: [
     {
-      label: 'MILITARY',
-      title: 'Operation Epic Fury commenced on Feb 28, 2026, with US and Israeli strikes on Iranian targ',
-      body: 'Operation Epic Fury commenced on Feb 28, 2026, with US and Israeli strikes on Iranian targets.',
+      label: 'CEASEFIRE',
+      title: 'Two-week ceasefire announced April 7 but at risk of failure with no US force withdrawals[2',
+      body: 'Two-week ceasefire announced April 7 but at risk of failure with no US force withdrawals[2]',
+      color: 'red'
+    },
+    {
+      label: 'HORMUZ',
+      title: 'US naval blockade of Iranian ports and Strait of Hormuz effective April 13[4][6]',
+      body: 'US naval blockade of Iranian ports and Strait of Hormuz effective April 13[4][6]',
+      color: 'red'
+    },
+    {
+      label: 'TALKS',
+      title: 'US-Iran peace talks ended in deadlock in Pakistan[4][6]',
+      body: 'US-Iran peace talks ended in deadlock in Pakistan[4][6]',
       color: 'yellow'
     },
     {
-      label: 'MILITARY',
-      title: 'Iranian Supreme Leader Ali Khamenei killed in initial strikes',
-      body: 'Iranian Supreme Leader Ali Khamenei killed in initial strikes.',
-      color: 'yellow'
-    },
-    {
-      label: 'MILITARY',
-      title: 'Over 13,000 US strikes on Iranian military targets, including missiles, navy, and industri',
-      body: 'Over 13,000 US strikes on Iranian military targets, including missiles, navy, and industrial base.',
-      color: 'yellow'
-    },
-    {
-      label: 'MILITARY',
-      title: 'Pentagon declared military victory on Apr 8, 2026, after 38 days',
-      body: 'Pentagon declared military victory on Apr 8, 2026, after 38 days.',
+      label: 'CONFLICT',
+      title: 'Two US carriers deployed (Lincoln, Ford), third (Bush) en route as of April 10[2]',
+      body: 'Two US carriers deployed (Lincoln, Ford), third (Bush) en route as of April 10[2]',
       color: 'yellow'
     },
     {
       label: 'TALKS',
-      title: 'US and Iran weighing another round of peace talks in Pakistan to extend two-week ceasefire',
-      body: 'US and Iran weighing another round of peace talks in Pakistan to extend two-week ceasefire before April 21 expiry.',
+      title: 'Negotiations between U',
+      body: 'Negotiations between U.S. and Iran in Islamabad collapsed on April 12, 2026',
       color: 'yellow'
     },
     {
       label: 'TALKS',
-      title: 'US and Iran traded nuclear proposals: US seeks 20-year moratorium, Iran proposes five-year',
-      body: 'US and Iran traded nuclear proposals: US seeks 20-year moratorium, Iran proposes five-year suspension.',
+      title: 'Trump imposed naval blockade on Iranian ports effective April 13, 2026',
+      body: 'Trump imposed naval blockade on Iranian ports effective April 13, 2026',
       color: 'yellow'
     }
   ],
@@ -2029,20 +2029,13 @@ const DASHBOARD_DATA = {
       value: 'COLLAPSED',
       score: 2,
       scoreColor: '#ef4444',
-      detail: 'US and Iran weighing another round of peace talks in Pakistan to extend two-week ceasefire before April 21 expiry.'
-    },
-    {
-      label: 'Hormuz Passage',
-      value: 'OPEN',
-      score: 7,
-      scoreColor: '#22c55e',
-      detail: 'Strait status: open'
+      detail: 'Negotiations between U.S. and Iran in Islamabad collapsed on April 12, 2026'
     },
     {
       label: 'Rhetoric Temperature',
-      value: 'WARM',
-      score: 5,
-      scoreColor: '#f59e0b',
+      value: 'HOT',
+      score: 3,
+      scoreColor: '#ef4444',
       detail: 'Leadership rhetoric assessment'
     }
   ],
@@ -2304,11 +2297,11 @@ const DASHBOARD_DATA = {
   rhetoricTracker: {
     sentiment: {
       label: 'RHETORIC TRACKER',
-      value: 'Mixed — warm',
-      score: 40,
+      value: 'Escalatory — hot',
+      score: 60,
       scoreNote: 'Score 48/100 — mixed. Ceasefire-positive rhetoric on bilateral front (talks happening). Escalatory on Lebanon front (Netanyahu). Incompatible victory narratives from both sides.',
-      barWidth: '40%',
-      barColor: '#f59e0b',
+      barWidth: '60%',
+      barColor: '#ef4444',
       maxEscalation: 80,
       escalation: 38,
       mixed: 34,
@@ -2912,6 +2905,41 @@ const DASHBOARD_DATA = {
         text: 'Indicated that the Iranian side would be willing to continue with discussions so long as they were done within the negotiating framework.',
         tag: 'IR',
         escalation: 5
+      },
+      {
+        date: 'April 13, 2026',
+        speaker: 'Trump',
+        text: 'Trump imposed a naval blockade on Iranian ports following failed talks in Pakistan. Trump claimed that \'other countries\' are offering to help with the blockade.',
+        tag: 'US',
+        escalation: 8
+      },
+      {
+        date: 'April 1, 2026',
+        speaker: 'Trump',
+        text: 'Trump stated the U.S. would consider a ceasefire only once the Strait of Hormuz was \'open, free, and clear.\' He added: \'Until then, we are blasting Iran into oblivion or, as they say, back to the Stone Ages!\'',
+        tag: 'US',
+        escalation: 5
+      },
+      {
+        date: 'Post-Islamabad talks (April 12-14, 2026)',
+        speaker: 'Trump',
+        text: 'Trump said that he \'doesn\'t care\' about negotiations with Iran.',
+        tag: 'US',
+        escalation: 5
+      },
+      {
+        date: 'April 12, 2026',
+        speaker: 'Seyed Mohammad Marandi',
+        text: 'Negotiations have collapsed as expected. The United States was behaving with \'arrogance and without any regard for sovereignty.\' U.S. rhetoric threatening to kill negotiators and political leadership is pressure to force Iran to accept America\'s term',
+        tag: 'IR',
+        escalation: 8
+      },
+      {
+        date: 'May 10, 2025 (historical context)',
+        speaker: 'Supreme Leader Ali Khamenei',
+        text: 'Khamenei supported chants of \'death to America\' during a speech.',
+        tag: 'IR',
+        escalation: 5
       }
     ],
     patterns: [
@@ -3058,27 +3086,13 @@ const DASHBOARD_DATA = {
 
   // ── 11. OPERATIONS ───────────────────────────────────────────────────────────
   operations: {
-    badge: 'CEASEFIRE · DAY 5 — TALKS COLLAPSED · NAVAL BLOCKADE',
+    badge: 'NEGOTIATIONS',
     kpis: [
       {
-        label: 'US Strikes D46',
-        value: '0',
-        delta: 'ZERO — ceasefire',
-        note: 'Cumulative: 13,000',
-        color: 'green'
-      },
-      {
-        label: 'US Troops',
-        value: '50,000+',
-        delta: 'Forward deployed',
-        note: 'CENTCOM',
-        color: 'yellow'
-      },
-      {
-        label: 'US KIA',
-        value: '13',
-        delta: '',
-        note: 'Through D46',
+        label: 'Civilian Casualties',
+        value: '170+',
+        delta: 'Reported',
+        note: 'Through D47',
         color: 'red'
       }
     ],
@@ -3754,38 +3768,38 @@ const DASHBOARD_DATA = {
       steps: [
         {
           label: 'Oil Price Increase',
-          value: '+30.0%',
-          detail: '$95.14 vs $73.20 baseline',
+          value: '+30.2%',
+          detail: '$95.34 vs $73.20 baseline',
           color: '#f59e0b'
         },
         {
           label: 'Energy CPI Impact',
-          value: '+6.89%',
+          value: '+6.96%',
           detail: 'Fed passthrough coefficient: 0.23',
           color: '#f59e0b'
         },
         {
           label: 'Headline Direct',
-          value: '+0.48pp',
+          value: '+0.49pp',
           detail: 'BLS energy weight: 7%',
           color: '#f59e0b'
         },
         {
           label: 'With Second-Round',
-          value: '+0.76pp',
+          value: '+0.77pp',
           detail: '×1.27 multiplier + 0.15pp food',
           color: '#f59e0b'
         },
         {
           label: 'Estimated CPI',
           value: '3.2%',
-          detail: '2.4% baseline + 0.76pp war premium',
+          detail: '2.4% baseline + 0.77pp war premium',
           color: '#f59e0b'
         }
       ],
       result: {
         headline: '~3.2%',
-        explanation: 'Brent at $95.14 (+30.0% vs pre-war baseline). Oil-to-CPI passthrough model estimates headline CPI at ~3.2% (war premium +0.76pp over 2.4% baseline).'
+        explanation: 'Brent at $95.34 (+30.2% vs pre-war baseline). Oil-to-CPI passthrough model estimates headline CPI at ~3.2% (war premium +0.77pp over 2.4% baseline).'
       },
       methodology: 'Dallas Fed elasticity (10% oil → +0.23% energy CPI) × BLS energy weight (7%) × second-round multiplier (1.27) + food acceleration (0.15pp). Source: FEDS Notes 2024, Dallas Fed Working Paper 2023.'
     },
