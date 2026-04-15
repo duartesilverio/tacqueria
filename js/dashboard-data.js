@@ -12,16 +12,16 @@ const DASHBOARD_DATA = {
   // ── META ────────────────────────────────────────────────────────────────────
   meta: {
     version: "4.0.0",
-    timestamp: "15 Apr 2026 18:05 HKT",
+    timestamp: "15 Apr 2026 22:09 HKT",
     day: 47,
     dayDate: "13 APR 2026",
     threatLevel: "ELEVATED",
     threatClass: "threat-orange",
-    tacoScore: 11,
+    tacoScore: 8,
     tacoMax: 100,
     tacoPrev: 18,
     tacoPrevDay: 42,
-    tacoRegime: "BRENT $95.96",
+    tacoRegime: "BRENT $94.62",
     tacoRegimeLabel: "CEASEFIRE DAY 5: Vance 21-hour marathon talks in Islamabad END WITHOUT DEAL. Trump: 'We've won — whether we make a deal makes no difference.' US announces naval blockade of Hormuz. Mojtaba Khamenei breaks silence, vows revenge for father's assassination. Netanyahu rules out Lebanon ceasefire. Brent $101.53 (+6.7%). WTI $104.17 (+7.9%). VIX 19.23 (-1.3%). Gold $4,737 (-1.1%). CPI surges to 3.3% (gasoline +21.2%). Ceasefire nominally holds but diplomatic path severely damaged.",
     tacoRegimeColor: "#ef4444",
     tacoPhase: "ceasefire",
@@ -35,53 +35,53 @@ const DASHBOARD_DATA = {
   // ── FINANCIAL KPIs — Market Signals Tab ─────────────────────────────────────
   // NOTE: Wednesday 18 Mar — Full market day. Brent spiked to $108.52 on South Pars attack. Gold crashed. Equities red. VIX bounced.
   kpis: {
-    brent:    { label: "Brent (ICE)",      price: 95.96, change: 1.17,   changePct: 1.23,  prevClose: 94.79, cssClass: "kpi-up",   note: "▲ +1.2% · Ceasefire relief · Hormuz: Open" },
-    wti:      { label: "WTI (NYMEX)",      price: 92.12,  change: 0.84,   changePct: 0.92,  prevClose: 91.28,  cssClass: "kpi-up",   note: "▲ +0.9% · WTI premium persists (spread $3.84)" },
-    tnx:      { label: "US 10Y Yield",     price: 4.26,   change: -0.04,   changePct: -0.95,  prevClose: 4.3,   cssClass: "kpi-down", note: "4.26% · ▼ -0.9% · Yield steady amid ceasefire uncertainty", isPercent: true },
-    vix:      { label: "VIX",              price: 18.27,  change: -0.09,   changePct: -0.49,  prevClose: 18.36,  cssClass: "kpi-down", note: "▼ -0.5% · Low vol — ceasefire risk priced in", noDollar: true },
-    hyg:      { label: "HY Spread (HYG)",  price: 80.5,  change: 0.24,  changePct: 0.3, prevClose: 80.26,  cssClass: "kpi-flat", note: "▲ +0.3% · Credit steady — no stress signal" },
-    gold:     { label: "Gold Spot",        price: 4820.2,   change: -29.9,   changePct: -0.62, prevClose: 4850.1,   cssClass: "kpi-down",   note: "▼ -0.6% · $4,820 · Safe-haven demand easing on ceasefire", formatComma: true },
-    brentWtiSpread: { label: "Brent–WTI Spread", price: 3.84, change: 0.33, changePct: 9.4, prevClose: 3.51, cssClass: "kpi-up", note: "Spread $3.84 · Spread normalizing", noDollar: false },
-    ita:      { label: "ITA (Defense ETF)", price: 235.43, change: 2.62,   changePct: 1.13,  prevClose: 232.81, cssClass: "kpi-up", note: "▲ +1.1% · Defense sector — ceasefire fragility hedge" }
+    brent:    { label: "Brent (ICE)",      price: 94.62, change: -0.17,   changePct: -0.18,  prevClose: 94.79, cssClass: "kpi-flat",   note: "▼ -0.2% · Ceasefire relief · Hormuz: Open" },
+    wti:      { label: "WTI (NYMEX)",      price: 91.07,  change: -0.21,   changePct: -0.23,  prevClose: 91.28,  cssClass: "kpi-flat",   note: "▼ -0.2% · WTI premium persists (spread $3.55)" },
+    tnx:      { label: "US 10Y Yield",     price: 4.27,   change: 0.02,   changePct: 0.42,  prevClose: 4.26,   cssClass: "kpi-up", note: "4.27% · ▲ +0.4% · Yield steady amid ceasefire uncertainty", isPercent: true },
+    vix:      { label: "VIX",              price: 17.68,  change: -0.68,   changePct: -3.7,  prevClose: 18.36,  cssClass: "kpi-down", note: "▼ -3.7% · Risk repricing on ceasefire fragility", noDollar: true },
+    hyg:      { label: "HY Spread (HYG)",  price: 80.44,  change: -0.07,  changePct: -0.08, prevClose: 80.5,  cssClass: "kpi-flat", note: "▼ -0.1% · Credit widening — stress watch" },
+    gold:     { label: "Gold Spot",        price: 4851.7,   change: 1.6,   changePct: 0.03, prevClose: 4850.1,   cssClass: "kpi-flat",   note: "▲ +0.0% · $4,852 · Safe-haven bid — ceasefire doubts", formatComma: true },
+    brentWtiSpread: { label: "Brent–WTI Spread", price: 3.55, change: 0.04, changePct: 1.14, prevClose: 3.51, cssClass: "kpi-up", note: "Spread $3.55 · Spread normalizing", noDollar: false },
+    ita:      { label: "ITA (Defense ETF)", price: 234.02, change: -1.41,   changePct: -0.6,  prevClose: 235.43, cssClass: "kpi-down", note: "▼ -0.6% · Defense sector pullback on peace hopes" }
   },
 
   // ── COMPACT MARKET STRIP (Overview tab) ─────────────────────────────────────
   marketStrip: [
     {
       label: 'Brent',
-      value: '$95.96',
-      delta: '+1.2%',
-      color: '#22c55e'
+      value: '$94.62',
+      delta: '-0.2%',
+      color: '#ef4444'
     },
     {
       label: 'S&P 500',
-      value: '$6,967.38',
-      delta: '+1.2%',
+      value: '$6,977.71',
+      delta: '+0.1%',
       color: '#22c55e'
     },
     {
       label: 'VIX',
-      value: '18.27',
-      delta: '-0.5%',
+      value: '17.68',
+      delta: '-3.7%',
       color: '#ef4444'
     },
     {
       label: 'Gold',
-      value: '$4,820.20',
-      delta: '-0.6%',
-      color: '#ef4444'
+      value: '$4,851.70',
+      delta: '+0.0%',
+      color: '#22c55e'
     },
     {
       label: '10Y',
-      value: '4.26',
-      delta: '-0.9%',
-      color: '#ef4444'
+      value: '4.27',
+      delta: '+0.4%',
+      color: '#22c55e'
     },
     {
       label: 'HYG',
-      value: '$80.50',
-      delta: '+0.3%',
-      color: '#22c55e'
+      value: '$80.44',
+      delta: '-0.1%',
+      color: '#ef4444'
     }
   ],
 
@@ -1360,7 +1360,7 @@ const DASHBOARD_DATA = {
       {
         date: '2026-04-15',
         day: 47,
-        dubizzle: 27584,
+        dubizzle: 27533,
         dubicars: 4526,
         yallamotor: 272,
         source: 'live'
@@ -1373,16 +1373,16 @@ const DASHBOARD_DATA = {
     },
     latest: {
       dubizzle: {
-        total: 27584,
-        changePct: 1.5
+        total: 27533,
+        changePct: -0.2
       },
       dubicars: {
         total: 4526,
-        changePct: 0.0
+        changePct: 0
       },
       yallamotor: {
         total: 272,
-        changePct: 0.0
+        changePct: 0
       },
       date: '2026-04-15',
       day: 47
@@ -1978,23 +1978,23 @@ const DASHBOARD_DATA = {
   gistBanner: {
     bullets: [
       {
-        text: 'Iran agreed to ceasefire and reopening Strait of Hormuz',
+        text: 'Pentagon declares military victory over Iran after 38 days of Operation Epic Fury',
         color: 'yellow'
       },
       {
-        text: 'US achieved military objectives in 38 days: destroyed ballistic missiles/drones, navy, defense industrial base',
+        text: 'US and allies dismantled Iran\'s military: navy sunk, 80% air defenses wiped out, regime leadership eliminated',
         color: 'yellow'
       },
       {
-        text: 'Over 13,000 targets struck by US forces',
+        text: 'Over 13,000 targets struck, including 450 ballistic missile, 600 naval, 800 drone targets',
         color: 'yellow'
       },
       {
-        text: 'Trump confirms second round of US-Iran negotiations could begin within days amid ceasefire terms',
+        text: 'Two-week ceasefire in the Iran war is in place, set to expire early next week.',
         color: 'yellow'
       },
       {
-        text: 'US Vice President JD Vance states US-Iran mistrust cannot be solved overnight (Apr 14, 2026)',
+        text: 'Pakistan\'s leader Sharif is pushing for a second round of direct U.S.-Iran peace talks, with visits starting Wednesday and concluding Saturday.',
         color: 'yellow'
       }
     ],
@@ -2033,39 +2033,39 @@ const DASHBOARD_DATA = {
   // ── 2. NEWS-NOW CARDS ────────────────────────────────────────────────────────
   newsNow: [
     {
-      label: 'CEASEFIRE',
-      title: 'Iran agreed to ceasefire and reopening Strait of Hormuz',
-      body: 'Iran agreed to ceasefire and reopening Strait of Hormuz',
+      label: 'MILITARY',
+      title: 'Pentagon declares military victory over Iran after 38 days of Operation Epic Fury',
+      body: 'Pentagon declares military victory over Iran after 38 days of Operation Epic Fury',
       color: 'yellow'
     },
     {
       label: 'MILITARY',
-      title: 'US achieved military objectives in 38 days: destroyed ballistic missiles/drones, navy, def',
-      body: 'US achieved military objectives in 38 days: destroyed ballistic missiles/drones, navy, defense industrial base',
+      title: 'US and allies dismantled Iran\'s military: navy sunk, 80% air defenses wiped out, regime le',
+      body: 'US and allies dismantled Iran\'s military: navy sunk, 80% air defenses wiped out, regime leadership eliminated',
       color: 'yellow'
     },
     {
       label: 'CONFLICT',
-      title: 'Over 13,000 targets struck by US forces',
-      body: 'Over 13,000 targets struck by US forces',
+      title: 'Over 13,000 targets struck, including 450 ballistic missile, 600 naval, 800 drone targets',
+      body: 'Over 13,000 targets struck, including 450 ballistic missile, 600 naval, 800 drone targets',
       color: 'yellow'
     },
     {
-      label: 'CONFLICT',
-      title: 'Iran\'s navy obliterated: 150 warships sunk, all submarines sunk, 97% naval mines eliminate',
-      body: 'Iran\'s navy obliterated: 150 warships sunk, all submarines sunk, 97% naval mines eliminated',
-      color: 'yellow'
-    },
-    {
-      label: 'TALKS',
-      title: 'Trump confirms second round of US-Iran negotiations could begin within days amid ceasefire',
-      body: 'Trump confirms second round of US-Iran negotiations could begin within days amid ceasefire terms',
+      label: 'CEASEFIRE',
+      title: 'Iran agreed to ceasefire and reopening of Strait of Hormuz',
+      body: 'Iran agreed to ceasefire and reopening of Strait of Hormuz',
       color: 'yellow'
     },
     {
       label: 'TALKS',
-      title: 'US Vice President JD Vance states US-Iran mistrust cannot be solved overnight (Apr 14, 202',
-      body: 'US Vice President JD Vance states US-Iran mistrust cannot be solved overnight (Apr 14, 2026)',
+      title: 'Two-week ceasefire in the Iran war is in place, set to expire early next week',
+      body: 'Two-week ceasefire in the Iran war is in place, set to expire early next week.',
+      color: 'yellow'
+    },
+    {
+      label: 'TALKS',
+      title: 'Pakistan\'s leader Sharif is pushing for a second round of direct U',
+      body: 'Pakistan\'s leader Sharif is pushing for a second round of direct U.S.-Iran peace talks, with visits starting Wednesday and concluding Saturday.',
       color: 'yellow'
     }
   ],
@@ -2073,18 +2073,11 @@ const DASHBOARD_DATA = {
   // ── 3. ANALYTICAL SIGNALS ────────────────────────────────────────────────────
   analyticalSignals: [
     {
-      label: 'Ceasefire Compliance',
-      value: 'DAY 7 ✓',
-      score: 7,
-      scoreColor: '#f59e0b',
-      detail: 'fragile two-week ceasefire holding'
-    },
-    {
       label: 'Diplomatic Engagement',
       value: 'ACTIVE',
       score: 6,
       scoreColor: '#f59e0b',
-      detail: 'Trump confirms second round of US-Iran negotiations could begin within days amid ceasefire terms'
+      detail: 'Two-week ceasefire in the Iran war is in place, set to expire early next week.'
     },
     {
       label: 'Hormuz Passage',
@@ -2195,29 +2188,29 @@ const DASHBOARD_DATA = {
   // ── 6. KEY TRIGGERS ──────────────────────────────────────────────────────────
   keyTriggers: [
     {
-      title: 'Iran agreed to ceasefire and reopening Strait of Hormuz',
+      title: 'Pentagon declares military victory over Iran after 38 days of Operation Epic Fur',
       titleColor: '#f59e0b',
-      body: 'Iran agreed to ceasefire and reopening Strait of Hormuz'
+      body: 'Pentagon declares military victory over Iran after 38 days of Operation Epic Fury'
     },
     {
-      title: 'US achieved military objectives in 38 days: destroyed ballistic missiles/drones,',
+      title: 'US and allies dismantled Iran\'s military: navy sunk, 80% air defenses wiped out,',
       titleColor: '#f59e0b',
-      body: 'US achieved military objectives in 38 days: destroyed ballistic missiles/drones, navy, defense industrial base'
+      body: 'US and allies dismantled Iran\'s military: navy sunk, 80% air defenses wiped out, regime leadership eliminated'
     },
     {
-      title: 'Over 13,000 targets struck by US forces',
+      title: 'Over 13,000 targets struck, including 450 ballistic missile, 600 naval, 800 dron',
       titleColor: '#f59e0b',
-      body: 'Over 13,000 targets struck by US forces'
-    },
-    {
-      title: 'Ceasefire Status (Day 47)',
-      titleColor: '#f59e0b',
-      body: 'fragile two-week ceasefire holding'
+      body: 'Over 13,000 targets struck, including 450 ballistic missile, 600 naval, 800 drone targets'
     },
     {
       title: 'Hormuz Passage',
       titleColor: '#22c55e',
       body: 'Status: open. Daily transits: None.'
+    },
+    {
+      title: 'Diplomatic Outlook',
+      titleColor: '#f59e0b',
+      body: 'Two-week ceasefire in the Iran war is in place, set to expire early next week.. Pakistan\'s leader Sharif is pushing for a second round of direct U.S.-Iran peace talks, with visits starting Wednesday and concluding Saturday.. Optimism expressed by President Trump and Pakistan for new talks in Islamabad.'
     }
   ],
 
@@ -2229,15 +2222,19 @@ const DASHBOARD_DATA = {
       sections: [
         {
           title: 'Diplomatic Status — Day 47',
-          items: ['fragile two-week ceasefire holding']
+          items: ['Enacted two weeks ago with strict conditions on Strait of Hormuz']
         },
         {
-          title: 'Trump confirms second round of US-Iran negotiations could begin within days amid',
-          items: ['Trump confirms second round of US-Iran negotiations could begin within days amid ceasefire terms']
+          title: 'Two-week ceasefire in the Iran war is in place, set to expire early next week',
+          items: ['Two-week ceasefire in the Iran war is in place, set to expire early next week.']
         },
         {
-          title: 'US Vice President JD Vance states US-Iran mistrust cannot be solved overnight (A',
-          items: ['US Vice President JD Vance states US-Iran mistrust cannot be solved overnight (Apr 14, 2026)']
+          title: 'Pakistan\'s leader Sharif is pushing for a second round of direct U',
+          items: ['Pakistan\'s leader Sharif is pushing for a second round of direct U.S.-Iran peace talks, with visits starting Wednesday and concluding Saturday.']
+        },
+        {
+          title: 'Optimism expressed by President Trump and Pakistan for new talks in Islamabad',
+          items: ['Optimism expressed by President Trump and Pakistan for new talks in Islamabad.']
         }
       ],
       sources: [
@@ -2256,16 +2253,20 @@ const DASHBOARD_DATA = {
       ]
     },
     military: {
-      badge: 'CEASEFIRE',
-      badgeColor: '#22c55e',
+      badge: 'ACTIVE',
+      badgeColor: '#ef4444',
       sections: [
         {
           title: 'Conflict Statistics — Day 47',
           items: ['US strikes cumulative: 13,000', 'US KIA: N/A']
         },
         {
-          title: 'US achieved military objectives in 38 days: destroyed ballistic missiles/drones,',
-          items: ['US achieved military objectives in 38 days: destroyed ballistic missiles/drones, navy, defense industrial base']
+          title: 'Pentagon declares military victory over Iran after 38 days of Operation Epic Fur',
+          items: ['Pentagon declares military victory over Iran after 38 days of Operation Epic Fury']
+        },
+        {
+          title: 'US and allies dismantled Iran\'s military: navy sunk, 80% air defenses wiped out,',
+          items: ['US and allies dismantled Iran\'s military: navy sunk, 80% air defenses wiped out, regime leadership eliminated']
         }
       ],
       sources: [
@@ -2311,27 +2312,27 @@ const DASHBOARD_DATA = {
 
   // ── 8. NEXT 48H CATALYSTS ────────────────────────────────────────────────────
   next48h: {
-    badge: 'CEASEFIRE DAY 7',
+    badge: 'DAY 47 — MONITORING',
     catalysts: [
       {
         rank: '1',
-        title: 'Iran agreed to ceasefire and reopening Strait of Hormuz',
+        title: 'Pentagon declares military victory over Iran after 38 days of Operation Epic Fur',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: 'Iran agreed to ceasefire and reopening Strait of Hormuz',
+        body: 'Pentagon declares military victory over Iran after 38 days of Operation Epic Fury',
         color: 'yellow'
       },
       {
         rank: '2',
-        title: 'US achieved military objectives in 38 days: destroyed ballistic missiles/drones,',
+        title: 'US and allies dismantled Iran\'s military: navy sunk, 80% air defenses wiped out,',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: 'US achieved military objectives in 38 days: destroyed ballistic missiles/drones, navy, defense industrial base',
+        body: 'US and allies dismantled Iran\'s military: navy sunk, 80% air defenses wiped out, regime leadership eliminated',
         color: 'yellow'
       },
       {
         rank: '3',
         title: 'Ceasefire Compliance',
         outcomeLabel: 'HOLD vs COLLAPSE',
-        body: 'fragile two-week ceasefire holding',
+        body: 'Enacted two weeks ago with strict conditions on Strait of Hormuz',
         color: 'yellow'
       },
       {
@@ -2345,7 +2346,7 @@ const DASHBOARD_DATA = {
         rank: '5',
         title: 'Diplomatic Track',
         outcomeLabel: 'RESUME vs STALL',
-        body: 'Trump confirms second round of US-Iran negotiations could begin within days amid ceasefire terms. US Vice President JD Vance states US-Iran mistrust cannot be solved overnight (Apr 14, 2026)',
+        body: 'Two-week ceasefire in the Iran war is in place, set to expire early next week.. Pakistan\'s leader Sharif is pushing for a second round of direct U.S.-Iran peace talks, with visits starting Wednesday and concluding Saturday.',
         color: 'yellow'
       }
     ]
@@ -3110,6 +3111,13 @@ const DASHBOARD_DATA = {
         text: 'Threatened widespread bombing of Iran\'s civilian infrastructure and eradication of a \'whole civilisation\'; called Pope Leo \'weak\' and captive to the \'Radical Left\'.',
         tag: 'US',
         escalation: 5
+      },
+      {
+        date: 'April 15, 2026',
+        speaker: 'Trump',
+        text: 'The war \'is very close to over,\' and a second round of talks with Iran \'could be happening over next two days\' in Islamabad.',
+        tag: 'US',
+        escalation: 8
       }
     ],
     patterns: [
@@ -3945,38 +3953,38 @@ const DASHBOARD_DATA = {
       steps: [
         {
           label: 'Oil Price Increase',
-          value: '+31.1%',
-          detail: '$95.96 vs $73.20 baseline',
+          value: '+29.3%',
+          detail: '$94.62 vs $73.20 baseline',
           color: '#f59e0b'
         },
         {
           label: 'Energy CPI Impact',
-          value: '+7.15%',
+          value: '+6.73%',
           detail: 'Fed passthrough coefficient: 0.23',
           color: '#f59e0b'
         },
         {
           label: 'Headline Direct',
-          value: '+0.50pp',
+          value: '+0.47pp',
           detail: 'BLS energy weight: 7%',
           color: '#f59e0b'
         },
         {
           label: 'With Second-Round',
-          value: '+0.79pp',
+          value: '+0.75pp',
           detail: '×1.27 multiplier + 0.15pp food',
           color: '#f59e0b'
         },
         {
           label: 'Estimated CPI',
-          value: '3.2%',
-          detail: '2.4% baseline + 0.79pp war premium',
+          value: '3.1%',
+          detail: '2.4% baseline + 0.75pp war premium',
           color: '#f59e0b'
         }
       ],
       result: {
-        headline: '~3.2%',
-        explanation: 'Brent at $95.96 (+31.1% vs pre-war baseline). Oil-to-CPI passthrough model estimates headline CPI at ~3.2% (war premium +0.79pp over 2.4% baseline).'
+        headline: '~3.1%',
+        explanation: 'Brent at $94.62 (+29.3% vs pre-war baseline). Oil-to-CPI passthrough model estimates headline CPI at ~3.1% (war premium +0.75pp over 2.4% baseline).'
       },
       methodology: 'Dallas Fed elasticity (10% oil → +0.23% energy CPI) × BLS energy weight (7%) × second-round multiplier (1.27) + food acceleration (0.15pp). Source: FEDS Notes 2024, Dallas Fed Working Paper 2023.'
     },
@@ -4140,12 +4148,12 @@ const DASHBOARD_DATA = {
 
   ceasefireAnalytics: {
     meta: {
-      badge: 'CEASEFIRE DAY 7',
+      badge: 'DAY 47',
       asOf: '2026-04-10T05:42:00+08:00',
       day: 47,
-      tacoScore: 11,
+      tacoScore: 8,
       polyCeasefire: 100,
-      headline: 'Iran agreed to ceasefire and reopening Strait of Hormuz'
+      headline: 'Pentagon declares military victory over Iran after 38 days of Operation Epic Fury'
     },
     usDemands: [
       {
