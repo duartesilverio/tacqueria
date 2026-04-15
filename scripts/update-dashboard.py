@@ -438,6 +438,7 @@ def patch_dashboard(text, inp):
         'gistBanner', 'newsNow', 'analyticalSignals', 'dLive',
         'analyticalOutlook', 'keyTriggers', 'intelligence',
         'next48h', 'rhetoricTracker', 'marketSignals', 'operations',
+        'ceasefireAnalytics',
         'predictionAnalytics', 'arsenal', 'inflation', 'troopCounter', 'hyperliquid'
     ]
     
