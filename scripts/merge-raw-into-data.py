@@ -804,6 +804,282 @@ def inject_chart_analytics(chart_append: dict, raw_intel: dict, taco: int, day: 
     return updates
 
 
+def update_ceasefire_analytics(data: dict, raw_intel: dict, raw_rhetoric: dict,
+                                day: int, taco: int) -> list[str]:
+    """Update ceasefireAnalytics section from raw intelligence."""
+    if "ceasefireAnalytics" not in data:
+        return []
+    intel = raw_intel or {}
+    rhetoric = raw_rhetoric or {}
+    ca = data["ceasefireAnalytics"]
+    updates = []
+
+    cf = str(intel.get("ceasefire_status", ""))
+    cf_lower = cf.lower()
+
+    # Meta
+    if "meta" in ca:
+        cf_day = max(day - 40, 0)
+        if "ceasefire" in cf_lower and cf_day > 0:
+            ca["meta"]["badge"] = f"CEASEFIRE DAY {cf_day}"
+        elif any(w in cf_lower for w in ("collapse", "ended", "broken")):
+            ca["meta"]["badge"] = "CEASEFIRE AT RISK"
+        else:
+            ca["meta"]["badge"] = f"DAY {day}"
+        ca["meta"]["day"] = day
+        ca["meta"]["tacoScore"] = taco
+        # Headline from ceasefire status + key developments
+        key_devs = intel.get("key_developments", [])
+        if isinstance(key_devs, list) and key_devs:
+            ca["meta"]["headline"] = str(key_devs[0])[:300]
+        elif cf:
+            ca["meta"]["headline"] = cf[:300]
+        updates.append(f"ceasefireAnalytics.meta -> day {day}, {ca['meta']['badge']}")
+
+    # Update demand statuses if we have intelligence
+    if "usDemands" in ca and isinstance(ca["usDemands"], list):
+        for demand in ca["usDemands"]:
+            cat = str(demand.get("category", "")).lower()
+            txt = str(demand.get("text", "")).lower()
+            # 30-day ceasefire
+            if "ceasefire" in txt and "30" in txt:
+                if any(w in cf_lower for w in ("collapse", "broken")):
+                    demand["status"] = "AT RISK"
+                    demand["statusLabel"] = f"Ceasefire fragile — Day {day}"
+                    demand["statusColor"] = "#ef4444"
+                elif "ceasefire" in cf_lower:
+                    cf_day = max(day - 40, 0)
+                    demand["status"] = "PARTIAL"
+                    demand["statusLabel"] = f"Day {cf_day} of ceasefire"
+                    demand["statusColor"] = "#f59e0b"
+            # Hormuz
+            if "hormuz" in txt:
+                hz = str(intel.get("hormuz_status", "")).lower()
+                if "blockade" in hz:
+                    demand["status"] = "BLOCKED"
+                    demand["statusLabel"] = "Naval blockade in effect"
+                    demand["statusColor"] = "#ef4444"
+                elif "open" in hz:
+                    demand["status"] = "OPEN"
+                    demand["statusLabel"] = "Strait open, transit normalized"
+                    demand["statusColor"] = "#22c55e"
+        updates.append("ceasefireAnalytics.demands updated")
+
+    return updates
+
+
+def update_intelligence(data: dict, raw_intel: dict, raw_rhetoric: dict,
+                        raw_bca: dict, day: int) -> list[str]:
+    """Update intelligence section from raw Sonar data."""
+    if "intelligence" not in data:
+        return []
+    intel_data = raw_intel or {}
+    rhetoric = raw_rhetoric or {}
+    bca = raw_bca or {}
+    intl = data["intelligence"]
+    updates = []
+
+    cf = str(intel_data.get("ceasefire_status", ""))
+    cf_lower = cf.lower()
+    hz = str(intel_data.get("hormuz_status", ""))
+
+    # Diplomatic column
+    if "diplomatic" in intl:
+        diplo_devs = rhetoric.get("diplomatic_developments", [])
+        if any(w in cf_lower for w in ("collapse", "fail", "no deal")):
+            intl["diplomatic"]["badge"] = "COLLAPSED"
+            intl["diplomatic"]["badgeColor"] = "#ef4444"
+        elif any(w in cf_lower for w in ("negot", "talks", "proposal")):
+            intl["diplomatic"]["badge"] = "TALKS"
+            intl["diplomatic"]["badgeColor"] = "#22c55e"
+        elif "ceasefire" in cf_lower:
+            intl["diplomatic"]["badge"] = "CEASEFIRE"
+            intl["diplomatic"]["badgeColor"] = "#f59e0b"
+        # Update sections from developments
+        if isinstance(diplo_devs, list) and diplo_devs:
+            sections = []
+            sections.append({
+                "title": f"Diplomatic Status — Day {day}",
+                "body": cf if cf else "Status unknown"
+            })
+            for dev in diplo_devs[:3]:
+                sections.append({
+                    "title": str(dev).split(".")[0][:80] if "." in str(dev) else str(dev)[:80],
+                    "body": str(dev)
+                })
+            intl["diplomatic"]["sections"] = sections
+        updates.append("intelligence.diplomatic updated")
+
+    # Military column
+    if "military" in intl:
+        us_strikes = intel_data.get("us_strikes_total_cumulative")
+        troops = safe_get(intel_data, "us_force_posture", "troops_deployed")
+        kia = intel_data.get("us_military_kia")
+        sections = []
+        if us_strikes is not None:
+            sections.append({
+                "title": f"Conflict Statistics — Day {day}",
+                "body": f"US strikes cumulative: {us_strikes:,}. US KIA: {kia or 'N/A'}. "
+                        f"Troops deployed: {troops:,}+" if troops else f"US strikes: {us_strikes:,}. KIA: {kia}."
+            })
+        key_devs = intel_data.get("key_developments", [])
+        if isinstance(key_devs, list):
+            for dev in key_devs[:2]:
+                dev_s = str(dev)
+                if any(w in dev_s.lower() for w in ("military", "strike", "attack", "force", "troop")):
+                    sections.append({"title": dev_s.split(".")[0][:80], "body": dev_s})
+        if sections:
+            intl["military"]["sections"] = sections
+            intl["military"]["badge"] = "CEASEFIRE" if "ceasefire" in cf_lower else "ACTIVE"
+            intl["military"]["badgeColor"] = "#22c55e" if "ceasefire" in cf_lower else "#ef4444"
+        updates.append("intelligence.military updated")
+
+    # Hormuz column
+    if "hormuz" in intl:
+        intl["hormuz"]["badge"] = hz.upper() if hz else "UNKNOWN"
+        intl["hormuz"]["badgeColor"] = "#ef4444" if "blockade" in hz.lower() else "#22c55e"
+        transits = intel_data.get("hormuz_daily_vessel_transits")
+        sections = [{"title": f"Hormuz Status — Day {day}",
+                     "body": f"Status: {hz}. Daily transits: {transits or 'N/A'}."}]
+        intl["hormuz"]["sections"] = sections
+        updates.append("intelligence.hormuz updated")
+
+    return updates
+
+
+def update_key_triggers(data: dict, raw_intel: dict, raw_rhetoric: dict,
+                        day: int) -> list[str]:
+    """Update keyTriggers from intelligence and rhetoric."""
+    intel = raw_intel or {}
+    rhetoric = raw_rhetoric or {}
+    if not intel and not rhetoric:
+        return []
+
+    triggers = []
+    cf = str(intel.get("ceasefire_status", "")).lower()
+    hz = str(intel.get("hormuz_status", "")).lower()
+    key_devs = intel.get("key_developments", [])
+    diplo = rhetoric.get("diplomatic_developments", [])
+
+    # Generate triggers from key developments
+    if isinstance(key_devs, list):
+        for dev in key_devs[:3]:
+            dev_s = str(dev)
+            color = "#ef4444" if any(w in dev_s.lower() for w in ("collapse", "attack", "blockade", "escalat")) else "#f59e0b"
+            title = dev_s.split(".")[0][:80] if "." in dev_s else dev_s[:80]
+            triggers.append({"title": title, "titleColor": color, "body": dev_s})
+
+    # Ceasefire trigger
+    if "ceasefire" in cf:
+        color = "#ef4444" if any(w in cf for w in ("collapse", "broken", "risk")) else "#f59e0b"
+        triggers.append({
+            "title": f"Ceasefire Status (Day {day})",
+            "titleColor": color,
+            "body": str(intel.get("ceasefire_status", ""))
+        })
+
+    # Hormuz trigger
+    if hz:
+        color = "#ef4444" if "blockade" in hz else "#22c55e"
+        triggers.append({
+            "title": "Hormuz Passage",
+            "titleColor": color,
+            "body": f"Status: {hz}. Daily transits: {intel.get('hormuz_daily_vessel_transits', 'N/A')}."
+        })
+
+    # Diplomatic trigger
+    if isinstance(diplo, list) and diplo:
+        triggers.append({
+            "title": "Diplomatic Outlook",
+            "titleColor": "#f59e0b",
+            "body": ". ".join(str(d) for d in diplo[:3])
+        })
+
+    if triggers:
+        data["keyTriggers"] = triggers[:5]
+        return [f"keyTriggers: {len(triggers[:5])} triggers"]
+    return []
+
+
+def update_next48h(data: dict, raw_intel: dict, raw_rhetoric: dict,
+                   day: int) -> list[str]:
+    """Update next48h catalysts from intelligence."""
+    intel = raw_intel or {}
+    rhetoric = raw_rhetoric or {}
+    if not intel and not rhetoric:
+        return []
+    if "next48h" not in data:
+        return []
+
+    n48 = data["next48h"]
+    cf = str(intel.get("ceasefire_status", ""))
+    hz = str(intel.get("hormuz_status", ""))
+    key_devs = intel.get("key_developments", [])
+    diplo = rhetoric.get("diplomatic_developments", [])
+
+    # Badge
+    if any(w in cf.lower() for w in ("collapse", "broken")):
+        n48["badge"] = "TALKS COLLAPSED — ESCALATION WATCH"
+    elif "blockade" in hz.lower():
+        n48["badge"] = "NAVAL BLOCKADE — HORMUZ FLASHPOINT"
+    elif any(w in cf.lower() for w in ("negot", "talks")):
+        n48["badge"] = "NEGOTIATIONS — OUTCOME PENDING"
+    elif "ceasefire" in cf.lower():
+        n48["badge"] = f"CEASEFIRE DAY {max(day - 40, 0)}"
+    else:
+        n48["badge"] = f"DAY {day} — MONITORING"
+
+    catalysts = []
+    rank = 1
+
+    # Top catalyst from key developments
+    if isinstance(key_devs, list):
+        for dev in key_devs[:2]:
+            dev_s = str(dev)
+            color = "red" if any(w in dev_s.lower() for w in ("collapse", "attack", "blockade")) else "yellow"
+            title = dev_s.split(".")[0][:80] if "." in dev_s else dev_s[:80]
+            catalysts.append({
+                "rank": str(rank), "title": title,
+                "outcomeLabel": "ESCALATION vs DE-ESCALATION",
+                "body": dev_s, "color": color
+            })
+            rank += 1
+
+    # Ceasefire/Hormuz catalyst
+    if cf:
+        color = "red" if any(w in cf.lower() for w in ("collapse", "broken")) else "yellow"
+        catalysts.append({
+            "rank": str(rank), "title": "Ceasefire Compliance",
+            "outcomeLabel": "HOLD vs COLLAPSE",
+            "body": cf, "color": color
+        })
+        rank += 1
+
+    if hz:
+        color = "red" if "blockade" in hz.lower() else "green"
+        catalysts.append({
+            "rank": str(rank), "title": "Hormuz Passage",
+            "outcomeLabel": "OPEN vs BLOCKADE",
+            "body": f"Current status: {hz}. Transits: {intel.get('hormuz_daily_vessel_transits', 'N/A')}/day.",
+            "color": color
+        })
+        rank += 1
+
+    # Diplomatic
+    if isinstance(diplo, list) and diplo:
+        catalysts.append({
+            "rank": str(rank), "title": "Diplomatic Track",
+            "outcomeLabel": "RESUME vs STALL",
+            "body": ". ".join(str(d) for d in diplo[:2]),
+            "color": "yellow"
+        })
+
+    if catalysts:
+        n48["catalysts"] = catalysts[:5]
+        return [f"next48h: badge + {len(catalysts[:5])} catalysts"]
+    return []
+
+
 # ===========================================================================
 # MAIN
 # ===========================================================================
@@ -973,7 +1249,47 @@ def main():
         print("  [SKIP] operations — no intel data")
 
     # ------------------------------------------------------------------
-    # 14. Chart analytics (TACO, strikes, Hormuz)
+    # 14. Ceasefire Analytics
+    # ------------------------------------------------------------------
+    cf_updates = update_ceasefire_analytics(data, raw_intel, raw_rhetoric, args.day, taco)
+    all_updates.extend(cf_updates)
+    for u in cf_updates:
+        print(f"  [OK] {u}")
+    if not cf_updates:
+        print("  [SKIP] ceasefireAnalytics — no intel data")
+
+    # ------------------------------------------------------------------
+    # 15. Intelligence columns
+    # ------------------------------------------------------------------
+    intel_updates = update_intelligence(data, raw_intel, raw_rhetoric, raw_bca, args.day)
+    all_updates.extend(intel_updates)
+    for u in intel_updates:
+        print(f"  [OK] {u}")
+    if not intel_updates:
+        print("  [SKIP] intelligence — no intel data")
+
+    # ------------------------------------------------------------------
+    # 16. Key Triggers
+    # ------------------------------------------------------------------
+    trig_updates = update_key_triggers(data, raw_intel, raw_rhetoric, args.day)
+    all_updates.extend(trig_updates)
+    for u in trig_updates:
+        print(f"  [OK] {u}")
+    if not trig_updates:
+        print("  [SKIP] keyTriggers — no intel data")
+
+    # ------------------------------------------------------------------
+    # 17. Next 48h Catalysts
+    # ------------------------------------------------------------------
+    n48_updates = update_next48h(data, raw_intel, raw_rhetoric, args.day)
+    all_updates.extend(n48_updates)
+    for u in n48_updates:
+        print(f"  [OK] {u}")
+    if not n48_updates:
+        print("  [SKIP] next48h — no intel data")
+
+    # ------------------------------------------------------------------
+    # 18. Chart analytics (TACO, strikes, Hormuz)
     # ------------------------------------------------------------------
     if "chartAppend" in data:
         chart_updates = inject_chart_analytics(
