@@ -18,6 +18,26 @@ from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 
+# Regex to strip Sonar/Perplexity citation brackets like [2], [4][6], [12]
+import re as _re
+_CITATION_RE = _re.compile(r'\[\d+\]')
+
+def strip_citations(text) -> str:
+    """Remove Perplexity citation markers like [2], [4][6] from text."""
+    if not isinstance(text, str):
+        return str(text) if text is not None else ''
+    return _CITATION_RE.sub('', text).strip()
+
+def clean_sonar_strings(obj):
+    """Recursively strip citation brackets from all strings in a dict/list."""
+    if isinstance(obj, str):
+        return strip_citations(obj)
+    if isinstance(obj, list):
+        return [clean_sonar_strings(v) for v in obj]
+    if isinstance(obj, dict):
+        return {k: clean_sonar_strings(v) for k, v in obj.items()}
+    return obj
+
 
 def extract_json_from_dashboard_js(js_path: Path) -> dict:
     """Extract DASHBOARD_DATA object from dashboard-data.js as a Python dict.
@@ -1186,10 +1206,10 @@ def main():
     # ------------------------------------------------------------------
     # 8. Analytical: TACO score + meta.day
     # ------------------------------------------------------------------
-    raw_intel = raw.get("_raw_intelligence")
-    raw_rhetoric = raw.get("_raw_rhetoric")
-    raw_bca = raw.get("_raw_bca")
-    raw_fed = raw.get("_raw_fed")
+    raw_intel = clean_sonar_strings(raw.get("_raw_intelligence"))
+    raw_rhetoric = clean_sonar_strings(raw.get("_raw_rhetoric"))
+    raw_bca = clean_sonar_strings(raw.get("_raw_bca"))
+    raw_fed = clean_sonar_strings(raw.get("_raw_fed"))
 
     taco = derive_taco_score(raw_intel, raw_rhetoric, raw_bca)
     meta_updates = update_meta_day(data, args.day, taco)

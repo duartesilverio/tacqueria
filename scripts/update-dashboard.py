@@ -73,7 +73,8 @@ def replace_section(text, section_key, new_value_js):
     """
     Replace a top-level section in the DASHBOARD_DATA object.
     Finds '  section_key: {' or '  section_key: [' and replaces until
-    the matching close.
+    the matching close.  String-aware: ignores brackets/braces inside
+    JS string literals so citation artifacts like [2] don't break parsing.
     """
     # Pattern to find the section start (top-level property)
     # Match:  meta: {  or  kpis: {  or  marketStrip: [
@@ -83,7 +84,7 @@ def replace_section(text, section_key, new_value_js):
         # Array value
         rf'(\n  {re.escape(section_key)}: )\[',
     ]
-    
+
     for pattern in patterns:
         match = re.search(pattern, text)
         if match:
@@ -91,21 +92,51 @@ def replace_section(text, section_key, new_value_js):
             value_start = match.start() + len(prefix)
             open_char = text[value_start]
             close_char = '}' if open_char == '{' else ']'
-            
-            # Find matching close
+
+            # Find matching close — string-aware bracket counting
             depth = 0
-            for i in range(value_start, len(text)):
-                if text[i] == open_char:
+            i = value_start
+            value_end = None
+            while i < len(text):
+                ch = text[i]
+                # Skip string literals (single or double quoted)
+                if ch in ("'", '"'):
+                    quote = ch
+                    i += 1
+                    while i < len(text):
+                        if text[i] == '\\':
+                            i += 2  # skip escaped char
+                            continue
+                        if text[i] == quote:
+                            break
+                        i += 1
+                    # i now points at closing quote (or end of text)
+                elif ch == '`':
+                    # Template literal — skip until unescaped backtick
+                    i += 1
+                    while i < len(text):
+                        if text[i] == '\\':
+                            i += 2
+                            continue
+                        if text[i] == '`':
+                            break
+                        i += 1
+                elif ch == open_char:
                     depth += 1
-                elif text[i] == close_char:
+                elif ch == close_char:
                     depth -= 1
                     if depth == 0:
                         value_end = i + 1
                         break
-            
+                i += 1
+
+            if value_end is None:
+                print(f"  ✗ Warning: could not find closing '{close_char}' for section '{section_key}' (depth stuck at {depth})")
+                return text  # return unchanged rather than crash
+
             # Replace
             return text[:match.start()] + prefix + new_value_js + text[value_end:]
-    
+
     raise ValueError(f"Could not find section '{section_key}' in dashboard data")
 
 
