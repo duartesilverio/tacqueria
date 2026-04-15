@@ -12,16 +12,16 @@ const DASHBOARD_DATA = {
   // ── META ────────────────────────────────────────────────────────────────────
   meta: {
     version: "4.0.0",
-    timestamp: "15 Apr 2026 12:29 HKT",
+    timestamp: "15 Apr 2026 14:48 HKT",
     day: 47,
     dayDate: "13 APR 2026",
-    threatLevel: "HIGH",
-    threatClass: "threat-red",
-    tacoScore: 22,
+    threatLevel: "ELEVATED",
+    threatClass: "threat-orange",
+    tacoScore: 11,
     tacoMax: 100,
     tacoPrev: 18,
     tacoPrevDay: 42,
-    tacoRegime: "BRENT $95.07",
+    tacoRegime: "BRENT $94.68",
     tacoRegimeLabel: "CEASEFIRE DAY 5: Vance 21-hour marathon talks in Islamabad END WITHOUT DEAL. Trump: 'We've won — whether we make a deal makes no difference.' US announces naval blockade of Hormuz. Mojtaba Khamenei breaks silence, vows revenge for father's assassination. Netanyahu rules out Lebanon ceasefire. Brent $101.53 (+6.7%). WTI $104.17 (+7.9%). VIX 19.23 (-1.3%). Gold $4,737 (-1.1%). CPI surges to 3.3% (gasoline +21.2%). Ceasefire nominally holds but diplomatic path severely damaged.",
     tacoRegimeColor: "#ef4444",
     tacoPhase: "ceasefire",
@@ -35,13 +35,13 @@ const DASHBOARD_DATA = {
   // ── FINANCIAL KPIs — Market Signals Tab ─────────────────────────────────────
   // NOTE: Wednesday 18 Mar — Full market day. Brent spiked to $108.52 on South Pars attack. Gold crashed. Equities red. VIX bounced.
   kpis: {
-    brent:    { label: "Brent (ICE)",      price: 95.07, change: 0.28,   changePct: 0.3,  prevClose: 94.79, cssClass: "kpi-flat",   note: "▲ +0.3% · Ceasefire relief · Hormuz: Contested" },
-    wti:      { label: "WTI (NYMEX)",      price: 91.05,  change: -0.23,   changePct: -0.25,  prevClose: 91.28,  cssClass: "kpi-flat",   note: "▼ -0.2% · WTI premium persists (spread $4.02)" },
-    tnx:      { label: "US 10Y Yield",     price: 4.26,   change: -0.04,   changePct: -0.91,  prevClose: 4.3,   cssClass: "kpi-down", note: "4.26% · ▼ -0.9% · Yield steady amid ceasefire uncertainty", isPercent: true },
+    brent:    { label: "Brent (ICE)",      price: 94.68, change: -0.11,   changePct: -0.12,  prevClose: 94.79, cssClass: "kpi-flat",   note: "▼ -0.1% · Ceasefire relief · Hormuz: Open" },
+    wti:      { label: "WTI (NYMEX)",      price: 90.65,  change: -0.63,   changePct: -0.69,  prevClose: 91.28,  cssClass: "kpi-down",   note: "▼ -0.7% · WTI premium persists (spread $4.03)" },
+    tnx:      { label: "US 10Y Yield",     price: 4.26,   change: -0.04,   changePct: -0.95,  prevClose: 4.3,   cssClass: "kpi-down", note: "4.26% · ▼ -0.9% · Yield steady amid ceasefire uncertainty", isPercent: true },
     vix:      { label: "VIX",              price: 18.36,  change: -0.76,   changePct: -3.97,  prevClose: 19.12,  cssClass: "kpi-down", note: "▼ -4.0% · Risk repricing on ceasefire fragility", noDollar: true },
     hyg:      { label: "HY Spread (HYG)",  price: 80.5,  change: 0.24,  changePct: 0.3, prevClose: 80.26,  cssClass: "kpi-flat", note: "▲ +0.3% · Credit steady — no stress signal" },
-    gold:     { label: "Gold Spot",        price: 4848.1,   change: -2,   changePct: -0.04, prevClose: 4850.1,   cssClass: "kpi-flat",   note: "▼ -0.0% · $4,848 · Safe-haven demand easing on ceasefire", formatComma: true },
-    brentWtiSpread: { label: "Brent–WTI Spread", price: 4.02, change: 0.51, changePct: 14.53, prevClose: 3.51, cssClass: "kpi-up", note: "Spread $4.02 · Spread normalizing", noDollar: false },
+    gold:     { label: "Gold Spot",        price: 4840.1,   change: -10,   changePct: -0.21, prevClose: 4850.1,   cssClass: "kpi-flat",   note: "▼ -0.2% · $4,840 · Safe-haven demand easing on ceasefire", formatComma: true },
+    brentWtiSpread: { label: "Brent–WTI Spread", price: 4.03, change: 0.52, changePct: 14.81, prevClose: 3.51, cssClass: "kpi-up", note: "Spread $4.03 · Spread normalizing", noDollar: false },
     ita:      { label: "ITA (Defense ETF)", price: 235.43, change: 2.62,   changePct: 1.13,  prevClose: 232.81, cssClass: "kpi-up", note: "▲ +1.1% · Defense sector — ceasefire fragility hedge" }
   },
 
@@ -49,9 +49,9 @@ const DASHBOARD_DATA = {
   marketStrip: [
     {
       label: 'Brent',
-      value: '$95.07',
-      delta: '+0.3%',
-      color: '#22c55e'
+      value: '$94.68',
+      delta: '-0.1%',
+      color: '#ef4444'
     },
     {
       label: 'S&P 500',
@@ -67,8 +67,8 @@ const DASHBOARD_DATA = {
     },
     {
       label: 'Gold',
-      value: '$4,848.10',
-      delta: '-0.0%',
+      value: '$4,840.10',
+      delta: '-0.2%',
       color: '#ef4444'
     },
     {
@@ -1938,23 +1938,23 @@ const DASHBOARD_DATA = {
   gistBanner: {
     bullets: [
       {
-        text: 'February 28: US and Israel launched Operation Epic Fury with nearly 900 strikes in 12 hours, killing Supreme Leader Ali Khamenei and dozens of officials; 170 civilians killed at girls\' school near Bandar Abbas',
-        color: 'red'
-      },
-      {
-        text: 'February 28: Iran responded with approximately 170 ballistic missiles targeting Israel and Gulf states, striking US Fifth Fleet service center in Bahrain and residential areas in Haifa and Tel Aviv',
+        text: 'Iran agreed to ceasefire and reopening of Strait of Hormuz after 38 days of major combat operations ending around April 6, 2026.',
         color: 'yellow'
       },
       {
-        text: 'March 27: Iranian missile and drone strike on Prince Sultan Air Base damaged US refueling aircraft and injured at least 15 US soldiers',
-        color: 'red'
+        text: 'US achieved objectives: destroyed Iran\'s ballistic missile/drone capabilities, navy, and defense industrial base.',
+        color: 'yellow'
       },
       {
-        text: '8 April 2026: US and Iran agree to two-week ceasefire mediated by Pakistan, with US halting attacks conditional on Iran opening Strait of Hormuz.',
-        color: 'red'
+        text: 'Over 13,000 targets struck, including 450 ballistic missile targets, 600 naval targets, and 1,450 defense/industrial targets.',
+        color: 'yellow'
       },
       {
-        text: 'Iran presents 10-point proposal including US non-aggression guarantee, continued Iranian control over Strait, recognition of enrichment, lifting sanctions, compensation, US withdrawal from Middle East.',
+        text: 'Second round of US-Iran negotiations could begin within days.',
+        color: 'yellow'
+      },
+      {
+        text: 'Vice President JD Vance met in Islamabad ahead of US-Iran talks.',
         color: 'yellow'
       }
     ],
@@ -1993,39 +1993,39 @@ const DASHBOARD_DATA = {
   // ── 2. NEWS-NOW CARDS ────────────────────────────────────────────────────────
   newsNow: [
     {
-      label: 'MILITARY',
-      title: 'February 28: US and Israel launched Operation Epic Fury with nearly 900 strikes in 12 hour',
-      body: 'February 28: US and Israel launched Operation Epic Fury with nearly 900 strikes in 12 hours, killing Supreme Leader Ali Khamenei and dozens of officials; 170 civilians killed at girls\' school near Bandar Abbas',
+      label: 'CEASEFIRE',
+      title: 'Iran agreed to ceasefire and reopening of Strait of Hormuz after 38 days of major combat o',
+      body: 'Iran agreed to ceasefire and reopening of Strait of Hormuz after 38 days of major combat operations ending around April 6, 2026.',
       color: 'yellow'
     },
     {
       label: 'CONFLICT',
-      title: 'February 28: Iran responded with approximately 170 ballistic missiles targeting Israel and',
-      body: 'February 28: Iran responded with approximately 170 ballistic missiles targeting Israel and Gulf states, striking US Fifth Fleet service center in Bahrain and residential areas in Haifa and Tel Aviv',
+      title: 'US achieved objectives: destroyed Iran\'s ballistic missile/drone capabilities, navy, and d',
+      body: 'US achieved objectives: destroyed Iran\'s ballistic missile/drone capabilities, navy, and defense industrial base.',
       color: 'yellow'
     },
     {
-      label: 'MILITARY',
-      title: 'March 27: Iranian missile and drone strike on Prince Sultan Air Base damaged US refueling ',
-      body: 'March 27: Iranian missile and drone strike on Prince Sultan Air Base damaged US refueling aircraft and injured at least 15 US soldiers',
+      label: 'CONFLICT',
+      title: 'Over 13,000 targets struck, including 450 ballistic missile targets, 600 naval targets, an',
+      body: 'Over 13,000 targets struck, including 450 ballistic missile targets, 600 naval targets, and 1,450 defense/industrial targets.',
       color: 'yellow'
     },
     {
-      label: 'MILITARY',
-      title: 'April 3: US Air Force F-15E Strike Eagle shot down over Iran; pilot rescued same day, WSO ',
-      body: 'April 3: US Air Force F-15E Strike Eagle shot down over Iran; pilot rescued same day, WSO rescued 48 hours later',
-      color: 'yellow'
-    },
-    {
-      label: 'TALKS',
-      title: '8 April 2026: US and Iran agree to two-week ceasefire mediated by Pakistan, with US haltin',
-      body: '8 April 2026: US and Iran agree to two-week ceasefire mediated by Pakistan, with US halting attacks conditional on Iran opening Strait of Hormuz.',
+      label: 'CONFLICT',
+      title: 'Iran\'s navy obliterated: 150 warships sunk, all submarines sunk, 97% naval mines eliminate',
+      body: 'Iran\'s navy obliterated: 150 warships sunk, all submarines sunk, 97% naval mines eliminated.',
       color: 'yellow'
     },
     {
       label: 'TALKS',
-      title: 'Iran presents 10-point proposal including US non-aggression guarantee, continued Iranian c',
-      body: 'Iran presents 10-point proposal including US non-aggression guarantee, continued Iranian control over Strait, recognition of enrichment, lifting sanctions, compensation, US withdrawal from Middle East.',
+      title: 'Second round of US-Iran negotiations could begin within days',
+      body: 'Second round of US-Iran negotiations could begin within days.',
+      color: 'yellow'
+    },
+    {
+      label: 'TALKS',
+      title: 'Vice President JD Vance met in Islamabad ahead of US-Iran talks',
+      body: 'Vice President JD Vance met in Islamabad ahead of US-Iran talks.',
       color: 'yellow'
     }
   ],
@@ -2037,20 +2037,27 @@ const DASHBOARD_DATA = {
       value: 'DAY 7 ✓',
       score: 7,
       scoreColor: '#f59e0b',
-      detail: 'Negotiations ongoing; Trump declared conflict ended on April 15, 2026, while Iran rejected earlier 15-point US peace plan and conditioned ceasefire on inclusion of Lebanon war'
+      detail: 'fragile two-week ceasefire holding as of April 9, 2026'
     },
     {
       label: 'Diplomatic Engagement',
       value: 'ACTIVE',
       score: 6,
       scoreColor: '#f59e0b',
-      detail: '8 April 2026: US and Iran agree to two-week ceasefire mediated by Pakistan, with US halting attacks conditional on Iran opening Strait of Hormuz.'
+      detail: 'Second round of US-Iran negotiations could begin within days.'
+    },
+    {
+      label: 'Hormuz Passage',
+      value: 'OPEN',
+      score: 7,
+      scoreColor: '#22c55e',
+      detail: 'Strait status: open'
     },
     {
       label: 'Rhetoric Temperature',
-      value: 'HOT',
-      score: 3,
-      scoreColor: '#ef4444',
+      value: 'COOLING',
+      score: 5,
+      scoreColor: '#f59e0b',
       detail: 'Leadership rhetoric assessment'
     }
   ],
@@ -2148,53 +2155,53 @@ const DASHBOARD_DATA = {
   // ── 6. KEY TRIGGERS ──────────────────────────────────────────────────────────
   keyTriggers: [
     {
-      title: 'February 28: US and Israel launched Operation Epic Fury with nearly 900 strikes ',
+      title: 'Iran agreed to ceasefire and reopening of Strait of Hormuz after 38 days of majo',
       titleColor: '#f59e0b',
-      body: 'February 28: US and Israel launched Operation Epic Fury with nearly 900 strikes in 12 hours, killing Supreme Leader Ali Khamenei and dozens of officials; 170 civilians killed at girls\' school near Bandar Abbas'
+      body: 'Iran agreed to ceasefire and reopening of Strait of Hormuz after 38 days of major combat operations ending around April 6, 2026.'
     },
     {
-      title: 'February 28: Iran responded with approximately 170 ballistic missiles targeting ',
+      title: 'US achieved objectives: destroyed Iran\'s ballistic missile/drone capabilities, n',
       titleColor: '#f59e0b',
-      body: 'February 28: Iran responded with approximately 170 ballistic missiles targeting Israel and Gulf states, striking US Fifth Fleet service center in Bahrain and residential areas in Haifa and Tel Aviv'
+      body: 'US achieved objectives: destroyed Iran\'s ballistic missile/drone capabilities, navy, and defense industrial base.'
     },
     {
-      title: 'March 27: Iranian missile and drone strike on Prince Sultan Air Base damaged US ',
+      title: 'Over 13,000 targets struck, including 450 ballistic missile targets, 600 naval t',
       titleColor: '#f59e0b',
-      body: 'March 27: Iranian missile and drone strike on Prince Sultan Air Base damaged US refueling aircraft and injured at least 15 US soldiers'
+      body: 'Over 13,000 targets struck, including 450 ballistic missile targets, 600 naval targets, and 1,450 defense/industrial targets.'
     },
     {
       title: 'Ceasefire Status (Day 47)',
       titleColor: '#f59e0b',
-      body: 'Negotiations ongoing; Trump declared conflict ended on April 15, 2026, while Iran rejected earlier 15-point US peace plan and conditioned ceasefire on inclusion of Lebanon war'
+      body: 'fragile two-week ceasefire holding as of April 9, 2026'
     },
     {
       title: 'Hormuz Passage',
       titleColor: '#22c55e',
-      body: 'Status: contested. Daily transits: None.'
+      body: 'Status: open. Daily transits: None.'
     }
   ],
 
   // ── 7. INTELLIGENCE TAB ──────────────────────────────────────────────────────
   intelligence: {
     diplomatic: {
-      badge: 'TALKS',
-      badgeColor: '#22c55e',
+      badge: 'CEASEFIRE',
+      badgeColor: '#f59e0b',
       sections: [
         {
           title: 'Diplomatic Status — Day 47',
-          body: 'Negotiations ongoing; Trump declared conflict ended on April 15, 2026, while Iran rejected earlier 15-point US peace plan and conditioned ceasefire on inclusion of Lebanon war'
+          body: 'fragile two-week ceasefire holding as of April 9, 2026'
         },
         {
-          title: '8 April 2026: US and Iran agree to two-week ceasefire mediated by Pakistan, with',
-          body: '8 April 2026: US and Iran agree to two-week ceasefire mediated by Pakistan, with US halting attacks conditional on Iran opening Strait of Hormuz.'
+          title: 'Second round of US-Iran negotiations could begin within days',
+          body: 'Second round of US-Iran negotiations could begin within days.'
         },
         {
-          title: 'Iran presents 10-point proposal including US non-aggression guarantee, continued',
-          body: 'Iran presents 10-point proposal including US non-aggression guarantee, continued Iranian control over Strait, recognition of enrichment, lifting sanctions, compensation, US withdrawal from Middle East.'
+          title: 'Vice President JD Vance met in Islamabad ahead of US-Iran talks',
+          body: 'Vice President JD Vance met in Islamabad ahead of US-Iran talks.'
         },
         {
-          title: '9 April 2026: Iran accuses US of violating three clauses of 10-point deal day af',
-          body: '9 April 2026: Iran accuses US of violating three clauses of 10-point deal day after ceasefire.'
+          title: 'King Charles to meet President Trump during US state visit to heal rift caused b',
+          body: 'King Charles to meet President Trump during US state visit to heal rift caused by Iran war.'
         }
       ],
       sources: [
@@ -2268,41 +2275,41 @@ const DASHBOARD_DATA = {
 
   // ── 8. NEXT 48H CATALYSTS ────────────────────────────────────────────────────
   next48h: {
-    badge: 'NEGOTIATIONS — OUTCOME PENDING',
+    badge: 'CEASEFIRE DAY 7',
     catalysts: [
       {
         rank: '1',
-        title: 'February 28: US and Israel launched Operation Epic Fury with nearly 900 strikes ',
+        title: 'Iran agreed to ceasefire and reopening of Strait of Hormuz after 38 days of majo',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: 'February 28: US and Israel launched Operation Epic Fury with nearly 900 strikes in 12 hours, killing Supreme Leader Ali Khamenei and dozens of officials; 170 civilians killed at girls\' school near Bandar Abbas',
+        body: 'Iran agreed to ceasefire and reopening of Strait of Hormuz after 38 days of major combat operations ending around April 6, 2026.',
         color: 'yellow'
       },
       {
         rank: '2',
-        title: 'February 28: Iran responded with approximately 170 ballistic missiles targeting ',
+        title: 'US achieved objectives: destroyed Iran\'s ballistic missile/drone capabilities, n',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: 'February 28: Iran responded with approximately 170 ballistic missiles targeting Israel and Gulf states, striking US Fifth Fleet service center in Bahrain and residential areas in Haifa and Tel Aviv',
+        body: 'US achieved objectives: destroyed Iran\'s ballistic missile/drone capabilities, navy, and defense industrial base.',
         color: 'yellow'
       },
       {
         rank: '3',
         title: 'Ceasefire Compliance',
         outcomeLabel: 'HOLD vs COLLAPSE',
-        body: 'Negotiations ongoing; Trump declared conflict ended on April 15, 2026, while Iran rejected earlier 15-point US peace plan and conditioned ceasefire on inclusion of Lebanon war',
+        body: 'fragile two-week ceasefire holding as of April 9, 2026',
         color: 'yellow'
       },
       {
         rank: '4',
         title: 'Hormuz Passage',
         outcomeLabel: 'OPEN vs BLOCKADE',
-        body: 'Current status: CONTESTED. Transits: None/day.',
+        body: 'Current status: OPEN. Transits: None/day.',
         color: 'green'
       },
       {
         rank: '5',
         title: 'Diplomatic Track',
         outcomeLabel: 'RESUME vs STALL',
-        body: '8 April 2026: US and Iran agree to two-week ceasefire mediated by Pakistan, with US halting attacks conditional on Iran opening Strait of Hormuz.. Iran presents 10-point proposal including US non-aggression guarantee, continued Iranian control over Strait, recognition of enrichment, lifting sanctions, compensation, US withdrawal from Middle East.',
+        body: 'Second round of US-Iran negotiations could begin within days.. Vice President JD Vance met in Islamabad ahead of US-Iran talks.',
         color: 'yellow'
       }
     ]
@@ -2312,11 +2319,11 @@ const DASHBOARD_DATA = {
   rhetoricTracker: {
     sentiment: {
       label: 'RHETORIC TRACKER',
-      value: 'Escalatory — hot',
-      score: 60,
+      value: 'Mixed — cooling',
+      score: 50,
       scoreNote: 'Score 48/100 — mixed. Ceasefire-positive rhetoric on bilateral front (talks happening). Escalatory on Lebanon front (Netanyahu). Incompatible victory narratives from both sides.',
-      barWidth: '60%',
-      barColor: '#ef4444',
+      barWidth: '50%',
+      barColor: '#f59e0b',
       maxEscalation: 80,
       escalation: 38,
       mixed: 34,
@@ -3025,6 +3032,27 @@ const DASHBOARD_DATA = {
         text: 'Our response to the enemy’s brutality is to stand firm on our national interests and rely on the inner strength of the great Iranian nation.',
         tag: 'IR',
         escalation: 5
+      },
+      {
+        date: 'Apr 15, 2026',
+        speaker: 'Trump',
+        text: 'Trump declared the \'end of Iran conflict\' as new negotiations loom, confirming a second round could begin within days.',
+        tag: 'US',
+        escalation: 5
+      },
+      {
+        date: 'Recent (prior to Apr 15)',
+        speaker: 'Trump',
+        text: 'The United States Navy will blockade any and all ships trying to enter or leave the Strait of Hormuz.',
+        tag: 'US',
+        escalation: 8
+      },
+      {
+        date: 'Recent (post-blockade announcement)',
+        speaker: 'Iranian leadership',
+        text: 'Responded fast to US blockade by exploiting gaps in Washington\'s position; regime trying to avoid escalation as negotiators aim to restart Islamabad talks.',
+        tag: 'IR',
+        escalation: 8
       }
     ],
     patterns: [
@@ -3171,7 +3199,7 @@ const DASHBOARD_DATA = {
 
   // ── 11. OPERATIONS ───────────────────────────────────────────────────────────
   operations: {
-    badge: 'CEASEFIRE · DAY 7 — NEGOTIATIONS',
+    badge: 'CEASEFIRE · DAY 7',
     kpis: [
       {
         label: 'Civilian Casualties',
@@ -3853,38 +3881,38 @@ const DASHBOARD_DATA = {
       steps: [
         {
           label: 'Oil Price Increase',
-          value: '+29.9%',
-          detail: '$95.07 vs $73.20 baseline',
+          value: '+29.3%',
+          detail: '$94.68 vs $73.20 baseline',
           color: '#f59e0b'
         },
         {
           label: 'Energy CPI Impact',
-          value: '+6.87%',
+          value: '+6.75%',
           detail: 'Fed passthrough coefficient: 0.23',
           color: '#f59e0b'
         },
         {
           label: 'Headline Direct',
-          value: '+0.48pp',
+          value: '+0.47pp',
           detail: 'BLS energy weight: 7%',
           color: '#f59e0b'
         },
         {
           label: 'With Second-Round',
-          value: '+0.76pp',
+          value: '+0.75pp',
           detail: '×1.27 multiplier + 0.15pp food',
           color: '#f59e0b'
         },
         {
           label: 'Estimated CPI',
           value: '3.2%',
-          detail: '2.4% baseline + 0.76pp war premium',
+          detail: '2.4% baseline + 0.75pp war premium',
           color: '#f59e0b'
         }
       ],
       result: {
         headline: '~3.2%',
-        explanation: 'Brent at $95.07 (+29.9% vs pre-war baseline). Oil-to-CPI passthrough model estimates headline CPI at ~3.2% (war premium +0.76pp over 2.4% baseline).'
+        explanation: 'Brent at $94.68 (+29.3% vs pre-war baseline). Oil-to-CPI passthrough model estimates headline CPI at ~3.2% (war premium +0.75pp over 2.4% baseline).'
       },
       methodology: 'Dallas Fed elasticity (10% oil → +0.23% energy CPI) × BLS energy weight (7%) × second-round multiplier (1.27) + food acceleration (0.15pp). Source: FEDS Notes 2024, Dallas Fed Working Paper 2023.'
     },
@@ -4017,7 +4045,7 @@ const DASHBOARD_DATA = {
       color: '#ef4444'
     },
     {
-      value: '900+',
+      value: '13,000+',
       label: 'Targets Struck (thru D40)',
       color: '#f59e0b'
     },
@@ -4047,631 +4075,626 @@ const DASHBOARD_DATA = {
   },
 
   ceasefireAnalytics: {
-  meta: {
-    badge: "CEASEFIRE DAY 3",
-    asOf: "2026-04-10T05:42:00+08:00",
-    day: 42,
-    tacoScore: 18,
-    polyCeasefire: 100,
-    headline: "Two-week ceasefire holds on the GCC front but four active violations — Lebanon bombardment, Iranian airspace drone incursion, enrichment-right dispute, and the China tariff ultimatum — expose structural fault lines that separate a tactical pause from a durable resolution."
-  },
-
-  usDemands: [
-    {
-      id: 1,
-      text: "30-day ceasefire",
-      category: "Military",
-      status: "PARTIAL",
-      statusLabel: "2-week pause agreed; 30 days not yet secured",
-      statusColor: "#f59e0b",
-      probability30d: 72,
-      probability60d: 55,
-      probability90d: 48,
-      probColor: "#22c55e",
-      detail: "Pakistan-brokered 2-week ceasefire (Apr 7–21) is holding on the GCC front with zero attacks logged Apr 8. Extension to 30 days depends on Islamabad talks progress. Probability decays at 60d/90d because each renewal is a separate negotiation event — neither side has committed beyond Apr 21. Lebanon front remains active, giving Iran justification to walk if escalation spills over.",
-      dealBreaker: false
+    meta: {
+      badge: 'CEASEFIRE DAY 7',
+      asOf: '2026-04-10T05:42:00+08:00',
+      day: 47,
+      tacoScore: 11,
+      polyCeasefire: 100,
+      headline: 'Iran agreed to ceasefire and reopening of Strait of Hormuz after 38 days of major combat operations ending around April 6, 2026.'
     },
-    {
-      id: 2,
-      text: "Dismantle nuclear facilities (Natanz, Isfahan, Fordow)",
-      category: "Nuclear",
-      status: "NOT_MET",
-      statusLabel: "Iran categorically refuses dismantlement",
-      statusColor: "#ef4444",
-      probability30d: 1,
-      probability60d: 3,
-      probability90d: 5,
-      probColor: "#ef4444",
-      detail: "Full dismantlement of Natanz, Isfahan, and Fordow is a non-starter for Tehran. These facilities are embedded in Iran's domestic political legitimacy and deterrence posture. No Iranian government — reformist or hardline — could survive agreeing to destroy infrastructure built over two decades. Historical precedent: even under JCPOA maximum pressure, dismantlement was never on the table. The only plausible path is a reframing toward 'repurposing' Fordow under IAEA co-management, but that requires US to drop the dismantlement demand entirely.",
-      dealBreaker: false
-    },
-    {
-      id: 3,
-      text: "Permanent pledge to never pursue nuclear weapons",
-      category: "Nuclear",
-      status: "NOT_MET",
-      statusLabel: "No formal commitment offered",
-      statusColor: "#ef4444",
-      probability30d: 8,
-      probability60d: 18,
-      probability90d: 28,
-      probColor: "#ef4444",
-      detail: "Iran has issued multiple fatwas against nuclear weapons and signed the NPT, but the US demands a new, binding legal instrument. Iran's position: the fatwa and NPT are sufficient. A new pledge would require reciprocal US security guarantees that are not currently offered. Probability rises modestly at 90d only if a broader deal framework includes sanctions relief — Iran could reaffirm existing commitments in a new format as a face-saving mechanism.",
-      dealBreaker: false
-    },
-    {
-      id: 4,
-      text: "Transfer ~450kg enriched uranium (60%) to IAEA",
-      category: "Nuclear",
-      status: "CONTESTED",
-      statusLabel: "Disputed — Farsi vs. English ceasefire text diverge",
-      statusColor: "#f97316",
-      probability30d: 15,
-      probability60d: 25,
-      probability90d: 32,
-      probColor: "#ef4444",
-      detail: "The core dispute: Trump claimed Iran agreed to remove nuclear material; Iran's Farsi ceasefire version references transfer provisions; the English version omits them; Hegseth insists material 'WILL be removed.' This textual ambiguity is either a deliberate constructive ambiguity allowing both sides to claim different things, or a genuine misunderstanding that will collapse on contact with implementation. Probability reflects the narrow possibility that a phased transfer to a third-country IAEA facility (e.g., Kazakhstan or Oman) could be negotiated as a confidence-building measure.",
-      dealBreaker: false
-    },
-    {
-      id: 5,
-      text: "End uranium enrichment inside Iran",
-      category: "Nuclear",
-      status: "NOT_MET",
-      statusLabel: "Iran explicitly rejected; Hegseth contradicts ceasefire text",
-      statusColor: "#ef4444",
-      probability30d: 2,
-      probability60d: 3,
-      probability90d: 4,
-      probColor: "#ef4444",
-      detail: "This is the fundamental incompatibility of the negotiation. Iran's demand #3 asserts the RIGHT to enrich; US demand #5 demands enrichment END entirely. No overlap exists. Hegseth's public denial of Iran's enrichment right directly contradicts the Farsi ceasefire text, which Iran interprets as implicit recognition. Any viable deal must resolve this through a cap-and-verify formula (e.g., 3.67% LEU cap with IAEA continuous monitoring) rather than a binary yes/no. Full cessation probability is near zero because it would require Iran to abandon its core negotiating position and domestic political red line.",
-      dealBreaker: true
-    },
-    {
-      id: 6,
-      text: "IAEA full unrestricted access",
-      category: "Nuclear",
-      status: "NOT_MET",
-      statusLabel: "No agreement reached on inspections",
-      statusColor: "#ef4444",
-      probability30d: 10,
-      probability60d: 22,
-      probability90d: 35,
-      probColor: "#ef4444",
-      detail: "IAEA access is historically negotiable — Iran accepted Additional Protocol inspections under JCPOA. The barrier is sequencing: Iran demands sanctions relief BEFORE granting expanded access; the US demands verification BEFORE lifting sanctions. Probability increases meaningfully at 90d because IAEA access is one of the few demands where both sides have precedent for agreement. The drone-in-airspace violation complicates this: Iran will argue that surveillance overflights make 'unrestricted access' a cover for intelligence collection.",
-      dealBreaker: false
-    },
-    {
-      id: 7,
-      text: "End funding/arming/directing proxies (Hezbollah, Houthis)",
-      category: "Proxies",
-      status: "NOT_MET",
-      statusLabel: "Houthis active; Lebanon front active; Israel bombarding Lebanon",
-      statusColor: "#ef4444",
-      probability30d: 3,
-      probability60d: 5,
-      probability90d: 8,
-      probColor: "#ef4444",
-      detail: "Iran's proxy network is a strategic depth asset built over 40 years. Dismantling it is akin to asking the US to close overseas military bases — it eliminates deterrence capability. Houthis continue Red Sea operations. Lebanon front is active with 112 killed in Beirut during the ceasefire, which Iran frames as Israeli aggression, not proxy activity. Iran will never formally acknowledge 'directing' proxies (it frames them as independent resistance movements). At most, Iran could agree to 'de-escalatory influence' language without verifiable dismantlement.",
-      dealBreaker: false
-    },
-    {
-      id: 8,
-      text: "Halt attacks on regional energy infrastructure",
-      category: "Military",
-      status: "PARTIAL",
-      statusLabel: "Ceasefire paused GCC attacks; Hormuz briefly closed after Beirut strikes",
-      statusColor: "#f59e0b",
-      probability30d: 60,
-      probability60d: 50,
-      probability90d: 42,
-      probColor: "#f59e0b",
-      detail: "GCC-front energy infrastructure attacks are at zero since Apr 8 — the ceasefire is holding on this dimension. However, Iran briefly closed Hormuz after the Beirut bombardment, demonstrating that energy infrastructure stability is hostage to the Lebanon front. Probability is highest at 30d because the ceasefire directly addresses this; it decays because Lebanon escalation could trigger retaliatory Hormuz closures at any time. Iran views Hormuz leverage as its primary bargaining chip and will not permanently relinquish it without substantial sanctions relief.",
-      dealBreaker: false
-    },
-    {
-      id: 9,
-      text: "Reopen Strait of Hormuz",
-      category: "Military",
-      status: "PARTIAL",
-      statusLabel: "Agreed in ceasefire; 4 transits/day; fragile",
-      statusColor: "#f59e0b",
-      probability30d: 68,
-      probability60d: 52,
-      probability90d: 45,
-      probColor: "#f59e0b",
-      detail: "Hormuz is partially reopened at 4 transits/day — far below pre-war ~60 transits/day but a critical confidence signal. Iran framed reopening as 'coordinated passage' (preserving its sovereignty claim, aligning with Iran demand #2). The brief closure after the Beirut strikes reveals the fragility: Hormuz is Iran's escalation lever and will be used reactively. Full normalization requires either a broader deal or sustained absence of provocations — neither is assured. Probability decays because each Lebanon escalation cycle resets Hormuz risk.",
-      dealBreaker: false
-    },
-    {
-      id: 10,
-      text: "Cap missile range and production",
-      category: "Military",
-      status: "NOT_MET",
-      statusLabel: "Iran: missiles are non-negotiable",
-      statusColor: "#ef4444",
-      probability30d: 2,
-      probability60d: 4,
-      probability90d: 6,
-      probColor: "#ef4444",
-      detail: "Iran's ballistic missile program is its primary conventional deterrent and the only capability that can credibly threaten Israel and US regional bases. Iran considers missiles non-negotiable — they are the substitute for the air force Iran cannot build under sanctions. The 112 killed in Beirut reinforces Iran's argument that it needs missiles for deterrence against Israeli aggression. No Iranian negotiator can concede missile caps without equivalent Israeli/US disarmament commitments, which are not on the table.",
-      dealBreaker: false
-    },
-    {
-      id: 11,
-      text: "Missiles for self-defense only",
-      category: "Military",
-      status: "NOT_MET",
-      statusLabel: "No framework for defining or verifying 'self-defense'",
-      statusColor: "#ef4444",
-      probability30d: 5,
-      probability60d: 10,
-      probability90d: 15,
-      probColor: "#ef4444",
-      detail: "A 'self-defense only' missile posture is definitionally unverifiable — any state claims its missiles are defensive. Iran already frames its arsenal as defensive. The demand is functionally a repackaging of missile caps. Modest probability increase at 90d reflects the possibility that Iran could agree to a declaratory policy shift (missiles explicitly for territorial defense) in exchange for sanctions relief, but without verification mechanisms this would be symbolic rather than substantive.",
-      dealBreaker: false
-    },
-    {
-      id: 12,
-      text: "Full sanctions relief (US concession in exchange)",
-      category: "Economic",
-      status: "NOT_MET",
-      statusLabel: "Iran rejects partial relief; full package not offered",
-      statusColor: "#ef4444",
-      probability30d: 3,
-      probability60d: 10,
-      probability90d: 18,
-      probColor: "#ef4444",
-      detail: "This is listed as a US concession — something the US would offer in exchange for Iranian compliance on nuclear/military demands. Iran demands ALL sanctions removed (demands #4 and #5); the US has not offered any sanctions relief package yet. Congressional politics make full sanctions relief extremely difficult — any deal must survive potential Congressional review under INARA. Probability rises at 90d only if Islamabad talks produce a phased framework where initial sanctions relief is tied to verifiable nuclear steps.",
-      dealBreaker: false
-    },
-    {
-      id: 13,
-      text: "US support for Bushehr civilian nuclear program (US concession)",
-      category: "Nuclear",
-      status: "PARTIAL",
-      statusLabel: "Mentioned in talks but not formalized",
-      statusColor: "#f59e0b",
-      probability30d: 25,
-      probability60d: 38,
-      probability90d: 48,
-      probColor: "#f97316",
-      detail: "Bushehr civilian support is the easiest US concession because it has precedent (Russia already operates Bushehr) and low proliferation risk (reactor-grade fuel, Russian fuel cycle). It serves as a face-saving mechanism for Iran — Tehran can claim the US recognized its civilian nuclear rights. Probability is moderate and rising because this is likely to be an early confidence-building concession in any deal framework. The main barrier is US domestic politics: supporting any Iranian nuclear activity is politically toxic even when technically benign.",
-      dealBreaker: false
-    },
-    {
-      id: 14,
-      text: "Remove snapback mechanism (US concession)",
-      category: "Diplomatic",
-      status: "NOT_MET",
-      statusLabel: "Not addressed in current negotiations",
-      statusColor: "#ef4444",
-      probability30d: 2,
-      probability60d: 8,
-      probability90d: 15,
-      probColor: "#ef4444",
-      detail: "The UN snapback mechanism (UNSCR 2231) allows any JCPOA participant to reimpose UN sanctions. The US used it in 2020. Removing it requires UNSC action and European/Russian/Chinese agreement. This is a downstream demand that only becomes relevant if a comprehensive deal is near — it will not be addressed in the 2-week ceasefire window or in early-stage Islamabad talks. Probability rises at 90d only in scenarios where a full JCPOA-successor framework is being negotiated.",
-      dealBreaker: false
-    },
-    {
-      id: 15,
-      text: "Recognition of Israel's right to exist",
-      category: "Diplomatic",
-      status: "NOT_MET",
-      statusLabel: "Iran's ideological red line",
-      statusColor: "#ef4444",
-      probability30d: 0,
-      probability60d: 1,
-      probability90d: 1,
-      probColor: "#ef4444",
-      detail: "Recognition of Israel is an ideological red line for the Islamic Republic — it is embedded in the revolutionary constitution and the regime's identity. No Iranian leader can concede this and survive politically. Even pragmatists like Rouhani or Zarif never approached this issue. This demand is either a maximalist opening position intended to be traded away, or a poison pill designed to make any deal impossible. Any viable deal must explicitly exclude this demand.",
-      dealBreaker: false
-    }
-  ],
-
-  iranDemands: [
-    {
-      id: 1,
-      text: "US guarantees non-aggression pact",
-      category: "Security",
-      status: "PARTIAL",
-      statusLabel: "Ceasefire in effect but conditional; no formal pact; drone violation",
-      statusColor: "#f59e0b",
-      probability30d: 20,
-      probability60d: 28,
-      probability90d: 35,
-      probColor: "#ef4444",
-      detail: "The 2-week ceasefire is a de facto partial non-aggression commitment, but it falls far short of a formal pact. The drone incursion into Iranian airspace directly contradicts any non-aggression principle — Iran will cite this as evidence the US/Israel cannot be trusted even during a ceasefire. A formal non-aggression pact requires Senate ratification (treaty) or executive agreement (fragile, reversible by next administration). The Trump administration's track record of withdrawing from JCPOA makes any US guarantee structurally unreliable from Iran's perspective.",
-      dealBreaker: true
-    },
-    {
-      id: 2,
-      text: "Iran controls Strait of Hormuz ('regulated passage')",
-      category: "Security",
-      status: "PARTIAL",
-      statusLabel: "Iran 'coordinates' transit per ceasefire; fragile",
-      statusColor: "#f59e0b",
-      probability30d: 55,
-      probability60d: 42,
-      probability90d: 38,
-      probColor: "#f59e0b",
-      detail: "The ceasefire grants Iran a 'coordination' role in Hormuz transit — a carefully ambiguous term that Iran reads as sovereignty recognition and the US reads as temporary operational arrangement. At 4 transits/day, Iran is demonstrating control while allowing limited commerce. Iran and Oman are imposing transit fees, establishing a financial precedent. Probability is highest at 30d because the ceasefire structure supports it; it decays because the US Navy will not accept permanent Iranian control, and any comprehensive deal will require freedom-of-navigation guarantees that conflict with Iran's sovereignty claim.",
-      dealBreaker: false
-    },
-    {
-      id: 3,
-      text: "Acceptance of Iran's right to uranium enrichment",
-      category: "Nuclear",
-      status: "CONTESTED",
-      statusLabel: "Farsi ceasefire text includes it; English omits it; Hegseth denies it",
-      statusColor: "#f97316",
-      probability30d: 30,
-      probability60d: 38,
-      probability90d: 45,
-      probColor: "#f97316",
-      detail: "This is the mirror image of US demand #5 — the fundamental incompatibility. The Farsi ceasefire version includes enrichment recognition; the English version does not; Hegseth explicitly denies Iran has any enrichment right. This textual divergence is either intentional constructive ambiguity or a crisis waiting to happen. Iran considers enrichment an inalienable NPT right (Article IV). Any viable deal must find a formula that acknowledges Iran's NPT rights while imposing verifiable limitations — the JCPOA 3.67% cap model. Probability rises modestly because this compromise formula has historical precedent and both sides know it.",
-      dealBreaker: true
-    },
-    {
-      id: 4,
-      text: "Remove ALL primary US sanctions",
-      category: "Economic",
-      status: "NOT_MET",
-      statusLabel: "No sanctions relief offered",
-      statusColor: "#ef4444",
-      probability30d: 2,
-      probability60d: 8,
-      probability90d: 15,
-      probColor: "#ef4444",
-      detail: "Primary sanctions (direct US-Iran trade restrictions) are the easier category to lift because they primarily affect bilateral commerce, which is minimal. However, many primary sanctions are codified in legislation (ISA, CISADA, ITRA) requiring Congressional action or complex presidential waiver processes. The Trump administration has shown no willingness to begin sanctions relief discussions. Probability rises at 90d only in a scenario where a comprehensive framework triggers phased relief, starting with humanitarian/energy carve-outs.",
-      dealBreaker: false
-    },
-    {
-      id: 5,
-      text: "Remove ALL secondary US sanctions",
-      category: "Economic",
-      status: "NOT_MET",
-      statusLabel: "No sanctions relief offered",
-      statusColor: "#ef4444",
-      probability30d: 1,
-      probability60d: 5,
-      probability90d: 10,
-      probColor: "#ef4444",
-      detail: "Secondary sanctions (targeting third-country entities doing business with Iran) are the more powerful tool and the harder to lift. They give the US extraterritorial economic leverage — removing them means surrendering coercive capability. The China tariff threat (50% for Iran arms supply) demonstrates the US is EXPANDING secondary economic coercion, not reducing it. Removing secondary sanctions requires the US to accept that other nations will trade freely with Iran — politically impossible in the current US domestic environment.",
-      dealBreaker: true
-    },
-    {
-      id: 6,
-      text: "Terminate all UNSC resolutions against Iran",
-      category: "Diplomatic",
-      status: "NOT_MET",
-      statusLabel: "Not addressed in negotiations",
-      statusColor: "#ef4444",
-      probability30d: 0,
-      probability60d: 2,
-      probability90d: 5,
-      probColor: "#ef4444",
-      detail: "UNSC resolutions require Security Council action and P5 consensus. The US and its allies control enough votes to block termination. This is a downstream demand that only becomes relevant in a comprehensive deal framework. Even JCPOA only SUSPENDED (not terminated) UNSC resolutions. Iran knows this demand is maximalist — it serves as a negotiating chip to be traded for other concessions. Near-zero probability at all horizons because UNSC action is structurally slow and politically blocked.",
-      dealBreaker: false
-    },
-    {
-      id: 7,
-      text: "Terminate all IAEA Board of Governors resolutions",
-      category: "Diplomatic",
-      status: "NOT_MET",
-      statusLabel: "Not addressed in negotiations",
-      statusColor: "#ef4444",
-      probability30d: 0,
-      probability60d: 3,
-      probability90d: 8,
-      probColor: "#ef4444",
-      detail: "IAEA Board resolutions are technically easier to address than UNSC resolutions but still require multilateral consensus. Iran's cooperation with IAEA inspections could lead to 'closing the file' on past issues, as partially achieved under JCPOA. This demand is linked to US demand #6 (IAEA access) — a trade is possible where Iran grants full access in exchange for resolution of outstanding IAEA concerns. Probability rises modestly at 90d because this is a natural component of any nuclear deal.",
-      dealBreaker: false
-    },
-    {
-      id: 8,
-      text: "Payment of war damages/reparations from US",
-      category: "Economic",
-      status: "NOT_MET",
-      statusLabel: "Not addressed; Hormuz transit fees serve as partial signal",
-      statusColor: "#ef4444",
-      probability30d: 1,
-      probability60d: 2,
-      probability90d: 3,
-      probColor: "#ef4444",
-      detail: "The US has never paid war reparations to any adversary in the modern era — doing so would set a precedent with massive global implications. Iran and Oman imposing Hormuz transit fees is a creative workaround: extracting economic compensation without formal reparations. This demand is almost certainly a maximalist position intended to be traded away. The only scenario where it gains traction is if the US agrees to unfreeze Iranian assets held abroad (as was done in the 2016 settlement), which could be framed as reparations domestically in Iran.",
-      dealBreaker: false
-    },
-    {
-      id: 9,
-      text: "Withdrawal of ALL US combat forces from regional bases",
-      category: "Military",
-      status: "NOT_MET",
-      statusLabel: "Hegseth: 'We're not going anywhere'",
-      statusColor: "#ef4444",
-      probability30d: 0,
-      probability60d: 1,
-      probability90d: 2,
-      probColor: "#ef4444",
-      detail: "Hegseth's statement is unambiguous: US forces will not withdraw. The US maintains ~45,000 troops across Qatar (Al Udeid), Bahrain (Fifth Fleet), UAE, Kuwait, Iraq, and other regional installations. These bases predate the current conflict and serve broader US strategic interests (oil transit security, counterterrorism, China containment). Withdrawal would be perceived as strategic defeat. Near-zero probability at all time horizons. Iran likely knows this and uses it as a negotiating chip to extract concessions elsewhere.",
-      dealBreaker: false
-    },
-    {
-      id: 10,
-      text: "Cessation of war on ALL fronts (including Lebanon and Israeli operations)",
-      category: "Security",
-      status: "BLOCKED",
-      statusLabel: "Netanyahu rejected Lebanon inclusion; Vance agreed; 112 killed in Beirut",
-      statusColor: "#7c3aed",
-      probability30d: 3,
-      probability60d: 8,
-      probability90d: 12,
-      probColor: "#ef4444",
-      detail: "This is structurally BLOCKED — not merely unmet. Netanyahu explicitly rejected extending ceasefire coverage to Lebanon; VP Vance publicly agreed with Netanyahu's position. The US-Iran ceasefire is therefore structurally incomplete by design: it covers the GCC/Gulf front but explicitly excludes the Lebanon/Israel front. 112 killed in Beirut during the ceasefire demonstrates this is not theoretical. Iran views the Lebanon front as part of the same war; the US/Israel view it as a separate conflict. This incompatibility is the single largest structural risk to ceasefire durability — Iran may conclude the ceasefire is a trap that allows Israel to destroy Hezbollah while Iran's hands are tied.",
-      dealBreaker: true
-    }
-  ],
-
-  ceasefire: {
-    requiredThreshold: {
-      minimumUS: 5,
-      minimumIran: 4,
-      rationale: "A viable deal requires at minimum: (1) extended ceasefire, (2) some nuclear limitation formula, (3) enrichment cap framework, (4) IAEA access roadmap, (5) Hormuz normalization — 5 of 15 US demands in some form. For Iran: (1) non-aggression guarantee, (2) Hormuz sovereignty acknowledgment, (3) enrichment right recognition, (4) meaningful sanctions relief — 4 of 10 Iran demands. Below these thresholds, neither side's domestic politics permit signing. This is the minimum viable package, not the ideal outcome.",
-      polymarketSignal: "Polymarket at 100% ceasefire reflects market confidence that the 2-week TACTICAL pause holds — not that a comprehensive deal is reached. The $225M volume indicates high conviction in the pause but the 94% 'conflict ends' contract conflates the pause with resolution. Sophisticated assessment: the pause survives its 2-week window with ~75% probability; a comprehensive deal within 90 days has ~22% probability."
-    },
-    currentMet: {
-      us: 5,
-      iran: 3
-    },
-    gap: {
-      us: 0,
-      iran: 1
-    }
-  },
-
-  compromiseZone: {
-    headline: "Narrow but Real: A JCPOA-Plus Framework Exists If Both Sides Accept Asymmetric Concessions",
-    probability: 22,
-    probColor: "#f97316",
-    timeHorizon: "60–90 days for framework agreement; 6–12 months for implementation",
-
-    minimumViableDeal: {
-      title: "The Islamabad Framework: JCPOA-Plus with Gulf Security Architecture",
-      usConcessions: [
-        "Recognize Iran's right to enrich uranium up to 3.67% LEU under continuous IAEA monitoring — replicating JCPOA Article IV language",
-        "Phase 1 sanctions relief: unfreeze $6–10B in Iranian assets held in South Korea, Japan, and Iraq within 60 days of verified nuclear compliance",
-        "Phase 2 sanctions relief: remove secondary sanctions on Iranian oil exports to Asian buyers (China, India, South Korea) within 180 days",
-        "Support Bushehr civilian reactor operations including Russian fuel supply chain",
-        "Executive agreement on non-aggression (not Senate treaty — preserves presidential flexibility) with 5-year renewal clause",
-        "Accept Iran's 'coordination role' in Hormuz transit as face-saving formula for both sides"
-      ],
-      iranConcessions: [
-        "Cap enrichment at 3.67% LEU with all 60% HEU stockpile transferred to IAEA custody in Kazakhstan within 90 days",
-        "Grant IAEA Additional Protocol access to all declared sites plus managed access to military sites with 24-day notice (JCPOA formula)",
-        "Formal reaffirmation of NPT commitments and fatwa against nuclear weapons in a new UN-registered instrument",
-        "Verifiable reduction in ballistic missile deployments within 150km of GCC borders (not a cap on development — a deployment zone restriction)",
-        "Commitment to 'de-escalatory influence' on Houthi Red Sea operations (not dismantlement — influence language)",
-        "Normalize Hormuz transit to 30+ transits/day within 30 days of ceasefire extension"
-      ],
-      mustExclude: [
-        "Lebanon/Israel front — Netanyahu controls this variable and has explicitly rejected inclusion; any attempt to bundle it will kill the deal",
-        "Israel recognition — ideological red line that Iran cannot cross; including it is a deal-killer by design",
-        "Full nuclear dismantlement — Iran will never agree; the US must accept limitations over elimination",
-        "US troop withdrawal — Hegseth's position is firm and non-negotiable; Iran must accept continued US regional presence",
-        "War reparations — no precedent exists; Hormuz transit fees serve as the de facto workaround",
-        "UNSC resolution termination — requires multilateral process incompatible with bilateral deal timeline"
-      ],
-      faceSavingMechanism: "The US claims: 'Iran agreed to cap enrichment, transfer HEU, and accept full IAEA inspections — we achieved what JCPOA could not.' Iran claims: 'The US recognized our inalienable right to enrichment, lifted sanctions, and signed a non-aggression pact — we achieved what decades of resistance demanded.' Both are technically true. The deal succeeds because each side can accurately describe the same agreement in ways that satisfy domestic audiences. Pakistan, as broker, takes credit for preventing nuclear war. China quietly benefits from reopened oil trade."
-    },
-
-    blockers: [
+    usDemands: [
       {
-        blocker: "Lebanon Front Structural Incompatibility",
-        severity: "Critical",
-        severityColor: "#ef4444",
-        resolution: "De-link Lebanon from Iran-US negotiations entirely. Establish a separate Israel-Lebanon track (potentially French/Egyptian mediated). Iran must accept that it cannot protect Hezbollah through the US-Iran channel. This is the hardest pill for Tehran — it means accepting the ceasefire is a partial arrangement that leaves its most important ally exposed."
+        id: 1,
+        text: '30-day ceasefire',
+        category: 'Military',
+        status: 'PARTIAL',
+        statusLabel: 'Day 7 of ceasefire',
+        statusColor: '#f59e0b',
+        probability30d: 72,
+        probability60d: 55,
+        probability90d: 48,
+        probColor: '#22c55e',
+        detail: 'Pakistan-brokered 2-week ceasefire (Apr 7–21) is holding on the GCC front with zero attacks logged Apr 8. Extension to 30 days depends on Islamabad talks progress. Probability decays at 60d/90d because each renewal is a separate negotiation event — neither side has committed beyond Apr 21. Lebanon front remains active, giving Iran justification to walk if escalation spills over.',
+        dealBreaker: false
       },
       {
-        blocker: "Enrichment Binary: US Demands Zero vs. Iran Demands Recognition",
-        severity: "Critical",
-        severityColor: "#ef4444",
-        resolution: "Reframe from binary (yes/no enrichment) to graduated (how much, under what verification). The JCPOA 3.67% formula is the only proven template. Requires the US to publicly walk back Hegseth's 'no enrichment' position — politically costly but necessary. A quiet shift from 'end enrichment' to 'verifiable enrichment limitations' is the only viable path."
+        id: 2,
+        text: 'Dismantle nuclear facilities (Natanz, Isfahan, Fordow)',
+        category: 'Nuclear',
+        status: 'NOT_MET',
+        statusLabel: 'Iran categorically refuses dismantlement',
+        statusColor: '#ef4444',
+        probability30d: 1,
+        probability60d: 3,
+        probability90d: 5,
+        probColor: '#ef4444',
+        detail: 'Full dismantlement of Natanz, Isfahan, and Fordow is a non-starter for Tehran. These facilities are embedded in Iran\'s domestic political legitimacy and deterrence posture. No Iranian government — reformist or hardline — could survive agreeing to destroy infrastructure built over two decades. Historical precedent: even under JCPOA maximum pressure, dismantlement was never on the table. The only plausible path is a reframing toward \'repurposing\' Fordow under IAEA co-management, but that requires US to drop the dismantlement demand entirely.',
+        dealBreaker: false
       },
       {
-        blocker: "Ceasefire Text Divergence (Farsi vs. English)",
-        severity: "Critical",
-        severityColor: "#ef4444",
-        resolution: "The Islamabad talks must produce a SINGLE authoritative text in both languages with certified translation. The current ambiguity is a ticking bomb — it either gets resolved diplomatically or it detonates when implementation begins. Pakistan's role as honest broker is critical here."
+        id: 3,
+        text: 'Permanent pledge to never pursue nuclear weapons',
+        category: 'Nuclear',
+        status: 'NOT_MET',
+        statusLabel: 'No formal commitment offered',
+        statusColor: '#ef4444',
+        probability30d: 8,
+        probability60d: 18,
+        probability90d: 28,
+        probColor: '#ef4444',
+        detail: 'Iran has issued multiple fatwas against nuclear weapons and signed the NPT, but the US demands a new, binding legal instrument. Iran\'s position: the fatwa and NPT are sufficient. A new pledge would require reciprocal US security guarantees that are not currently offered. Probability rises modestly at 90d only if a broader deal framework includes sanctions relief — Iran could reaffirm existing commitments in a new format as a face-saving mechanism.',
+        dealBreaker: false
       },
       {
-        blocker: "Drone Incursion Precedent",
-        severity: "Major",
-        severityColor: "#f97316",
-        resolution: "US/Israel must cease surveillance overflights of Iranian territory during the ceasefire period. Iran will use the drone incident to resist IAEA access ('you already spy on us from the air'). A formal no-overflight commitment during negotiations would rebuild trust, but US/Israeli intelligence agencies will resist losing collection capabilities."
+        id: 4,
+        text: 'Transfer ~450kg enriched uranium (60%) to IAEA',
+        category: 'Nuclear',
+        status: 'CONTESTED',
+        statusLabel: 'Disputed — Farsi vs. English ceasefire text diverge',
+        statusColor: '#f97316',
+        probability30d: 15,
+        probability60d: 25,
+        probability90d: 32,
+        probColor: '#ef4444',
+        detail: 'The core dispute: Trump claimed Iran agreed to remove nuclear material; Iran\'s Farsi ceasefire version references transfer provisions; the English version omits them; Hegseth insists material \'WILL be removed.\' This textual ambiguity is either a deliberate constructive ambiguity allowing both sides to claim different things, or a genuine misunderstanding that will collapse on contact with implementation. Probability reflects the narrow possibility that a phased transfer to a third-country IAEA facility (e.g., Kazakhstan or Oman) could be negotiated as a confidence-building measure.',
+        dealBreaker: false
       },
       {
-        blocker: "China Tariff Escalation Complicating Sanctions Relief",
-        severity: "Major",
-        severityColor: "#f97316",
-        resolution: "The 50% tariff threat on China creates a parallel escalation track that intersects with Iran negotiations. If China retaliates, the US will be fighting economic wars on two fronts, potentially making Iran deal more attractive (resolve one front). If China complies, Iran loses a key supplier and economic lifeline, weakening its negotiating position. Resolution depends on US-China dynamics outside the Iran channel."
+        id: 5,
+        text: 'End uranium enrichment inside Iran',
+        category: 'Nuclear',
+        status: 'NOT_MET',
+        statusLabel: 'Iran explicitly rejected; Hegseth contradicts ceasefire text',
+        statusColor: '#ef4444',
+        probability30d: 2,
+        probability60d: 3,
+        probability90d: 4,
+        probColor: '#ef4444',
+        detail: 'This is the fundamental incompatibility of the negotiation. Iran\'s demand #3 asserts the RIGHT to enrich; US demand #5 demands enrichment END entirely. No overlap exists. Hegseth\'s public denial of Iran\'s enrichment right directly contradicts the Farsi ceasefire text, which Iran interprets as implicit recognition. Any viable deal must resolve this through a cap-and-verify formula (e.g., 3.67% LEU cap with IAEA continuous monitoring) rather than a binary yes/no. Full cessation probability is near zero because it would require Iran to abandon its core negotiating position and domestic political red line.',
+        dealBreaker: true
       },
       {
-        blocker: "US Domestic Politics — Congressional Review",
-        severity: "Moderate",
-        severityColor: "#f59e0b",
-        resolution: "Any deal involving sanctions relief triggers INARA review. The Trump administration could use executive orders for initial relief (asset unfreezes, waiver renewals) to avoid Congressional veto. But this makes the deal structurally fragile — reversible by any future president, which is exactly why Iran distrusts US commitments."
+        id: 6,
+        text: 'IAEA full unrestricted access',
+        category: 'Nuclear',
+        status: 'NOT_MET',
+        statusLabel: 'No agreement reached on inspections',
+        statusColor: '#ef4444',
+        probability30d: 10,
+        probability60d: 22,
+        probability90d: 35,
+        probColor: '#ef4444',
+        detail: 'IAEA access is historically negotiable — Iran accepted Additional Protocol inspections under JCPOA. The barrier is sequencing: Iran demands sanctions relief BEFORE granting expanded access; the US demands verification BEFORE lifting sanctions. Probability increases meaningfully at 90d because IAEA access is one of the few demands where both sides have precedent for agreement. The drone-in-airspace violation complicates this: Iran will argue that surveillance overflights make \'unrestricted access\' a cover for intelligence collection.',
+        dealBreaker: false
+      },
+      {
+        id: 7,
+        text: 'End funding/arming/directing proxies (Hezbollah, Houthis)',
+        category: 'Proxies',
+        status: 'NOT_MET',
+        statusLabel: 'Houthis active; Lebanon front active; Israel bombarding Lebanon',
+        statusColor: '#ef4444',
+        probability30d: 3,
+        probability60d: 5,
+        probability90d: 8,
+        probColor: '#ef4444',
+        detail: 'Iran\'s proxy network is a strategic depth asset built over 40 years. Dismantling it is akin to asking the US to close overseas military bases — it eliminates deterrence capability. Houthis continue Red Sea operations. Lebanon front is active with 112 killed in Beirut during the ceasefire, which Iran frames as Israeli aggression, not proxy activity. Iran will never formally acknowledge \'directing\' proxies (it frames them as independent resistance movements). At most, Iran could agree to \'de-escalatory influence\' language without verifiable dismantlement.',
+        dealBreaker: false
+      },
+      {
+        id: 8,
+        text: 'Halt attacks on regional energy infrastructure',
+        category: 'Military',
+        status: 'PARTIAL',
+        statusLabel: 'Ceasefire paused GCC attacks; Hormuz briefly closed after Beirut strikes',
+        statusColor: '#f59e0b',
+        probability30d: 60,
+        probability60d: 50,
+        probability90d: 42,
+        probColor: '#f59e0b',
+        detail: 'GCC-front energy infrastructure attacks are at zero since Apr 8 — the ceasefire is holding on this dimension. However, Iran briefly closed Hormuz after the Beirut bombardment, demonstrating that energy infrastructure stability is hostage to the Lebanon front. Probability is highest at 30d because the ceasefire directly addresses this; it decays because Lebanon escalation could trigger retaliatory Hormuz closures at any time. Iran views Hormuz leverage as its primary bargaining chip and will not permanently relinquish it without substantial sanctions relief.',
+        dealBreaker: false
+      },
+      {
+        id: 9,
+        text: 'Reopen Strait of Hormuz',
+        category: 'Military',
+        status: 'OPEN',
+        statusLabel: 'Strait open, transit normalized',
+        statusColor: '#22c55e',
+        probability30d: 68,
+        probability60d: 52,
+        probability90d: 45,
+        probColor: '#f59e0b',
+        detail: 'Hormuz is partially reopened at 4 transits/day — far below pre-war ~60 transits/day but a critical confidence signal. Iran framed reopening as \'coordinated passage\' (preserving its sovereignty claim, aligning with Iran demand #2). The brief closure after the Beirut strikes reveals the fragility: Hormuz is Iran\'s escalation lever and will be used reactively. Full normalization requires either a broader deal or sustained absence of provocations — neither is assured. Probability decays because each Lebanon escalation cycle resets Hormuz risk.',
+        dealBreaker: false
+      },
+      {
+        id: 10,
+        text: 'Cap missile range and production',
+        category: 'Military',
+        status: 'NOT_MET',
+        statusLabel: 'Iran: missiles are non-negotiable',
+        statusColor: '#ef4444',
+        probability30d: 2,
+        probability60d: 4,
+        probability90d: 6,
+        probColor: '#ef4444',
+        detail: 'Iran\'s ballistic missile program is its primary conventional deterrent and the only capability that can credibly threaten Israel and US regional bases. Iran considers missiles non-negotiable — they are the substitute for the air force Iran cannot build under sanctions. The 112 killed in Beirut reinforces Iran\'s argument that it needs missiles for deterrence against Israeli aggression. No Iranian negotiator can concede missile caps without equivalent Israeli/US disarmament commitments, which are not on the table.',
+        dealBreaker: false
+      },
+      {
+        id: 11,
+        text: 'Missiles for self-defense only',
+        category: 'Military',
+        status: 'NOT_MET',
+        statusLabel: 'No framework for defining or verifying \'self-defense\'',
+        statusColor: '#ef4444',
+        probability30d: 5,
+        probability60d: 10,
+        probability90d: 15,
+        probColor: '#ef4444',
+        detail: 'A \'self-defense only\' missile posture is definitionally unverifiable — any state claims its missiles are defensive. Iran already frames its arsenal as defensive. The demand is functionally a repackaging of missile caps. Modest probability increase at 90d reflects the possibility that Iran could agree to a declaratory policy shift (missiles explicitly for territorial defense) in exchange for sanctions relief, but without verification mechanisms this would be symbolic rather than substantive.',
+        dealBreaker: false
+      },
+      {
+        id: 12,
+        text: 'Full sanctions relief (US concession in exchange)',
+        category: 'Economic',
+        status: 'NOT_MET',
+        statusLabel: 'Iran rejects partial relief; full package not offered',
+        statusColor: '#ef4444',
+        probability30d: 3,
+        probability60d: 10,
+        probability90d: 18,
+        probColor: '#ef4444',
+        detail: 'This is listed as a US concession — something the US would offer in exchange for Iranian compliance on nuclear/military demands. Iran demands ALL sanctions removed (demands #4 and #5); the US has not offered any sanctions relief package yet. Congressional politics make full sanctions relief extremely difficult — any deal must survive potential Congressional review under INARA. Probability rises at 90d only if Islamabad talks produce a phased framework where initial sanctions relief is tied to verifiable nuclear steps.',
+        dealBreaker: false
+      },
+      {
+        id: 13,
+        text: 'US support for Bushehr civilian nuclear program (US concession)',
+        category: 'Nuclear',
+        status: 'PARTIAL',
+        statusLabel: 'Mentioned in talks but not formalized',
+        statusColor: '#f59e0b',
+        probability30d: 25,
+        probability60d: 38,
+        probability90d: 48,
+        probColor: '#f97316',
+        detail: 'Bushehr civilian support is the easiest US concession because it has precedent (Russia already operates Bushehr) and low proliferation risk (reactor-grade fuel, Russian fuel cycle). It serves as a face-saving mechanism for Iran — Tehran can claim the US recognized its civilian nuclear rights. Probability is moderate and rising because this is likely to be an early confidence-building concession in any deal framework. The main barrier is US domestic politics: supporting any Iranian nuclear activity is politically toxic even when technically benign.',
+        dealBreaker: false
+      },
+      {
+        id: 14,
+        text: 'Remove snapback mechanism (US concession)',
+        category: 'Diplomatic',
+        status: 'NOT_MET',
+        statusLabel: 'Not addressed in current negotiations',
+        statusColor: '#ef4444',
+        probability30d: 2,
+        probability60d: 8,
+        probability90d: 15,
+        probColor: '#ef4444',
+        detail: 'The UN snapback mechanism (UNSCR 2231) allows any JCPOA participant to reimpose UN sanctions. The US used it in 2020. Removing it requires UNSC action and European/Russian/Chinese agreement. This is a downstream demand that only becomes relevant if a comprehensive deal is near — it will not be addressed in the 2-week ceasefire window or in early-stage Islamabad talks. Probability rises at 90d only in scenarios where a full JCPOA-successor framework is being negotiated.',
+        dealBreaker: false
+      },
+      {
+        id: 15,
+        text: 'Recognition of Israel\'s right to exist',
+        category: 'Diplomatic',
+        status: 'NOT_MET',
+        statusLabel: 'Iran\'s ideological red line',
+        statusColor: '#ef4444',
+        probability30d: 0,
+        probability60d: 1,
+        probability90d: 1,
+        probColor: '#ef4444',
+        detail: 'Recognition of Israel is an ideological red line for the Islamic Republic — it is embedded in the revolutionary constitution and the regime\'s identity. No Iranian leader can concede this and survive politically. Even pragmatists like Rouhani or Zarif never approached this issue. This demand is either a maximalist opening position intended to be traded away, or a poison pill designed to make any deal impossible. Any viable deal must explicitly exclude this demand.',
+        dealBreaker: false
       }
     ],
-
-    scenarios: [
+    iranDemands: [
       {
-        name: "Ceasefire Extends, No Comprehensive Deal",
-        probability: 42,
-        color: "#f59e0b",
-        description: "The 2-week ceasefire is renewed for another 2–4 weeks. Islamabad talks continue but produce only incremental confidence-building measures (prisoner exchanges, humanitarian corridors, Hormuz transit increases). No breakthrough on nuclear or sanctions issues. Lebanon front remains active. This is the status quo trajectory — a frozen conflict with periodic renewals.",
-        marketImpact: "Brent stabilizes $92–98 range. VIX drifts to 18–20. Markets price in indefinite managed tension. Oil premiums shrink modestly. Equities recover 3–5% as worst-case scenarios fade."
+        id: 1,
+        text: 'US guarantees non-aggression pact',
+        category: 'Security',
+        status: 'PARTIAL',
+        statusLabel: 'Ceasefire in effect but conditional; no formal pact; drone violation',
+        statusColor: '#f59e0b',
+        probability30d: 20,
+        probability60d: 28,
+        probability90d: 35,
+        probColor: '#ef4444',
+        detail: 'The 2-week ceasefire is a de facto partial non-aggression commitment, but it falls far short of a formal pact. The drone incursion into Iranian airspace directly contradicts any non-aggression principle — Iran will cite this as evidence the US/Israel cannot be trusted even during a ceasefire. A formal non-aggression pact requires Senate ratification (treaty) or executive agreement (fragile, reversible by next administration). The Trump administration\'s track record of withdrawing from JCPOA makes any US guarantee structurally unreliable from Iran\'s perspective.',
+        dealBreaker: true
       },
       {
-        name: "Framework Agreement (JCPOA-Plus)",
-        probability: 18,
-        color: "#22c55e",
-        description: "Islamabad talks produce a surprise framework agreement within 60 days. Both sides accept the minimum viable deal: enrichment caps, IAEA access, phased sanctions relief, non-aggression executive agreement. Lebanon is explicitly excluded. Implementation timeline is 6–12 months. Pakistan and Oman are guarantors.",
-        marketImpact: "Brent drops to $78–85 on supply normalization expectations. VIX falls to 14–16. S&P rallies 8–12%. Defense stocks decline. Iranian oil futures emerge. Gulf sovereign wealth funds increase equity allocations."
+        id: 2,
+        text: 'Iran controls Strait of Hormuz (\'regulated passage\')',
+        category: 'Security',
+        status: 'PARTIAL',
+        statusLabel: 'Iran \'coordinates\' transit per ceasefire; fragile',
+        statusColor: '#f59e0b',
+        probability30d: 55,
+        probability60d: 42,
+        probability90d: 38,
+        probColor: '#f59e0b',
+        detail: 'The ceasefire grants Iran a \'coordination\' role in Hormuz transit — a carefully ambiguous term that Iran reads as sovereignty recognition and the US reads as temporary operational arrangement. At 4 transits/day, Iran is demonstrating control while allowing limited commerce. Iran and Oman are imposing transit fees, establishing a financial precedent. Probability is highest at 30d because the ceasefire structure supports it; it decays because the US Navy will not accept permanent Iranian control, and any comprehensive deal will require freedom-of-navigation guarantees that conflict with Iran\'s sovereignty claim.',
+        dealBreaker: false
       },
       {
-        name: "Ceasefire Collapses, War Resumes",
-        probability: 25,
-        color: "#ef4444",
-        description: "A triggering event — major Lebanon escalation, Iranian nuclear provocation, Hormuz incident, or assassination — collapses the ceasefire before Apr 21. Both sides blame the other. Military operations resume within 48–72 hours. Hormuz fully closes. This scenario is driven by the four active violations accumulating rather than any single event.",
-        marketImpact: "Brent spikes to $115–130. VIX surges above 35. S&P drops 8–15%. Gold breaks $2,800. Shipping insurance rates triple. Global recession probability rises to 45%."
+        id: 3,
+        text: 'Acceptance of Iran\'s right to uranium enrichment',
+        category: 'Nuclear',
+        status: 'CONTESTED',
+        statusLabel: 'Farsi ceasefire text includes it; English omits it; Hegseth denies it',
+        statusColor: '#f97316',
+        probability30d: 30,
+        probability60d: 38,
+        probability90d: 45,
+        probColor: '#f97316',
+        detail: 'This is the mirror image of US demand #5 — the fundamental incompatibility. The Farsi ceasefire version includes enrichment recognition; the English version does not; Hegseth explicitly denies Iran has any enrichment right. This textual divergence is either intentional constructive ambiguity or a crisis waiting to happen. Iran considers enrichment an inalienable NPT right (Article IV). Any viable deal must find a formula that acknowledges Iran\'s NPT rights while imposing verifiable limitations — the JCPOA 3.67% cap model. Probability rises modestly because this compromise formula has historical precedent and both sides know it.',
+        dealBreaker: true
       },
       {
-        name: "Frozen Conflict (Korea-Model)",
-        probability: 12,
-        color: "#f97316",
-        description: "Neither war nor peace. The ceasefire becomes a permanent armistice without a peace deal. Hormuz operates at reduced capacity indefinitely. Sanctions remain. Nuclear program continues under ambiguous constraints. Both sides maintain military postures. Occasional flare-ups are managed through back-channel communication. This becomes the 'new normal' — structurally unstable but persistent.",
-        marketImpact: "Brent settles at $95–105 permanently elevated baseline. Markets adapt with a 'war premium' of 8–12% on energy. VIX normalizes at 20–22. Regional economies restructure around reduced Hormuz throughput."
+        id: 4,
+        text: 'Remove ALL primary US sanctions',
+        category: 'Economic',
+        status: 'NOT_MET',
+        statusLabel: 'No sanctions relief offered',
+        statusColor: '#ef4444',
+        probability30d: 2,
+        probability60d: 8,
+        probability90d: 15,
+        probColor: '#ef4444',
+        detail: 'Primary sanctions (direct US-Iran trade restrictions) are the easier category to lift because they primarily affect bilateral commerce, which is minimal. However, many primary sanctions are codified in legislation (ISA, CISADA, ITRA) requiring Congressional action or complex presidential waiver processes. The Trump administration has shown no willingness to begin sanctions relief discussions. Probability rises at 90d only in a scenario where a comprehensive framework triggers phased relief, starting with humanitarian/energy carve-outs.',
+        dealBreaker: false
       },
       {
-        name: "Escalation to Regional War",
-        probability: 3,
-        color: "#7c3aed",
-        description: "Ceasefire collapse leads to wider regional conflict involving direct Israel-Iran engagement, potential US strikes on Iranian nuclear facilities, and activation of all proxy fronts simultaneously. This is the tail risk scenario — unlikely but catastrophic. Triggered by either a nuclear revelation (Iran breakout attempt) or a mass casualty event that makes de-escalation politically impossible.",
-        marketImpact: "Brent exceeds $150. Global oil supply disrupted by 15–20%. VIX above 50. S&P drops 20–30%. Gold above $3,200. Global recession. Potential disruption to 30% of world oil transit through Hormuz."
+        id: 5,
+        text: 'Remove ALL secondary US sanctions',
+        category: 'Economic',
+        status: 'NOT_MET',
+        statusLabel: 'No sanctions relief offered',
+        statusColor: '#ef4444',
+        probability30d: 1,
+        probability60d: 5,
+        probability90d: 10,
+        probColor: '#ef4444',
+        detail: 'Secondary sanctions (targeting third-country entities doing business with Iran) are the more powerful tool and the harder to lift. They give the US extraterritorial economic leverage — removing them means surrendering coercive capability. The China tariff threat (50% for Iran arms supply) demonstrates the US is EXPANDING secondary economic coercion, not reducing it. Removing secondary sanctions requires the US to accept that other nations will trade freely with Iran — politically impossible in the current US domestic environment.',
+        dealBreaker: true
+      },
+      {
+        id: 6,
+        text: 'Terminate all UNSC resolutions against Iran',
+        category: 'Diplomatic',
+        status: 'NOT_MET',
+        statusLabel: 'Not addressed in negotiations',
+        statusColor: '#ef4444',
+        probability30d: 0,
+        probability60d: 2,
+        probability90d: 5,
+        probColor: '#ef4444',
+        detail: 'UNSC resolutions require Security Council action and P5 consensus. The US and its allies control enough votes to block termination. This is a downstream demand that only becomes relevant in a comprehensive deal framework. Even JCPOA only SUSPENDED (not terminated) UNSC resolutions. Iran knows this demand is maximalist — it serves as a negotiating chip to be traded for other concessions. Near-zero probability at all horizons because UNSC action is structurally slow and politically blocked.',
+        dealBreaker: false
+      },
+      {
+        id: 7,
+        text: 'Terminate all IAEA Board of Governors resolutions',
+        category: 'Diplomatic',
+        status: 'NOT_MET',
+        statusLabel: 'Not addressed in negotiations',
+        statusColor: '#ef4444',
+        probability30d: 0,
+        probability60d: 3,
+        probability90d: 8,
+        probColor: '#ef4444',
+        detail: 'IAEA Board resolutions are technically easier to address than UNSC resolutions but still require multilateral consensus. Iran\'s cooperation with IAEA inspections could lead to \'closing the file\' on past issues, as partially achieved under JCPOA. This demand is linked to US demand #6 (IAEA access) — a trade is possible where Iran grants full access in exchange for resolution of outstanding IAEA concerns. Probability rises modestly at 90d because this is a natural component of any nuclear deal.',
+        dealBreaker: false
+      },
+      {
+        id: 8,
+        text: 'Payment of war damages/reparations from US',
+        category: 'Economic',
+        status: 'NOT_MET',
+        statusLabel: 'Not addressed; Hormuz transit fees serve as partial signal',
+        statusColor: '#ef4444',
+        probability30d: 1,
+        probability60d: 2,
+        probability90d: 3,
+        probColor: '#ef4444',
+        detail: 'The US has never paid war reparations to any adversary in the modern era — doing so would set a precedent with massive global implications. Iran and Oman imposing Hormuz transit fees is a creative workaround: extracting economic compensation without formal reparations. This demand is almost certainly a maximalist position intended to be traded away. The only scenario where it gains traction is if the US agrees to unfreeze Iranian assets held abroad (as was done in the 2016 settlement), which could be framed as reparations domestically in Iran.',
+        dealBreaker: false
+      },
+      {
+        id: 9,
+        text: 'Withdrawal of ALL US combat forces from regional bases',
+        category: 'Military',
+        status: 'NOT_MET',
+        statusLabel: 'Hegseth: \'We\'re not going anywhere\'',
+        statusColor: '#ef4444',
+        probability30d: 0,
+        probability60d: 1,
+        probability90d: 2,
+        probColor: '#ef4444',
+        detail: 'Hegseth\'s statement is unambiguous: US forces will not withdraw. The US maintains ~45,000 troops across Qatar (Al Udeid), Bahrain (Fifth Fleet), UAE, Kuwait, Iraq, and other regional installations. These bases predate the current conflict and serve broader US strategic interests (oil transit security, counterterrorism, China containment). Withdrawal would be perceived as strategic defeat. Near-zero probability at all time horizons. Iran likely knows this and uses it as a negotiating chip to extract concessions elsewhere.',
+        dealBreaker: false
+      },
+      {
+        id: 10,
+        text: 'Cessation of war on ALL fronts (including Lebanon and Israeli operations)',
+        category: 'Security',
+        status: 'BLOCKED',
+        statusLabel: 'Netanyahu rejected Lebanon inclusion; Vance agreed; 112 killed in Beirut',
+        statusColor: '#7c3aed',
+        probability30d: 3,
+        probability60d: 8,
+        probability90d: 12,
+        probColor: '#ef4444',
+        detail: 'This is structurally BLOCKED — not merely unmet. Netanyahu explicitly rejected extending ceasefire coverage to Lebanon; VP Vance publicly agreed with Netanyahu\'s position. The US-Iran ceasefire is therefore structurally incomplete by design: it covers the GCC/Gulf front but explicitly excludes the Lebanon/Israel front. 112 killed in Beirut during the ceasefire demonstrates this is not theoretical. Iran views the Lebanon front as part of the same war; the US/Israel view it as a separate conflict. This incompatibility is the single largest structural risk to ceasefire durability — Iran may conclude the ceasefire is a trap that allows Israel to destroy Hezbollah while Iran\'s hands are tied.',
+        dealBreaker: true
+      }
+    ],
+    ceasefire: {
+      requiredThreshold: {
+        minimumUS: 5,
+        minimumIran: 4,
+        rationale: 'A viable deal requires at minimum: (1) extended ceasefire, (2) some nuclear limitation formula, (3) enrichment cap framework, (4) IAEA access roadmap, (5) Hormuz normalization — 5 of 15 US demands in some form. For Iran: (1) non-aggression guarantee, (2) Hormuz sovereignty acknowledgment, (3) enrichment right recognition, (4) meaningful sanctions relief — 4 of 10 Iran demands. Below these thresholds, neither side\'s domestic politics permit signing. This is the minimum viable package, not the ideal outcome.',
+        polymarketSignal: 'Polymarket at 100% ceasefire reflects market confidence that the 2-week TACTICAL pause holds — not that a comprehensive deal is reached. The $225M volume indicates high conviction in the pause but the 94% \'conflict ends\' contract conflates the pause with resolution. Sophisticated assessment: the pause survives its 2-week window with ~75% probability; a comprehensive deal within 90 days has ~22% probability.'
+      },
+      currentMet: {
+        us: 5,
+        iran: 3
+      },
+      gap: {
+        us: 0,
+        iran: 1
+      }
+    },
+    compromiseZone: {
+      headline: 'Narrow but Real: A JCPOA-Plus Framework Exists If Both Sides Accept Asymmetric Concessions',
+      probability: 22,
+      probColor: '#f97316',
+      timeHorizon: '60–90 days for framework agreement; 6–12 months for implementation',
+      minimumViableDeal: {
+        title: 'The Islamabad Framework: JCPOA-Plus with Gulf Security Architecture',
+        usConcessions: ['Recognize Iran\'s right to enrich uranium up to 3.67% LEU under continuous IAEA monitoring — replicating JCPOA Article IV language', 'Phase 1 sanctions relief: unfreeze $6–10B in Iranian assets held in South Korea, Japan, and Iraq within 60 days of verified nuclear compliance', 'Phase 2 sanctions relief: remove secondary sanctions on Iranian oil exports to Asian buyers (China, India, South Korea) within 180 days', 'Support Bushehr civilian reactor operations including Russian fuel supply chain', 'Executive agreement on non-aggression (not Senate treaty — preserves presidential flexibility) with 5-year renewal clause', 'Accept Iran\'s \'coordination role\' in Hormuz transit as face-saving formula for both sides'],
+        iranConcessions: ['Cap enrichment at 3.67% LEU with all 60% HEU stockpile transferred to IAEA custody in Kazakhstan within 90 days', 'Grant IAEA Additional Protocol access to all declared sites plus managed access to military sites with 24-day notice (JCPOA formula)', 'Formal reaffirmation of NPT commitments and fatwa against nuclear weapons in a new UN-registered instrument', 'Verifiable reduction in ballistic missile deployments within 150km of GCC borders (not a cap on development — a deployment zone restriction)', 'Commitment to \'de-escalatory influence\' on Houthi Red Sea operations (not dismantlement — influence language)', 'Normalize Hormuz transit to 30+ transits/day within 30 days of ceasefire extension'],
+        mustExclude: ['Lebanon/Israel front — Netanyahu controls this variable and has explicitly rejected inclusion; any attempt to bundle it will kill the deal', 'Israel recognition — ideological red line that Iran cannot cross; including it is a deal-killer by design', 'Full nuclear dismantlement — Iran will never agree; the US must accept limitations over elimination', 'US troop withdrawal — Hegseth\'s position is firm and non-negotiable; Iran must accept continued US regional presence', 'War reparations — no precedent exists; Hormuz transit fees serve as the de facto workaround', 'UNSC resolution termination — requires multilateral process incompatible with bilateral deal timeline'],
+        faceSavingMechanism: 'The US claims: \'Iran agreed to cap enrichment, transfer HEU, and accept full IAEA inspections — we achieved what JCPOA could not.\' Iran claims: \'The US recognized our inalienable right to enrichment, lifted sanctions, and signed a non-aggression pact — we achieved what decades of resistance demanded.\' Both are technically true. The deal succeeds because each side can accurately describe the same agreement in ways that satisfy domestic audiences. Pakistan, as broker, takes credit for preventing nuclear war. China quietly benefits from reopened oil trade.'
+      },
+      blockers: [
+        {
+          blocker: 'Lebanon Front Structural Incompatibility',
+          severity: 'Critical',
+          severityColor: '#ef4444',
+          resolution: 'De-link Lebanon from Iran-US negotiations entirely. Establish a separate Israel-Lebanon track (potentially French/Egyptian mediated). Iran must accept that it cannot protect Hezbollah through the US-Iran channel. This is the hardest pill for Tehran — it means accepting the ceasefire is a partial arrangement that leaves its most important ally exposed.'
+        },
+        {
+          blocker: 'Enrichment Binary: US Demands Zero vs. Iran Demands Recognition',
+          severity: 'Critical',
+          severityColor: '#ef4444',
+          resolution: 'Reframe from binary (yes/no enrichment) to graduated (how much, under what verification). The JCPOA 3.67% formula is the only proven template. Requires the US to publicly walk back Hegseth\'s \'no enrichment\' position — politically costly but necessary. A quiet shift from \'end enrichment\' to \'verifiable enrichment limitations\' is the only viable path.'
+        },
+        {
+          blocker: 'Ceasefire Text Divergence (Farsi vs. English)',
+          severity: 'Critical',
+          severityColor: '#ef4444',
+          resolution: 'The Islamabad talks must produce a SINGLE authoritative text in both languages with certified translation. The current ambiguity is a ticking bomb — it either gets resolved diplomatically or it detonates when implementation begins. Pakistan\'s role as honest broker is critical here.'
+        },
+        {
+          blocker: 'Drone Incursion Precedent',
+          severity: 'Major',
+          severityColor: '#f97316',
+          resolution: 'US/Israel must cease surveillance overflights of Iranian territory during the ceasefire period. Iran will use the drone incident to resist IAEA access (\'you already spy on us from the air\'). A formal no-overflight commitment during negotiations would rebuild trust, but US/Israeli intelligence agencies will resist losing collection capabilities.'
+        },
+        {
+          blocker: 'China Tariff Escalation Complicating Sanctions Relief',
+          severity: 'Major',
+          severityColor: '#f97316',
+          resolution: 'The 50% tariff threat on China creates a parallel escalation track that intersects with Iran negotiations. If China retaliates, the US will be fighting economic wars on two fronts, potentially making Iran deal more attractive (resolve one front). If China complies, Iran loses a key supplier and economic lifeline, weakening its negotiating position. Resolution depends on US-China dynamics outside the Iran channel.'
+        },
+        {
+          blocker: 'US Domestic Politics — Congressional Review',
+          severity: 'Moderate',
+          severityColor: '#f59e0b',
+          resolution: 'Any deal involving sanctions relief triggers INARA review. The Trump administration could use executive orders for initial relief (asset unfreezes, waiver renewals) to avoid Congressional veto. But this makes the deal structurally fragile — reversible by any future president, which is exactly why Iran distrusts US commitments.'
+        }
+      ],
+      scenarios: [
+        {
+          name: 'Ceasefire Extends, No Comprehensive Deal',
+          probability: 42,
+          color: '#f59e0b',
+          description: 'The 2-week ceasefire is renewed for another 2–4 weeks. Islamabad talks continue but produce only incremental confidence-building measures (prisoner exchanges, humanitarian corridors, Hormuz transit increases). No breakthrough on nuclear or sanctions issues. Lebanon front remains active. This is the status quo trajectory — a frozen conflict with periodic renewals.',
+          marketImpact: 'Brent stabilizes $92–98 range. VIX drifts to 18–20. Markets price in indefinite managed tension. Oil premiums shrink modestly. Equities recover 3–5% as worst-case scenarios fade.'
+        },
+        {
+          name: 'Framework Agreement (JCPOA-Plus)',
+          probability: 18,
+          color: '#22c55e',
+          description: 'Islamabad talks produce a surprise framework agreement within 60 days. Both sides accept the minimum viable deal: enrichment caps, IAEA access, phased sanctions relief, non-aggression executive agreement. Lebanon is explicitly excluded. Implementation timeline is 6–12 months. Pakistan and Oman are guarantors.',
+          marketImpact: 'Brent drops to $78–85 on supply normalization expectations. VIX falls to 14–16. S&P rallies 8–12%. Defense stocks decline. Iranian oil futures emerge. Gulf sovereign wealth funds increase equity allocations.'
+        },
+        {
+          name: 'Ceasefire Collapses, War Resumes',
+          probability: 25,
+          color: '#ef4444',
+          description: 'A triggering event — major Lebanon escalation, Iranian nuclear provocation, Hormuz incident, or assassination — collapses the ceasefire before Apr 21. Both sides blame the other. Military operations resume within 48–72 hours. Hormuz fully closes. This scenario is driven by the four active violations accumulating rather than any single event.',
+          marketImpact: 'Brent spikes to $115–130. VIX surges above 35. S&P drops 8–15%. Gold breaks $2,800. Shipping insurance rates triple. Global recession probability rises to 45%.'
+        },
+        {
+          name: 'Frozen Conflict (Korea-Model)',
+          probability: 12,
+          color: '#f97316',
+          description: 'Neither war nor peace. The ceasefire becomes a permanent armistice without a peace deal. Hormuz operates at reduced capacity indefinitely. Sanctions remain. Nuclear program continues under ambiguous constraints. Both sides maintain military postures. Occasional flare-ups are managed through back-channel communication. This becomes the \'new normal\' — structurally unstable but persistent.',
+          marketImpact: 'Brent settles at $95–105 permanently elevated baseline. Markets adapt with a \'war premium\' of 8–12% on energy. VIX normalizes at 20–22. Regional economies restructure around reduced Hormuz throughput.'
+        },
+        {
+          name: 'Escalation to Regional War',
+          probability: 3,
+          color: '#7c3aed',
+          description: 'Ceasefire collapse leads to wider regional conflict involving direct Israel-Iran engagement, potential US strikes on Iranian nuclear facilities, and activation of all proxy fronts simultaneously. This is the tail risk scenario — unlikely but catastrophic. Triggered by either a nuclear revelation (Iran breakout attempt) or a mass casualty event that makes de-escalation politically impossible.',
+          marketImpact: 'Brent exceeds $150. Global oil supply disrupted by 15–20%. VIX above 50. S&P drops 20–30%. Gold above $3,200. Global recession. Potential disruption to 30% of world oil transit through Hormuz.'
+        }
+      ]
+    },
+    chinaFactor: {
+      headline: 'Beijing Calculates: 50% Tariff Pain vs. Strategic Foothold in Iran — Revealed Preference Is to Absorb and Delay',
+      probability: 18,
+      probColor: '#ef4444',
+      gameState: {
+        usPosition: 'The US is leveraging its dominant position in global financial infrastructure to coerce China into cutting Iran\'s military supply chain. The 50% tariff threat is layered on top of existing trade tensions — it is not an isolated demand but an escalation in an ongoing economic confrontation. The US calculates that China values access to US/Western markets more than its Iran relationship. This is a credible threat: 50% tariffs on Chinese goods would cost Beijing an estimated $180–250B in annual trade volume.',
+        chinaPosition: 'China imports ~70% of its crude oil through Hormuz and has deployed special envoy Jun Zhai to signal diplomatic engagement. Beijing\'s strategic interest is stability — it needs Hormuz open and oil flowing. However, China has NOT deployed concrete economic leverage (no Treasury dumps, no CNY weaponization, no rare earth restrictions), suggesting it is reserving escalation options rather than matching US pressure.',
+        chinaRevealedStrategy: 'China\'s revealed preference through Day 42 is: maintain Iran arms/tech supply, issue rhetorical condemnations of US tariff threats, avoid direct economic retaliation, and position itself as a peace mediator. This is a \'hedge and delay\' strategy — China is betting that US attention will fragment across multiple fronts (Iran, trade war, domestic politics) and the tariff threat will not be fully implemented or enforced. Beijing is also calculating that Iran needs Chinese supply regardless of US pressure, giving China leverage over both parties.',
+        equilibrium: 'The Nash equilibrium in this game is a mixed strategy: China partially reduces visible military transfers to Iran (satisfying US optics) while maintaining dual-use technology and energy trade through intermediaries and shell companies. The US partially implements tariffs (demonstrating resolve) without reaching the full 50% threshold. Neither side fully cooperates or fully defects. This \'managed non-compliance\' equilibrium is unstable but self-reinforcing in the short term.',
+        implication: 'For the ceasefire: China\'s hedge-and-delay strategy means Iran retains access to Chinese military technology and dual-use goods throughout the negotiation period — reducing Iran\'s urgency to make concessions. For oil markets: China\'s continued engagement with Iran provides a floor under Iranian oil exports (~1.2M bpd to China), limiting the effectiveness of US sanctions pressure. For the broader conflict: China becomes a shadow party to any deal — its compliance or non-compliance with sanctions determines Iran\'s economic baseline and therefore Iran\'s willingness to negotiate.'
+      },
+      scenarios: [
+        {
+          name: 'China Complies (Cuts Iran Supply)',
+          probability: 18,
+          color: '#22c55e',
+          ceasefire_impact: 'Iran loses its primary military resupply channel and key economic partner. Tehran\'s negotiating position weakens significantly — sanctions bite harder, missile resupply halts, and economic pressure mounts. Paradoxically, this INCREASES ceasefire probability because Iran has fewer options and stronger incentives to negotiate. However, it also increases the risk of an Iranian \'desperation move\' (nuclear breakout, Hormuz full closure) if Tehran concludes it is being cornered.',
+          brent_impact: 'Brent drops $5–8 to $90–93 range as market prices in reduced Iran supply and increased compliance with sanctions. However, Chinese demand for alternative suppliers (Saudi, UAE, Iraq) increases, partially offsetting the decline.'
+        },
+        {
+          name: 'China Absorbs Tariff, Maintains Iran Supply',
+          probability: 45,
+          color: '#f59e0b',
+          ceasefire_impact: 'Iran retains its economic and military lifeline. Tehran can negotiate from a position of relative strength — sanctions are partially circumvented, missiles are resupplied, and oil revenues continue flowing through Chinese channels. The ceasefire holds but Iran feels less urgency to make nuclear concessions. Negotiations drag on. The US is forced to choose between escalating against both China AND Iran simultaneously or accepting a weaker deal.',
+          brent_impact: 'Brent remains elevated at $96–102. Chinese tariff absorption adds cost friction to global trade, increasing manufacturing input costs. Oil market sees continued Iranian supply to China (~1.2M bpd) but restricted access to Western markets.'
+        },
+        {
+          name: 'Partial Compliance (Managed Non-Compliance)',
+          probability: 30,
+          color: '#f97316',
+          ceasefire_impact: 'The most likely equilibrium. China reduces visible military transfers (surface-to-air missile components, drone parts) while maintaining dual-use technology, energy trade, and financial channels through intermediaries. The US partially implements tariffs (20–30% vs. threatened 50%). Both sides save face. Iran retains enough Chinese support to sustain but not enough to feel fully secure — creating moderate pressure to negotiate without desperation.',
+          brent_impact: 'Brent stabilizes at $94–99. Market uncertainty about enforcement creates a volatility premium. Sanctions evasion continues but at reduced volume. Oil traders price in \'partial compliance\' discount.'
+        },
+        {
+          name: 'China Retaliates (Escalatory Spiral)',
+          probability: 7,
+          color: '#ef4444',
+          ceasefire_impact: 'China retaliates against 50% tariff with counter-tariffs, Treasury sales, or rare earth restrictions. US-China economic war escalates, consuming US diplomatic bandwidth and reducing focus on Iran. Paradoxically, ceasefire may hold longer because the US needs to resolve one front before opening another. But Iran could exploit US distraction to advance nuclear program or test ceasefire boundaries.',
+          brent_impact: 'Brent spikes to $105–115 on dual-crisis risk premium. Global trade disruption amplifies energy cost pass-through. Recession probability increases to 35–40%. Markets price in multi-front economic conflict.'
+        }
+      ]
+    },
+    violationImpact: [
+      {
+        violation: 'Israel bombarding Lebanon (112 killed in Beirut during ceasefire)',
+        impact: 'Directly undermines Iran\'s demand #10 (all fronts ceasefire) which is already BLOCKED by Netanyahu/Vance agreement. Iran briefly closed Hormuz in response, demonstrating that Lebanon escalation has immediate spillover to Gulf stability. The 112 casualties provide Iran rhetorical ammunition to frame the ceasefire as one-sided — Tehran is restrained while its allies are destroyed. This is the single highest-impact violation because it validates Iranian hardliners who argue the ceasefire is a trap.',
+        ceasefireRisk: 'High',
+        riskColor: '#ef4444',
+        demandAffected: 'Iran #10 (all fronts ceasefire) — BLOCKED; also destabilizes US #8 (energy infrastructure) and US #9 (Hormuz) through reactive Iranian escalation'
+      },
+      {
+        violation: 'Drone incursion into Iranian airspace (US/Israeli origin)',
+        impact: 'Directly violates any non-aggression principle and undermines Iran\'s demand #1 (non-aggression pact). From Tehran\'s perspective, a drone in sovereign airspace during a ceasefire is an act of war — whether surveillance or armed. This violation gives Iran justification to resist IAEA inspections (\'you use inspections as cover for intelligence collection\'), block progress on US demand #6, and question whether any US security guarantee is credible. The drone incident may be intentional sabotage by elements opposed to the ceasefire (Israeli intelligence or US hardliners).',
+        ceasefireRisk: 'High',
+        riskColor: '#ef4444',
+        demandAffected: 'Iran #1 (non-aggression pact) — undermined; also poisons US #6 (IAEA access) by linking inspections to espionage'
+      },
+      {
+        violation: 'US denial of Iran\'s enrichment right (Hegseth statement vs. Farsi ceasefire text)',
+        impact: 'Creates a textual and political crisis at the heart of the ceasefire. The Farsi version of the ceasefire text — the version Iran\'s domestic audience has seen — includes enrichment recognition. Hegseth\'s public denial means either (a) the US is reneging on a commitment Iran believes was made, or (b) the two sides signed different agreements. Either interpretation is devastating for trust. This violation blocks progress on Iran demand #3 and US demand #5 simultaneously — the fundamental nuclear incompatibility. If not resolved in the Islamabad talks, this becomes the most likely cause of ceasefire collapse.',
+        ceasefireRisk: 'High',
+        riskColor: '#ef4444',
+        demandAffected: 'Iran #3 (enrichment right) — CONTESTED; US #5 (end enrichment) — creates irreconcilable contradiction between the two positions'
+      },
+      {
+        violation: 'US 50% tariff threat on China for Iran arms supply',
+        impact: 'Opens a second front in the conflict — US vs. China economic warfare layered on top of US vs. Iran military confrontation. The tariff threat signals US willingness to use economic weapons against third parties to isolate Iran. For the ceasefire: if China complies, Iran\'s negotiating position weakens (higher urgency to deal); if China absorbs, Iran maintains leverage (lower urgency). The tariff threat also signals to Iran that the US is pursuing maximum pressure strategy even during the ceasefire — undermining the \'good faith negotiation\' premise. The risk is that China views this as part of a broader US containment strategy and retaliates, creating a multi-front economic crisis that destabilizes global markets.',
+        ceasefireRisk: 'Medium',
+        riskColor: '#f59e0b',
+        demandAffected: 'Iran #4/#5 (sanctions removal) — US expanding sanctions regime makes removal less likely; also affects China\'s role as potential peace mediator (Chatham House assessment)'
+      }
+    ],
+    summaryKpis: [
+      {
+        label: 'Ceasefire Status',
+        value: 'HOLDING — Day 3',
+        detail: '2-week Pakistan-brokered pause (Apr 7–21). GCC attacks at zero. Four active violations undermine durability. Tactical pause, not strategic resolution.',
+        color: '#f59e0b'
+      },
+      {
+        label: 'Demands Met',
+        value: '5 of 25',
+        detail: 'US: 5 of 15 at MET/PARTIAL/CONTESTED (33%). Iran: 3 of 10 (30%). Minimum viable deal requires 5 US + 4 Iran. Gap: Iran needs 1 more demand addressed.',
+        color: '#f97316'
+      },
+      {
+        label: 'Deal Probability (90d)',
+        value: '22%',
+        detail: 'Comprehensive JCPOA-Plus framework within 90 days. Narrow compromise zone exists but requires both sides to abandon maximalist positions on enrichment and sanctions.',
+        color: '#f97316'
+      },
+      {
+        label: 'Collapse Probability',
+        value: '28%',
+        detail: 'Ceasefire collapse within current 2-week window (by Apr 21). Driven by Lebanon escalation spillover, enrichment text crisis, or accumulation of violations past Iranian tolerance threshold.',
+        color: '#ef4444'
+      },
+      {
+        label: 'China Compliance',
+        value: '18%',
+        detail: 'Probability China fully complies with 50% tariff ultimatum by cutting Iran arms supply. Revealed strategy is absorb-and-delay. Partial compliance (30%) most likely outcome.',
+        color: '#ef4444'
+      },
+      {
+        label: 'Active Violations',
+        value: '4',
+        detail: 'Lebanon bombardment (112 killed), drone in Iran airspace, enrichment denial (Hegseth), China tariff threat. Three rated High risk, one Medium. Cumulative effect exceeds individual impact.',
+        color: '#ef4444'
+      }
+    ],
+    bottomLine: 'The Iran-US ceasefire is a genuine but fragile tactical achievement — the first pause in 42 days of active conflict. Polymarket\'s 100% confidence reflects the narrow truth that the GCC-front pause is holding on Day 3. But this number masks four compounding violations that are eroding the ceasefire\'s structural integrity from within. The Lebanon front remains an active war zone with 112 killed in Beirut, and Netanyahu\'s explicit rejection of ceasefire coverage — endorsed by VP Vance — means the ceasefire is structurally incomplete by design. The enrichment text divergence (Farsi vs. English) is a crisis deferred, not resolved. The drone incursion poisons the trust environment. And the China tariff ultimatum opens a second-order game that could either accelerate a deal (if China complies, weakening Iran) or entrench the stalemate (if China absorbs, sustaining Iran). The compromise zone is narrow but real: a JCPOA-Plus framework with enrichment caps at 3.67%, IAEA access, phased sanctions relief, and a non-aggression executive agreement — explicitly excluding Lebanon, Israel recognition, full dismantlement, and troop withdrawal. This deal has approximately a 22% probability of materializing within 90 days. The more likely outcome (42%) is an indefinite series of ceasefire renewals without a comprehensive deal — a managed stalemate that keeps Brent in the $92–98 corridor and leaves all fundamental issues unresolved. The 28% collapse probability is not trivial: each day the four violations accumulate without resolution, the ceasefire\'s load-bearing capacity diminishes. The analytical bottom line: this is a ceasefire in search of a peace process, not a peace process producing a ceasefire. The Islamabad talks must bridge the enrichment gap and produce a single authoritative text within the 12 remaining days of the pause, or the window closes and both sides return to their pre-April 7 postures.',
+    sources: [
+      {
+        name: 'Polymarket — Iran-US Ceasefire Contract',
+        url: 'https://polymarket.com/event/iran-us-ceasefire'
+      },
+      {
+        name: 'Reuters — Pakistan Brokers Iran-US Ceasefire',
+        url: 'https://www.reuters.com/world/middle-east/'
+      },
+      {
+        name: 'Al Jazeera — Lebanon Bombardment During Ceasefire',
+        url: 'https://www.aljazeera.com/news/middle-east'
+      },
+      {
+        name: 'Chatham House — China Lacks Security Umbrella for Middle East',
+        url: 'https://www.chathamhouse.org/publications'
+      },
+      {
+        name: 'IAEA — Iran Nuclear Program Reports',
+        url: 'https://www.iaea.org/newscenter/focus/iran'
+      },
+      {
+        name: 'US Department of Defense — Hegseth Statements',
+        url: 'https://www.defense.gov/News/'
+      },
+      {
+        name: 'Arms Control Association — JCPOA Reference',
+        url: 'https://www.armscontrol.org/factsheets/iran-nuclear-agreement'
+      },
+      {
+        name: 'CSIS — Iran Ballistic Missile Program',
+        url: 'https://www.csis.org/programs/missile-defense-project'
+      },
+      {
+        name: 'Brent Crude Futures — ICE',
+        url: 'https://www.ice.com/products/219/Brent-Crude-Futures'
+      },
+      {
+        name: 'CBOE — VIX Index',
+        url: 'https://www.cboe.com/tradable_products/vix/'
       }
     ]
   },
-
-  chinaFactor: {
-    headline: "Beijing Calculates: 50% Tariff Pain vs. Strategic Foothold in Iran — Revealed Preference Is to Absorb and Delay",
-    probability: 18,
-    probColor: "#ef4444",
-
-    gameState: {
-      usPosition: "The US is leveraging its dominant position in global financial infrastructure to coerce China into cutting Iran's military supply chain. The 50% tariff threat is layered on top of existing trade tensions — it is not an isolated demand but an escalation in an ongoing economic confrontation. The US calculates that China values access to US/Western markets more than its Iran relationship. This is a credible threat: 50% tariffs on Chinese goods would cost Beijing an estimated $180–250B in annual trade volume.",
-      chinaPosition: "China imports ~70% of its crude oil through Hormuz and has deployed special envoy Jun Zhai to signal diplomatic engagement. Beijing's strategic interest is stability — it needs Hormuz open and oil flowing. However, China has NOT deployed concrete economic leverage (no Treasury dumps, no CNY weaponization, no rare earth restrictions), suggesting it is reserving escalation options rather than matching US pressure.",
-      chinaRevealedStrategy: "China's revealed preference through Day 42 is: maintain Iran arms/tech supply, issue rhetorical condemnations of US tariff threats, avoid direct economic retaliation, and position itself as a peace mediator. This is a 'hedge and delay' strategy — China is betting that US attention will fragment across multiple fronts (Iran, trade war, domestic politics) and the tariff threat will not be fully implemented or enforced. Beijing is also calculating that Iran needs Chinese supply regardless of US pressure, giving China leverage over both parties.",
-      equilibrium: "The Nash equilibrium in this game is a mixed strategy: China partially reduces visible military transfers to Iran (satisfying US optics) while maintaining dual-use technology and energy trade through intermediaries and shell companies. The US partially implements tariffs (demonstrating resolve) without reaching the full 50% threshold. Neither side fully cooperates or fully defects. This 'managed non-compliance' equilibrium is unstable but self-reinforcing in the short term.",
-      implication: "For the ceasefire: China's hedge-and-delay strategy means Iran retains access to Chinese military technology and dual-use goods throughout the negotiation period — reducing Iran's urgency to make concessions. For oil markets: China's continued engagement with Iran provides a floor under Iranian oil exports (~1.2M bpd to China), limiting the effectiveness of US sanctions pressure. For the broader conflict: China becomes a shadow party to any deal — its compliance or non-compliance with sanctions determines Iran's economic baseline and therefore Iran's willingness to negotiate."
-    },
-
-    scenarios: [
-      {
-        name: "China Complies (Cuts Iran Supply)",
-        probability: 18,
-        color: "#22c55e",
-        ceasefire_impact: "Iran loses its primary military resupply channel and key economic partner. Tehran's negotiating position weakens significantly — sanctions bite harder, missile resupply halts, and economic pressure mounts. Paradoxically, this INCREASES ceasefire probability because Iran has fewer options and stronger incentives to negotiate. However, it also increases the risk of an Iranian 'desperation move' (nuclear breakout, Hormuz full closure) if Tehran concludes it is being cornered.",
-        brent_impact: "Brent drops $5–8 to $90–93 range as market prices in reduced Iran supply and increased compliance with sanctions. However, Chinese demand for alternative suppliers (Saudi, UAE, Iraq) increases, partially offsetting the decline."
-      },
-      {
-        name: "China Absorbs Tariff, Maintains Iran Supply",
-        probability: 45,
-        color: "#f59e0b",
-        ceasefire_impact: "Iran retains its economic and military lifeline. Tehran can negotiate from a position of relative strength — sanctions are partially circumvented, missiles are resupplied, and oil revenues continue flowing through Chinese channels. The ceasefire holds but Iran feels less urgency to make nuclear concessions. Negotiations drag on. The US is forced to choose between escalating against both China AND Iran simultaneously or accepting a weaker deal.",
-        brent_impact: "Brent remains elevated at $96–102. Chinese tariff absorption adds cost friction to global trade, increasing manufacturing input costs. Oil market sees continued Iranian supply to China (~1.2M bpd) but restricted access to Western markets."
-      },
-      {
-        name: "Partial Compliance (Managed Non-Compliance)",
-        probability: 30,
-        color: "#f97316",
-        ceasefire_impact: "The most likely equilibrium. China reduces visible military transfers (surface-to-air missile components, drone parts) while maintaining dual-use technology, energy trade, and financial channels through intermediaries. The US partially implements tariffs (20–30% vs. threatened 50%). Both sides save face. Iran retains enough Chinese support to sustain but not enough to feel fully secure — creating moderate pressure to negotiate without desperation.",
-        brent_impact: "Brent stabilizes at $94–99. Market uncertainty about enforcement creates a volatility premium. Sanctions evasion continues but at reduced volume. Oil traders price in 'partial compliance' discount."
-      },
-      {
-        name: "China Retaliates (Escalatory Spiral)",
-        probability: 7,
-        color: "#ef4444",
-        ceasefire_impact: "China retaliates against 50% tariff with counter-tariffs, Treasury sales, or rare earth restrictions. US-China economic war escalates, consuming US diplomatic bandwidth and reducing focus on Iran. Paradoxically, ceasefire may hold longer because the US needs to resolve one front before opening another. But Iran could exploit US distraction to advance nuclear program or test ceasefire boundaries.",
-        brent_impact: "Brent spikes to $105–115 on dual-crisis risk premium. Global trade disruption amplifies energy cost pass-through. Recession probability increases to 35–40%. Markets price in multi-front economic conflict."
-      }
-    ]
-  },
-
-  violationImpact: [
-    {
-      violation: "Israel bombarding Lebanon (112 killed in Beirut during ceasefire)",
-      impact: "Directly undermines Iran's demand #10 (all fronts ceasefire) which is already BLOCKED by Netanyahu/Vance agreement. Iran briefly closed Hormuz in response, demonstrating that Lebanon escalation has immediate spillover to Gulf stability. The 112 casualties provide Iran rhetorical ammunition to frame the ceasefire as one-sided — Tehran is restrained while its allies are destroyed. This is the single highest-impact violation because it validates Iranian hardliners who argue the ceasefire is a trap.",
-      ceasefireRisk: "High",
-      riskColor: "#ef4444",
-      demandAffected: "Iran #10 (all fronts ceasefire) — BLOCKED; also destabilizes US #8 (energy infrastructure) and US #9 (Hormuz) through reactive Iranian escalation"
-    },
-    {
-      violation: "Drone incursion into Iranian airspace (US/Israeli origin)",
-      impact: "Directly violates any non-aggression principle and undermines Iran's demand #1 (non-aggression pact). From Tehran's perspective, a drone in sovereign airspace during a ceasefire is an act of war — whether surveillance or armed. This violation gives Iran justification to resist IAEA inspections ('you use inspections as cover for intelligence collection'), block progress on US demand #6, and question whether any US security guarantee is credible. The drone incident may be intentional sabotage by elements opposed to the ceasefire (Israeli intelligence or US hardliners).",
-      ceasefireRisk: "High",
-      riskColor: "#ef4444",
-      demandAffected: "Iran #1 (non-aggression pact) — undermined; also poisons US #6 (IAEA access) by linking inspections to espionage"
-    },
-    {
-      violation: "US denial of Iran's enrichment right (Hegseth statement vs. Farsi ceasefire text)",
-      impact: "Creates a textual and political crisis at the heart of the ceasefire. The Farsi version of the ceasefire text — the version Iran's domestic audience has seen — includes enrichment recognition. Hegseth's public denial means either (a) the US is reneging on a commitment Iran believes was made, or (b) the two sides signed different agreements. Either interpretation is devastating for trust. This violation blocks progress on Iran demand #3 and US demand #5 simultaneously — the fundamental nuclear incompatibility. If not resolved in the Islamabad talks, this becomes the most likely cause of ceasefire collapse.",
-      ceasefireRisk: "High",
-      riskColor: "#ef4444",
-      demandAffected: "Iran #3 (enrichment right) — CONTESTED; US #5 (end enrichment) — creates irreconcilable contradiction between the two positions"
-    },
-    {
-      violation: "US 50% tariff threat on China for Iran arms supply",
-      impact: "Opens a second front in the conflict — US vs. China economic warfare layered on top of US vs. Iran military confrontation. The tariff threat signals US willingness to use economic weapons against third parties to isolate Iran. For the ceasefire: if China complies, Iran's negotiating position weakens (higher urgency to deal); if China absorbs, Iran maintains leverage (lower urgency). The tariff threat also signals to Iran that the US is pursuing maximum pressure strategy even during the ceasefire — undermining the 'good faith negotiation' premise. The risk is that China views this as part of a broader US containment strategy and retaliates, creating a multi-front economic crisis that destabilizes global markets.",
-      ceasefireRisk: "Medium",
-      riskColor: "#f59e0b",
-      demandAffected: "Iran #4/#5 (sanctions removal) — US expanding sanctions regime makes removal less likely; also affects China's role as potential peace mediator (Chatham House assessment)"
-    }
-  ],
-
-  summaryKpis: [
-    {
-      label: "Ceasefire Status",
-      value: "HOLDING — Day 3",
-      detail: "2-week Pakistan-brokered pause (Apr 7–21). GCC attacks at zero. Four active violations undermine durability. Tactical pause, not strategic resolution.",
-      color: "#f59e0b"
-    },
-    {
-      label: "Demands Met",
-      value: "5 of 25",
-      detail: "US: 5 of 15 at MET/PARTIAL/CONTESTED (33%). Iran: 3 of 10 (30%). Minimum viable deal requires 5 US + 4 Iran. Gap: Iran needs 1 more demand addressed.",
-      color: "#f97316"
-    },
-    {
-      label: "Deal Probability (90d)",
-      value: "22%",
-      detail: "Comprehensive JCPOA-Plus framework within 90 days. Narrow compromise zone exists but requires both sides to abandon maximalist positions on enrichment and sanctions.",
-      color: "#f97316"
-    },
-    {
-      label: "Collapse Probability",
-      value: "28%",
-      detail: "Ceasefire collapse within current 2-week window (by Apr 21). Driven by Lebanon escalation spillover, enrichment text crisis, or accumulation of violations past Iranian tolerance threshold.",
-      color: "#ef4444"
-    },
-    {
-      label: "China Compliance",
-      value: "18%",
-      detail: "Probability China fully complies with 50% tariff ultimatum by cutting Iran arms supply. Revealed strategy is absorb-and-delay. Partial compliance (30%) most likely outcome.",
-      color: "#ef4444"
-    },
-    {
-      label: "Active Violations",
-      value: "4",
-      detail: "Lebanon bombardment (112 killed), drone in Iran airspace, enrichment denial (Hegseth), China tariff threat. Three rated High risk, one Medium. Cumulative effect exceeds individual impact.",
-      color: "#ef4444"
-    }
-  ],
-
-  bottomLine: "The Iran-US ceasefire is a genuine but fragile tactical achievement — the first pause in 42 days of active conflict. Polymarket's 100% confidence reflects the narrow truth that the GCC-front pause is holding on Day 3. But this number masks four compounding violations that are eroding the ceasefire's structural integrity from within. The Lebanon front remains an active war zone with 112 killed in Beirut, and Netanyahu's explicit rejection of ceasefire coverage — endorsed by VP Vance — means the ceasefire is structurally incomplete by design. The enrichment text divergence (Farsi vs. English) is a crisis deferred, not resolved. The drone incursion poisons the trust environment. And the China tariff ultimatum opens a second-order game that could either accelerate a deal (if China complies, weakening Iran) or entrench the stalemate (if China absorbs, sustaining Iran). The compromise zone is narrow but real: a JCPOA-Plus framework with enrichment caps at 3.67%, IAEA access, phased sanctions relief, and a non-aggression executive agreement — explicitly excluding Lebanon, Israel recognition, full dismantlement, and troop withdrawal. This deal has approximately a 22% probability of materializing within 90 days. The more likely outcome (42%) is an indefinite series of ceasefire renewals without a comprehensive deal — a managed stalemate that keeps Brent in the $92–98 corridor and leaves all fundamental issues unresolved. The 28% collapse probability is not trivial: each day the four violations accumulate without resolution, the ceasefire's load-bearing capacity diminishes. The analytical bottom line: this is a ceasefire in search of a peace process, not a peace process producing a ceasefire. The Islamabad talks must bridge the enrichment gap and produce a single authoritative text within the 12 remaining days of the pause, or the window closes and both sides return to their pre-April 7 postures.",
-
-  sources: [
-    { name: "Polymarket — Iran-US Ceasefire Contract", url: "https://polymarket.com/event/iran-us-ceasefire" },
-    { name: "Reuters — Pakistan Brokers Iran-US Ceasefire", url: "https://www.reuters.com/world/middle-east/" },
-    { name: "Al Jazeera — Lebanon Bombardment During Ceasefire", url: "https://www.aljazeera.com/news/middle-east" },
-    { name: "Chatham House — China Lacks Security Umbrella for Middle East", url: "https://www.chathamhouse.org/publications" },
-    { name: "IAEA — Iran Nuclear Program Reports", url: "https://www.iaea.org/newscenter/focus/iran" },
-    { name: "US Department of Defense — Hegseth Statements", url: "https://www.defense.gov/News/" },
-    { name: "Arms Control Association — JCPOA Reference", url: "https://www.armscontrol.org/factsheets/iran-nuclear-agreement" },
-    { name: "CSIS — Iran Ballistic Missile Program", url: "https://www.csis.org/programs/missile-defense-project" },
-    { name: "Brent Crude Futures — ICE", url: "https://www.ice.com/products/219/Brent-Crude-Futures" },
-    { name: "CBOE — VIX Index", url: "https://www.cboe.com/tradable_products/vix/" }
-  ]
-},
 
 
 };
