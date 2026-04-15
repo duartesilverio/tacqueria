@@ -1108,6 +1108,112 @@ def update_next48h(data: dict, raw_intel: dict, raw_rhetoric: dict,
     return []
 
 
+def update_iran_attacks(data: dict, raw_intel: dict, day: int) -> list[str]:
+    """Extend iranAttacksUAE.daily to current day and update asOf fields.
+    During ceasefire, appends zero-attack entries. Updates cumulative.day."""
+    from datetime import date, timedelta
+    intel = raw_intel or {}
+    DAY1 = date(2026, 2, 28)
+    today = DAY1 + timedelta(days=day - 1)
+    today_str = today.isoformat()
+    updates = []
+
+    # iranAttacksUAE — extend daily array
+    if "iranAttacksUAE" in data:
+        uae = data["iranAttacksUAE"]
+        daily = uae.get("daily", [])
+        if isinstance(daily, list):
+            last_day = max((d.get("day", 0) for d in daily), default=0)
+            for d in range(last_day + 1, day + 1):
+                d_date = (DAY1 + timedelta(days=d - 1)).isoformat()
+                daily.append({
+                    "date": d_date, "day": d,
+                    "ballistic": 0, "cruise": 0, "drones": 0,
+                    "note": f"Ceasefire Day {d - 40} — zero attacks."
+                })
+            if last_day < day:
+                updates.append(f"iranAttacksUAE.daily extended D{last_day+1}..D{day}")
+        # Update cumulative metadata
+        if "cumulative" in uae:
+            uae["cumulative"]["asOf"] = today_str
+            uae["cumulative"]["day"] = day
+            uae["cumulative"]["note"] = f"All attack figures frozen since ceasefire. Day {day}."
+            updates.append(f"iranAttacksUAE.cumulative -> day {day}")
+
+    # iranAttacksNeighbors — update asOf/day
+    if "iranAttacksNeighbors" in data:
+        data["iranAttacksNeighbors"]["asOf"] = today_str
+        data["iranAttacksNeighbors"]["day"] = day
+        updates.append(f"iranAttacksNeighbors -> day {day}")
+
+    return updates
+
+
+def verify_sections(data: dict, day: int) -> list[str]:
+    """Post-merge verification: check every section has current-day data.
+    Returns list of warnings for sections that appear stale or malformed."""
+    warnings = []
+
+    # Sections that should reference current day
+    day_checks = {
+        "meta.day": safe_get(data, "meta", "day"),
+        "ceasefireAnalytics.meta.day": safe_get(data, "ceasefireAnalytics", "meta", "day"),
+        "iranAttacksUAE.cumulative.day": safe_get(data, "iranAttacksUAE", "cumulative", "day"),
+        "iranAttacksNeighbors.day": safe_get(data, "iranAttacksNeighbors", "day"),
+    }
+    for path, val in day_checks.items():
+        if val is not None and val != day:
+            warnings.append(f"STALE {path}={val}, expected {day}")
+
+    # Chart array alignment
+    cd = data.get("chartData", {})
+    array_groups = [
+        ("main charts", ["labels", "brent", "vix", "hyg", "sp500", "taco"]),
+        ("strikes", ["strikeLabels"]),
+        ("hormuz", ["hormuzLabels", "hormuzTransits"]),
+    ]
+    for group_name, keys in array_groups:
+        lengths = {}
+        for k in keys:
+            v = cd.get(k)
+            if isinstance(v, list):
+                lengths[k] = len(v)
+        unique_lens = set(lengths.values())
+        if len(unique_lens) > 1:
+            warnings.append(f"MISALIGNED {group_name}: {lengths}")
+
+    # Strike arrays must match strikeLabels
+    strikes = cd.get("strikes", {})
+    sl_len = len(cd.get("strikeLabels", []))
+    for sk in ["us", "iran"]:
+        sv = strikes.get(sk, [])
+        if isinstance(sv, list) and len(sv) != sl_len:
+            warnings.append(f"MISALIGNED strikes.{sk}={len(sv)} vs strikeLabels={sl_len}")
+
+    # Intelligence sections must have items arrays (not body)
+    intel = data.get("intelligence", {})
+    for col in ["diplomatic", "military", "energy"]:
+        sections = safe_get(intel, col, "sections")
+        if isinstance(sections, list):
+            for i, sec in enumerate(sections):
+                if "body" in sec and "items" not in sec:
+                    warnings.append(f"SCHEMA intelligence.{col}.sections[{i}]: has 'body' not 'items'")
+
+    # Key sections should not be empty
+    required = ["gistBanner", "newsNow", "keyTriggers", "operations",
+                 "intelligence", "next48h", "ceasefireAnalytics", "analyticalSignals"]
+    for key in required:
+        val = data.get(key)
+        if val is None:
+            warnings.append(f"MISSING section: {key}")
+        elif isinstance(val, list) and len(val) == 0:
+            warnings.append(f"EMPTY section: {key}")
+        elif isinstance(val, dict) and not val:
+            warnings.append(f"EMPTY section: {key}")
+
+    return warnings
+
+
 # ===========================================================================
 # MAIN
 # ===========================================================================
@@ -1327,6 +1433,27 @@ def main():
             print(f"  [OK] {u}")
 
     # ------------------------------------------------------------------
+    # 19. Iran attack data (extend daily arrays during ceasefire)
+    # ------------------------------------------------------------------
+    atk_updates = update_iran_attacks(data, raw_intel, args.day)
+    all_updates.extend(atk_updates)
+    for u in atk_updates:
+        print(f"  [OK] {u}")
+
+    # ------------------------------------------------------------------
+    # POST-MERGE VERIFICATION
+    # ------------------------------------------------------------------
+    print()
+    print("  ── POST-MERGE VERIFICATION ──")
+    verify_warnings = verify_sections(data, args.day)
+    if verify_warnings:
+        for w in verify_warnings:
+            print(f"  ⚠ {w}")
+        print(f"  ⚠ {len(verify_warnings)} verification warning(s)")
+    else:
+        print("  ✓ All sections verified — day {}, arrays aligned, schemas OK".format(args.day))
+
+    # ------------------------------------------------------------------
     # Save
     # ------------------------------------------------------------------
     print()
@@ -1337,9 +1464,6 @@ def main():
     print(f"  TOTAL UPDATES: {len(all_updates)}")
     for u in all_updates:
         print(f"    - {u}")
-    print()
-    print("  Sections LEFT UNCHANGED: predictionMarkets, tacoSubScoresOverview,")
-    print("    pipelineBypass, intelligence (deep columns), arsenal.")
     print("=" * 60)
 
 
