@@ -136,10 +136,17 @@ def http_post(url, payload, headers=None, retries=2, timeout=60):
 # FMP FINANCE
 # ═══════════��═══════════════════════════════════════════════════════════════════
 
-def fetch_fmp_quotes(tickers_map):
-    """Fetch real-time quotes from FMP for all tickers.
+def fetch_fmp_quotes(tickers_map, historical_date=None):
+    """Fetch quotes from FMP for all tickers.
+
+    If historical_date is provided, use /historical-price-full per ticker and
+    return a synthesized "live-quote-shaped" record for that date. For weekend
+    dates, carry forward the nearest prior trading day close.
     Returns dict: {dashboard_name: {price, change, changePct, prevClose, ...}}
     """
+    if historical_date is not None:
+        return _fetch_fmp_historical_quotes(tickers_map, historical_date)
+
     print("[FMP] Fetching market quotes...")
     results = {}
 
@@ -199,14 +206,99 @@ def fetch_fmp_quotes(tickers_map):
     return results
 
 
+def _fetch_fmp_historical_quotes(tickers_map, target_date):
+    """Fetch FMP historical EOD for each ticker on target_date.
+    Carries forward the nearest prior trading day if target_date has no bar
+    (weekends, holidays).
+    """
+    print(f"[FMP] Fetching historical quotes for {target_date.strftime('%Y-%m-%d')}...")
+    results = {}
+    # Query a 7-day window ending on target_date so weekend dates pick up Friday.
+    from_date = (target_date - timedelta(days=7)).strftime("%Y-%m-%d")
+    to_date = target_date.strftime("%Y-%m-%d")
+
+    for dash_name, fmp_ticker in tickers_map.items():
+        url = (
+            f"{FMP_BASE}/historical-price-full/{urllib.parse.quote(fmp_ticker)}"
+            f"?from={from_date}&to={to_date}&apikey={FMP_API_KEY}"
+        )
+        data = http_get(url)
+        bars = None
+        if isinstance(data, dict):
+            bars = data.get("historical")
+        elif isinstance(data, list):  # some FMP responses shaped as list
+            bars = data
+        if not bars:
+            print(f"  [FMP] Missing history: {dash_name} ({fmp_ticker})")
+            results[dash_name] = None
+            continue
+
+        # FMP returns bars newest-first. Pick the most recent bar on or before target_date.
+        target_iso = target_date.strftime("%Y-%m-%d")
+        chosen = None
+        prev = None
+        for bar in bars:
+            bar_date = bar.get("date", "")
+            if bar_date <= target_iso and chosen is None:
+                chosen = bar
+            elif chosen is not None and prev is None:
+                prev = bar
+                break
+        if chosen is None:
+            print(f"  [FMP] No bar on/before {target_iso}: {dash_name}")
+            results[dash_name] = None
+            continue
+
+        close = float(chosen.get("close", 0))
+        prev_close = float(prev.get("close", close)) if prev else float(chosen.get("open", close))
+        change = close - prev_close
+        change_pct = (change / prev_close * 100) if prev_close else 0
+
+        if abs(change_pct) < 0.3:
+            css_class = "kpi-flat"
+        elif change_pct > 0:
+            css_class = "kpi-up"
+        else:
+            css_class = "kpi-down"
+        arrow = "▲" if change > 0 else "▼" if change < 0 else "–"
+
+        results[dash_name] = {
+            "price": round(close, 2),
+            "change": round(change, 2),
+            "changePct": round(change_pct, 2),
+            "prevClose": round(prev_close, 2),
+            "cssClass": css_class,
+            "arrow": arrow,
+            "marketStatus": "historical",
+            "timestamp": chosen.get("date", ""),
+        }
+
+    results["_collected"] = True
+    results["_historical"] = True
+    got = sum(1 for v in results.values() if isinstance(v, dict) and "price" in v)
+    print(f"  [FMP] Got {got} historical quotes")
+    return results
+
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # HYPERLIQUID BRENTOIL
 # ═══════════════════════════════════════════════════════════════════════════════
 
-def fetch_hyperliquid_brentoil():
-    """Fetch BRENTOIL mark price, OI, volume from Hyperliquid."""
-    print("[HL] Fetching BRENTOIL data...")
-    payload = {"type": "metaAndAssetCtxs"}
+HL_BRENTOIL_COIN = "xyz:BRENTOIL"  # HIP-3 builder-deployed perp on xyz DEX
+HL_BRENTOIL_DEX = "xyz"
+
+
+def fetch_hyperliquid_brentoil(historical_date=None):
+    """Fetch BRENTOIL mark price, OI, volume from Hyperliquid xyz HIP-3 deployer.
+
+    If historical_date (datetime) is provided, use candleSnapshot to fetch the
+    1d candle for that UTC date. Otherwise use live metaAndAssetCtxs.
+    """
+    if historical_date is not None:
+        return _fetch_hl_brentoil_historical(historical_date)
+
+    print("[HL] Fetching BRENTOIL data (xyz HIP-3)...")
+    payload = {"type": "metaAndAssetCtxs", "dex": HL_BRENTOIL_DEX}
     data = http_post(HL_API, payload)
 
     if not data or not isinstance(data, list) or len(data) < 2:
@@ -216,9 +308,8 @@ def fetch_hyperliquid_brentoil():
     meta = data[0]
     ctxs = data[1]
 
-    # Find BRENTOIL in the universe
     for i, asset in enumerate(meta.get("universe", [])):
-        if asset.get("name") == "BRENTOIL":
+        if asset.get("name") == HL_BRENTOIL_COIN:
             ctx = ctxs[i]
             mark_px = float(ctx["markPx"])
             prev_day_px = float(ctx.get("prevDayPx", 0))
@@ -241,23 +332,68 @@ def fetch_hyperliquid_brentoil():
                 "funding": round(funding, 6),
                 "_collected": True,
             }
-            print(f"  [HL] BRENTOIL: ${mark_px:.2f} (OI: {result['openInterestUsd']}, Vol: {result['volumeUsd']})")
+            print(f"  [HL] {HL_BRENTOIL_COIN}: ${mark_px:.2f} (OI: {result['openInterestUsd']}, Vol: {result['volumeUsd']})")
             return result
 
-    # BRENTOIL perp may not exist yet — list available oil-related coins for debugging
     all_names = [a.get("name", "") for a in meta.get("universe", [])]
-    oil_related = [n for n in all_names if any(k in n.upper() for k in ("OIL", "BRENT", "CRUDE", "WTI"))]
-    print(f"  [HL] BRENTOIL not found. Oil-related coins: {oil_related or 'none'}")
-    return {"_error": "BRENTOIL not listed on Hyperliquid", "_collected": False}
+    print(f"  [HL] {HL_BRENTOIL_COIN} not found in xyz universe. Sample names: {all_names[:10]}")
+    return {"_error": f"{HL_BRENTOIL_COIN} not found on xyz deployer", "_collected": False}
+
+
+def _fetch_hl_brentoil_historical(target_date):
+    """Fetch 1d candle for xyz:BRENTOIL on the given UTC date (datetime)."""
+    print(f"[HL] Fetching historical {HL_BRENTOIL_COIN} for {target_date.strftime('%Y-%m-%d')}...")
+    start_ms = int(datetime(target_date.year, target_date.month, target_date.day).timestamp() * 1000)
+    end_ms = start_ms + 86400000 - 1
+    payload = {
+        "type": "candleSnapshot",
+        "req": {"coin": HL_BRENTOIL_COIN, "interval": "1d", "startTime": start_ms, "endTime": end_ms},
+    }
+    data = http_post(HL_API, payload)
+    if not data or not isinstance(data, list) or not data:
+        print("  [HL] No historical candle returned")
+        return {"_error": "Hyperliquid historical API failed", "_collected": False}
+
+    # Pick the candle matching our start timestamp (snapshot may include adjacent candles).
+    candle = next((c for c in data if c.get("t") == start_ms), data[0])
+    close = float(candle["c"])
+    open_ = float(candle["o"])
+    change_24h = close - open_
+    change_pct = (change_24h / open_ * 100) if open_ else 0
+    volume = float(candle.get("v", 0))
+
+    result = {
+        "price": round(close, 2),
+        "prevDayPx": round(open_, 2),
+        "change24h": round(change_24h, 2),
+        "changePct": round(change_pct, 2),
+        "openInterest": 0,
+        "openInterestUsd": "n/a (historical)",
+        "volume24h": round(volume, 2),
+        "volumeUsd": f"${round(volume * close / 1e6, 1)}M",
+        "funding": 0,
+        "_collected": True,
+        "_historical": True,
+    }
+    print(f"  [HL] {HL_BRENTOIL_COIN} @ {target_date.strftime('%Y-%m-%d')}: close=${close:.2f} (open=${open_:.2f})")
+    return result
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # POLYMARKET
 # ═══════════════════════════════════════════════════════════════════════════════
 
-def fetch_polymarket_iran():
-    """Fetch Iran-related prediction market contracts from Polymarket Gamma API."""
-    print("[POLY] Fetching Iran markets...")
+POLYMARKET_CLOB_PRICES_HISTORY = "https://clob.polymarket.com/prices-history"
+
+
+def fetch_polymarket_iran(historical_date=None):
+    """Fetch Iran-related prediction market contracts from Polymarket Gamma API.
+
+    If historical_date (datetime) is set, the probability for each market is
+    replaced by the last CLOB price on that UTC date (via /prices-history).
+    """
+    mode = "historical" if historical_date else "live"
+    print(f"[POLY] Fetching Iran markets ({mode})...")
     results = []
 
     # Try multiple search terms to catch all Iran-related markets
@@ -289,7 +425,9 @@ def fetch_polymarket_iran():
 
                 # Parse probability (first outcome price = "Yes" probability)
                 prob = None
-                if prices and len(prices) > 0:
+                if historical_date is not None:
+                    prob = _poly_historical_probability(market, historical_date)
+                if prob is None and prices and len(prices) > 0:
                     try:
                         prob = round(float(prices[0]) * 100, 1)
                     except (ValueError, TypeError):
@@ -308,7 +446,39 @@ def fetch_polymarket_iran():
         "contracts": results,
         "_collected": len(results) > 0,
         "_error": "No contracts found" if len(results) == 0 else None,
+        "_historical": historical_date is not None,
     }
+
+
+def _poly_historical_probability(market, target_date):
+    """Look up the Yes-outcome price at end of target_date UTC via CLOB."""
+    clob_ids_raw = market.get("clobTokenIds")
+    if not clob_ids_raw:
+        return None
+    try:
+        token_ids = json.loads(clob_ids_raw) if isinstance(clob_ids_raw, str) else clob_ids_raw
+    except (ValueError, TypeError):
+        return None
+    if not token_ids:
+        return None
+    yes_token = token_ids[0]
+    start_ts = int(datetime(target_date.year, target_date.month, target_date.day).timestamp())
+    end_ts = start_ts + 86400 - 1
+    url = f"{POLYMARKET_CLOB_PRICES_HISTORY}?market={yes_token}&startTs={start_ts}&endTs={end_ts}&fidelity=60"
+    data = http_get(url)
+    if not isinstance(data, dict):
+        return None
+    history = data.get("history") or []
+    if not history:
+        return None
+    # Take the last sample within the day (end-of-day snapshot).
+    last_price = history[-1].get("p")
+    if last_price is None:
+        return None
+    try:
+        return round(float(last_price) * 100, 1)
+    except (ValueError, TypeError):
+        return None
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -759,6 +929,9 @@ def main():
                         help="Weekend mode: skip FMP, carry Friday prices")
     parser.add_argument("--no-auto-weekend", action="store_true",
                         help="Disable auto-weekend detection (force weekday mode)")
+    parser.add_argument("--historical", action="store_true",
+                        help="Backfill mode: use historical endpoints for FMP, "
+                             "Polymarket, and Hyperliquid scoped to the --day date.")
     args = parser.parse_args()
 
     day_num = args.day
@@ -766,6 +939,9 @@ def main():
     day_date = day_date_obj.strftime("%d %b %Y")
     day_date_short = day_date_obj.strftime("%b %-d") if os.name != "nt" else day_date_obj.strftime("%b %#d")
     is_weekend = args.weekend or (not args.no_auto_weekend and day_date_obj.weekday() >= 5)
+    historical_date = day_date_obj if args.historical else None
+    if historical_date is not None:
+        print(f"  [HISTORICAL] Backfill mode: all market data scoped to {historical_date.strftime('%Y-%m-%d')}")
 
     print(f"{'='*60}")
     print(f"  TACQUERIA DATA COLLECTION — Day {day_num} ({day_date})")
@@ -785,10 +961,12 @@ def main():
 
     with ThreadPoolExecutor(max_workers=8) as pool:
         # Tier A: Direct APIs
-        if not is_weekend:
-            futures["fmp"] = pool.submit(fetch_fmp_quotes, FMP_TICKERS)
-        futures["hl"] = pool.submit(fetch_hyperliquid_brentoil)
-        futures["poly"] = pool.submit(fetch_polymarket_iran)
+        # In historical mode, FMP's historical endpoint carries forward prior
+        # trading-day closes, so we run it on weekends too.
+        if (not is_weekend) or historical_date is not None:
+            futures["fmp"] = pool.submit(fetch_fmp_quotes, FMP_TICKERS, historical_date)
+        futures["hl"] = pool.submit(fetch_hyperliquid_brentoil, historical_date)
+        futures["poly"] = pool.submit(fetch_polymarket_iran, historical_date)
 
         # Tier B: Sonar research
         if PERPLEXITY_API_KEY:

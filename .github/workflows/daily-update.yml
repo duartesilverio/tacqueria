@@ -2,8 +2,8 @@ name: Daily Dashboard Update
 
 on:
   schedule:
-    # 12:30 UTC = 20:30 HKT
-    - cron: '30 12 * * *'
+    # 10:00 UTC = 18:00 HKT (6pm Macau)
+    - cron: '0 10 * * *'
   workflow_dispatch:
     inputs:
       day_override:
@@ -12,6 +12,11 @@ on:
         type: string
       weekend:
         description: 'Force weekend mode (skip FMP)'
+        required: false
+        type: boolean
+        default: false
+      historical:
+        description: 'Backfill mode: use historical endpoints (FMP/Polymarket/HL) scoped to --day date'
         required: false
         type: boolean
         default: false
@@ -65,6 +70,9 @@ jobs:
           ARGS="--day ${{ steps.day.outputs.day }}"
           if [ "${{ steps.day.outputs.weekend }}" = "true" ]; then
             ARGS="$ARGS --weekend"
+          fi
+          if [ "${{ inputs.historical }}" = "true" ]; then
+            ARGS="$ARGS --historical"
           fi
           python scripts/collect-data.py $ARGS
         env:

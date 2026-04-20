@@ -1257,18 +1257,22 @@ def main():
     # ------------------------------------------------------------------
     # 2. KPIs — replace with raw, enhance notes
     # ------------------------------------------------------------------
-    if "kpis" in raw:
+    if raw.get("kpis"):
         data["kpis"] = enhance_kpi_notes(raw["kpis"], raw)
         all_updates.append(f"kpis updated ({len(raw['kpis'])} tickers)")
         print(f"  [OK] kpis: {', '.join(raw['kpis'].keys())}")
+    else:
+        print("  [SKIP] kpis: no raw KPI data (weekend or FMP skipped); carrying existing values forward")
 
     # ------------------------------------------------------------------
     # 3. marketStrip — replace
     # ------------------------------------------------------------------
-    if "marketStrip" in raw:
+    if raw.get("marketStrip"):
         data["marketStrip"] = raw["marketStrip"]
         all_updates.append(f"marketStrip updated ({len(raw['marketStrip'])} items)")
         print(f"  [OK] marketStrip: {len(raw['marketStrip'])} items")
+    else:
+        print("  [SKIP] marketStrip: no raw data (weekend or FMP skipped); carrying existing values forward")
 
     # ------------------------------------------------------------------
     # 4. chartAppend — merge (keep taco/strikes/hormuz from existing)
