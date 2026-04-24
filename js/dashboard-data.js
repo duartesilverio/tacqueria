@@ -12,16 +12,16 @@ const DASHBOARD_DATA = {
   // ── META ────────────────────────────────────────────────────────────────────
   meta: {
     version: "4.0.0",
-    timestamp: "23 Apr 2026 19:10 HKT",
-    day: 55,
+    timestamp: "24 Apr 2026 19:07 HKT",
+    day: 56,
     dayDate: "13 APR 2026",
-    threatLevel: "EXTREME",
+    threatLevel: "HIGH",
     threatClass: "threat-red",
-    tacoScore: 30,
+    tacoScore: 15,
     tacoMax: 100,
     tacoPrev: 18,
     tacoPrevDay: 42,
-    tacoRegime: "BRENT $102.92",
+    tacoRegime: "BRENT $106",
     tacoRegimeLabel: "CEASEFIRE DAY 5: Vance 21-hour marathon talks in Islamabad END WITHOUT DEAL. Trump: 'We've won — whether we make a deal makes no difference.' US announces naval blockade of Hormuz. Mojtaba Khamenei breaks silence, vows revenge for father's assassination. Netanyahu rules out Lebanon ceasefire. Brent $101.53 (+6.7%). WTI $104.17 (+7.9%). VIX 19.23 (-1.3%). Gold $4,737 (-1.1%). CPI surges to 3.3% (gasoline +21.2%). Ceasefire nominally holds but diplomatic path severely damaged.",
     tacoRegimeColor: "#ef4444",
     tacoPhase: "ceasefire",
@@ -35,53 +35,53 @@ const DASHBOARD_DATA = {
   // ── FINANCIAL KPIs — Market Signals Tab ─────────────────────────────────────
   // NOTE: Wednesday 18 Mar — Full market day. Brent spiked to $108.52 on South Pars attack. Gold crashed. Equities red. VIX bounced.
   kpis: {
-    brent:    { label: "Brent (ICE)",      price: 102.92, change: 1.01,   changePct: 0.99,  prevClose: 101.91, cssClass: "kpi-up",   note: "▲ +1.0% · Ceasefire relief · HL $97.34 · Hormuz: Partially Closed" },
-    wti:      { label: "WTI (NYMEX)",      price: 93.91,  change: 4.24,   changePct: 4.73,  prevClose: 89.67,  cssClass: "kpi-up",   note: "▲ +4.7% · WTI premium persists (spread $9.01)" },
-    tnx:      { label: "US 10Y Yield",     price: 4.29,   change: 0.0,   changePct: 0.05,  prevClose: 4.29,   cssClass: "kpi-flat", note: "4.29% · → +0.1% · Yield steady amid ceasefire uncertainty", isPercent: true },
-    vix:      { label: "VIX",              price: 19.64,  change: 0.72,   changePct: 3.81,  prevClose: 18.92,  cssClass: "kpi-up", note: "▲ +3.8% · Risk repricing on ceasefire fragility", noDollar: true },
-    hyg:      { label: "HY Spread (HYG)",  price: 80.5,  change: 0.13,  changePct: 0.16, prevClose: 80.37,  cssClass: "kpi-flat", note: "▲ +0.2% · Credit steady — no stress signal" },
-    gold:     { label: "Gold Spot",        price: 4713.9,   change: -39.1,   changePct: -0.82, prevClose: 4753,   cssClass: "kpi-down",   note: "▼ -0.8% · $4,714 · Safe-haven demand easing on ceasefire", formatComma: true },
-    brentWtiSpread: { label: "Brent–WTI Spread", price: 9.01, change: -3.23, changePct: -26.39, prevClose: 12.24, cssClass: "kpi-down", note: "Spread $9.01 · Spread normalizing", noDollar: false },
-    ita:      { label: "ITA (Defense ETF)", price: 219.15, change: -3.94,   changePct: -1.77,  prevClose: 223.09, cssClass: "kpi-down", note: "▼ -1.8% · Defense sector pullback on peace hopes" }
+    brent:    { label: "Brent (ICE)",      price: 106, change: 0.93,   changePct: 0.89,  prevClose: 105.07, cssClass: "kpi-up",   note: "▲ +0.9% · Ceasefire relief · HL $99.91 · Hormuz: Open" },
+    wti:      { label: "WTI (NYMEX)",      price: 96.22,  change: 0.37,   changePct: 0.39,  prevClose: 95.85,  cssClass: "kpi-up",   note: "▲ +0.4% · WTI premium persists (spread $9.78)" },
+    tnx:      { label: "US 10Y Yield",     price: 4.32,   change: 0.03,   changePct: 0.68,  prevClose: 4.29,   cssClass: "kpi-up", note: "4.32% · ▲ +0.7% · Yield steady amid ceasefire uncertainty", isPercent: true },
+    vix:      { label: "VIX",              price: 19.16,  change: -0.15,   changePct: -0.78,  prevClose: 19.31,  cssClass: "kpi-down", note: "▼ -0.8% · Low vol — ceasefire risk priced in", noDollar: true },
+    hyg:      { label: "HY Spread (HYG)",  price: 80.37,  change: -0.13,  changePct: -0.16, prevClose: 80.5,  cssClass: "kpi-flat", note: "▼ -0.2% · Credit widening — stress watch" },
+    gold:     { label: "Gold Spot",        price: 4693.7,   change: -30.3,   changePct: -0.64, prevClose: 4724,   cssClass: "kpi-down",   note: "▼ -0.6% · $4,694 · Safe-haven demand easing on ceasefire", formatComma: true },
+    brentWtiSpread: { label: "Brent–WTI Spread", price: 9.78, change: 0.56, changePct: 6.07, prevClose: 9.22, cssClass: "kpi-up", note: "Spread $9.78 · Spread normalizing", noDollar: false },
+    ita:      { label: "ITA (Defense ETF)", price: 219.11, change: -0.04,   changePct: -0.02,  prevClose: 219.15, cssClass: "kpi-flat", note: "▼ -0.0% · Defense sector pullback on peace hopes" }
   },
 
   // ── COMPACT MARKET STRIP (Overview tab) ─────────────────────────────────────
   marketStrip: [
     {
       label: 'Brent',
-      value: '$102.92',
-      delta: '+1.0%',
+      value: '$106.00',
+      delta: '+0.9%',
       color: '#22c55e'
     },
     {
       label: 'S&P 500',
-      value: '$7,137.90',
-      delta: '+1.1%',
-      color: '#22c55e'
+      value: '$7,108.40',
+      delta: '-0.4%',
+      color: '#ef4444'
     },
     {
       label: 'VIX',
-      value: '19.64',
-      delta: '+3.8%',
-      color: '#22c55e'
-    },
-    {
-      label: 'Gold',
-      value: '$4,713.90',
+      value: '19.16',
       delta: '-0.8%',
       color: '#ef4444'
     },
     {
+      label: 'Gold',
+      value: '$4,693.70',
+      delta: '-0.6%',
+      color: '#ef4444'
+    },
+    {
       label: '10Y',
-      value: '4.29',
-      delta: '+0.1%',
-      color: '#94a3b8'
+      value: '4.32',
+      delta: '+0.7%',
+      color: '#22c55e'
     },
     {
       label: 'HYG',
-      value: '$80.50',
-      delta: '+0.2%',
-      color: '#22c55e'
+      value: '$80.37',
+      delta: '-0.2%',
+      color: '#ef4444'
     }
   ],
 
@@ -950,19 +950,19 @@ const DASHBOARD_DATA = {
 
   // ── CHART DATA (consolidates data.js + charts.js hardcoded data) ───────────
   chartData: {
-    labels: ['Feb 28', 'Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14', 'Mar 15', 'Mar 16', 'Mar 17', 'Mar 18', 'Mar 19', 'Mar 20', 'Mar 21', 'Mar 23', 'Mar 24', 'Mar 25', 'Mar 26', 'Mar 27', 'Mar 30', 'Mar 31', 'Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9', 'Apr 10', 'Apr 11', 'Apr 12', 'Apr 13', 'Apr 14', 'Apr 15', 'Apr 16', 'Apr 17', 'Apr 18', 'Apr 19', 'Apr 20', 'Apr 21', 'Apr 22', 'Apr 23'],
-    brent: [73.2, 80.1, 86.4, 91.7, 94.3, 89.5, 88.0, 91.2, 94.0, 95.4, 90.3, 91.98, 95.8, 100.46, 103.14, 103.14, 106.11, 101.6, 108.52, 116.45, 106.93, 112.89, 101.34, 103.5, 100.59, 105.61, 109.97, 107.9, 107.6, 101.22, 109.37, 109.03, 109.03, 109.03, 108.28, 110.47, 102.5, 95.02, 96.06, 96.06, 96.06, 101.53, 95.87, 95.34, 97.41, 89.03, 90.38, 95.42, 95.12, 94.3, 99.1, 102.92],
-    vix: [22.1, 26.4, 28.9, 30.2, 31.8, 30.1, 29.4, 28.7, 27.6, 26.9, 25.8, 24.93, 25.72, 27.29, 27.19, 27.19, 26.13, 22.24, 23.23, 25.93, 24.82, 26.78, 24.48, 26.77, 25.25, 27.15, 28.63, 30.51, 28.62, 24.23, 27.72, 23.87, 23.87, 23.87, 23.88, 25.71, 21.5, 21.23, 19.31, 19.31, 19.31, 19.23, 18, 18.36, 18.94, 17.61, 17.48, 17.48, 19.53, 18.86, 19.12, 19.64],
-    hyg: [80.0, 79.1, 78.3, 77.8, 77.4, 77.8, 78.1, 78.5, 79.0, 79.3, 79.6, 80.1, 79.9, 79.36, 79.2, 79.2, 79.2, 79.75, 79.68, 79.4, 79.66, 78.92, 79.53, 79.19, 79.52, 79.42, 78.9, 78.72, 78.82, 79.56, 79.37, 79.56, 79.56, 79.56, 79.63, 79.55, 79.9, 80.14, 80.28, 80.28, 80.28, 79.96, 80.43, 80.5, 80.34, 80.65, 80.65, 80.65, 80.65, 80.58, 80.37, 80.5],
-    sp500: [6050, 5940, 5870, 5820, 5790, 5810, 5840, 5870, 5910, 6100, 6250, 6310, 6781, 6672, 6632, 6632, 6632, 6734.51, 6682.77, 6624.7, 6606.49, 6506.48, 6631.26, 6546.85, 6605.87, 6591.9, 6477.26, 6368.85, 6343.72, 6528.52, 6575.32, 6582.69, 6582.69, 6582.69, 6608.75, 6578.67, 6720.0, 6779.38, 6824.66, 6824.66, 6824.66, 6816.89, 6934.41, 6966.78, 7016.5, 7111.38, 7126.05, 7126.05, 7126.06, 7109.14, 7064.01, 7137.9],
-    taco: [45, 40, 35, 30, 26, 22, 18, 15, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 6, 7, 8, 7, 7, 7, 8, 12, 9, 10, 8, 7, 9, 6, 15, 18, 18, 15, 12, 12, 12, 14, 19, 21, 21, 15, 15, 13, 15, 30],
-    strikeLabels: ['28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr'],
+    labels: ['Feb 28', 'Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14', 'Mar 15', 'Mar 16', 'Mar 17', 'Mar 18', 'Mar 19', 'Mar 20', 'Mar 21', 'Mar 23', 'Mar 24', 'Mar 25', 'Mar 26', 'Mar 27', 'Mar 30', 'Mar 31', 'Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9', 'Apr 10', 'Apr 11', 'Apr 12', 'Apr 13', 'Apr 14', 'Apr 15', 'Apr 16', 'Apr 17', 'Apr 18', 'Apr 19', 'Apr 20', 'Apr 21', 'Apr 22', 'Apr 23', 'Apr 24'],
+    brent: [73.2, 80.1, 86.4, 91.7, 94.3, 89.5, 88.0, 91.2, 94.0, 95.4, 90.3, 91.98, 95.8, 100.46, 103.14, 103.14, 106.11, 101.6, 108.52, 116.45, 106.93, 112.89, 101.34, 103.5, 100.59, 105.61, 109.97, 107.9, 107.6, 101.22, 109.37, 109.03, 109.03, 109.03, 108.28, 110.47, 102.5, 95.02, 96.06, 96.06, 96.06, 101.53, 95.87, 95.34, 97.41, 89.03, 90.38, 95.42, 95.12, 94.3, 99.1, 102.92, 106],
+    vix: [22.1, 26.4, 28.9, 30.2, 31.8, 30.1, 29.4, 28.7, 27.6, 26.9, 25.8, 24.93, 25.72, 27.29, 27.19, 27.19, 26.13, 22.24, 23.23, 25.93, 24.82, 26.78, 24.48, 26.77, 25.25, 27.15, 28.63, 30.51, 28.62, 24.23, 27.72, 23.87, 23.87, 23.87, 23.88, 25.71, 21.5, 21.23, 19.31, 19.31, 19.31, 19.23, 18, 18.36, 18.94, 17.61, 17.48, 17.48, 19.53, 18.86, 19.12, 19.64, 19.16],
+    hyg: [80.0, 79.1, 78.3, 77.8, 77.4, 77.8, 78.1, 78.5, 79.0, 79.3, 79.6, 80.1, 79.9, 79.36, 79.2, 79.2, 79.2, 79.75, 79.68, 79.4, 79.66, 78.92, 79.53, 79.19, 79.52, 79.42, 78.9, 78.72, 78.82, 79.56, 79.37, 79.56, 79.56, 79.56, 79.63, 79.55, 79.9, 80.14, 80.28, 80.28, 80.28, 79.96, 80.43, 80.5, 80.34, 80.65, 80.65, 80.65, 80.65, 80.58, 80.37, 80.5, 80.37],
+    sp500: [6050, 5940, 5870, 5820, 5790, 5810, 5840, 5870, 5910, 6100, 6250, 6310, 6781, 6672, 6632, 6632, 6632, 6734.51, 6682.77, 6624.7, 6606.49, 6506.48, 6631.26, 6546.85, 6605.87, 6591.9, 6477.26, 6368.85, 6343.72, 6528.52, 6575.32, 6582.69, 6582.69, 6582.69, 6608.75, 6578.67, 6720.0, 6779.38, 6824.66, 6824.66, 6824.66, 6816.89, 6934.41, 6966.78, 7016.5, 7111.38, 7126.05, 7126.05, 7126.06, 7109.14, 7064.01, 7137.9, 7108.4],
+    taco: [45, 40, 35, 30, 26, 22, 18, 15, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 6, 7, 8, 7, 7, 7, 8, 12, 9, 10, 8, 7, 9, 6, 15, 18, 18, 15, 12, 12, 12, 14, 19, 21, 21, 15, 15, 13, 15, 30, 15],
+    strikeLabels: ['28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr', '24 Apr'],
     strikes: {
-      us: [500, 600, 550, 450, 400, 420, 380, 500, 480, 450, 430, 420, 490, 520, 600, 580, 620, 290, 480, 510, 500, 520, 530, 540, 550, 550, 580, 600, 580, 560, 500, 520, 480, 500, 510, 550, 600, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      us: [500, 600, 550, 450, 400, 420, 380, 500, 480, 450, 430, 420, 490, 520, 600, 580, 620, 290, 480, 510, 500, 520, 530, 540, 550, 550, 580, 600, 580, 560, 500, 520, 480, 500, 510, 550, 600, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       iran: [200, 150, 100, 60, 40, 30, 25, 35, 30, 25, 20, 18, 35, 40, 38, 42, 45, 30, 35, 40, 50, 55, 65, 60, 55, 70, 75, 70, 65, 60, 50, 55, 50, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     },
-    hormuzLabels: ['26 Feb', '27 Feb', '28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '26 Mar', '27 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr'],
-    hormuzTransits: [24, 24, 37, 4, 6, 5, 3, 4, 5, 5, 5, 5, 5, 2, 0, 1, 1, 1, 0, 4, 5, 4, 3, 2, 2, 2, 0, 6, 6, 8, 3, 4, 4, 5, 6, 5, 1, 4, 4, 3, 2, 5, 8, 4, 5, 5, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+    hormuzLabels: ['26 Feb', '27 Feb', '28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '26 Mar', '27 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr', '24 Apr'],
+    hormuzTransits: [24, 24, 37, 4, 6, 5, 3, 4, 5, 5, 5, 5, 5, 2, 0, 1, 1, 1, 0, 4, 5, 4, 3, 2, 2, 2, 0, 6, 6, 8, 3, 4, 4, 5, 6, 5, 1, 4, 4, 3, 2, 5, 8, 4, 5, 5, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
     etfs: {
       ITA: {
         prices: [215, 218, 222, 226, 229, 227, 230, 233, 235, 237, 234, 236, 239, 241, 243, 243, 243, 229, 231, 230, 227, 223, 226, 221, 226, 226, 228, 216, 211, 219, 224, 222, 222, 222, 223, 223, 235, 232, 232, 232, 230, 233]
@@ -1412,6 +1412,14 @@ const DASHBOARD_DATA = {
         dubicars: null,
         yallamotor: null,
         source: 'live'
+      },
+      {
+        date: '2026-04-24',
+        day: 56,
+        dubizzle: 28131,
+        dubicars: null,
+        yallamotor: null,
+        source: 'live'
       }
     ],
     baselines: {
@@ -1421,8 +1429,8 @@ const DASHBOARD_DATA = {
     },
     latest: {
       dubizzle: {
-        total: 28013,
-        changePct: -0.1
+        total: 28131,
+        changePct: 0.4
       },
       dubicars: {
         total: 4526,
@@ -1432,8 +1440,8 @@ const DASHBOARD_DATA = {
         total: 272,
         changePct: 0
       },
-      date: '2026-04-23',
-      day: 55
+      date: '2026-04-24',
+      day: 56
     },
     luxury: {
       date: '2026-04-10',
@@ -1489,8 +1497,8 @@ const DASHBOARD_DATA = {
   // ── IRAN DAILY ATTACKS ON UAE ───────────────────────────────────────────────
   iranAttacksUAE: {
     cumulative: {
-      asOf: '2026-04-23',
-      day: 55,
+      asOf: '2026-04-24',
+      day: 56,
       ballisticMissiles: {
         detected: 524,
         intercepted: 501,
@@ -1511,7 +1519,7 @@ const DASHBOARD_DATA = {
         injured: 252
       },
       interceptRate: '93.4%',
-      note: 'All attack figures frozen since ceasefire. Day 55.'
+      note: 'All attack figures frozen since ceasefire. Day 56.'
     },
     daily: [
       {
@@ -1865,14 +1873,22 @@ const DASHBOARD_DATA = {
         cruise: 0,
         drones: 0,
         note: 'Ceasefire Day 15 — zero attacks.'
+      },
+      {
+        date: '2026-04-24',
+        day: 56,
+        ballistic: 0,
+        cruise: 0,
+        drones: 0,
+        note: 'Ceasefire Day 16 — zero attacks.'
       }
     ]
   },
 
   // ── IRAN DAILY ATTACKS ON ALL NEIGHBORS ─────────────────────────────────────
   iranAttacksNeighbors: {
-    asOf: '2026-04-23',
-    day: 55,
+    asOf: '2026-04-24',
+    day: 56,
     totalProjectiles: 4850,
     countriesHit: 6,
     countries: {
@@ -2090,24 +2106,24 @@ const DASHBOARD_DATA = {
   gistBanner: {
     bullets: [
       {
-        text: 'US launched Operation Epic Fury on February 28, 2026, targeting Iran\'s ballistic missiles, navy, nuclear sites, and proxies',
+        text: 'Ceasefire agreed after 38 days of major combat operations ending around April 7, 2026',
+        color: 'yellow'
+      },
+      {
+        text: 'US destroyed over 150 Iranian naval vessels, 13,000 targets including ballistic missile sites, defense industrial base, and air defenses',
+        color: 'yellow'
+      },
+      {
+        text: 'Iranian Air Force grounded (zero flights per day)',
+        color: 'yellow'
+      },
+      {
+        text: 'US extended ceasefire at Pakistan’s request, awaiting unified proposal from Iran; next steps unclear as of April 22.',
+        color: 'yellow'
+      },
+      {
+        text: 'US naval blockade of Iranian ports announced April 13; teams returned to Islamabad for talks.',
         color: 'red'
-      },
-      {
-        text: 'Iranian Supreme Leader Ali Khamenei killed in initial strikes',
-        color: 'red'
-      },
-      {
-        text: 'US sank over 30 Iranian ships, rendering navy combat ineffective',
-        color: 'yellow'
-      },
-      {
-        text: 'Trump extended ceasefire indefinitely at Pakistan\'s request, awaiting unified Iranian proposal; no fixed deadline set by US.',
-        color: 'yellow'
-      },
-      {
-        text: 'US sent multi-point peace framework to Tehran; Iran demands remain firm.',
-        color: 'yellow'
       }
     ],
     pills: [
@@ -2145,39 +2161,39 @@ const DASHBOARD_DATA = {
   // ── 2. NEWS-NOW CARDS ────────────────────────────────────────────────────────
   newsNow: [
     {
-      label: 'NUCLEAR',
-      title: 'US launched Operation Epic Fury on February 28, 2026, targeting Iran\'s ballistic missiles,',
-      body: 'US launched Operation Epic Fury on February 28, 2026, targeting Iran\'s ballistic missiles, navy, nuclear sites, and proxies',
-      color: 'yellow'
-    },
-    {
-      label: 'MILITARY',
-      title: 'Iranian Supreme Leader Ali Khamenei killed in initial strikes',
-      body: 'Iranian Supreme Leader Ali Khamenei killed in initial strikes',
+      label: 'CEASEFIRE',
+      title: 'Ceasefire agreed after 38 days of major combat operations ending around April 7, 2026',
+      body: 'Ceasefire agreed after 38 days of major combat operations ending around April 7, 2026',
       color: 'yellow'
     },
     {
       label: 'CONFLICT',
-      title: 'US sank over 30 Iranian ships, rendering navy combat ineffective',
-      body: 'US sank over 30 Iranian ships, rendering navy combat ineffective',
+      title: 'US destroyed over 150 Iranian naval vessels, 13,000 targets including ballistic missile si',
+      body: 'US destroyed over 150 Iranian naval vessels, 13,000 targets including ballistic missile sites, defense industrial base, and air defenses',
+      color: 'yellow'
+    },
+    {
+      label: 'CONFLICT',
+      title: 'Iranian Air Force grounded (zero flights per day)',
+      body: 'Iranian Air Force grounded (zero flights per day)',
       color: 'yellow'
     },
     {
       label: 'MILITARY',
-      title: 'US struck 200 Iranian targets in initial 72 hours; B-2 bombers hit buried launchers',
-      body: 'US struck 200 Iranian targets in initial 72 hours; B-2 bombers hit buried launchers',
+      title: 'US intercepted over 1,000 attack drones and 700 ballistic missiles',
+      body: 'US intercepted over 1,000 attack drones and 700 ballistic missiles',
+      color: 'red'
+    },
+    {
+      label: 'TALKS',
+      title: 'US extended ceasefire at Pakistan’s request, awaiting unified proposal from Iran; next ste',
+      body: 'US extended ceasefire at Pakistan’s request, awaiting unified proposal from Iran; next steps unclear as of April 22.',
       color: 'yellow'
     },
     {
       label: 'TALKS',
-      title: 'Trump extended ceasefire indefinitely at Pakistan\'s request, awaiting unified Iranian prop',
-      body: 'Trump extended ceasefire indefinitely at Pakistan\'s request, awaiting unified Iranian proposal; no fixed deadline set by US.',
-      color: 'yellow'
-    },
-    {
-      label: 'TALKS',
-      title: 'US sent multi-point peace framework to Tehran; Iran demands remain firm',
-      body: 'US sent multi-point peace framework to Tehran; Iran demands remain firm.',
+      title: 'US naval blockade of Iranian ports announced April 13; teams returned to Islamabad for tal',
+      body: 'US naval blockade of Iranian ports announced April 13; teams returned to Islamabad for talks.',
       color: 'yellow'
     }
   ],
@@ -2186,17 +2202,24 @@ const DASHBOARD_DATA = {
   analyticalSignals: [
     {
       label: 'Ceasefire Compliance',
-      value: 'AT RISK',
-      score: 3,
-      scoreColor: '#ef4444',
-      detail: 'Ceasefire in effect with ironclad naval blockade of Iranian ports (not full Strait of Hormuz) since April 13, 2026; US postured to resume strikes if violated'
+      value: 'DAY 16 ✓',
+      score: 8,
+      scoreColor: '#f59e0b',
+      detail: 'Ceasefire in effect since approximately April 7, 2026; Iran agreed to two-week ceasefire and reopening of Strait of Hormuz; negotiations ongoing for broader peace agreement'
     },
     {
       label: 'Diplomatic Engagement',
       value: 'ACTIVE',
       score: 6,
       scoreColor: '#f59e0b',
-      detail: 'Trump extended ceasefire indefinitely at Pakistan\'s request, awaiting unified Iranian proposal; no fixed deadline set by US.'
+      detail: 'US extended ceasefire at Pakistan’s request, awaiting unified proposal from Iran; next steps unclear as of April 22.'
+    },
+    {
+      label: 'Hormuz Passage',
+      value: 'OPEN',
+      score: 7,
+      scoreColor: '#22c55e',
+      detail: 'Strait status: open'
     },
     {
       label: 'Rhetoric Temperature',
@@ -2300,53 +2323,53 @@ const DASHBOARD_DATA = {
   // ── 6. KEY TRIGGERS ──────────────────────────────────────────────────────────
   keyTriggers: [
     {
-      title: 'US launched Operation Epic Fury on February 28, 2026, targeting Iran\'s ballistic',
+      title: 'Ceasefire agreed after 38 days of major combat operations ending around April 7,',
       titleColor: '#f59e0b',
-      body: 'US launched Operation Epic Fury on February 28, 2026, targeting Iran\'s ballistic missiles, navy, nuclear sites, and proxies'
+      body: 'Ceasefire agreed after 38 days of major combat operations ending around April 7, 2026'
     },
     {
-      title: 'Iranian Supreme Leader Ali Khamenei killed in initial strikes',
+      title: 'US destroyed over 150 Iranian naval vessels, 13,000 targets including ballistic ',
       titleColor: '#f59e0b',
-      body: 'Iranian Supreme Leader Ali Khamenei killed in initial strikes'
+      body: 'US destroyed over 150 Iranian naval vessels, 13,000 targets including ballistic missile sites, defense industrial base, and air defenses'
     },
     {
-      title: 'US sank over 30 Iranian ships, rendering navy combat ineffective',
+      title: 'Iranian Air Force grounded (zero flights per day)',
       titleColor: '#f59e0b',
-      body: 'US sank over 30 Iranian ships, rendering navy combat ineffective'
+      body: 'Iranian Air Force grounded (zero flights per day)'
     },
     {
-      title: 'Ceasefire Status (Day 55)',
+      title: 'Ceasefire Status (Day 56)',
       titleColor: '#f59e0b',
-      body: 'Ceasefire in effect with ironclad naval blockade of Iranian ports (not full Strait of Hormuz) since April 13, 2026; US postured to resume strikes if violated'
+      body: 'Ceasefire in effect since approximately April 7, 2026; Iran agreed to two-week ceasefire and reopening of Strait of Hormuz; negotiations ongoing for broader peace agreement'
     },
     {
       title: 'Hormuz Passage',
       titleColor: '#22c55e',
-      body: 'Status: partially_closed. Daily transits: None.'
+      body: 'Status: open. Daily transits: None.'
     }
   ],
 
   // ── 7. INTELLIGENCE TAB ──────────────────────────────────────────────────────
   intelligence: {
     diplomatic: {
-      badge: 'CEASEFIRE',
-      badgeColor: '#f59e0b',
+      badge: 'TALKS',
+      badgeColor: '#22c55e',
       sections: [
         {
-          title: 'Diplomatic Status — Day 55',
-          items: ['Ceasefire in effect with ironclad naval blockade of Iranian ports (not full Strait of Hormuz) since April 13, 2026; US postured to resume strikes if violated']
+          title: 'Diplomatic Status — Day 56',
+          items: ['Ceasefire in effect since approximately April 7, 2026; Iran agreed to two-week ceasefire and reopening of Strait of Hormuz; negotiations ongoing for broader peace agreement']
         },
         {
-          title: 'Trump extended ceasefire indefinitely at Pakistan\'s request, awaiting unified Ir',
-          items: ['Trump extended ceasefire indefinitely at Pakistan\'s request, awaiting unified Iranian proposal; no fixed deadline set by US.']
+          title: 'US extended ceasefire at Pakistan’s request, awaiting unified proposal from Iran',
+          items: ['US extended ceasefire at Pakistan’s request, awaiting unified proposal from Iran; next steps unclear as of April 22.']
         },
         {
-          title: 'US sent multi-point peace framework to Tehran; Iran demands remain firm',
-          items: ['US sent multi-point peace framework to Tehran; Iran demands remain firm.']
+          title: 'US naval blockade of Iranian ports announced April 13; teams returned to Islamab',
+          items: ['US naval blockade of Iranian ports announced April 13; teams returned to Islamabad for talks.']
         },
         {
-          title: 'Internal Iranian divisions between pragmatists and hardliners highlighted; talks',
-          items: ['Internal Iranian divisions between pragmatists and hardliners highlighted; talks in Islamabad on Apr 11-12 with US delegation led by VP JD Vance.']
+          title: 'VP JD Vance likely to travel to Islamabad for second round of peace talks as cea',
+          items: ['VP JD Vance likely to travel to Islamabad for second round of peace talks as ceasefire set to expire.']
         }
       ],
       sources: [
@@ -2369,8 +2392,8 @@ const DASHBOARD_DATA = {
       badgeColor: '#22c55e',
       sections: [
         {
-          title: 'Iranian Supreme Leader Ali Khamenei killed in initial strikes',
-          items: ['Iranian Supreme Leader Ali Khamenei killed in initial strikes']
+          title: 'Conflict Statistics — Day 56',
+          items: ['US strikes cumulative: 13,000', 'US KIA: 13', 'Troops deployed: 10,000+']
         }
       ],
       sources: [
@@ -2389,12 +2412,12 @@ const DASHBOARD_DATA = {
       ]
     },
     energy: {
-      badge: 'PARTIALLY_CLOSED',
+      badge: 'OPEN',
       badgeColor: '#22c55e',
       sections: [
         {
-          title: 'Energy & Shipping — Day 55',
-          items: ['Hormuz status: PARTIALLY_CLOSED', 'Daily transits: N/A']
+          title: 'Energy & Shipping — Day 56',
+          items: ['Hormuz status: OPEN', 'Daily transits: N/A']
         }
       ],
       sources: [
@@ -2416,41 +2439,41 @@ const DASHBOARD_DATA = {
 
   // ── 8. NEXT 48H CATALYSTS ────────────────────────────────────────────────────
   next48h: {
-    badge: 'CEASEFIRE DAY 15',
+    badge: 'NEGOTIATIONS — OUTCOME PENDING',
     catalysts: [
       {
         rank: '1',
-        title: 'US launched Operation Epic Fury on February 28, 2026, targeting Iran\'s ballistic',
+        title: 'Ceasefire agreed after 38 days of major combat operations ending around April 7,',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: 'US launched Operation Epic Fury on February 28, 2026, targeting Iran\'s ballistic missiles, navy, nuclear sites, and proxies',
+        body: 'Ceasefire agreed after 38 days of major combat operations ending around April 7, 2026',
         color: 'yellow'
       },
       {
         rank: '2',
-        title: 'Iranian Supreme Leader Ali Khamenei killed in initial strikes',
+        title: 'US destroyed over 150 Iranian naval vessels, 13,000 targets including ballistic ',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: 'Iranian Supreme Leader Ali Khamenei killed in initial strikes',
+        body: 'US destroyed over 150 Iranian naval vessels, 13,000 targets including ballistic missile sites, defense industrial base, and air defenses',
         color: 'yellow'
       },
       {
         rank: '3',
         title: 'Ceasefire Compliance',
         outcomeLabel: 'HOLD vs COLLAPSE',
-        body: 'Ceasefire in effect with ironclad naval blockade of Iranian ports (not full Strait of Hormuz) since April 13, 2026; US postured to resume strikes if violated',
+        body: 'Ceasefire in effect since approximately April 7, 2026; Iran agreed to two-week ceasefire and reopening of Strait of Hormuz; negotiations ongoing for broader peace agreement',
         color: 'yellow'
       },
       {
         rank: '4',
         title: 'Hormuz Passage',
         outcomeLabel: 'OPEN vs BLOCKADE',
-        body: 'Current status: PARTIALLY_CLOSED. Transits: None/day.',
+        body: 'Current status: OPEN. Transits: None/day.',
         color: 'green'
       },
       {
         rank: '5',
         title: 'Diplomatic Track',
         outcomeLabel: 'RESUME vs STALL',
-        body: 'Trump extended ceasefire indefinitely at Pakistan\'s request, awaiting unified Iranian proposal; no fixed deadline set by US.. US sent multi-point peace framework to Tehran; Iran demands remain firm.',
+        body: 'US extended ceasefire at Pakistan’s request, awaiting unified proposal from Iran; next steps unclear as of April 22.. US naval blockade of Iranian ports announced April 13; teams returned to Islamabad for talks.',
         color: 'yellow'
       }
     ]
@@ -3334,6 +3357,20 @@ const DASHBOARD_DATA = {
         text: 'Posted on X that Strait of Hormuz reopening to commercial shipping during ceasefire.',
         tag: 'IR',
         escalation: 5
+      },
+      {
+        date: 'April 5, 2026',
+        speaker: 'Trump',
+        text: 'Trump threatened to attack Iran\'s power plants and bridges if the Hormuz Strait was not reopened.',
+        tag: 'US',
+        escalation: 5
+      },
+      {
+        date: 'Recent (April 20-23, 2026)',
+        speaker: 'Trump',
+        text: 'Trump renewed threat to obliterate Iran\'s civilian infrastructure, announced US Navy seized Iranian flagged cargo ship, stated Iran military is \'totally defeated\' and leaders are \'fighting like cats\', said \'don\'t rush me\', and extended ceasefire whil',
+        tag: 'US',
+        escalation: 8
       }
     ],
     patterns: [
@@ -3480,8 +3517,15 @@ const DASHBOARD_DATA = {
 
   // ── 11. OPERATIONS ───────────────────────────────────────────────────────────
   operations: {
-    badge: 'CEASEFIRE · DAY 15',
+    badge: 'CEASEFIRE · DAY 16 — NEGOTIATIONS',
     kpis: [
+      {
+        label: 'US Strikes D56',
+        value: '0',
+        delta: 'ZERO — ceasefire',
+        note: 'Cumulative: 13,000',
+        color: 'green'
+      },
       {
         label: 'US Troops',
         value: '10,000+',
@@ -3490,8 +3534,15 @@ const DASHBOARD_DATA = {
         color: 'yellow'
       },
       {
+        label: 'US KIA',
+        value: '13',
+        delta: '',
+        note: 'Through D56',
+        color: 'red'
+      },
+      {
         label: 'Vessels Hit',
-        value: '30',
+        value: '150',
         delta: 'Attacked/sunk',
         note: 'Cumulative',
         color: 'red'
@@ -4169,38 +4220,38 @@ const DASHBOARD_DATA = {
       steps: [
         {
           label: 'Oil Price Increase',
-          value: '+40.6%',
-          detail: '$102.92 vs $73.20 baseline',
+          value: '+44.8%',
+          detail: '$106.00 vs $73.20 baseline',
           color: '#f59e0b'
         },
         {
           label: 'Energy CPI Impact',
-          value: '+9.34%',
+          value: '+10.31%',
           detail: 'Fed passthrough coefficient: 0.23',
           color: '#f59e0b'
         },
         {
           label: 'Headline Direct',
-          value: '+0.65pp',
+          value: '+0.72pp',
           detail: 'BLS energy weight: 7%',
           color: '#f59e0b'
         },
         {
           label: 'With Second-Round',
-          value: '+0.98pp',
+          value: '+1.07pp',
           detail: '×1.27 multiplier + 0.15pp food',
           color: '#f59e0b'
         },
         {
           label: 'Estimated CPI',
-          value: '3.4%',
-          detail: '2.4% baseline + 0.98pp war premium',
+          value: '3.5%',
+          detail: '2.4% baseline + 1.07pp war premium',
           color: '#f59e0b'
         }
       ],
       result: {
-        headline: '~3.4%',
-        explanation: 'Brent at $102.92 (+40.6% vs pre-war baseline). Oil-to-CPI passthrough model estimates headline CPI at ~3.4% (war premium +0.98pp over 2.4% baseline).'
+        headline: '~3.5%',
+        explanation: 'Brent at $106 (+44.8% vs pre-war baseline). Oil-to-CPI passthrough model estimates headline CPI at ~3.5% (war premium +1.07pp over 2.4% baseline).'
       },
       methodology: 'Dallas Fed elasticity (10% oil → +0.23% energy CPI) × BLS energy weight (7%) × second-round multiplier (1.27) + food acceleration (0.15pp). Source: FEDS Notes 2024, Dallas Fed Working Paper 2023.'
     },
@@ -4333,12 +4384,12 @@ const DASHBOARD_DATA = {
       color: '#ef4444'
     },
     {
-      value: '200+',
+      value: '13,000+',
       label: 'Targets Struck (thru D40)',
       color: '#f59e0b'
     },
     {
-      value: '0+',
+      value: '13+',
       label: 'US KIA (confirmed + F-15E MIA)',
       color: '#ef4444'
     },
@@ -4364,12 +4415,12 @@ const DASHBOARD_DATA = {
 
   ceasefireAnalytics: {
     meta: {
-      badge: 'CEASEFIRE DAY 15',
+      badge: 'CEASEFIRE DAY 16',
       asOf: '2026-04-10T05:42:00+08:00',
-      day: 55,
-      tacoScore: 30,
+      day: 56,
+      tacoScore: 15,
       polyCeasefire: 100,
-      headline: 'US launched Operation Epic Fury on February 28, 2026, targeting Iran\'s ballistic missiles, navy, nuclear sites, and proxies'
+      headline: 'Ceasefire agreed after 38 days of major combat operations ending around April 7, 2026'
     },
     usDemands: [
       {
@@ -4377,7 +4428,7 @@ const DASHBOARD_DATA = {
         text: '30-day ceasefire',
         category: 'Military',
         status: 'PARTIAL',
-        statusLabel: 'Day 15 of ceasefire',
+        statusLabel: 'Day 16 of ceasefire',
         statusColor: '#f59e0b',
         probability30d: 72,
         probability60d: 55,
