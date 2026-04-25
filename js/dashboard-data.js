@@ -12,12 +12,12 @@ const DASHBOARD_DATA = {
   // ── META ────────────────────────────────────────────────────────────────────
   meta: {
     version: "4.0.0",
-    timestamp: "24 Apr 2026 19:07 HKT",
-    day: 56,
+    timestamp: "25 Apr 2026 18:45 HKT",
+    day: 57,
     dayDate: "13 APR 2026",
-    threatLevel: "HIGH",
+    threatLevel: "EXTREME",
     threatClass: "threat-red",
-    tacoScore: 15,
+    tacoScore: 26,
     tacoMax: 100,
     tacoPrev: 18,
     tacoPrevDay: 42,
@@ -950,19 +950,19 @@ const DASHBOARD_DATA = {
 
   // ── CHART DATA (consolidates data.js + charts.js hardcoded data) ───────────
   chartData: {
-    labels: ['Feb 28', 'Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14', 'Mar 15', 'Mar 16', 'Mar 17', 'Mar 18', 'Mar 19', 'Mar 20', 'Mar 21', 'Mar 23', 'Mar 24', 'Mar 25', 'Mar 26', 'Mar 27', 'Mar 30', 'Mar 31', 'Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9', 'Apr 10', 'Apr 11', 'Apr 12', 'Apr 13', 'Apr 14', 'Apr 15', 'Apr 16', 'Apr 17', 'Apr 18', 'Apr 19', 'Apr 20', 'Apr 21', 'Apr 22', 'Apr 23', 'Apr 24'],
+    labels: ['Feb 28', 'Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14', 'Mar 15', 'Mar 16', 'Mar 17', 'Mar 18', 'Mar 19', 'Mar 20', 'Mar 21', 'Mar 23', 'Mar 24', 'Mar 25', 'Mar 26', 'Mar 27', 'Mar 30', 'Mar 31', 'Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9', 'Apr 10', 'Apr 11', 'Apr 12', 'Apr 13', 'Apr 14', 'Apr 15', 'Apr 16', 'Apr 17', 'Apr 18', 'Apr 19', 'Apr 20', 'Apr 21', 'Apr 22', 'Apr 23', 'Apr 24', 'Apr 25'],
     brent: [73.2, 80.1, 86.4, 91.7, 94.3, 89.5, 88.0, 91.2, 94.0, 95.4, 90.3, 91.98, 95.8, 100.46, 103.14, 103.14, 106.11, 101.6, 108.52, 116.45, 106.93, 112.89, 101.34, 103.5, 100.59, 105.61, 109.97, 107.9, 107.6, 101.22, 109.37, 109.03, 109.03, 109.03, 108.28, 110.47, 102.5, 95.02, 96.06, 96.06, 96.06, 101.53, 95.87, 95.34, 97.41, 89.03, 90.38, 95.42, 95.12, 94.3, 99.1, 102.92, 106],
     vix: [22.1, 26.4, 28.9, 30.2, 31.8, 30.1, 29.4, 28.7, 27.6, 26.9, 25.8, 24.93, 25.72, 27.29, 27.19, 27.19, 26.13, 22.24, 23.23, 25.93, 24.82, 26.78, 24.48, 26.77, 25.25, 27.15, 28.63, 30.51, 28.62, 24.23, 27.72, 23.87, 23.87, 23.87, 23.88, 25.71, 21.5, 21.23, 19.31, 19.31, 19.31, 19.23, 18, 18.36, 18.94, 17.61, 17.48, 17.48, 19.53, 18.86, 19.12, 19.64, 19.16],
     hyg: [80.0, 79.1, 78.3, 77.8, 77.4, 77.8, 78.1, 78.5, 79.0, 79.3, 79.6, 80.1, 79.9, 79.36, 79.2, 79.2, 79.2, 79.75, 79.68, 79.4, 79.66, 78.92, 79.53, 79.19, 79.52, 79.42, 78.9, 78.72, 78.82, 79.56, 79.37, 79.56, 79.56, 79.56, 79.63, 79.55, 79.9, 80.14, 80.28, 80.28, 80.28, 79.96, 80.43, 80.5, 80.34, 80.65, 80.65, 80.65, 80.65, 80.58, 80.37, 80.5, 80.37],
     sp500: [6050, 5940, 5870, 5820, 5790, 5810, 5840, 5870, 5910, 6100, 6250, 6310, 6781, 6672, 6632, 6632, 6632, 6734.51, 6682.77, 6624.7, 6606.49, 6506.48, 6631.26, 6546.85, 6605.87, 6591.9, 6477.26, 6368.85, 6343.72, 6528.52, 6575.32, 6582.69, 6582.69, 6582.69, 6608.75, 6578.67, 6720.0, 6779.38, 6824.66, 6824.66, 6824.66, 6816.89, 6934.41, 6966.78, 7016.5, 7111.38, 7126.05, 7126.05, 7126.06, 7109.14, 7064.01, 7137.9, 7108.4],
-    taco: [45, 40, 35, 30, 26, 22, 18, 15, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 6, 7, 8, 7, 7, 7, 8, 12, 9, 10, 8, 7, 9, 6, 15, 18, 18, 15, 12, 12, 12, 14, 19, 21, 21, 15, 15, 13, 15, 30, 15],
-    strikeLabels: ['28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr', '24 Apr'],
+    taco: [45, 40, 35, 30, 26, 22, 18, 15, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 6, 7, 8, 7, 7, 7, 8, 12, 9, 10, 8, 7, 9, 6, 15, 18, 18, 15, 12, 12, 12, 14, 19, 21, 21, 15, 15, 13, 15, 30, 15, 26],
+    strikeLabels: ['28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr', '24 Apr', '25 Apr'],
     strikes: {
-      us: [500, 600, 550, 450, 400, 420, 380, 500, 480, 450, 430, 420, 490, 520, 600, 580, 620, 290, 480, 510, 500, 520, 530, 540, 550, 550, 580, 600, 580, 560, 500, 520, 480, 500, 510, 550, 600, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      us: [500, 600, 550, 450, 400, 420, 380, 500, 480, 450, 430, 420, 490, 520, 600, 580, 620, 290, 480, 510, 500, 520, 530, 540, 550, 550, 580, 600, 580, 560, 500, 520, 480, 500, 510, 550, 600, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       iran: [200, 150, 100, 60, 40, 30, 25, 35, 30, 25, 20, 18, 35, 40, 38, 42, 45, 30, 35, 40, 50, 55, 65, 60, 55, 70, 75, 70, 65, 60, 50, 55, 50, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     },
-    hormuzLabels: ['26 Feb', '27 Feb', '28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '26 Mar', '27 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr', '24 Apr'],
-    hormuzTransits: [24, 24, 37, 4, 6, 5, 3, 4, 5, 5, 5, 5, 5, 2, 0, 1, 1, 1, 0, 4, 5, 4, 3, 2, 2, 2, 0, 6, 6, 8, 3, 4, 4, 5, 6, 5, 1, 4, 4, 3, 2, 5, 8, 4, 5, 5, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+    hormuzLabels: ['26 Feb', '27 Feb', '28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '26 Mar', '27 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr', '24 Apr', '25 Apr'],
+    hormuzTransits: [24, 24, 37, 4, 6, 5, 3, 4, 5, 5, 5, 5, 5, 2, 0, 1, 1, 1, 0, 4, 5, 4, 3, 2, 2, 2, 0, 6, 6, 8, 3, 4, 4, 5, 6, 5, 1, 4, 4, 3, 2, 5, 8, 4, 5, 5, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
     etfs: {
       ITA: {
         prices: [215, 218, 222, 226, 229, 227, 230, 233, 235, 237, 234, 236, 239, 241, 243, 243, 243, 229, 231, 230, 227, 223, 226, 221, 226, 226, 228, 216, 211, 219, 224, 222, 222, 222, 223, 223, 235, 232, 232, 232, 230, 233]
@@ -1497,8 +1497,8 @@ const DASHBOARD_DATA = {
   // ── IRAN DAILY ATTACKS ON UAE ───────────────────────────────────────────────
   iranAttacksUAE: {
     cumulative: {
-      asOf: '2026-04-24',
-      day: 56,
+      asOf: '2026-04-25',
+      day: 57,
       ballisticMissiles: {
         detected: 524,
         intercepted: 501,
@@ -1519,7 +1519,7 @@ const DASHBOARD_DATA = {
         injured: 252
       },
       interceptRate: '93.4%',
-      note: 'All attack figures frozen since ceasefire. Day 56.'
+      note: 'All attack figures frozen since ceasefire. Day 57.'
     },
     daily: [
       {
@@ -1881,14 +1881,22 @@ const DASHBOARD_DATA = {
         cruise: 0,
         drones: 0,
         note: 'Ceasefire Day 16 — zero attacks.'
+      },
+      {
+        date: '2026-04-25',
+        day: 57,
+        ballistic: 0,
+        cruise: 0,
+        drones: 0,
+        note: 'Ceasefire Day 17 — zero attacks.'
       }
     ]
   },
 
   // ── IRAN DAILY ATTACKS ON ALL NEIGHBORS ─────────────────────────────────────
   iranAttacksNeighbors: {
-    asOf: '2026-04-24',
-    day: 56,
+    asOf: '2026-04-25',
+    day: 57,
     totalProjectiles: 4850,
     countriesHit: 6,
     countries: {
@@ -2106,23 +2114,23 @@ const DASHBOARD_DATA = {
   gistBanner: {
     bullets: [
       {
-        text: 'Ceasefire agreed after 38 days of major combat operations ending around April 7, 2026',
+        text: 'Iran\'s IRGC targeted multiple vessels in Strait of Hormuz despite Trump\'s ceasefire extension (Apr 23)',
         color: 'yellow'
       },
       {
-        text: 'US destroyed over 150 Iranian naval vessels, 13,000 targets including ballistic missile sites, defense industrial base, and air defenses',
+        text: 'US forces rescued F-15E crewmembers after shootdown on Apr 2, with operations completing Apr 4-5',
         color: 'yellow'
       },
       {
-        text: 'Iranian Air Force grounded (zero flights per day)',
+        text: 'US-Israeli strikes on IRGC targets including Ahvaz International Airport and Brigadier General Mostafa Azizi (Apr 5)',
+        color: 'red'
+      },
+      {
+        text: 'Ceasefire extended by Trump on April 22 amid claims of Iranian leadership fracture.',
         color: 'yellow'
       },
       {
-        text: 'US extended ceasefire at Pakistan’s request, awaiting unified proposal from Iran; next steps unclear as of April 22.',
-        color: 'yellow'
-      },
-      {
-        text: 'US naval blockade of Iranian ports announced April 13; teams returned to Islamabad for talks.',
+        text: 'US naval blockade of Strait of Hormuz continues, with seizures of ships carrying Iranian oil.',
         color: 'red'
       }
     ],
@@ -2162,38 +2170,38 @@ const DASHBOARD_DATA = {
   newsNow: [
     {
       label: 'CEASEFIRE',
-      title: 'Ceasefire agreed after 38 days of major combat operations ending around April 7, 2026',
-      body: 'Ceasefire agreed after 38 days of major combat operations ending around April 7, 2026',
+      title: 'Iran\'s IRGC targeted multiple vessels in Strait of Hormuz despite Trump\'s ceasefire extens',
+      body: 'Iran\'s IRGC targeted multiple vessels in Strait of Hormuz despite Trump\'s ceasefire extension (Apr 23)',
       color: 'yellow'
     },
     {
       label: 'CONFLICT',
-      title: 'US destroyed over 150 Iranian naval vessels, 13,000 targets including ballistic missile si',
-      body: 'US destroyed over 150 Iranian naval vessels, 13,000 targets including ballistic missile sites, defense industrial base, and air defenses',
-      color: 'yellow'
-    },
-    {
-      label: 'CONFLICT',
-      title: 'Iranian Air Force grounded (zero flights per day)',
-      body: 'Iranian Air Force grounded (zero flights per day)',
+      title: 'US forces rescued F-15E crewmembers after shootdown on Apr 2, with operations completing A',
+      body: 'US forces rescued F-15E crewmembers after shootdown on Apr 2, with operations completing Apr 4-5',
       color: 'yellow'
     },
     {
       label: 'MILITARY',
-      title: 'US intercepted over 1,000 attack drones and 700 ballistic missiles',
-      body: 'US intercepted over 1,000 attack drones and 700 ballistic missiles',
+      title: 'US-Israeli strikes on IRGC targets including Ahvaz International Airport and Brigadier Gen',
+      body: 'US-Israeli strikes on IRGC targets including Ahvaz International Airport and Brigadier General Mostafa Azizi (Apr 5)',
+      color: 'yellow'
+    },
+    {
+      label: 'HORMUZ',
+      title: 'Iran threatens continued attacks on shipping in Strait of Hormuz (Apr 5)',
+      body: 'Iran threatens continued attacks on shipping in Strait of Hormuz (Apr 5)',
       color: 'red'
     },
     {
       label: 'TALKS',
-      title: 'US extended ceasefire at Pakistan’s request, awaiting unified proposal from Iran; next ste',
-      body: 'US extended ceasefire at Pakistan’s request, awaiting unified proposal from Iran; next steps unclear as of April 22.',
+      title: 'Ceasefire extended by Trump on April 22 amid claims of Iranian leadership fracture',
+      body: 'Ceasefire extended by Trump on April 22 amid claims of Iranian leadership fracture.',
       color: 'yellow'
     },
     {
       label: 'TALKS',
-      title: 'US naval blockade of Iranian ports announced April 13; teams returned to Islamabad for tal',
-      body: 'US naval blockade of Iranian ports announced April 13; teams returned to Islamabad for talks.',
+      title: 'US naval blockade of Strait of Hormuz continues, with seizures of ships carrying Iranian o',
+      body: 'US naval blockade of Strait of Hormuz continues, with seizures of ships carrying Iranian oil.',
       color: 'yellow'
     }
   ],
@@ -2202,24 +2210,17 @@ const DASHBOARD_DATA = {
   analyticalSignals: [
     {
       label: 'Ceasefire Compliance',
-      value: 'DAY 16 ✓',
+      value: 'DAY 17 ✓',
       score: 8,
       scoreColor: '#f59e0b',
-      detail: 'Ceasefire in effect since approximately April 7, 2026; Iran agreed to two-week ceasefire and reopening of Strait of Hormuz; negotiations ongoing for broader peace agreement'
+      detail: 'Trump extended ceasefire but Iran continues attacking vessels in Strait of Hormuz'
     },
     {
       label: 'Diplomatic Engagement',
       value: 'ACTIVE',
       score: 6,
       scoreColor: '#f59e0b',
-      detail: 'US extended ceasefire at Pakistan’s request, awaiting unified proposal from Iran; next steps unclear as of April 22.'
-    },
-    {
-      label: 'Hormuz Passage',
-      value: 'OPEN',
-      score: 7,
-      scoreColor: '#22c55e',
-      detail: 'Strait status: open'
+      detail: 'Ceasefire extended by Trump on April 22 amid claims of Iranian leadership fracture.'
     },
     {
       label: 'Rhetoric Temperature',
@@ -2323,53 +2324,53 @@ const DASHBOARD_DATA = {
   // ── 6. KEY TRIGGERS ──────────────────────────────────────────────────────────
   keyTriggers: [
     {
-      title: 'Ceasefire agreed after 38 days of major combat operations ending around April 7,',
+      title: 'Iran\'s IRGC targeted multiple vessels in Strait of Hormuz despite Trump\'s ceasef',
       titleColor: '#f59e0b',
-      body: 'Ceasefire agreed after 38 days of major combat operations ending around April 7, 2026'
+      body: 'Iran\'s IRGC targeted multiple vessels in Strait of Hormuz despite Trump\'s ceasefire extension (Apr 23)'
     },
     {
-      title: 'US destroyed over 150 Iranian naval vessels, 13,000 targets including ballistic ',
+      title: 'US forces rescued F-15E crewmembers after shootdown on Apr 2, with operations co',
       titleColor: '#f59e0b',
-      body: 'US destroyed over 150 Iranian naval vessels, 13,000 targets including ballistic missile sites, defense industrial base, and air defenses'
+      body: 'US forces rescued F-15E crewmembers after shootdown on Apr 2, with operations completing Apr 4-5'
     },
     {
-      title: 'Iranian Air Force grounded (zero flights per day)',
+      title: 'US-Israeli strikes on IRGC targets including Ahvaz International Airport and Bri',
       titleColor: '#f59e0b',
-      body: 'Iranian Air Force grounded (zero flights per day)'
+      body: 'US-Israeli strikes on IRGC targets including Ahvaz International Airport and Brigadier General Mostafa Azizi (Apr 5)'
     },
     {
-      title: 'Ceasefire Status (Day 56)',
+      title: 'Ceasefire Status (Day 57)',
       titleColor: '#f59e0b',
-      body: 'Ceasefire in effect since approximately April 7, 2026; Iran agreed to two-week ceasefire and reopening of Strait of Hormuz; negotiations ongoing for broader peace agreement'
+      body: 'Trump extended ceasefire but Iran continues attacking vessels in Strait of Hormuz'
     },
     {
       title: 'Hormuz Passage',
       titleColor: '#22c55e',
-      body: 'Status: open. Daily transits: None.'
+      body: 'Status: contested. Daily transits: None.'
     }
   ],
 
   // ── 7. INTELLIGENCE TAB ──────────────────────────────────────────────────────
   intelligence: {
     diplomatic: {
-      badge: 'TALKS',
-      badgeColor: '#22c55e',
+      badge: 'CEASEFIRE',
+      badgeColor: '#f59e0b',
       sections: [
         {
-          title: 'Diplomatic Status — Day 56',
-          items: ['Ceasefire in effect since approximately April 7, 2026; Iran agreed to two-week ceasefire and reopening of Strait of Hormuz; negotiations ongoing for broader peace agreement']
+          title: 'Diplomatic Status — Day 57',
+          items: ['Trump extended ceasefire but Iran continues attacking vessels in Strait of Hormuz']
         },
         {
-          title: 'US extended ceasefire at Pakistan’s request, awaiting unified proposal from Iran',
-          items: ['US extended ceasefire at Pakistan’s request, awaiting unified proposal from Iran; next steps unclear as of April 22.']
+          title: 'Ceasefire extended by Trump on April 22 amid claims of Iranian leadership fractu',
+          items: ['Ceasefire extended by Trump on April 22 amid claims of Iranian leadership fracture.']
         },
         {
-          title: 'US naval blockade of Iranian ports announced April 13; teams returned to Islamab',
-          items: ['US naval blockade of Iranian ports announced April 13; teams returned to Islamabad for talks.']
+          title: 'US naval blockade of Strait of Hormuz continues, with seizures of ships carrying',
+          items: ['US naval blockade of Strait of Hormuz continues, with seizures of ships carrying Iranian oil.']
         },
         {
-          title: 'VP JD Vance likely to travel to Islamabad for second round of peace talks as cea',
-          items: ['VP JD Vance likely to travel to Islamabad for second round of peace talks as ceasefire set to expire.']
+          title: 'Talks in Islamabad on April 11-12 between Iranian officials (Araghchi, Ghalibaf)',
+          items: ['Talks in Islamabad on April 11-12 between Iranian officials (Araghchi, Ghalibaf) and US delegation led by VP Vance.']
         }
       ],
       sources: [
@@ -2392,8 +2393,8 @@ const DASHBOARD_DATA = {
       badgeColor: '#22c55e',
       sections: [
         {
-          title: 'Conflict Statistics — Day 56',
-          items: ['US strikes cumulative: 13,000', 'US KIA: 13', 'Troops deployed: 10,000+']
+          title: 'US forces rescued F-15E crewmembers after shootdown on Apr 2, with operations co',
+          items: ['US forces rescued F-15E crewmembers after shootdown on Apr 2, with operations completing Apr 4-5']
         }
       ],
       sources: [
@@ -2412,12 +2413,12 @@ const DASHBOARD_DATA = {
       ]
     },
     energy: {
-      badge: 'OPEN',
+      badge: 'CONTESTED',
       badgeColor: '#22c55e',
       sections: [
         {
-          title: 'Energy & Shipping — Day 56',
-          items: ['Hormuz status: OPEN', 'Daily transits: N/A']
+          title: 'Energy & Shipping — Day 57',
+          items: ['Hormuz status: CONTESTED', 'Daily transits: N/A']
         }
       ],
       sources: [
@@ -2439,41 +2440,41 @@ const DASHBOARD_DATA = {
 
   // ── 8. NEXT 48H CATALYSTS ────────────────────────────────────────────────────
   next48h: {
-    badge: 'NEGOTIATIONS — OUTCOME PENDING',
+    badge: 'CEASEFIRE DAY 17',
     catalysts: [
       {
         rank: '1',
-        title: 'Ceasefire agreed after 38 days of major combat operations ending around April 7,',
+        title: 'Iran\'s IRGC targeted multiple vessels in Strait of Hormuz despite Trump\'s ceasef',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: 'Ceasefire agreed after 38 days of major combat operations ending around April 7, 2026',
+        body: 'Iran\'s IRGC targeted multiple vessels in Strait of Hormuz despite Trump\'s ceasefire extension (Apr 23)',
         color: 'yellow'
       },
       {
         rank: '2',
-        title: 'US destroyed over 150 Iranian naval vessels, 13,000 targets including ballistic ',
+        title: 'US forces rescued F-15E crewmembers after shootdown on Apr 2, with operations co',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: 'US destroyed over 150 Iranian naval vessels, 13,000 targets including ballistic missile sites, defense industrial base, and air defenses',
+        body: 'US forces rescued F-15E crewmembers after shootdown on Apr 2, with operations completing Apr 4-5',
         color: 'yellow'
       },
       {
         rank: '3',
         title: 'Ceasefire Compliance',
         outcomeLabel: 'HOLD vs COLLAPSE',
-        body: 'Ceasefire in effect since approximately April 7, 2026; Iran agreed to two-week ceasefire and reopening of Strait of Hormuz; negotiations ongoing for broader peace agreement',
+        body: 'Trump extended ceasefire but Iran continues attacking vessels in Strait of Hormuz',
         color: 'yellow'
       },
       {
         rank: '4',
         title: 'Hormuz Passage',
         outcomeLabel: 'OPEN vs BLOCKADE',
-        body: 'Current status: OPEN. Transits: None/day.',
+        body: 'Current status: CONTESTED. Transits: None/day.',
         color: 'green'
       },
       {
         rank: '5',
         title: 'Diplomatic Track',
         outcomeLabel: 'RESUME vs STALL',
-        body: 'US extended ceasefire at Pakistan’s request, awaiting unified proposal from Iran; next steps unclear as of April 22.. US naval blockade of Iranian ports announced April 13; teams returned to Islamabad for talks.',
+        body: 'Ceasefire extended by Trump on April 22 amid claims of Iranian leadership fracture.. US naval blockade of Strait of Hormuz continues, with seizures of ships carrying Iranian oil.',
         color: 'yellow'
       }
     ]
@@ -3371,6 +3372,41 @@ const DASHBOARD_DATA = {
         text: 'Trump renewed threat to obliterate Iran\'s civilian infrastructure, announced US Navy seized Iranian flagged cargo ship, stated Iran military is \'totally defeated\' and leaders are \'fighting like cats\', said \'don\'t rush me\', and extended ceasefire whil',
         tag: 'US',
         escalation: 8
+      },
+      {
+        date: 'April 23, 2026',
+        speaker: 'Trump',
+        text: 'They don\'t even know who\'s leading the country. They\'re in turmoil... we thought we\'d give them a little chance to get some of their turmoil resolved. Ordered continuation of naval blockade on Strait of Hormuz and vowed to shoot and kill any vessels ',
+        tag: 'US',
+        escalation: 8
+      },
+      {
+        date: 'Recent (circa April 23-24, 2026)',
+        speaker: 'Trump',
+        text: 'Iran military is totally defeated and leaders are fighting like cats. Don\'t rush me.',
+        tag: 'US',
+        escalation: 5
+      },
+      {
+        date: 'April 24, 2026',
+        speaker: 'Mojtaba Khamenei',
+        text: 'Due to the remarkable unity created among compatriots, a fracture has occurred in the enemy. Warned citizens about enemy\'s psychological warfare.',
+        tag: 'IR',
+        escalation: 5
+      },
+      {
+        date: 'Circa April 20, 2026',
+        speaker: 'Abbas Araghchi',
+        text: 'Officials are taking all aspects into consideration... provocative actions and continued ceasefire violations by the US were a major obstacle... threats and aggression against Iranian commercial ships.',
+        tag: 'IR',
+        escalation: 5
+      },
+      {
+        date: 'March 8, 2026',
+        speaker: 'Masoud Pezeshkian',
+        text: 'Retracted apology to Gulf neighbours for missile and drone attacks, saying remarks were misinterpreted by the enemy that seeks to sow division.',
+        tag: 'IR',
+        escalation: 5
       }
     ],
     patterns: [
@@ -3517,7 +3553,7 @@ const DASHBOARD_DATA = {
 
   // ── 11. OPERATIONS ───────────────────────────────────────────────────────────
   operations: {
-    badge: 'CEASEFIRE · DAY 16 — NEGOTIATIONS',
+    badge: 'CEASEFIRE · DAY 17',
     kpis: [
       {
         label: 'US Strikes D56',
@@ -4415,12 +4451,12 @@ const DASHBOARD_DATA = {
 
   ceasefireAnalytics: {
     meta: {
-      badge: 'CEASEFIRE DAY 16',
+      badge: 'CEASEFIRE DAY 17',
       asOf: '2026-04-10T05:42:00+08:00',
-      day: 56,
-      tacoScore: 15,
+      day: 57,
+      tacoScore: 26,
       polyCeasefire: 100,
-      headline: 'Ceasefire agreed after 38 days of major combat operations ending around April 7, 2026'
+      headline: 'Iran\'s IRGC targeted multiple vessels in Strait of Hormuz despite Trump\'s ceasefire extension (Apr 23)'
     },
     usDemands: [
       {
@@ -4428,7 +4464,7 @@ const DASHBOARD_DATA = {
         text: '30-day ceasefire',
         category: 'Military',
         status: 'PARTIAL',
-        statusLabel: 'Day 16 of ceasefire',
+        statusLabel: 'Day 17 of ceasefire',
         statusColor: '#f59e0b',
         probability30d: 72,
         probability60d: 55,
