@@ -794,6 +794,14 @@ Return JSON matching exactly this schema:
     "diplomatic": {{"score": <0-100>, "rationale": "<2 sentences on diplomatic activity / talks state>"}},
     "marketImplied": {{"score": <0-100>, "rationale": "<2 sentences on market-implied de-escalation odds>"}},
     "domesticPolitical": {{"score": <0-100>, "rationale": "<2 sentences on US/Iran domestic political pressure on continuation vs settlement>"}}
+  }},
+  "predictionAnalytics": {{
+    "fourLenses": {{
+      "statistical": {{"signals": [{{"text": "<1 sentence pattern-recognition / base-rate signal>", "color": "<#22c55e (green=de-escal) | #f59e0b (amber=watch) | #ef4444 (red=escal)>"}}]}},
+      "interactive": {{"signals": [{{"text": "<1 sentence game-theory / feedback-loop signal>", "color": "<hex>"}}]}},
+      "chaotic": {{"signals": [{{"text": "<1 sentence non-linear / black-swan / regime-shift signal>", "color": "<hex>"}}]}},
+      "complex": {{"signals": [{{"text": "<1 sentence emergent / institutional / systems signal>", "color": "<hex>"}}]}}
+    }}
   }}
 }}
 

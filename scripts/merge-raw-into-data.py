@@ -1620,6 +1620,85 @@ def update_taco_inputs(data: dict, raw_analytical: dict) -> list[str]:
     return [f"tacoInputs: {updated_count}/{len(rows)} card(s) refreshed"] if updated_count else []
 
 
+def update_market_signals_from_kpis(data: dict) -> list[str]:
+    """Refresh marketSignals.brentWtiSpread block from live KPIs (no Sonar)."""
+    if "marketSignals" not in data:
+        return []
+    ms = data["marketSignals"]
+    bws = ms.get("brentWtiSpread")
+    if not isinstance(bws, dict):
+        return []
+    kpis = data.get("kpis") or {}
+    bws_kpi = kpis.get("brentWtiSpread") or {}
+    brent = (kpis.get("brent") or {}).get("price")
+    wti = (kpis.get("wti") or {}).get("price")
+    spread = bws_kpi.get("price")
+    if spread is None or brent is None or wti is None:
+        return []
+    try:
+        spread_f = float(spread)
+        sign = "+" if spread_f >= 0 else "-"
+        bws["current"] = f"{sign}${abs(spread_f):.2f}"
+        bws["brentPrice"] = f"${brent:.2f}" if isinstance(brent, (int, float)) else f"${brent}"
+        bws["wtiPrice"] = f"${wti:.2f}" if isinstance(wti, (int, float)) else f"${wti}"
+        # Pre-war stays static (~+$3.50). widening = current - preWar
+        try:
+            preWar_str = bws.get("preWar", "+$3.50").replace("$", "").replace("+", "").strip()
+            preWar = float(preWar_str)
+            widening = spread_f - preWar
+            wsign = "+" if widening >= 0 else "-"
+            bws["widening"] = f"{wsign}${abs(widening):.2f} {'widening' if abs(widening) > 0.5 else 'in line'}"
+        except (ValueError, TypeError):
+            pass
+        return [f"marketSignals.brentWtiSpread: current={bws['current']}, brent={bws['brentPrice']}, wti={bws['wtiPrice']}"]
+    except (ValueError, TypeError):
+        return []
+
+
+def update_prediction_analytics(data: dict, raw_analytical: dict) -> list[str]:
+    """Refresh predictionAnalytics.fourLenses signals from analytical Sonar bundle."""
+    if "predictionAnalytics" not in data:
+        return []
+    bundle = raw_analytical or {}
+    pa = bundle.get("predictionAnalytics") if isinstance(bundle, dict) else None
+    if not isinstance(pa, dict):
+        return []
+    fl_in = pa.get("fourLenses")
+    if not isinstance(fl_in, dict):
+        return []
+    target = data["predictionAnalytics"].get("fourLenses") or {}
+    if not isinstance(target, dict):
+        return []
+    updated = []
+    for lens_key in ("statistical", "interactive", "chaotic", "complex"):
+        sonar_lens = fl_in.get(lens_key)
+        if not isinstance(sonar_lens, dict):
+            continue
+        sigs = sonar_lens.get("signals")
+        if not isinstance(sigs, list) or not sigs:
+            continue
+        target_lens = target.get(lens_key)
+        if not isinstance(target_lens, dict):
+            continue
+        new_sigs = []
+        for s in sigs[:5]:
+            if isinstance(s, dict) and s.get("text"):
+                new_sigs.append({
+                    "text": _coerce_str(s.get("text")),
+                    "color": _coerce_str(s.get("color", "#f59e0b")) or "#f59e0b",
+                })
+            elif isinstance(s, str):
+                new_sigs.append({"text": _coerce_str(s), "color": "#f59e0b"})
+        if new_sigs:
+            target_lens["signals"] = new_sigs
+            target[lens_key] = target_lens
+            updated.append(f"{lens_key}({len(new_sigs)})")
+    if updated:
+        data["predictionAnalytics"]["fourLenses"] = target
+        return [f"predictionAnalytics.fourLenses: {', '.join(updated)}"]
+    return []
+
+
 def update_market_signals(data: dict, raw_analytical: dict) -> list[str]:
     if "marketSignals" not in data:
         return []
@@ -2091,11 +2170,17 @@ def main():
             update_arsenal_badge,
             update_market_signals,
             update_taco_inputs,
+            update_prediction_analytics,
         ):
             updates = fn(data, raw_analytical)
             all_updates.extend(updates)
             for u in updates:
                 print(f"  [OK] {u}")
+        # Live-KPI-driven (no Sonar dependency)
+        kpi_updates = update_market_signals_from_kpis(data)
+        all_updates.extend(kpi_updates)
+        for u in kpi_updates:
+            print(f"  [OK] {u}")
     else:
         if isinstance(raw_analytical, dict) and raw_analytical.get("_error"):
             print(f"  [SKIP] analytical bundle — {raw_analytical.get('_error')}")
