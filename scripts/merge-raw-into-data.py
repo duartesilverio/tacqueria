@@ -39,6 +39,62 @@ def clean_sonar_strings(obj):
     return obj
 
 
+# Hard-reject patterns: any Sonar-returned string containing one of these is
+# considered stale filler and gets dropped (returned as None) so the merge
+# step preserves the previous day's value instead of overwriting with junk.
+SONAR_STALE_PATTERNS = (
+    "operation epic fury",
+    "commenced february 28",
+    "commenced feb 28",
+    "started february 28",
+    "started feb 28",
+    " day 42",
+    "(day 42)",
+    "d42 ",
+    "13,000+ targets struck",
+    "10,200 total air sorties",
+    "85% of defense industrial base",
+)
+
+
+def is_sonar_stale(s) -> bool:
+    """Return True if a string contains a known stale-filler pattern."""
+    if not isinstance(s, str):
+        return False
+    low = s.lower()
+    return any(p in low for p in SONAR_STALE_PATTERNS)
+
+
+def reject_stale_strings(obj, path="", warnings=None):
+    """Recursively walk a Sonar response and replace stale strings with None.
+
+    Returns (cleaned_obj, list_of_warning_paths).
+    """
+    if warnings is None:
+        warnings = []
+    if isinstance(obj, str):
+        if is_sonar_stale(obj):
+            warnings.append(path or "<root>")
+            return None, warnings
+        return obj, warnings
+    if isinstance(obj, list):
+        out = []
+        for i, v in enumerate(obj):
+            cleaned, _ = reject_stale_strings(v, f"{path}[{i}]", warnings)
+            out.append(cleaned)
+        # Drop None list items (caller sees a shorter list rather than nulls)
+        out = [x for x in out if x is not None]
+        return out, warnings
+    if isinstance(obj, dict):
+        out = {}
+        for k, v in obj.items():
+            cleaned, _ = reject_stale_strings(v, f"{path}.{k}" if path else k, warnings)
+            if cleaned is not None:
+                out[k] = cleaned
+        return out, warnings
+    return obj, warnings
+
+
 def extract_json_from_dashboard_js(js_path: Path) -> dict:
     """Extract DASHBOARD_DATA object from dashboard-data.js as a Python dict.
     Uses node to eval the JS file and serialize DASHBOARD_DATA to JSON."""
@@ -380,6 +436,83 @@ def update_troop_counter(troop_list: list, raw_intel: dict) -> list[str]:
 # Inflation derivation update
 # ---------------------------------------------------------------------------
 
+def update_inflation_fed_rate(inflation_section: dict, raw_fed: dict) -> list[str]:
+    """Refresh inflation.fedRate.kpis (3 cards) and inflation.badge from _raw_fed."""
+    if not isinstance(raw_fed, dict) or not inflation_section:
+        return []
+    cpi = raw_fed.get("latest_cpi_headline_pct")
+    fed_rate = raw_fed.get("fed_funds_rate_current")
+    next_fomc = raw_fed.get("next_fomc_date")
+    last_dec = raw_fed.get("last_fomc_decision")
+    notes = raw_fed.get("key_notes")
+    fw = raw_fed.get("cme_fedwatch") or {}
+    updates = []
+
+    fr = inflation_section.get("fedRate") or {}
+    kpis = fr.get("kpis") or []
+    if not kpis:
+        return []
+
+    # KPI 0: Fed Funds Rate
+    if fed_rate and len(kpis) >= 1:
+        det = last_dec if last_dec else "Held since last FOMC."
+        kpis[0]["value"] = str(fed_rate)
+        kpis[0]["detail"] = str(det)
+        updates.append("fedRate.kpis[Fed Funds Rate]")
+
+    # KPI 1: Next FOMC
+    if next_fomc and len(kpis) >= 2:
+        kpis[1]["value"] = str(next_fomc)
+        if notes:
+            kpis[1]["detail"] = str(notes)[:200]
+        updates.append("fedRate.kpis[Next FOMC]")
+
+    # KPI 2: Market Pricing — from cme_fedwatch
+    if fw and len(kpis) >= 3:
+        no_change = fw.get("no_change_pct")
+        one_cut = fw.get("one_cut_pct")
+        two_cuts = fw.get("two_cuts_pct")
+        hike = fw.get("hike_pct")
+        parts = []
+        if no_change is not None:
+            parts.append(f"Hold {no_change:.0f}%")
+        if one_cut is not None:
+            parts.append(f"-25bp {one_cut:.0f}%")
+        if two_cuts is not None:
+            parts.append(f"-50bp {two_cuts:.0f}%")
+        if hike is not None and hike > 1:
+            parts.append(f"Hike {hike:.0f}%")
+        if parts:
+            kpis[2]["value"] = " · ".join(parts)
+            kpis[2]["detail"] = "CME FedWatch implied probabilities."
+            updates.append("fedRate.kpis[Market Pricing]")
+
+    fr["kpis"] = kpis
+    inflation_section["fedRate"] = fr
+
+    # Badge: drive from CPI level
+    if cpi is not None:
+        try:
+            cv = float(cpi)
+            if cv >= 4:
+                inflation_section["badge"] = f"CPI {cv:.1f}% — ELEVATED"
+            elif cv >= 3:
+                inflation_section["badge"] = f"CPI {cv:.1f}% — STICKY ABOVE TARGET"
+            else:
+                inflation_section["badge"] = f"CPI {cv:.1f}% — APPROACHING TARGET"
+            updates.append("inflation.badge")
+        except (ValueError, TypeError):
+            pass
+
+    # Sources: pull from any "sources" or citation field if Sonar provided one
+    raw_sources = raw_fed.get("sources")
+    if isinstance(raw_sources, list) and raw_sources:
+        inflation_section["sources"] = [str(s) for s in raw_sources[:8]]
+        updates.append(f"sources({len(raw_sources)})")
+
+    return [f"inflation: {', '.join(updates)}"] if updates else []
+
+
 def update_inflation_derivation(inflation_section: dict, raw_derivation: dict) -> list[str]:
     """Store the mechanical derivation from raw.json into inflation.derivation."""
     updates = []
@@ -689,10 +822,104 @@ def update_gist_banner(data: dict, raw_intel: dict, raw_rhetoric: dict,
     elif brent:
         bullets.append({"text": f"Brent ${brent}.", "color": "yellow"})
 
+    # Pills: derived from live KPIs + intel state, NOT from Sonar prose
+    pills = []
+    brent_q = (kpis or {}).get("brent") or {}
+    if brent_q.get("price"):
+        bp = brent_q["price"]
+        chg = brent_q.get("changePct") or 0
+        if chg >= 2:
+            color = "red"
+        elif chg >= 0:
+            color = "amber"
+        else:
+            color = "amber"  # falling brent on a wartime dashboard is also notable
+        pills.append({"label": f"Brent ${bp:.2f}" if isinstance(bp, (int, float)) else f"Brent {bp}", "color": color})
+
+    # TACO from chart taco array (last entry) or from data root
+    taco_val = None
+    chart_taco = safe_get(data, "chartData", "taco", default=None)
+    if isinstance(chart_taco, list) and chart_taco:
+        taco_val = chart_taco[-1]
+    elif data.get("meta", {}).get("taco") is not None:
+        taco_val = data["meta"]["taco"]
+    if taco_val is not None:
+        try:
+            tv = int(taco_val)
+            if tv < 10:
+                tcolor = "red"
+            elif tv < 20:
+                tcolor = "amber"
+            else:
+                tcolor = "green"
+            pills.append({"label": f"TACO {tv}", "color": tcolor})
+        except (ValueError, TypeError):
+            pass
+
+    vix_q = (kpis or {}).get("vix") or {}
+    if vix_q.get("price") is not None:
+        vv = vix_q["price"]
+        try:
+            vf = float(vv)
+            if vf >= 25:
+                vcolor = "red"
+            elif vf >= 18:
+                vcolor = "amber"
+            else:
+                vcolor = "green"
+            pills.append({"label": f"VIX {vf:.2f}", "color": vcolor})
+        except (ValueError, TypeError):
+            pass
+
+    cf = (intel.get("ceasefire_status") or "").lower()
+    if cf:
+        if any(w in cf for w in ("collapse", "fail", "broken")):
+            pills.append({"label": "Talks COLLAPSED", "color": "red"})
+        elif any(w in cf for w in ("agreed", "holding", "in effect")):
+            pills.append({"label": "Ceasefire HOLDING", "color": "green"})
+        elif any(w in cf for w in ("negot", "talks", "underway", "deadlock")):
+            pills.append({"label": "Talks ACTIVE", "color": "amber"})
+
+    hz = (intel.get("hormuz_status") or "").upper()
+    if hz:
+        if "CLOSED" in hz or "BLOCKADE" in hz:
+            pills.append({"label": "Hormuz CLOSED", "color": "red"})
+        elif "PARTIAL" in hz or "CONTESTED" in hz:
+            pills.append({"label": "Hormuz CONTESTED", "color": "amber"})
+        elif "OPEN" in hz:
+            pills.append({"label": "Hormuz OPEN", "color": "green"})
+
+    cpi_v = (fed or {}).get("latest_cpi_headline_pct")
+    if cpi_v is None:
+        # Fall back to inflation.derivation.result if Fed payload missing
+        deriv = safe_get(data, "inflation", "derivation", "result")
+        if isinstance(deriv, str):
+            m = _re.search(r"(\d+(?:\.\d+)?)\s*%", deriv)
+            if m:
+                cpi_v = float(m.group(1))
+    if cpi_v is not None:
+        try:
+            cv = float(cpi_v)
+            ccolor = "red" if cv >= 4 else ("amber" if cv >= 3 else "green")
+            pills.append({"label": f"CPI {cv:.1f}%", "color": ccolor})
+        except (ValueError, TypeError):
+            pass
+
+    # Sentiment flag — escalation-of-the-day from key_developments
+    all_devs_text = " ".join(str(x) for x in (intel.get("key_developments") or []))
+    if "lebanon" in all_devs_text.lower():
+        pills.append({"label": "Lebanon ⚠", "color": "red"})
+
     if bullets:
         data["gistBanner"]["bullets"] = bullets[:5]
-        return [f"gistBanner: {len(bullets[:5])} bullets"]
-    return []
+    if pills:
+        data["gistBanner"]["pills"] = pills[:7]
+    notes = []
+    if bullets:
+        notes.append(f"gistBanner: {len(bullets[:5])} bullets")
+    if pills:
+        notes.append(f"gistBanner.pills: {len(pills[:7])} pills (live data, not Sonar)")
+    return notes
 
 
 def update_news_now(data: dict, raw_intel: dict, raw_rhetoric: dict) -> list[str]:
@@ -786,6 +1013,85 @@ def update_operations(data: dict, raw_intel: dict, day: int) -> list[str]:
     if kpis:
         data["operations"]["kpis"] = kpis
         updates.append(f"operations.kpis: {len(kpis)} items")
+
+    # uaeAttackSummary — mirror raw intel iran_attacks_on_uae
+    uae_intel = intel.get("iran_attacks_on_uae")
+    if isinstance(uae_intel, dict):
+        out = {}
+        m = uae_intel.get("ballistic_missiles_cumulative")
+        if m is not None:
+            out["ballisticMissiles"] = f"{m:,}"
+        m = uae_intel.get("cruise_missiles_cumulative")
+        if m is not None:
+            out["cruiseMissiles"] = f"{m:,}"
+        m = uae_intel.get("drones_cumulative")
+        if m is not None:
+            out["drones"] = f"{m:,}"
+        m = uae_intel.get("total_cumulative")
+        if m is not None:
+            out["totalProjectiles"] = f"{m:,}"
+        k = uae_intel.get("killed")
+        i_inj = uae_intel.get("injured")
+        if k is not None or i_inj is not None:
+            out["casualties"] = f"{k or 0} killed / {i_inj or 0} injured"
+        rate = uae_intel.get("intercept_rate_pct")
+        if rate is not None:
+            out["interceptRate"] = f"{rate:.0f}%"
+        if out:
+            existing = data["operations"].get("uaeAttackSummary") or {}
+            existing.update(out)
+            data["operations"]["uaeAttackSummary"] = existing
+            updates.append(f"operations.uaeAttackSummary: {len(out)} field(s)")
+
+    # iranNeighbors — convert intel.iran_attacks_on_neighbors into row list
+    nb_intel = intel.get("iran_attacks_on_neighbors")
+    if isinstance(nb_intel, dict):
+        countries = nb_intel.get("countries_hit") or []
+        total = nb_intel.get("total_projectiles") or 0
+        if countries and isinstance(countries, list):
+            existing_rows = data["operations"].get("iranNeighbors") or []
+            # Build a name→row index from existing for note preservation
+            existing_by_country = {}
+            if isinstance(existing_rows, list):
+                for r in existing_rows:
+                    if isinstance(r, dict) and r.get("country"):
+                        existing_by_country[str(r["country"]).lower()] = r
+            new_rows = []
+            for c in countries[:6]:
+                cn = str(c)
+                prev = existing_by_country.get(cn.lower(), {})
+                new_rows.append({
+                    "country": cn,
+                    "missiles": prev.get("missiles", "—"),
+                    "drones": prev.get("drones", "—"),
+                    "total": prev.get("total", "—"),
+                    "notes": prev.get("notes", f"Hit during conflict (cumulative: {total:,} projectiles across all neighbors)"),
+                })
+            data["operations"]["iranNeighbors"] = new_rows
+            updates.append(f"operations.iranNeighbors: {len(new_rows)} country rows")
+
+    # indicators — derive from intel + KPIs (a few mechanical signals)
+    inds = []
+    cf_l = cf.lower()
+    if "ceasefire" in cf_l:
+        inds.append({"indicator": "Ceasefire status", "value": "HOLDING" if cf_day > 0 else "NEGOTIATING",
+                     "dir": "↑" if cf_day > 0 else "→", "dirClass": "ind-up" if cf_day > 0 else "ind-flat",
+                     "notes": str(intel.get("ceasefire_status", ""))[:140]})
+    if hz:
+        hz_u = hz.upper()
+        is_open = "OPEN" in hz_u
+        inds.append({"indicator": "Hormuz transit", "value": "OPEN" if is_open else hz_u,
+                     "dir": "↑" if is_open else "↓", "dirClass": "ind-up" if is_open else "ind-down",
+                     "notes": f"Daily transits: {intel.get('hormuz_daily_vessel_transits', 'N/A')}"})
+    houthi = intel.get("houthi_attacks_last_24h")
+    if houthi is not None:
+        inds.append({"indicator": "Houthi attacks (24h)", "value": str(houthi),
+                     "dir": "↑" if int(houthi or 0) > 0 else "→",
+                     "dirClass": "ind-down" if int(houthi or 0) > 0 else "ind-flat",
+                     "notes": "Bab el Mandeb / Red Sea threat indicator"})
+    if inds:
+        data["operations"]["indicators"] = inds
+        updates.append(f"operations.indicators: {len(inds)} signals")
 
     return updates
 
@@ -884,6 +1190,44 @@ def update_ceasefire_analytics(data: dict, raw_intel: dict, raw_rhetoric: dict,
                     demand["statusLabel"] = "Strait open, transit normalized"
                     demand["statusColor"] = "#22c55e"
         updates.append("ceasefireAnalytics.demands updated")
+
+    # ── ceasefire sub-block (currentDay etc.) ─────────────────────────────
+    cf_day = max(day - 40, 0)
+    cf_block = ca.get("ceasefire") or {}
+    if cf_day > 0:
+        cf_block["currentDay"] = f"DAY {cf_day}"
+    cf_status = (intel.get("ceasefire_status") or "")
+    if cf_status:
+        cf_block["status"] = str(cf_status)[:200]
+    if cf_block:
+        ca["ceasefire"] = cf_block
+        updates.append("ceasefireAnalytics.ceasefire (currentDay/status)")
+
+    # ── summaryKpis: 4 derived KPIs ───────────────────────────────────────
+    skp = []
+    brent_p = safe_get(raw_intel, "_raw_fmp", "brent", "price")  # may not exist
+    if not brent_p:
+        # Fall back to KPIs in data
+        brent_p = safe_get(data, "kpis", "brent", "price")
+    if brent_p:
+        skp.append({"label": "Brent", "value": f"${brent_p}",
+                    "detail": "Live KPI", "color": "#22c55e"})
+    if intel.get("hormuz_status"):
+        skp.append({"label": "Hormuz", "value": str(intel["hormuz_status"]).upper()[:14],
+                    "detail": f"Daily transits: {intel.get('hormuz_daily_vessel_transits', 'N/A')}",
+                    "color": "#22c55e" if "OPEN" in str(intel["hormuz_status"]).upper() else "#ef4444"})
+    if intel.get("us_strikes_total_cumulative") is not None:
+        skp.append({"label": "US Strikes", "value": f"{intel['us_strikes_total_cumulative']:,}",
+                    "detail": "Cumulative", "color": "#94a3b8"})
+    if intel.get("us_military_kia") is not None:
+        skp.append({"label": "US KIA", "value": str(intel["us_military_kia"]),
+                    "detail": f"Through D{day}", "color": "#ef4444"})
+    if skp:
+        ca["summaryKpis"] = skp
+        updates.append(f"ceasefireAnalytics.summaryKpis: {len(skp)} KPIs")
+
+    # NOTE: compromiseZone, chinaFactor, violationImpact still preserve prior
+    # values (need analytical Sonar prompt extension to refresh dynamically).
 
     return updates
 
@@ -1204,6 +1548,76 @@ def update_arsenal_badge(data: dict, raw_analytical: dict) -> list[str]:
         return []
     data["arsenal"]["badge"] = _coerce_str(badge)
     return [f"arsenal.badge -> {data['arsenal']['badge'][:40]}"]
+
+
+def update_taco_inputs(data: dict, raw_analytical: dict) -> list[str]:
+    """Refresh tacoInputs (5 cards) from analytical Sonar bundle.
+
+    Schema preserves: name, subDesc, weight, maxScore, hasRhetoricLink (static).
+    Sonar provides: per-card score (0-100) and rationale text.
+    Computed locally: weighted, scoreClass.
+    """
+    if "tacoInputs" not in data:
+        return []
+    bundle = raw_analytical or {}
+    ti = bundle.get("tacoInputs") if isinstance(bundle, dict) else None
+    if not isinstance(ti, dict):
+        return []
+    # Map Sonar key -> tacoInputs row name (lowercase compare)
+    sonar_key_map = {
+        "reversibility": "reversibility",
+        "rhetoric": "rhetoric",
+        "diplomatic": "diplomatic",
+        "marketimplied": "marketImplied",
+        "domesticpolitical": "domesticPolitical",
+    }
+    rows = data["tacoInputs"]
+    if not isinstance(rows, list):
+        return []
+    updated_count = 0
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        name = str(row.get("name", "")).lower().replace(" ", "").replace("intensity", "")
+        # Match approx: e.g. "Rhetoric Intensity" -> "rhetoric", "Domestic Political" -> "domesticpolitical"
+        sonar_key = None
+        for k, v in sonar_key_map.items():
+            if name.startswith(k[:6]):
+                sonar_key = k
+                break
+        if sonar_key is None:
+            continue
+        sonar_row = ti.get(sonar_key) or ti.get(sonar_key_map[sonar_key])
+        if not isinstance(sonar_row, dict):
+            continue
+        sc = sonar_row.get("score")
+        rat = sonar_row.get("rationale")
+        if sc is None and not rat:
+            continue
+        if sc is not None:
+            try:
+                score = max(0, min(100, int(sc)))
+                row["score"] = score
+                # Compute weighted: weight is e.g. "30%" -> 0.30
+                w = row.get("weight", "0%")
+                try:
+                    w_pct = float(str(w).rstrip("%")) / 100.0
+                    row["weighted"] = f"{score * w_pct:.1f}"
+                except (ValueError, TypeError):
+                    pass
+                # scoreClass
+                if score < 33:
+                    row["scoreClass"] = "taco-score-red"
+                elif score < 66:
+                    row["scoreClass"] = "taco-score-amber"
+                else:
+                    row["scoreClass"] = "taco-score-green"
+                updated_count += 1
+            except (ValueError, TypeError):
+                pass
+        if rat and str(rat).strip():
+            row["rationale"] = _coerce_str(rat)[:300]
+    return [f"tacoInputs: {updated_count}/{len(rows)} card(s) refreshed"] if updated_count else []
 
 
 def update_market_signals(data: dict, raw_analytical: dict) -> list[str]:
@@ -1579,6 +1993,17 @@ def main():
     raw = load_json(RAW_FILE)
     data = load_json(DATA_FILE)
 
+    # Hard-reject stale Sonar filler — preserves prior day's value via skip-on-null
+    for sonar_key in ("_raw_intelligence", "_raw_rhetoric", "_raw_bca",
+                      "_raw_dubai", "_raw_fed", "_raw_analytical"):
+        if sonar_key not in raw or raw.get(sonar_key) is None:
+            continue
+        cleaned, warnings = reject_stale_strings(raw[sonar_key])
+        if warnings:
+            print(f"  [STALE-FILTER] {sonar_key}: dropped {len(warnings)} field(s) "
+                  f"matching stale-pattern blocklist: {warnings[:5]}{'...' if len(warnings) > 5 else ''}")
+        raw[sonar_key] = cleaned
+
     all_updates = []
 
     # ------------------------------------------------------------------
@@ -1649,6 +2074,7 @@ def main():
             update_pipeline_bypass,
             update_arsenal_badge,
             update_market_signals,
+            update_taco_inputs,
         ):
             updates = fn(data, raw_analytical)
             all_updates.extend(updates)
@@ -1692,6 +2118,9 @@ def main():
     raw_deriv = raw.get("inflation_derivation")
     if raw_deriv and "inflation" in data:
         infl_updates = update_inflation_derivation(data["inflation"], raw_deriv)
+        # Also refresh fedRate KPIs and badge from _raw_fed (cleaned earlier)
+        fed_clean = raw.get("_raw_fed")
+        infl_updates.extend(update_inflation_fed_rate(data["inflation"], fed_clean))
         all_updates.extend(infl_updates)
         for u in infl_updates:
             print(f"  [OK] {u}")

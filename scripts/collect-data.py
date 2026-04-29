@@ -787,6 +787,13 @@ Return JSON matching exactly this schema:
     "cdsSpreadsNote": "<1-2 sentences on regional CDS or sovereign spreads today>",
     "cftcNote": "<1-2 sentences on speculator positioning if known>",
     "optionsIntelligenceNote": "<1-2 sentences on options-implied volatility regime>"
+  }},
+  "tacoInputs": {{
+    "reversibility": {{"score": <0-100>, "rationale": "<2 sentences on how reversible the war footing is right now>"}},
+    "rhetoric": {{"score": <0-100>, "rationale": "<2 sentences on rhetoric intensity from Trump/Iran leadership>"}},
+    "diplomatic": {{"score": <0-100>, "rationale": "<2 sentences on diplomatic activity / talks state>"}},
+    "marketImplied": {{"score": <0-100>, "rationale": "<2 sentences on market-implied de-escalation odds>"}},
+    "domesticPolitical": {{"score": <0-100>, "rationale": "<2 sentences on US/Iran domestic political pressure on continuation vs settlement>"}}
   }}
 }}
 
