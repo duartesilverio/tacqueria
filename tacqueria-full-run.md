@@ -1,6 +1,6 @@
 ---
 name: tacqueria-full-run
-description: Full run procedure for the Tacqueria Iran-US war conflict dashboard. API-assisted pipeline using collect-data.py (FMP, Hyperliquid, Polymarket, Perplexity Sonar) + Python patch scripts. Deploys via GitHub/Cloudflare Pages.
+description: Full run procedure for the Tacqueria Iran-US war conflict dashboard. API-assisted pipeline using collect-data.py (FMP, Hyperliquid, Polymarket, Perplexity Sonar) + Python patch scripts. Deploys to a Cloudflare Worker (`tacqueria.duarte-silverio.workers.dev`) via Cloudflare Workers Builds, which auto-builds on every push to GitHub `master`.
 triggers:
   - do a full run
   - update the dashboard
@@ -45,7 +45,7 @@ tacqueria/
 ├── css/ (mobile.css, overrides.css, layout.css, variables.css, etc.)
 ├── data/iran_markets.json, latest_data.json
 ├── .env                    (API keys — not in git)
-├── _headers                (Cloudflare Pages cache headers)
+├── _headers                (Cloudflare Worker static-asset cache headers)
 ```
 
 ### Key Principle: API-Assisted Collection + Script-Assisted Patching
@@ -55,7 +55,7 @@ In v5.0.0, data collection is automated via `collect-data.py`, eliminating expen
 1. `collect-data.py` fetches all factual data via APIs → writes `day-N-raw.json`
 2. LLM reads raw data → writes analytical prose into `day-N-data.json` (NO external tool calls needed)
 3. Python scripts patch the large files surgically
-4. `git push` triggers Cloudflare Pages auto-deploy
+4. `git push` triggers Cloudflare Workers Builds auto-deploy
 
 **Cost savings**: ~90% reduction in data collection (from ~$3-6 in LLM sub-agents to ~$0.25-0.40 in API calls)
 
@@ -400,7 +400,7 @@ If a script fails, check the error output. Common issues:
 
 ---
 
-## PHASE 4 — Deploy via Git (Cloudflare Pages)
+## PHASE 4 — Deploy via Git (Cloudflare Workers Builds)
 
 ```bash
 git add js/dashboard-data.js index.html latest_data.json
@@ -408,7 +408,7 @@ git commit -m "Day {N} update — {brief summary}"
 git push
 ```
 
-Cloudflare Pages auto-deploys on push to `master`.
+Cloudflare Workers Builds auto-deploys on push to `master` (the `tacqueria` worker is git-connected to `duartesilverio/tacqueria`; if builds start failing with auth errors, regenerate the build token under Workers & Pages → tacqueria → Settings → Builds).
 Live URL: https://tacqueria.duarte-silverio.workers.dev
 GitHub repo: https://github.com/duartesilverio/tacqueria
 
@@ -434,7 +434,7 @@ Skip verification if:
 4. **Footer text**: "Engine42 did the heavy lifting; a carbon-based co-author stayed in charge of the thinking, and the credits."
 5. **War start date**: Feb 28, 2026 (Operation Epic Fury)
 6. **Equity markets note**: S&P/DJI/NASDAQ only update during US market hours — note as "Fri close" or "pre-market" on weekends/early morning
-7. **Deploy via git push**: Cloudflare Pages auto-deploys from `master` branch at https://tacqueria.duarte-silverio.workers.dev. GitHub repo: duartesilverio/tacqueria.
+7. **Deploy via git push**: a Cloudflare Worker (`tacqueria`) connected to the GitHub repo via Cloudflare Workers Builds auto-deploys from `master` to https://tacqueria.duarte-silverio.workers.dev. GitHub repo: duartesilverio/tacqueria. NOTE: this is a Cloudflare Worker, NOT a Cloudflare Pages project.
 8. **Chart data is centralized**: ALL chart time series live in `dashboard-data.js` under `chartData`. The Market & Risk chart in TACO Analytics reuses the same data source as the overview chart (single update, both reflect).
 9. **Projection chart is dynamic**: Scenario ranges, branch point, labels, n-count note, and INSUFFICIENT DATA warning in the forward projection chart are all computed from current data at runtime. No manual projection editing needed.
 10. **One-file update principle**: For Light Runs, only `dashboard-data.js` needs editing (via script). For Full Runs, also edit index.html (via script).
@@ -520,5 +520,5 @@ n=32 data points (weekend, no market append). 6/7 stat models active.
 
 Bibi Watch through D36: sync 38% (dipped on energy strike divergence), Bibi agg 7 (wants energy strikes), Trump 5.
 
-Deploy: `git push` to duartesilverio/tacqueria → Cloudflare Pages auto-deploys
+Deploy: `git push` to duartesilverio/tacqueria → Cloudflare Workers Builds auto-deploys
 Live URL: https://tacqueria.duarte-silverio.workers.dev
