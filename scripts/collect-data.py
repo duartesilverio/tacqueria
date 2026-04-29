@@ -977,60 +977,103 @@ def _scrape_count(urls, patterns, label):
     return None
 
 
+def _scrape_count_pw(urls, patterns, label):
+    """Playwright-based scrape for SPA / Cloudflare-protected sites.
+
+    Imports playwright lazily so this script still runs when playwright
+    isn't installed. Returns None if playwright unavailable or scrape fails.
+    """
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        return None
+    if isinstance(urls, str):
+        urls = [urls]
+    for url in urls:
+        try:
+            with sync_playwright() as p:
+                browser = p.chromium.launch(headless=True, args=[
+                    "--disable-blink-features=AutomationControlled",
+                    "--no-sandbox",
+                ])
+                ctx = browser.new_context(
+                    user_agent=_BROWSER_HEADERS["User-Agent"],
+                    viewport={"width": 1366, "height": 768},
+                    locale="en-US",
+                )
+                page = ctx.new_page()
+                page.goto(url, wait_until="domcontentloaded", timeout=30000)
+                # Allow client-side JS to populate listing counts
+                page.wait_for_timeout(3500)
+                html = page.content()
+                browser.close()
+        except Exception as e:
+            print(f"  [DUBAI/{label}] playwright {url[:60]}: {e}")
+            continue
+        for pat in patterns:
+            m = re.search(pat, html, re.IGNORECASE)
+            if m:
+                try:
+                    raw_num = m.group(1).replace(",", "")
+                    if "k" in raw_num.lower():
+                        return int(float(raw_num.lower().replace("k", "")) * 1000)
+                    return int(raw_num)
+                except (ValueError, AttributeError):
+                    continue
+        print(f"  [DUBAI/{label}] playwright {url[:60]}: no count match in {len(html)}b rendered HTML")
+    return None
+
+
 def fetch_dubai_watch(day_date):
     """Scrape UAE used-car marketplaces for total listing counts.
 
-    LIMITATION: dubizzle and dubicars serve a JS-rendered SPA shell to non-
-    browser clients (Cloudflare anti-bot). Reliable scraping for those needs
-    playwright/puppeteer. yallamotor sometimes returns full HTML, sometimes
-    rate-limits. Counts that fail to scrape return None and the merge step
-    forward-fills from the most recent successful snapshot.
+    Strategy: try playwright (real headless browser) first if available,
+    fall back to urllib. dubizzle and dubicars serve a JS-rendered SPA
+    behind Cloudflare anti-bot — playwright is required. yallamotor often
+    works with urllib but sometimes rate-limits.
     """
     print("[SCRAPE] Dubai Watch...")
     out = {}
 
-    out["dubizzle"] = _scrape_count(
-        [
-            "https://dubai.dubizzle.com/motors/used-cars/",
-            "https://www.dubizzle.com/en-uae/motors/used-cars/",
-        ],
-        [
-            r'"total[_-]?(?:results|count|hits)"\s*:\s*"?(\d[\d,]+)',
-            r'(\d[\d,]{4,})\s*(?:used\s+)?cars?\s+(?:for\s+sale|in\s+(?:dubai|uae))',
-            r'<meta[^>]*description[^>]*content="[^"]*?(\d[\d,]{4,})\s*(?:used\s+)?cars?',
-            r'showing\s+\d+[\d,\s\-of]*\s+of\s+(\d[\d,]+)',
-        ],
-        "dubizzle",
-    )
+    dubizzle_urls = [
+        "https://dubai.dubizzle.com/motors/used-cars/",
+        "https://www.dubizzle.com/en-uae/motors/used-cars/",
+    ]
+    dubizzle_patterns = [
+        r'"total[_-]?(?:results|count|hits)"\s*:\s*"?(\d[\d,]+)',
+        r'(\d[\d,]{4,})\s*(?:used\s+)?cars?\s+(?:for\s+sale|in\s+(?:dubai|uae))',
+        r'<meta[^>]*description[^>]*content="[^"]*?(\d[\d,]{4,})\s*(?:used\s+)?cars?',
+        r'showing\s+\d+[\d,\s\-of]*\s+of\s+(\d[\d,]+)',
+    ]
+    out["dubizzle"] = _scrape_count_pw(dubizzle_urls, dubizzle_patterns, "dubizzle") \
+        or _scrape_count(dubizzle_urls, dubizzle_patterns, "dubizzle")
 
-    out["dubicars"] = _scrape_count(
-        [
-            "https://www.dubicars.com/used-cars",
-            "https://www.dubicars.com/used-cars/uae",
-            "https://www.dubicars.com/",
-        ],
-        [
-            r'(\d[\d,]{3,})\s*(?:used\s+)?cars?\s+(?:for\s+sale|listed|in\s+(?:dubai|uae))',
-            r'"total[_-]?(?:results|count|listings)"\s*:\s*"?(\d[\d,]+)',
-            r'<meta[^>]*description[^>]*content="[^"]*?(\d[\d,]{3,})\s*(?:used\s+)?cars',
-            r'(\d[\d,]{3,})\s*(?:results|listings)',
-        ],
-        "dubicars",
-    )
+    dubicars_urls = [
+        "https://www.dubicars.com/used-cars",
+        "https://www.dubicars.com/used-cars/uae",
+        "https://www.dubicars.com/",
+    ]
+    dubicars_patterns = [
+        r'(\d[\d,]{3,})\s*(?:used\s+)?cars?\s+(?:for\s+sale|listed|in\s+(?:dubai|uae))',
+        r'"total[_-]?(?:results|count|listings)"\s*:\s*"?(\d[\d,]+)',
+        r'<meta[^>]*description[^>]*content="[^"]*?(\d[\d,]{3,})\s*(?:used\s+)?cars',
+        r'(\d[\d,]{3,})\s*(?:results|listings)',
+    ]
+    out["dubicars"] = _scrape_count_pw(dubicars_urls, dubicars_patterns, "dubicars") \
+        or _scrape_count(dubicars_urls, dubicars_patterns, "dubicars")
 
-    out["yallamotor"] = _scrape_count(
-        [
-            "https://uae.yallamotor.com/used-cars",
-            "https://uae.yallamotor.com/used-cars/dubai",
-        ],
-        [
-            r'(\d[\d,]{2,})\s*(?:used\s+)?cars?\s+(?:for\s+sale|listed|in\s+(?:dubai|uae))',
-            r'"total[_-]?(?:results|count)"\s*:\s*"?(\d[\d,]+)',
-            r'<meta[^>]*description[^>]*content="[^"]*?(\d[\d,]{2,})\s*(?:used\s+)?cars',
-            r'(\d[\d,]+)\s*(?:results|listings|vehicles)',
-        ],
-        "yallamotor",
-    )
+    yallamotor_urls = [
+        "https://uae.yallamotor.com/used-cars",
+        "https://uae.yallamotor.com/used-cars/dubai",
+    ]
+    yallamotor_patterns = [
+        r'(\d[\d,]{2,})\s*(?:used\s+)?cars?\s+(?:for\s+sale|listed|in\s+(?:dubai|uae))',
+        r'"total[_-]?(?:results|count)"\s*:\s*"?(\d[\d,]+)',
+        r'<meta[^>]*description[^>]*content="[^"]*?(\d[\d,]{2,})\s*(?:used\s+)?cars',
+        r'(\d[\d,]+)\s*(?:results|listings|vehicles)',
+    ]
+    out["yallamotor"] = _scrape_count(yallamotor_urls, yallamotor_patterns, "yallamotor") \
+        or _scrape_count_pw(yallamotor_urls, yallamotor_patterns, "yallamotor")
 
     found = sum(1 for v in out.values() if v is not None)
     print(f"  [DUBAI] Scraped {found}/3 platforms: {out}")
