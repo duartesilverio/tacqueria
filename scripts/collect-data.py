@@ -531,24 +531,50 @@ def sonar_query(model, system_prompt, user_prompt, retries=1):
 
 
 def _coerce_dict_response(parsed):
-    """If Sonar returned a list when we expected a dict (e.g. [{...}] for the
-    analytical bundle), unwrap to the first dict element so the caller doesn't
-    crash on .get(). Pass dicts through untouched. Empty/non-dict-list -> {}.
+    """If Sonar returned a list / string-wrapped JSON when we expected a dict,
+    unwrap to a dict so the caller doesn't crash on .get(). Pass dicts through
+    untouched. Handles common malformed shapes:
+      - [{...full bundle...}]              → unwrap single dict
+      - [{section1: {...}}, {section2: ...}] → shallow-merge into one dict
+      - ["{ ...JSON... }"]                  → parse string as JSON
+      - "{ ...JSON... }"                    → parse string as JSON
     """
+    # If it's a string that looks like JSON, try parsing it
+    if isinstance(parsed, str):
+        s = parsed.strip()
+        # Strip markdown code fences
+        if s.startswith("```"):
+            lines = s.split("\n")
+            if len(lines) > 2:
+                s = "\n".join(lines[1:-1]) if lines[-1].startswith("```") else "\n".join(lines[1:])
+        if s.startswith("{") or s.startswith("["):
+            try:
+                inner = json.loads(s)
+                return _coerce_dict_response(inner)
+            except (ValueError, TypeError):
+                pass
+        return parsed  # caller handles
     if isinstance(parsed, dict):
         return parsed
     if isinstance(parsed, list):
-        # Common shapes: [{...analytical bundle...}] or [{section1: {...}}, {section2: ...}]
-        # If single dict element, unwrap. If list of named-section dicts, merge.
-        dicts = [x for x in parsed if isinstance(x, dict)]
-        if len(dicts) == 1:
-            return dicts[0]
-        if len(dicts) > 1:
+        # Try to extract dicts from list (recursing on string elements)
+        candidates = []
+        for x in parsed:
+            if isinstance(x, dict):
+                candidates.append(x)
+            elif isinstance(x, str):
+                # Maybe this string is a JSON object
+                coerced = _coerce_dict_response(x)
+                if isinstance(coerced, dict):
+                    candidates.append(coerced)
+        if len(candidates) == 1:
+            return candidates[0]
+        if len(candidates) > 1:
             merged = {}
-            for d in dicts:
+            for d in candidates:
                 merged.update(d)
             return merged
-    return parsed  # let caller handle non-dict; merge step has isinstance guards
+    return parsed  # let caller handle; merge step has isinstance guards
 
 
 def try_parse_json(text):
