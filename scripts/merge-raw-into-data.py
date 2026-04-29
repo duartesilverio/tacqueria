@@ -1523,10 +1523,37 @@ def update_analytical_outlook(data: dict, raw_analytical: dict) -> list[str]:
         for p in paths_in[:4]:
             if not isinstance(p, dict):
                 continue
+            # Sonar may use either "path"/"name" and "probability"/"prob"
+            name = _coerce_str(p.get("name") or p.get("path"))
+            prob_raw = p.get("prob") or p.get("probability")
+            prob_str = _coerce_str(prob_raw)
+            # Normalize prob to "NN%"
+            try:
+                # strip any % first to avoid "20%%"
+                num = float(str(prob_str).rstrip("%").strip())
+                prob_str = f"{num:.0f}%"
+                prob_num = num
+            except (ValueError, TypeError):
+                prob_num = 0
+                if not prob_str.endswith("%") and prob_str:
+                    prob_str = f"{prob_str}%"
+            # Color gradient: red->amber for escalation paths, amber->green for de-escal paths
+            name_lower = name.lower()
+            if any(w in name_lower for w in ("strike", "escalat", "war", "collapse", "kinetic", "blockade")):
+                gradient, name_color = "linear-gradient(90deg, #ef4444, #f59e0b)", "#ef4444"
+            elif any(w in name_lower for w in ("de-escal", "ceasefire", "peace", "deal", "settle")):
+                gradient, name_color = "linear-gradient(90deg, #f59e0b, #22c55e)", "#22c55e"
+            else:
+                gradient, name_color = "linear-gradient(90deg, #ef4444, #f59e0b)", "#f59e0b"
             paths_out.append({
-                "path": _coerce_str(p.get("path")),
-                "probability": _coerce_str(p.get("probability")),
                 "trigger": _coerce_str(p.get("trigger")),
+                "name": name,
+                "prob": prob_str,
+                "brentRange": _coerce_str(p.get("brentRange") or p.get("brent_range") or "—"),
+                "barWidth": prob_str,
+                "barGradient": gradient,
+                "nameColor": name_color,
+                "drivers": _coerce_str(p.get("drivers") or p.get("trigger") or ""),
             })
         if paths_out:
             target["pathProbabilities"] = paths_out

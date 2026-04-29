@@ -790,7 +790,7 @@ Return JSON matching exactly this schema:
       {{"label": "<situational driver>", "value": "<short status, e.g. 'ESCALATING' / 'STALLED' / '78% PROB'>", "detail": "<1-2 sentence detail>"}}
     ],
     "pathProbabilities": [
-      {{"path": "<scenario name>", "probability": "<percent string>", "trigger": "<1 sentence>"}}
+      {{"name": "<short scenario name e.g. 'US military strike' / 'Limited deal' / 'Full de-escalation'>", "prob": "<percent integer e.g. 35>", "brentRange": "<expected Brent range under this scenario, e.g. '$108-115'>", "trigger": "<1 sentence catalyst that would trigger this path>", "drivers": "<1 sentence of key drivers if different from trigger>"}}
     ],
     "supplyDisruption": {{
       "current": "<status line>",
