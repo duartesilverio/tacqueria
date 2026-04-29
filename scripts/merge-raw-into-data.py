@@ -1843,6 +1843,41 @@ def update_ceasefire_analytics_extras(data: dict, raw_analytical: dict) -> list[
     return [f"ceasefireAnalytics extras: {len(updated)} field(s) refreshed"] if updated else []
 
 
+def update_bws_history(data: dict, day: int) -> list[str]:
+    """Append today's Brent-WTI spread to chartData.bwsHistory + .bwsLabels.
+
+    The Brent-WTI Spread chart on the operational tab reads from these arrays
+    (see js/prediction-charts.js). Without this writer the chart freezes at
+    its hardcoded baseline. Dedupe by label so a re-run of the day's pipeline
+    doesn't double-append.
+    """
+    cd = data.get("chartData") or {}
+    if "bwsHistory" not in cd or "bwsLabels" not in cd:
+        return []
+    spread = safe_get(data, "kpis", "brentWtiSpread", "price")
+    if spread is None:
+        return []
+    try:
+        spread_f = round(float(spread), 2)
+    except (ValueError, TypeError):
+        return []
+    label = f"D{day}"
+    labels = cd.get("bwsLabels") or []
+    history = cd.get("bwsHistory") or []
+    if label in labels:
+        # Already present — refresh the value at that index
+        idx = labels.index(label)
+        if idx < len(history) and history[idx] != spread_f:
+            history[idx] = spread_f
+            return [f"chartData.bwsHistory[{label}] -> {spread_f} (refreshed)"]
+        return []
+    labels.append(label)
+    history.append(spread_f)
+    cd["bwsLabels"] = labels
+    cd["bwsHistory"] = history
+    return [f"chartData.bwsHistory: appended {label} = {spread_f}"]
+
+
 def update_market_signals_from_kpis(data: dict) -> list[str]:
     """Refresh marketSignals.brentWtiSpread block from live KPIs (no Sonar)."""
     if "marketSignals" not in data:
@@ -2420,6 +2455,12 @@ def main():
         all_updates.extend(kpi_updates)
         for u in kpi_updates:
             print(f"  [OK] {u}")
+    # Always run bwsHistory append regardless of analytical bundle status — drives the
+    # operational-tab Brent-WTI Spread chart from live KPIs.
+    bws_updates = update_bws_history(data, args.day)
+    all_updates.extend(bws_updates)
+    for u in bws_updates:
+        print(f"  [OK] {u}")
     else:
         if isinstance(raw_analytical, dict) and raw_analytical.get("_error"):
             print(f"  [SKIP] analytical bundle — {raw_analytical.get('_error')}")

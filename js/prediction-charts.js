@@ -98,10 +98,17 @@ function initMicrostructureCharts() {
   if (bwsCtx) {
     new Chart(bwsCtx.getContext('2d'), {
       type: 'line',
-      data: { labels: ['Pre-war','D1','D3','D5','D7','D9','D11','D13','D15','D17','D19','D21','D23','D25','D27','D29','D31','D33','D35','D37','D39','D41','D42','D45','D47','D49','D51','D53','D55','D57','D59','D61'], datasets: [
-        { label: 'Brent–WTI Spread ($)', data: [3.4,6.9,8.5,5.2,3.2,5.4,1.7,4.7,5.0,5.1,17.6,14.2,10.5,8.3,6.2,4.8,3.5,2.8,1.5,-3.8,-5.1,-1.5,-1.9,0.5,1.8,2.6,3.2,3.7,4.0,4.3,4.4,4.5], borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.10)', borderWidth: 2.5, pointRadius: 3, fill: true, tension: 0.35 },
-        { label: 'Pre-war normal', data: [3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4], borderColor: '#475569', borderDash: [5,4], borderWidth: 1.5, pointRadius: 0, fill: false }
-      ]},
+      data: (function() {
+        // Read from chartData if defined; fall back to inline hardcoded otherwise.
+        var d = (typeof DASHBOARD_DATA !== 'undefined' && DASHBOARD_DATA.chartData) ? DASHBOARD_DATA.chartData : null;
+        var bwsLabels = (d && d.bwsLabels) ? d.bwsLabels : ['Pre-war','D1','D3','D5','D7','D9','D11','D13','D15','D17','D19','D21','D23','D25','D27','D29','D31','D33','D35','D37','D39','D41','D42','D45','D47','D49','D51','D53','D55','D57','D59','D61'];
+        var bwsHistory = (d && d.bwsHistory) ? d.bwsHistory : [3.4,6.9,8.5,5.2,3.2,5.4,1.7,4.7,5.0,5.1,17.6,14.2,10.5,8.3,6.2,4.8,3.5,2.8,1.5,-3.8,-5.1,-1.5,-1.9,0.5,1.8,2.6,3.2,3.7,4.0,4.3,4.4,4.5];
+        var prewar = bwsHistory.map(function(){ return 3.4; });
+        return { labels: bwsLabels, datasets: [
+          { label: 'Brent–WTI Spread ($)', data: bwsHistory, borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.10)', borderWidth: 2.5, pointRadius: 3, fill: true, tension: 0.35 },
+          { label: 'Pre-war normal', data: prewar, borderColor: '#475569', borderDash: [5,4], borderWidth: 1.5, pointRadius: 0, fill: false }
+        ] };
+      })(),
       options: {
         responsive: true, maintainAspectRatio: false,
         interaction: { mode: 'index', intersect: false },
