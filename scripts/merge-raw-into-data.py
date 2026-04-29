@@ -2082,7 +2082,7 @@ def main():
     # 4c. Analytical bundle — dLive, analyticalOutlook
     # ------------------------------------------------------------------
     raw_analytical = raw.get("_raw_analytical")
-    if raw_analytical and not raw_analytical.get("_error"):
+    if isinstance(raw_analytical, dict) and not raw_analytical.get("_error"):
         for fn in (
             update_d_live,
             update_analytical_outlook,
@@ -2097,8 +2097,10 @@ def main():
             for u in updates:
                 print(f"  [OK] {u}")
     else:
-        if raw_analytical and raw_analytical.get("_error"):
+        if isinstance(raw_analytical, dict) and raw_analytical.get("_error"):
             print(f"  [SKIP] analytical bundle — {raw_analytical.get('_error')}")
+        elif isinstance(raw_analytical, list):
+            print(f"  [SKIP] analytical bundle — Sonar returned a list at root ({len(raw_analytical)} items); expected dict. Sonar response shape mismatch.")
         else:
             print(f"  [SKIP] analytical bundle — not collected (likely historical mode)")
 
