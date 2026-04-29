@@ -1620,6 +1620,119 @@ def update_taco_inputs(data: dict, raw_analytical: dict) -> list[str]:
     return [f"tacoInputs: {updated_count}/{len(rows)} card(s) refreshed"] if updated_count else []
 
 
+def update_taco_sub_scores_overview(data: dict, raw_analytical: dict) -> list[str]:
+    """Refresh tacoSubScoresOverview by mirroring tacoInputs scores + tacoHistorical from Sonar.
+
+    Sub-keys: reversibility, rhetoric, diplomatic, marketImpl, historical, domPolitical.
+    Five mirror tacoInputs (already populated by update_taco_inputs); historical is separate.
+    """
+    if "tacoSubScoresOverview" not in data:
+        return []
+    target = data["tacoSubScoresOverview"]
+    inputs = data.get("tacoInputs") or []
+    if not isinstance(inputs, list):
+        return []
+    # Map tacoInputs row name -> overview key
+    name_to_overview_key = {
+        "reversibility": "reversibility",
+        "rhetoricintensity": "rhetoric",
+        "rhetoric": "rhetoric",
+        "diplomatic": "diplomatic",
+        "marketimplied": "marketImpl",
+        "domesticpolitical": "domPolitical",
+    }
+    updated = []
+    for row in inputs:
+        if not isinstance(row, dict):
+            continue
+        rname = str(row.get("name", "")).lower().replace(" ", "")
+        ov_key = name_to_overview_key.get(rname)
+        if not ov_key or ov_key not in target:
+            continue
+        score = row.get("score")
+        rationale = row.get("rationale")
+        if score is not None:
+            target[ov_key]["score"] = score
+            updated.append(ov_key)
+        if rationale and str(rationale).strip():
+            target[ov_key]["label"] = _coerce_str(rationale)
+    # historical comes from analytical Sonar bundle's tacoHistorical block
+    bundle = raw_analytical or {}
+    th = bundle.get("tacoHistorical") if isinstance(bundle, dict) else None
+    if isinstance(th, dict):
+        sc = th.get("score")
+        lbl = th.get("label")
+        if sc is not None and "historical" in target:
+            try:
+                target["historical"]["score"] = max(0, min(100, int(sc)))
+                updated.append("historical")
+            except (ValueError, TypeError):
+                pass
+        if lbl and str(lbl).strip() and "historical" in target:
+            target["historical"]["label"] = _coerce_str(lbl)
+    return [f"tacoSubScoresOverview: {len(updated)} sub-score(s) updated ({', '.join(updated)})"] if updated else []
+
+
+def update_taco_analytics(data: dict, raw_analytical: dict) -> list[str]:
+    """Refresh tacoAnalytics.{momentum, regime, lagSignal, nextTrigger} from Sonar bundle."""
+    if "tacoAnalytics" not in data:
+        return []
+    bundle = raw_analytical or {}
+    ta = bundle.get("tacoAnalytics") if isinstance(bundle, dict) else None
+    if not isinstance(ta, dict):
+        return []
+    target = data["tacoAnalytics"]
+    updated = []
+    for key in ("momentum", "regime", "lagSignal", "nextTrigger"):
+        sub = ta.get(key)
+        if not isinstance(sub, dict):
+            continue
+        v = sub.get("value")
+        note = sub.get("note")
+        if not isinstance(target.get(key), dict):
+            continue
+        if v and str(v).strip():
+            target[key]["value"] = _coerce_str(v)
+            updated.append(key)
+        if note and str(note).strip():
+            target[key]["note"] = _coerce_str(note)
+    return [f"tacoAnalytics: {len(updated)} sub-block(s) updated"] if updated else []
+
+
+def update_ceasefire_analytics_extras(data: dict, raw_analytical: dict) -> list[str]:
+    """Refresh compromiseZone/chinaFactor/violationImpact notes from Sonar bundle."""
+    if "ceasefireAnalytics" not in data:
+        return []
+    bundle = raw_analytical or {}
+    ex = bundle.get("ceasefireAnalyticsExtras") if isinstance(bundle, dict) else None
+    if not isinstance(ex, dict):
+        return []
+    target = data["ceasefireAnalytics"]
+    updated = []
+    for note_key, dst_key in (("compromiseZoneNote", "compromiseZone"),
+                              ("chinaFactorNote", "chinaFactor"),
+                              ("violationImpactSummary", "violationImpact")):
+        v = ex.get(note_key)
+        if not v or not str(v).strip():
+            continue
+        existing = target.get(dst_key)
+        text = _coerce_str(v)
+        if isinstance(existing, dict):
+            existing["note"] = text
+            updated.append(dst_key)
+        elif isinstance(existing, list):
+            # Schema: list of items; attach note to first
+            if existing and isinstance(existing[0], dict):
+                existing[0]["note"] = text
+            else:
+                existing.insert(0, {"note": text})
+            updated.append(f"{dst_key}[0]")
+        elif existing is None:
+            target[dst_key] = {"note": text}
+            updated.append(dst_key)
+    return [f"ceasefireAnalytics extras: {len(updated)} field(s) refreshed"] if updated else []
+
+
 def update_market_signals_from_kpis(data: dict) -> list[str]:
     """Refresh marketSignals.brentWtiSpread block from live KPIs (no Sonar)."""
     if "marketSignals" not in data:
@@ -2171,6 +2284,9 @@ def main():
             update_market_signals,
             update_taco_inputs,
             update_prediction_analytics,
+            update_taco_sub_scores_overview,
+            update_taco_analytics,
+            update_ceasefire_analytics_extras,
         ):
             updates = fn(data, raw_analytical)
             all_updates.extend(updates)

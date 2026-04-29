@@ -802,6 +802,21 @@ Return JSON matching exactly this schema:
       "chaotic": {{"signals": [{{"text": "<1 sentence non-linear / black-swan / regime-shift signal>", "color": "<hex>"}}]}},
       "complex": {{"signals": [{{"text": "<1 sentence emergent / institutional / systems signal>", "color": "<hex>"}}]}}
     }}
+  }},
+  "tacoHistorical": {{
+    "score": <0-100>,
+    "label": "<2 sentences: historical analogue / base-rate framing for current war state, citing relevant prior conflicts and statistical priors. NO Operation Epic Fury references.>"
+  }},
+  "tacoAnalytics": {{
+    "momentum": {{"value": "<short label e.g. '+2.0' or '-1.5'>", "note": "<1 sentence on TACO score momentum direction and what's driving it>"}},
+    "regime": {{"value": "<regime label e.g. 'CEASEFIRE (HOLDING)' or 'NEGOTIATION DEADLOCK' or 'KINETIC ESCALATION'>", "note": "<1 sentence describing the regime and key signals>"}},
+    "lagSignal": {{"value": "<lag-correlated leading indicator, e.g. 'Brent -3d' or 'VIX -2d'>", "note": "<1 sentence on what the lag tells us right now>"}},
+    "nextTrigger": {{"value": "<concise trigger threshold, e.g. 'TACO >= 22' or 'Brent <$95'>", "note": "<1 sentence: 3-5 specific watchpoints for the next 48-72h>"}}
+  }},
+  "ceasefireAnalyticsExtras": {{
+    "compromiseZoneNote": "<2 sentences: where US and Iran demands could converge into a deal>",
+    "chinaFactorNote": "<2 sentences: China's role / leverage in current dynamics, including any tariff/oil/sanctions threads>",
+    "violationImpactSummary": "<2 sentences: what would happen on a ceasefire violation today, market and military>"
   }}
 }}
 
