@@ -579,7 +579,14 @@ def fetch_sonar_intelligence(day_num, day_date):
         "is unavailable, use null."
     )
     user = f"""Search for the latest data on the US-Iran military conflict as of {day_date}.
-This is Day {day_num} of the conflict (started Feb 28, 2026, Operation Epic Fury).
+This is Day {day_num} of the conflict. Today's date is {day_date}.
+
+CRITICAL FOR key_developments: Each item must be a SPECIFIC EVENT THAT HAPPENED IN THE LAST 48-72 HOURS, with a date or time reference if possible. Do NOT include:
+- War-start references or "Operation X commenced..." sentences
+- Cumulative-totals filler ("Over N total sorties flown", "N targets struck over X days")
+- Generic stockpile/destruction summaries
+- Anything older than 3 days
+If fewer than 5 fresh events occurred, return fewer items rather than padding with old context. Quality over quantity.
 
 Return JSON matching this schema:
 {{
@@ -595,7 +602,7 @@ Return JSON matching this schema:
   "oil_production_cuts_mmbd": <number or null>,
   "ceasefire_status": "<string — current state of any ceasefire talks>",
   "houthi_attacks_last_24h": <integer or null>,
-  "key_developments": ["<string — most important 5-8 events>"],
+  "key_developments": ["<string — 5-8 fresh events from the last 48-72 hours; NO war-start references, NO cumulative-total filler, each event must be dated or time-anchored>"],
   "iran_attacks_on_uae": {{
     "ballistic_missiles_cumulative": <int or null>,
     "cruise_missiles_cumulative": <int or null>,
@@ -714,6 +721,82 @@ Return JSON:
   "leadership_change_probability_pct": <number or null>
 }}"""
 
+    return sonar_query("sonar-pro", system, user)
+
+
+def fetch_sonar_analytical(day_num, day_date, intel_summary):
+    """Generate the analytical-prose sections (dLive, analyticalOutlook) in one call.
+
+    Takes a brief intel summary so Sonar can ground the analysis in actual
+    current-state data rather than speculating. Returns a structured JSON
+    bundle that the merge step writes to dashboard-data.js.
+    """
+    print("[SONAR] Analytical bundle (sonar-pro)...")
+    system = (
+        "You are a markets/geopolitics analyst writing structured analytical commentary "
+        "for a war-tracking dashboard. Return ONLY valid JSON matching the schema. "
+        "No markdown. Each note field should be 2-4 sentences of crisp analytical prose "
+        "grounded in TODAY'S state. Do NOT include war-start references, cumulative-total "
+        "filler, or generic context. If a sub-field cannot be confidently filled, use null."
+    )
+    user = f"""Today is {day_date} (Day {day_num} of the US-Iran conflict).
+
+Brief on current state:
+{intel_summary}
+
+Return JSON matching exactly this schema:
+{{
+  "dLive": {{
+    "label": "<short headline e.g. 'D{day_num} — <THEME> (<short date>, <weekday>)'>",
+    "brentRange": "<expected range today, e.g. '$108–$115'>",
+    "brentNote": "<2-4 sentences: where Brent is now, what range to expect today, what swings it; ground in today's catalysts>",
+    "tacoEst": "<TACO range estimate today, e.g. '12–16'>",
+    "tacoNote": "<2-4 sentences: where TACO is now, what direction it's biased, what would push it which way>"
+  }},
+  "analyticalOutlook": {{
+    "label": "<headline e.g. 'D{day_num} Outlook — <THEME>'>",
+    "basisCards": [
+      {{"label": "<situational driver>", "value": "<short status, e.g. 'ESCALATING' / 'STALLED' / '78% PROB'>", "detail": "<1-2 sentence detail>"}}
+    ],
+    "pathProbabilities": [
+      {{"path": "<scenario name>", "probability": "<percent string>", "trigger": "<1 sentence>"}}
+    ],
+    "supplyDisruption": {{
+      "current": "<status line>",
+      "risk": "<risk assessment 1-2 sentences>",
+      "watchpoint": "<key thing to watch next 48h>"
+    }}
+  }},
+  "houthiRedSea": {{
+    "status": "<short status line about Bab el Mandeb / Houthi posture today>",
+    "lastVerifiedAttack": "<date and 1-sentence description of most recent verified Houthi attack>",
+    "threatLevel": "<LOW|MODERATE|HIGH|CRITICAL>",
+    "babElMandebNote": "<2-3 sentences: current flow status, ceasefire effect, near-term risk>"
+  }},
+  "pipelineBypass": {{
+    "saudiEastWestFlow": "<current flow figure or status, e.g. '~5.5M bpd (easing as Hormuz reopens)'>",
+    "saudiEastWestStatus": "<short status badge, e.g. 'EASING · HORMUZ FRAGILE'>",
+    "habshanFujairahFlow": "<current flow figure or status>",
+    "habshanFujairahStatus": "<short status badge>",
+    "combinedNote": "<1-2 sentences on the combined bypass capacity vs current Hormuz state>"
+  }},
+  "arsenalBadge": "<one short badge string, e.g. 'CEASEFIRE STOCKPILE FREEZE' or 'ACTIVE DEPLETION' or 'POST-WAR REBUILD'>",
+  "marketSignals": {{
+    "futuresCurveNote": "<1-2 sentences on Brent futures curve shape today (contango/backwardation) and what it implies>",
+    "riskReversalNote": "<1-2 sentences on options skew / risk reversals today>",
+    "cdsSpreadsNote": "<1-2 sentences on regional CDS or sovereign spreads today>",
+    "cftcNote": "<1-2 sentences on speculator positioning if known>",
+    "optionsIntelligenceNote": "<1-2 sentences on options-implied volatility regime>"
+  }}
+}}
+
+Constraints:
+- basisCards: 3-5 items
+- pathProbabilities: 3-4 items, percentages should sum to ~100
+- All prose must be CURRENT (today's catalysts, not historical)
+- Do NOT mention 'Operation Epic Fury' or war-start dates
+- Each value field on basisCards stays under 25 chars
+- For sub-fields you cannot confidently fill, return null — DO NOT fabricate"""
     return sonar_query("sonar-pro", system, user)
 
 
@@ -986,6 +1069,32 @@ def main():
                 print(f"  [{name.upper()}] Error: {e}")
                 results[name] = {"_error": str(e), "_collected": False}
 
+    # ── Sequential analytical Sonar (depends on intel) ────────────────────
+    if PERPLEXITY_API_KEY and not historical_date:
+        intel_data = results.get("intel") or {}
+        rhetoric_data = results.get("rhetoric") or {}
+        cf = intel_data.get("ceasefire_status", "")
+        hz = intel_data.get("hormuz_status", "")
+        key_devs = intel_data.get("key_developments", []) or []
+        diplo = rhetoric_data.get("diplomatic_developments", []) or []
+        intel_summary_lines = [
+            f"Ceasefire status: {cf}",
+            f"Hormuz status: {hz}",
+            f"Key developments (last 48-72h):",
+        ]
+        for d in key_devs[:5]:
+            intel_summary_lines.append(f"  - {d}")
+        if diplo:
+            intel_summary_lines.append("Diplomatic developments:")
+            for d in diplo[:3]:
+                intel_summary_lines.append(f"  - {d}")
+        intel_summary = "\n".join(intel_summary_lines)
+        try:
+            results["analytical"] = fetch_sonar_analytical(day_num, day_date, intel_summary)
+        except Exception as e:
+            print(f"  [ANALYTICAL] Error: {e}")
+            results["analytical"] = {"_error": str(e), "_collected": False}
+
     # ── Weekend carry-forward ─────────────────────────────────────────────
     if is_weekend and prev_data:
         # Carry Friday's FMP data from previous day's kpis
@@ -1057,6 +1166,7 @@ def main():
         "_raw_bca": results.get("bca"),
         "_raw_dubai": results.get("dubai"),
         "_raw_fed": results.get("fed"),
+        "_raw_analytical": results.get("analytical"),
 
         # Raw FMP + HL for reference
         "_raw_fmp": {k: v for k, v in fmp.items() if k != "_collected"} if fmp.get("_collected") else None,

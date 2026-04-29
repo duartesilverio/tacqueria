@@ -442,6 +442,7 @@ def patch_dashboard(text, inp):
         'predictionAnalytics', 'arsenal', 'inflation', 'troopCounter', 'hyperliquid'
     ]
     
+    stale_sections = []
     for section in full_replace_sections:
         if section in inp:
             new_js = to_js_value(inp[section], 2)
@@ -450,6 +451,15 @@ def patch_dashboard(text, inp):
                 print(f"  ✓ Replaced section: {section}")
             except ValueError as e:
                 print(f"  ✗ Warning: {e}")
+        else:
+            stale_sections.append(section)
+            print(f"  ⚠ STALE: '{section}' has no writer in input data — DASHBOARD VALUE FROZEN")
+
+    if stale_sections:
+        print(f"\n  ⚠⚠⚠ {len(stale_sections)} STALE SECTION(S): {', '.join(stale_sections)}")
+        print(f"  These sections were declared in full_replace_sections but the merge step")
+        print(f"  did not produce them. The dashboard retains old values for these sections.")
+        print(f"  Add merge writers in scripts/merge-raw-into-data.py or remove from list.\n")
     
     # 4. CHART DATA — merge, don't destroy
     # Strategy: If both chartAppend and chartData exist, MERGE chartData into

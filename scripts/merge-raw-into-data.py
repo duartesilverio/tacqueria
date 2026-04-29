@@ -1029,6 +1029,348 @@ def update_key_triggers(data: dict, raw_intel: dict, raw_rhetoric: dict,
     return []
 
 
+# ---------------------------------------------------------------------------
+# Analytical-prose sections — dLive, analyticalOutlook (from fetch_sonar_analytical)
+# ---------------------------------------------------------------------------
+
+def _coerce_str(v, default=""):
+    if v is None:
+        return default
+    return str(v).strip()
+
+
+def update_d_live(data: dict, raw_analytical: dict) -> list[str]:
+    """Update dLive from the analytical Sonar bundle. Skip-on-missing preserves prior day."""
+    if "dLive" not in data:
+        return []
+    bundle = raw_analytical or {}
+    dl = bundle.get("dLive") if isinstance(bundle, dict) else None
+    if not isinstance(dl, dict):
+        return []
+    target = data["dLive"]
+    fields_updated = []
+    for key in ("label", "brentRange", "brentNote", "tacoEst", "tacoNote"):
+        v = dl.get(key)
+        if v is None or (isinstance(v, str) and not v.strip()):
+            continue  # preserve previous value
+        target[key] = _coerce_str(v)
+        fields_updated.append(key)
+    if fields_updated:
+        return [f"dLive: {len(fields_updated)} field(s) refreshed ({', '.join(fields_updated)})"]
+    return []
+
+
+def update_analytical_outlook(data: dict, raw_analytical: dict) -> list[str]:
+    """Update analyticalOutlook from the analytical Sonar bundle."""
+    if "analyticalOutlook" not in data:
+        return []
+    bundle = raw_analytical or {}
+    ao = bundle.get("analyticalOutlook") if isinstance(bundle, dict) else None
+    if not isinstance(ao, dict):
+        return []
+    target = data["analyticalOutlook"]
+    updated = []
+
+    label = ao.get("label")
+    if label and str(label).strip():
+        target["label"] = _coerce_str(label)
+        updated.append("label")
+
+    cards_in = ao.get("basisCards")
+    if isinstance(cards_in, list) and cards_in:
+        cards_out = []
+        for c in cards_in[:5]:
+            if not isinstance(c, dict):
+                continue
+            lbl = _coerce_str(c.get("label"))
+            val = _coerce_str(c.get("value"))
+            det = _coerce_str(c.get("detail"))
+            if not (lbl and val):
+                continue
+            # Default coloring by value sentiment
+            v_lower = val.lower()
+            if any(w in v_lower for w in ("escalat", "high", "fail", "collapse", "danger")):
+                border, valc = "#ef4444", "#ef4444"
+            elif any(w in v_lower for w in ("stall", "deadlock", "risk", "amber", "low-med")):
+                border, valc = "#f59e0b", "#f59e0b"
+            elif any(w in v_lower for w in ("steady", "underway", "hold", "open", "calm")):
+                border, valc = "#22c55e", "#22c55e"
+            else:
+                border, valc = "#94a3b8", "#94a3b8"
+            cards_out.append({
+                "label": lbl,
+                "value": val,
+                "detail": det,
+                "borderColor": border,
+                "valueColor": valc,
+            })
+        if cards_out:
+            target["basisCards"] = cards_out
+            updated.append(f"basisCards({len(cards_out)})")
+
+    paths_in = ao.get("pathProbabilities")
+    if isinstance(paths_in, list) and paths_in:
+        paths_out = []
+        for p in paths_in[:4]:
+            if not isinstance(p, dict):
+                continue
+            paths_out.append({
+                "path": _coerce_str(p.get("path")),
+                "probability": _coerce_str(p.get("probability")),
+                "trigger": _coerce_str(p.get("trigger")),
+            })
+        if paths_out:
+            target["pathProbabilities"] = paths_out
+            updated.append(f"pathProbabilities({len(paths_out)})")
+
+    sd = ao.get("supplyDisruption")
+    if isinstance(sd, dict):
+        sd_out = {}
+        for k in ("current", "risk", "watchpoint"):
+            v = sd.get(k)
+            if v and str(v).strip():
+                sd_out[k] = _coerce_str(v)
+        if sd_out:
+            existing_sd = target.get("supplyDisruption") or {}
+            existing_sd.update(sd_out)
+            target["supplyDisruption"] = existing_sd
+            updated.append(f"supplyDisruption({len(sd_out)})")
+
+    if updated:
+        return [f"analyticalOutlook: {', '.join(updated)}"]
+    return []
+
+
+def update_houthi_red_sea(data: dict, raw_analytical: dict) -> list[str]:
+    if "houthiRedSea" not in data:
+        return []
+    bundle = raw_analytical or {}
+    h = bundle.get("houthiRedSea") if isinstance(bundle, dict) else None
+    if not isinstance(h, dict):
+        return []
+    target = data["houthiRedSea"]
+    updated = []
+    for k in ("status", "lastVerifiedAttack", "threatLevel"):
+        v = h.get(k)
+        if v and str(v).strip():
+            target[k] = _coerce_str(v)
+            updated.append(k)
+    note = h.get("babElMandebNote")
+    if note and str(note).strip():
+        bem = target.get("babElMandeb") or {}
+        bem["note"] = _coerce_str(note)
+        target["babElMandeb"] = bem
+        updated.append("babElMandeb.note")
+    return [f"houthiRedSea: {', '.join(updated)}"] if updated else []
+
+
+def update_pipeline_bypass(data: dict, raw_analytical: dict) -> list[str]:
+    if "pipelineBypass" not in data:
+        return []
+    bundle = raw_analytical or {}
+    pb = bundle.get("pipelineBypass") if isinstance(bundle, dict) else None
+    if not isinstance(pb, dict):
+        return []
+    target = data["pipelineBypass"]
+    updated = []
+    mapping = [
+        ("saudiEastWestFlow", "saudiEastWest", "currentFlow"),
+        ("saudiEastWestStatus", "saudiEastWest", "status"),
+        ("habshanFujairahFlow", "habshanFujairah", "currentFlow"),
+        ("habshanFujairahStatus", "habshanFujairah", "status"),
+    ]
+    for src_key, sub_key, field in mapping:
+        v = pb.get(src_key)
+        if v and str(v).strip():
+            sub = target.get(sub_key) or {}
+            sub[field] = _coerce_str(v)
+            target[sub_key] = sub
+            updated.append(f"{sub_key}.{field}")
+    note = pb.get("combinedNote")
+    if note and str(note).strip():
+        cmb = target.get("combined") or {}
+        cmb["note"] = _coerce_str(note)
+        target["combined"] = cmb
+        updated.append("combined.note")
+    return [f"pipelineBypass: {len(updated)} field(s)"] if updated else []
+
+
+def update_arsenal_badge(data: dict, raw_analytical: dict) -> list[str]:
+    if "arsenal" not in data:
+        return []
+    bundle = raw_analytical or {}
+    badge = bundle.get("arsenalBadge") if isinstance(bundle, dict) else None
+    if not badge or not str(badge).strip():
+        return []
+    data["arsenal"]["badge"] = _coerce_str(badge)
+    return [f"arsenal.badge -> {data['arsenal']['badge'][:40]}"]
+
+
+def update_market_signals(data: dict, raw_analytical: dict) -> list[str]:
+    if "marketSignals" not in data:
+        return []
+    bundle = raw_analytical or {}
+    ms = bundle.get("marketSignals") if isinstance(bundle, dict) else None
+    if not isinstance(ms, dict):
+        return []
+    target = data["marketSignals"]
+    updated = []
+    mapping = [
+        ("futuresCurveNote", "futuresCurve", "note"),
+        ("riskReversalNote", "riskReversal", "note"),
+        ("cdsSpreadsNote", "cdsSpreads", "note"),
+        ("cftcNote", "cftc", "note"),
+        ("optionsIntelligenceNote", "optionsIntelligence", "note"),
+    ]
+    for src_key, sub_key, field in mapping:
+        v = ms.get(src_key)
+        if v and str(v).strip():
+            sub = target.get(sub_key) or {}
+            sub[field] = _coerce_str(v)
+            target[sub_key] = sub
+            updated.append(sub_key)
+    return [f"marketSignals: {len(updated)} sub-section note(s) refreshed"] if updated else []
+
+
+# ---------------------------------------------------------------------------
+# predictionMarkets — wire Polymarket contracts into signalCards
+# ---------------------------------------------------------------------------
+
+# Each slot has a list of keyword sets; a contract question must match ALL
+# keywords in at least ONE set to claim the slot. Order matters — first slot
+# to match wins, and a contract can only fill one slot.
+PREDICTION_MARKET_SLOTS = [
+    # (slot_index, contract_label_template, [[kw, kw, ...], ...])
+    (0, "US-Iran ceasefire by Dec 31",   [["ceasefire", "iran"], ["us-iran", "ceasefire"]]),
+    (1, "Conflict ends by Dec 31",       [["conflict", "end"], ["war", "end"]]),
+    (2, "Trump ends ops by Jun 30",      [["trump", "end"], ["trump", "ops"]]),
+    (3, "Iran regime falls by Jun 30",   [["regime", "fall"], ["regime", "change"]]),
+    (4, "Kharg Island struck",           [["kharg"]]),
+    (5, "Leadership change",              [["khamenei"], ["leadership", "iran"]]),
+]
+
+
+def _liq_bucket(volume_usd: float) -> tuple:
+    """Return (liqWidth, liqColor, liqLabel, sigQuality, sigClass) by volume."""
+    if volume_usd >= 10_000_000:
+        return ("100%", "#22c55e", "VERY HIGH", "★★★ RELIABLE", "sig-high")
+    if volume_usd >= 3_000_000:
+        return ("85%",  "#22c55e", "HIGH",       "★★★ RELIABLE", "sig-high")
+    if volume_usd >= 1_000_000:
+        return ("50%",  "#f59e0b", "MEDIUM",     "★★ MODERATE",  "sig-med")
+    if volume_usd >= 250_000:
+        return ("30%",  "#f59e0b", "LOW-MED",    "★ THIN",        "sig-low")
+    return ("15%", "#ef4444", "LOW", "★ THIN", "sig-low")
+
+
+def _fmt_volume(v: float) -> str:
+    if v >= 1_000_000:
+        return f"${v/1_000_000:.1f}M"
+    if v >= 1_000:
+        return f"${v/1_000:.0f}K"
+    return f"${v:.0f}"
+
+
+def _prob_color(prob: float) -> str:
+    if prob >= 70:
+        return "#22c55e"
+    if prob >= 30:
+        return "#f59e0b"
+    return "#94a3b8"
+
+
+def _match_contract_to_slot(question: str) -> int:
+    q = (question or "").lower()
+    for slot_idx, _label, keyword_sets in PREDICTION_MARKET_SLOTS:
+        for kwset in keyword_sets:
+            if all(kw in q for kw in kwset):
+                return slot_idx
+    return -1
+
+
+def update_prediction_markets(data: dict, raw_polymarket: dict, day: int) -> list[str]:
+    """Update predictionMarkets.signalCards from Polymarket contracts.
+
+    Matches contracts to slot definitions by keyword, then updates rawPrice,
+    volume, adjProb, adjDelta (with day-over-day delta), volDelta, and liquidity
+    bucket fields. If a slot has no matching contract today, its values are
+    preserved from yesterday (no overwrite). The 7 sub-arrays (ceasefire, oil,
+    hormuz, regime, escalation, nuclear, comparison) are NOT yet populated by
+    this function — TODO follow-up.
+    """
+    if "predictionMarkets" not in data:
+        return []
+    if not raw_polymarket or not raw_polymarket.get("_collected"):
+        return []
+    contracts = raw_polymarket.get("contracts") or []
+    if not contracts:
+        return []
+
+    pm = data["predictionMarkets"]
+    cards = pm.get("signalCards") or []
+    if not cards:
+        return []
+
+    # Snapshot previous probabilities for delta computation
+    prev_probs = []
+    for c in cards:
+        try:
+            prev_probs.append(float(str(c.get("adjProb", "0")).rstrip("%")))
+        except (ValueError, TypeError):
+            prev_probs.append(None)
+
+    # Pick the highest-volume contract per slot
+    best_per_slot = {}  # slot_idx -> contract
+    for con in contracts:
+        slot_idx = _match_contract_to_slot(con.get("question", ""))
+        if slot_idx < 0:
+            continue
+        prob = con.get("probability")
+        if prob is None:
+            continue
+        vol = float(con.get("volume") or 0)
+        cur = best_per_slot.get(slot_idx)
+        if cur is None or vol > float(cur.get("volume") or 0):
+            best_per_slot[slot_idx] = con
+
+    matched = 0
+    for slot_idx, label, _kw in PREDICTION_MARKET_SLOTS:
+        if slot_idx >= len(cards):
+            continue
+        con = best_per_slot.get(slot_idx)
+        if con is None:
+            continue  # preserve yesterday's card
+        prob = float(con.get("probability"))
+        vol = float(con.get("volume") or 0)
+        liq_width, liq_color, liq_label, sig_q, sig_c = _liq_bucket(vol)
+        prev = prev_probs[slot_idx]
+        if prev is None or abs(prob - prev) < 0.5:
+            arrow, delta_txt = "→", f"{prob:.0f}% steady"
+        elif prob > prev:
+            arrow, delta_txt = "▲", f"+{prob - prev:.0f}pp from {prev:.0f}% D{day-1}"
+        else:
+            arrow, delta_txt = "▼", f"{prob - prev:.0f}pp from {prev:.0f}% D{day-1}"
+        cards[slot_idx] = {
+            "contract": label,
+            "rawPrice": f"{prob:.0f}%",
+            "volume": _fmt_volume(vol),
+            "liqWidth": liq_width,
+            "liqColor": liq_color,
+            "liqLabel": liq_label,
+            "adjProb": f"{prob:.0f}%",
+            "adjProbColor": _prob_color(prob),
+            "adjDelta": f"{arrow} {delta_txt} (D{day})",
+            "volDelta": "→ flat",
+            "volDeltaColor": "#94a3b8",
+            "sigQuality": sig_q,
+            "sigClass": sig_c,
+        }
+        matched += 1
+
+    pm["signalCards"] = cards
+    return [f"predictionMarkets.signalCards: {matched}/{len(PREDICTION_MARKET_SLOTS)} slots updated from {len(contracts)} Polymarket contracts"]
+
+
 def update_next48h(data: dict, raw_intel: dict, raw_rhetoric: dict,
                    day: int) -> list[str]:
     """Update next48h catalysts from intelligence."""
@@ -1282,6 +1624,41 @@ def main():
         data["chartAppend"] = merge_chart_append(existing_chart, raw["chartAppend"])
         all_updates.append("chartAppend merged (prices from raw, taco/strikes/hormuz preserved)")
         print("  [OK] chartAppend merged")
+
+    # ------------------------------------------------------------------
+    # 4b. predictionMarkets — wire Polymarket contracts into signalCards
+    # ------------------------------------------------------------------
+    raw_poly = raw.get("_raw_polymarket")
+    pm_updates = update_prediction_markets(data, raw_poly, args.day)
+    all_updates.extend(pm_updates)
+    for u in pm_updates:
+        print(f"  [OK] {u}")
+    if not pm_updates and raw_poly:
+        contracts_n = len((raw_poly or {}).get("contracts") or [])
+        print(f"  [SKIP] predictionMarkets — Polymarket returned {contracts_n} contracts but none matched slot keywords")
+
+    # ------------------------------------------------------------------
+    # 4c. Analytical bundle — dLive, analyticalOutlook
+    # ------------------------------------------------------------------
+    raw_analytical = raw.get("_raw_analytical")
+    if raw_analytical and not raw_analytical.get("_error"):
+        for fn in (
+            update_d_live,
+            update_analytical_outlook,
+            update_houthi_red_sea,
+            update_pipeline_bypass,
+            update_arsenal_badge,
+            update_market_signals,
+        ):
+            updates = fn(data, raw_analytical)
+            all_updates.extend(updates)
+            for u in updates:
+                print(f"  [OK] {u}")
+    else:
+        if raw_analytical and raw_analytical.get("_error"):
+            print(f"  [SKIP] analytical bundle — {raw_analytical.get('_error')}")
+        else:
+            print(f"  [SKIP] analytical bundle — not collected (likely historical mode)")
 
     # ------------------------------------------------------------------
     # 5. Dubai Watch — update from _raw_dubai
