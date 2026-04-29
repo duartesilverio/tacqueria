@@ -2455,12 +2455,6 @@ def main():
         all_updates.extend(kpi_updates)
         for u in kpi_updates:
             print(f"  [OK] {u}")
-    # Always run bwsHistory append regardless of analytical bundle status — drives the
-    # operational-tab Brent-WTI Spread chart from live KPIs.
-    bws_updates = update_bws_history(data, args.day)
-    all_updates.extend(bws_updates)
-    for u in bws_updates:
-        print(f"  [OK] {u}")
     else:
         if isinstance(raw_analytical, dict) and raw_analytical.get("_error"):
             print(f"  [SKIP] analytical bundle — {raw_analytical.get('_error')}")
@@ -2471,6 +2465,13 @@ def main():
             print(f"  [SKIP] analytical bundle — Sonar returned a dict with NO expected keys. Got: {actual_keys}. Likely partial / over-unwrapped response. Skipping all analytical updaters; prior values preserved.")
         else:
             print(f"  [SKIP] analytical bundle — not collected (likely historical mode)")
+
+    # Always run bwsHistory append regardless of analytical bundle status — drives the
+    # operational-tab Brent-WTI Spread chart from live KPIs.
+    bws_updates = update_bws_history(data, args.day)
+    all_updates.extend(bws_updates)
+    for u in bws_updates:
+        print(f"  [OK] {u}")
 
     # ------------------------------------------------------------------
     # 5. Dubai Watch — update from _raw_dubai
