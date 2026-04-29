@@ -2367,6 +2367,20 @@ def main():
     # ------------------------------------------------------------------
     raw_analytical = raw.get("_raw_analytical")
     if isinstance(raw_analytical, dict) and not raw_analytical.get("_error"):
+        # Diagnostic: print top-level keys so we can see if Sonar response shape
+        # has the keys our updaters expect (dLive/analyticalOutlook/etc.)
+        keys = list(raw_analytical.keys())
+        expected = {"dLive", "analyticalOutlook", "houthiRedSea", "pipelineBypass",
+                    "arsenalBadge", "marketSignals", "tacoInputs", "predictionAnalytics",
+                    "tacoHistorical", "tacoAnalytics", "ceasefireAnalyticsExtras"}
+        present = expected & set(keys)
+        missing = expected - set(keys)
+        unexpected = set(keys) - expected - {"_collected", "_error", "_historical"}
+        print(f"  [analytical] dict keys: {keys}")
+        if missing:
+            print(f"  [analytical] expected keys missing: {sorted(missing)}")
+        if unexpected:
+            print(f"  [analytical] unexpected keys present: {sorted(unexpected)}")
         for fn in (
             update_d_live,
             update_analytical_outlook,
