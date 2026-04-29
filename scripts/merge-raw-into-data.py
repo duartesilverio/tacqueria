@@ -2366,21 +2366,20 @@ def main():
     # 4c. Analytical bundle — dLive, analyticalOutlook
     # ------------------------------------------------------------------
     raw_analytical = raw.get("_raw_analytical")
-    if isinstance(raw_analytical, dict) and not raw_analytical.get("_error"):
-        # Diagnostic: print top-level keys so we can see if Sonar response shape
-        # has the keys our updaters expect (dLive/analyticalOutlook/etc.)
+    expected_analytical_keys = {"dLive", "analyticalOutlook", "houthiRedSea", "pipelineBypass",
+                                "arsenalBadge", "marketSignals", "tacoInputs", "predictionAnalytics",
+                                "tacoHistorical", "tacoAnalytics", "ceasefireAnalyticsExtras"}
+    analytical_ok = (
+        isinstance(raw_analytical, dict)
+        and not raw_analytical.get("_error")
+        and bool(expected_analytical_keys & set(raw_analytical.keys()))
+    )
+    if analytical_ok:
         keys = list(raw_analytical.keys())
-        expected = {"dLive", "analyticalOutlook", "houthiRedSea", "pipelineBypass",
-                    "arsenalBadge", "marketSignals", "tacoInputs", "predictionAnalytics",
-                    "tacoHistorical", "tacoAnalytics", "ceasefireAnalyticsExtras"}
-        present = expected & set(keys)
-        missing = expected - set(keys)
-        unexpected = set(keys) - expected - {"_collected", "_error", "_historical"}
-        print(f"  [analytical] dict keys: {keys}")
+        present = expected_analytical_keys & set(keys)
+        missing = expected_analytical_keys - set(keys)
         if missing:
-            print(f"  [analytical] expected keys missing: {sorted(missing)}")
-        if unexpected:
-            print(f"  [analytical] unexpected keys present: {sorted(unexpected)}")
+            print(f"  [analytical] {len(present)}/{len(expected_analytical_keys)} expected keys present; missing: {sorted(missing)}")
         for fn in (
             update_d_live,
             update_analytical_outlook,
@@ -2408,6 +2407,9 @@ def main():
             print(f"  [SKIP] analytical bundle — {raw_analytical.get('_error')}")
         elif isinstance(raw_analytical, list):
             print(f"  [SKIP] analytical bundle — Sonar returned a list at root ({len(raw_analytical)} items); expected dict. Sonar response shape mismatch.")
+        elif isinstance(raw_analytical, dict):
+            actual_keys = sorted(raw_analytical.keys())
+            print(f"  [SKIP] analytical bundle — Sonar returned a dict with NO expected keys. Got: {actual_keys}. Likely partial / over-unwrapped response. Skipping all analytical updaters; prior values preserved.")
         else:
             print(f"  [SKIP] analytical bundle — not collected (likely historical mode)")
 

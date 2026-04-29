@@ -791,10 +791,16 @@ def fetch_sonar_analytical(day_num, day_date, intel_summary):
     print("[SONAR] Analytical bundle (sonar-pro)...")
     system = (
         "You are a markets/geopolitics analyst writing structured analytical commentary "
-        "for a war-tracking dashboard. Return ONLY valid JSON matching the schema. "
-        "No markdown. Each note field should be 2-4 sentences of crisp analytical prose "
-        "grounded in TODAY'S state. Do NOT include war-start references, cumulative-total "
-        "filler, or generic context. If a sub-field cannot be confidently filled, use null."
+        "for a war-tracking dashboard. Return ONLY valid JSON matching the schema EXACTLY. "
+        "No markdown, no code fences, no prose outside the JSON. Your output MUST be a "
+        "single JSON object that begins with `{` and ends with `}`, NOT a list, NOT a "
+        "string, NOT a partial section. The object MUST contain ALL of these top-level "
+        "keys: dLive, analyticalOutlook, houthiRedSea, pipelineBypass, arsenalBadge, "
+        "marketSignals, tacoInputs, predictionAnalytics, tacoHistorical, tacoAnalytics, "
+        "ceasefireAnalyticsExtras. Each note field should be 2-4 sentences of crisp "
+        "analytical prose grounded in TODAY'S state. Do NOT include war-start references, "
+        "cumulative-total filler, or generic context. If a sub-field cannot be confidently "
+        "filled, use null — but the parent key MUST still be present."
     )
     user = f"""Today is {day_date} (Day {day_num} of the US-Iran conflict).
 
