@@ -1638,11 +1638,27 @@ def update_market_signals(data: dict, raw_analytical: dict) -> list[str]:
     ]
     for src_key, sub_key, field in mapping:
         v = ms.get(src_key)
-        if v and str(v).strip():
-            sub = target.get(sub_key) or {}
-            sub[field] = _coerce_str(v)
-            target[sub_key] = sub
+        if not (v and str(v).strip()):
+            continue
+        existing = target.get(sub_key)
+        note_text = _coerce_str(v)
+        if isinstance(existing, dict):
+            existing[field] = note_text
+            target[sub_key] = existing
             updated.append(sub_key)
+        elif isinstance(existing, list):
+            # Schema variant: list of items. Attach note to first item's `note`
+            # field if the item is a dict; otherwise prepend a minimal note row.
+            if existing and isinstance(existing[0], dict):
+                existing[0][field] = note_text
+            else:
+                existing.insert(0, {field: note_text})
+            target[sub_key] = existing
+            updated.append(f"{sub_key}[0]")
+        elif existing is None:
+            target[sub_key] = {field: note_text}
+            updated.append(sub_key)
+        # If existing is some other type (string), skip to avoid clobbering
     return [f"marketSignals: {len(updated)} sub-section note(s) refreshed"] if updated else []
 
 
