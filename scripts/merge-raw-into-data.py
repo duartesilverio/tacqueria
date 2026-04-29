@@ -391,6 +391,24 @@ def update_dubai_watch(dubai_section: dict, raw_dubai: dict, day: int, day_date:
             snapshots.append(new_snap)
             updates.append(f"dubaiWatch.snapshots appended day={day}")
 
+    # Refresh luxury.{date,day} so the "Day 42 (Apr 10)" footer doesn't render.
+    # The luxury counts themselves require a separate Sonar pass with luxury
+    # filters (TODO); for now we just bump the date so the dashboard doesn't
+    # display a 50+ day-old reference label.
+    luxury = dubai_section.get("luxury")
+    if isinstance(luxury, dict):
+        prev_day = luxury.get("day")
+        if prev_day != day:
+            luxury["date"] = today_str
+            luxury["day"] = day
+            updates.append(f"dubaiWatch.luxury date->day {day}")
+
+    # Refresh dataNote so it doesn't display "Day 42, Apr 10" indefinitely.
+    note = dubai_section.get("dataNote")
+    if isinstance(note, str) and ("Day 42" in note or "Apr 10" in note):
+        dubai_section["dataNote"] = f"Day {day} ({today_str}) — dubaiWatch live scrape"
+        updates.append("dubaiWatch.dataNote refreshed")
+
     return updates
 
 

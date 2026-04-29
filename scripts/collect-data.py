@@ -898,23 +898,38 @@ def fetch_sonar_dubai_watch(day_date):
     print("[SONAR] Dubai Watch (sonar)...")
 
     system = (
-        "You are a data extraction assistant. Return ONLY valid JSON. "
-        "No markdown."
+        "You are a data extraction assistant scraping public marketplace listing counts. "
+        "Return ONLY valid JSON, no markdown. For each platform, return your best estimate "
+        "of the total used-car listing count visible on the platform's main inventory page. "
+        "If an exact integer isn't visible, return your best whole-number estimate based on "
+        "page heuristics (results-per-page × page count, search-results header, category "
+        "totals). Use null ONLY if the platform is unreachable or appears to have NO "
+        "inventory page; do not return null just because an exact count isn't displayed."
     )
-    user = f"""Search for the current number of used car listings on these Dubai car marketplaces as of {day_date}:
-1. dubai.dubizzle.com/motors/used-cars/ (total listings count)
-2. dubicars.com (total used car listings)
-3. yallamotor.com (total used car listings in UAE)
+    user = f"""For {day_date}, search each of these Dubai/UAE used-car platforms and return the TOTAL count of used car listings on each:
 
-These counts are being tracked as a proxy for evacuation/capital flight from the Gulf during the Iran conflict.
+1. dubizzle.com — go to dubai.dubizzle.com/motors/used-cars/ (or the equivalent UAE used-cars
+   category) and look for the listings header (e.g., "X used cars found", search-results
+   count, or filter total). Report the integer.
+
+2. dubicars.com — go to dubicars.com (UAE site, the homepage typically displays "X cars
+   for sale" or similar). Also check dubicars.com/used-cars/. Report the integer.
+
+3. yallamotor.com — go to yallamotor.com/used-cars/uae/ or similar UAE used-car category.
+   Look for the search-results count or paginated listing total. Report the integer.
+
+These counts proxy evacuation/capital flight from the Gulf during the Iran conflict.
+Tracking direction matters more than exactness — return your best estimate even if the
+number is approximate. Order of magnitude: dubizzle typically has 25,000-30,000 listings,
+dubicars typically 4,000-5,000, yallamotor typically 200-500.
 
 Return JSON:
 {{
-  "dubizzle": <integer count or null>,
-  "dubicars": <integer count or null>,
-  "yallamotor": <integer count or null>,
-  "data_freshness": "<how recent the numbers are>",
-  "note": "<any relevant context about car market trends in Dubai>"
+  "dubizzle": <integer or null>,
+  "dubicars": <integer or null>,
+  "yallamotor": <integer or null>,
+  "data_freshness": "<e.g. 'live as of {day_date}' or 'cached from MM-DD'>",
+  "note": "<1 sentence on any visible price/inventory trend or evacuation signal>"
 }}"""
 
     return sonar_query("sonar", system, user)
