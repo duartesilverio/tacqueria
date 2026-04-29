@@ -890,7 +890,28 @@ Constraints:
 - Do NOT mention 'Operation Epic Fury' or war-start dates
 - Each value field on basisCards stays under 25 chars
 - For sub-fields you cannot confidently fill, return null — DO NOT fabricate"""
-    return sonar_query("sonar-pro", system, user)
+    expected_keys = {"dLive", "analyticalOutlook", "houthiRedSea", "pipelineBypass",
+                     "arsenalBadge", "marketSignals", "tacoInputs", "predictionAnalytics",
+                     "tacoHistorical", "tacoAnalytics", "ceasefireAnalyticsExtras"}
+    # Try once. If response misses ALL expected keys (partial / over-unwrapped),
+    # retry once with a stricter reminder — Sonar sometimes returns just one
+    # inner section (e.g. a single basisCard) instead of the full bundle.
+    response = sonar_query("sonar-pro", system, user)
+    if isinstance(response, dict) and (expected_keys & set(response.keys())):
+        return response
+    if isinstance(response, dict) and response.get("_error"):
+        return response
+    print("  [ANALYTICAL] First response had no expected keys — retrying with reinforcement...")
+    reinforced_user = (
+        "PREVIOUS ATTEMPT FAILED: your response did not contain the required top-level keys. "
+        "You MUST return a single JSON object with these EXACT 11 keys at the root level: "
+        "dLive, analyticalOutlook, houthiRedSea, pipelineBypass, arsenalBadge, marketSignals, "
+        "tacoInputs, predictionAnalytics, tacoHistorical, tacoAnalytics, ceasefireAnalyticsExtras. "
+        "Do NOT return just one section. Do NOT wrap in a list. Begin with `{` and end with `}`.\n\n"
+        + user
+    )
+    response2 = sonar_query("sonar-pro", system, reinforced_user)
+    return response2
 
 
 def fetch_sonar_dubai_watch(day_date):
