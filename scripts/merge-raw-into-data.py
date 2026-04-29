@@ -1114,6 +1114,27 @@ def update_operations(data: dict, raw_intel: dict, day: int) -> list[str]:
             data["operations"]["iranNeighbors"] = new_rows
             updates.append(f"operations.iranNeighbors: {len(new_rows)} country rows")
 
+    # operations.pipeline — mirror from pipelineBypass (already refreshed via Sonar bundle)
+    pb = data.get("pipelineBypass") or {}
+    saudi = pb.get("saudiEastWest") or {}
+    habshan = pb.get("habshanFujairah") or {}
+    if saudi or habshan:
+        pipe = data["operations"].get("pipeline") or {}
+        if saudi.get("currentFlow"):
+            pipe["petrolineValue"] = saudi["currentFlow"]
+        if saudi.get("status"):
+            pipe["petrolineStatus"] = saudi["status"]
+        if saudi.get("note"):
+            pipe["petrolineDetail"] = saudi["note"]
+        if habshan.get("currentFlow"):
+            pipe["adcopValue"] = habshan["currentFlow"]
+        if habshan.get("status"):
+            pipe["adcopStatus"] = habshan["status"]
+        if habshan.get("note"):
+            pipe["adcopDetail"] = habshan["note"]
+        data["operations"]["pipeline"] = pipe
+        updates.append("operations.pipeline (mirrored from pipelineBypass)")
+
     # indicators — derive from intel + KPIs (a few mechanical signals)
     inds = []
     cf_l = cf.lower()
