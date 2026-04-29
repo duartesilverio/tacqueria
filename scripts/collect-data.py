@@ -530,11 +530,32 @@ def sonar_query(model, system_prompt, user_prompt, retries=1):
     return {"_error": f"Sonar {model} failed after {retries + 1} attempts", "_collected": False}
 
 
+def _coerce_dict_response(parsed):
+    """If Sonar returned a list when we expected a dict (e.g. [{...}] for the
+    analytical bundle), unwrap to the first dict element so the caller doesn't
+    crash on .get(). Pass dicts through untouched. Empty/non-dict-list -> {}.
+    """
+    if isinstance(parsed, dict):
+        return parsed
+    if isinstance(parsed, list):
+        # Common shapes: [{...analytical bundle...}] or [{section1: {...}}, {section2: ...}]
+        # If single dict element, unwrap. If list of named-section dicts, merge.
+        dicts = [x for x in parsed if isinstance(x, dict)]
+        if len(dicts) == 1:
+            return dicts[0]
+        if len(dicts) > 1:
+            merged = {}
+            for d in dicts:
+                merged.update(d)
+            return merged
+    return parsed  # let caller handle non-dict; merge step has isinstance guards
+
+
 def try_parse_json(text):
     """Try to extract and parse JSON from text (may be wrapped in markdown)."""
     # Try direct parse
     try:
-        return json.loads(text)
+        return _coerce_dict_response(json.loads(text))
     except json.JSONDecodeError:
         pass
 
@@ -542,7 +563,7 @@ def try_parse_json(text):
     m = re.search(r"```(?:json)?\s*\n?(.*?)\n?```", text, re.DOTALL)
     if m:
         try:
-            return json.loads(m.group(1))
+            return _coerce_dict_response(json.loads(m.group(1)))
         except json.JSONDecodeError:
             pass
 
@@ -558,7 +579,7 @@ def try_parse_json(text):
                     depth -= 1
                     if depth == 0:
                         try:
-                            return json.loads(text[start : i + 1])
+                            return _coerce_dict_response(json.loads(text[start : i + 1]))
                         except json.JSONDecodeError:
                             break
 
