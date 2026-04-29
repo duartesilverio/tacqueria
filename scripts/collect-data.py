@@ -914,46 +914,134 @@ Constraints:
     return response2
 
 
-def fetch_sonar_dubai_watch(day_date):
-    """Dubai used car listing counts (best-effort)."""
-    print("[SONAR] Dubai Watch (sonar)...")
+_BROWSER_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9,ar;q=0.8",
+    "Accept-Encoding": "gzip, deflate, br",
+    "DNT": "1",
+    "Connection": "keep-alive",
+    "Upgrade-Insecure-Requests": "1",
+    "Sec-Fetch-Dest": "document",
+    "Sec-Fetch-Mode": "navigate",
+    "Sec-Fetch-Site": "none",
+    "Sec-Fetch-User": "?1",
+    "Cache-Control": "max-age=0",
+}
 
-    system = (
-        "You are a data extraction assistant scraping public marketplace listing counts. "
-        "Return ONLY valid JSON, no markdown. For each platform, return your best estimate "
-        "of the total used-car listing count visible on the platform's main inventory page. "
-        "If an exact integer isn't visible, return your best whole-number estimate based on "
-        "page heuristics (results-per-page × page count, search-results header, category "
-        "totals). Use null ONLY if the platform is unreachable or appears to have NO "
-        "inventory page; do not return null just because an exact count isn't displayed."
+
+def _scrape_count(urls, patterns, label):
+    """Try a list of URLs; on first that returns a useful count, return it.
+
+    Some marketplaces are SPA / JS-rendered and return a small placeholder
+    HTML to non-browser clients — those won't match any pattern. Some are
+    blocked by Cloudflare anti-bot. Fall back to None and let the merge step
+    forward-fill from the last snapshot.
+    """
+    if isinstance(urls, str):
+        urls = [urls]
+    for url in urls:
+        try:
+            req = urllib.request.Request(url, headers=_BROWSER_HEADERS)
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                raw = resp.read()
+                # Decompress gzip/deflate if present
+                if resp.headers.get("Content-Encoding") == "gzip":
+                    import gzip
+                    raw = gzip.decompress(raw)
+                elif resp.headers.get("Content-Encoding") == "deflate":
+                    import zlib
+                    raw = zlib.decompress(raw)
+                elif resp.headers.get("Content-Encoding") == "br":
+                    try:
+                        import brotli
+                        raw = brotli.decompress(raw)
+                    except ImportError:
+                        pass  # brotli not installed; raw bytes may still parse
+                html = raw.decode("utf-8", errors="ignore")
+        except Exception as e:
+            print(f"  [DUBAI/{label}] {url[:60]}: {e}")
+            continue
+        for pat in patterns:
+            m = re.search(pat, html, re.IGNORECASE)
+            if m:
+                try:
+                    raw_num = m.group(1).replace(",", "")
+                    if "k" in raw_num.lower():
+                        return int(float(raw_num.lower().replace("k", "")) * 1000)
+                    return int(raw_num)
+                except (ValueError, AttributeError):
+                    continue
+        print(f"  [DUBAI/{label}] {url[:60]}: no count match in {len(html)}b")
+    return None
+
+
+def fetch_dubai_watch(day_date):
+    """Scrape UAE used-car marketplaces for total listing counts.
+
+    LIMITATION: dubizzle and dubicars serve a JS-rendered SPA shell to non-
+    browser clients (Cloudflare anti-bot). Reliable scraping for those needs
+    playwright/puppeteer. yallamotor sometimes returns full HTML, sometimes
+    rate-limits. Counts that fail to scrape return None and the merge step
+    forward-fills from the most recent successful snapshot.
+    """
+    print("[SCRAPE] Dubai Watch...")
+    out = {}
+
+    out["dubizzle"] = _scrape_count(
+        [
+            "https://dubai.dubizzle.com/motors/used-cars/",
+            "https://www.dubizzle.com/en-uae/motors/used-cars/",
+        ],
+        [
+            r'"total[_-]?(?:results|count|hits)"\s*:\s*"?(\d[\d,]+)',
+            r'(\d[\d,]{4,})\s*(?:used\s+)?cars?\s+(?:for\s+sale|in\s+(?:dubai|uae))',
+            r'<meta[^>]*description[^>]*content="[^"]*?(\d[\d,]{4,})\s*(?:used\s+)?cars?',
+            r'showing\s+\d+[\d,\s\-of]*\s+of\s+(\d[\d,]+)',
+        ],
+        "dubizzle",
     )
-    user = f"""For {day_date}, search each of these Dubai/UAE used-car platforms and return the TOTAL count of used car listings on each:
 
-1. dubizzle.com — go to dubai.dubizzle.com/motors/used-cars/ (or the equivalent UAE used-cars
-   category) and look for the listings header (e.g., "X used cars found", search-results
-   count, or filter total). Report the integer.
+    out["dubicars"] = _scrape_count(
+        [
+            "https://www.dubicars.com/used-cars",
+            "https://www.dubicars.com/used-cars/uae",
+            "https://www.dubicars.com/",
+        ],
+        [
+            r'(\d[\d,]{3,})\s*(?:used\s+)?cars?\s+(?:for\s+sale|listed|in\s+(?:dubai|uae))',
+            r'"total[_-]?(?:results|count|listings)"\s*:\s*"?(\d[\d,]+)',
+            r'<meta[^>]*description[^>]*content="[^"]*?(\d[\d,]{3,})\s*(?:used\s+)?cars',
+            r'(\d[\d,]{3,})\s*(?:results|listings)',
+        ],
+        "dubicars",
+    )
 
-2. dubicars.com — go to dubicars.com (UAE site, the homepage typically displays "X cars
-   for sale" or similar). Also check dubicars.com/used-cars/. Report the integer.
+    out["yallamotor"] = _scrape_count(
+        [
+            "https://uae.yallamotor.com/used-cars",
+            "https://uae.yallamotor.com/used-cars/dubai",
+        ],
+        [
+            r'(\d[\d,]{2,})\s*(?:used\s+)?cars?\s+(?:for\s+sale|listed|in\s+(?:dubai|uae))',
+            r'"total[_-]?(?:results|count)"\s*:\s*"?(\d[\d,]+)',
+            r'<meta[^>]*description[^>]*content="[^"]*?(\d[\d,]{2,})\s*(?:used\s+)?cars',
+            r'(\d[\d,]+)\s*(?:results|listings|vehicles)',
+        ],
+        "yallamotor",
+    )
 
-3. yallamotor.com — go to yallamotor.com/used-cars/uae/ or similar UAE used-car category.
-   Look for the search-results count or paginated listing total. Report the integer.
+    found = sum(1 for v in out.values() if v is not None)
+    print(f"  [DUBAI] Scraped {found}/3 platforms: {out}")
+    out["data_freshness"] = f"live scrape on {day_date}"
+    out["note"] = ""
+    out["_collected"] = found > 0
+    return out
 
-These counts proxy evacuation/capital flight from the Gulf during the Iran conflict.
-Tracking direction matters more than exactness — return your best estimate even if the
-number is approximate. Order of magnitude: dubizzle typically has 25,000-30,000 listings,
-dubicars typically 4,000-5,000, yallamotor typically 200-500.
 
-Return JSON:
-{{
-  "dubizzle": <integer or null>,
-  "dubicars": <integer or null>,
-  "yallamotor": <integer or null>,
-  "data_freshness": "<e.g. 'live as of {day_date}' or 'cached from MM-DD'>",
-  "note": "<1 sentence on any visible price/inventory trend or evacuation signal>"
-}}"""
-
-    return sonar_query("sonar", system, user)
+# Back-compat alias for any code still referencing the old name
+fetch_sonar_dubai_watch = fetch_dubai_watch
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1181,12 +1269,13 @@ def main():
         futures["poly"] = pool.submit(fetch_polymarket_iran, historical_date)
 
         # Tier B: Sonar research
+        # Dubai watch is a real HTTP scrape, runs regardless of Sonar key
+        futures["dubai"] = pool.submit(fetch_dubai_watch, day_date)
         if PERPLEXITY_API_KEY:
             futures["intel"] = pool.submit(fetch_sonar_intelligence, day_num, day_date)
             futures["fed"] = pool.submit(fetch_sonar_cpi_fed, day_date)
             futures["rhetoric"] = pool.submit(fetch_sonar_rhetoric, day_num, day_date)
             futures["bca"] = pool.submit(fetch_sonar_bca, day_date)
-            futures["dubai"] = pool.submit(fetch_sonar_dubai_watch, day_date)
         else:
             print("[WARN] No PERPLEXITY_API_KEY — skipping Sonar queries\n")
 

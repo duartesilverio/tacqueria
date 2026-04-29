@@ -330,6 +330,30 @@ def update_dubai_watch(dubai_section: dict, raw_dubai: dict, day: int, day_date:
     dubicars = raw_dubai.get("dubicars")
     yallamotor = raw_dubai.get("yallamotor")
 
+    # Forward-fill from the most recent snapshot for any platform that failed
+    # to scrape today (anti-bot or SPA-rendered content). Better to repeat
+    # yesterday's value than to write null and break trend continuity.
+    snapshots = dubai_section.get("snapshots") or []
+    last_known = {}
+    for snap in reversed(snapshots):
+        if not isinstance(snap, dict):
+            continue
+        for k in ("dubizzle", "dubicars", "yallamotor"):
+            if k not in last_known and snap.get(k) is not None:
+                last_known[k] = snap[k]
+        if len(last_known) == 3:
+            break
+
+    if dubizzle is None and last_known.get("dubizzle") is not None:
+        dubizzle = last_known["dubizzle"]
+        updates.append("dubaiWatch.dubizzle: forward-filled (scrape failed)")
+    if dubicars is None and last_known.get("dubicars") is not None:
+        dubicars = last_known["dubicars"]
+        updates.append("dubaiWatch.dubicars: forward-filled (scrape failed)")
+    if yallamotor is None and last_known.get("yallamotor") is not None:
+        yallamotor = last_known["yallamotor"]
+        updates.append("dubaiWatch.yallamotor: forward-filled (scrape failed)")
+
     if dubizzle is None and dubicars is None and yallamotor is None:
         return updates
 
