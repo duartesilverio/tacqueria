@@ -12,16 +12,16 @@ const DASHBOARD_DATA = {
   // ── META ────────────────────────────────────────────────────────────────────
   meta: {
     version: "4.0.0",
-    timestamp: "29 Apr 2026 17:23 HKT",
+    timestamp: "29 Apr 2026 17:26 HKT",
     day: 61,
     dayDate: "13 APR 2026",
-    threatLevel: "HIGH",
-    threatClass: "threat-red",
-    tacoScore: 18,
+    threatLevel: "ELEVATED",
+    threatClass: "threat-orange",
+    tacoScore: 10,
     tacoMax: 100,
     tacoPrev: 18,
     tacoPrevDay: 42,
-    tacoRegime: "BRENT $107.56",
+    tacoRegime: "BRENT $107.75",
     tacoRegimeLabel: "CEASEFIRE DAY 5: Vance 21-hour marathon talks in Islamabad END WITHOUT DEAL. Trump: 'We've won — whether we make a deal makes no difference.' US announces naval blockade of Hormuz. Mojtaba Khamenei breaks silence, vows revenge for father's assassination. Netanyahu rules out Lebanon ceasefire. Brent $101.53 (+6.7%). WTI $104.17 (+7.9%). VIX 19.23 (-1.3%). Gold $4,737 (-1.1%). CPI surges to 3.3% (gasoline +21.2%). Ceasefire nominally holds but diplomatic path severely damaged.",
     tacoRegimeColor: "#ef4444",
     tacoPhase: "ceasefire",
@@ -35,13 +35,13 @@ const DASHBOARD_DATA = {
   // ── FINANCIAL KPIs — Market Signals Tab ─────────────────────────────────────
   // NOTE: Wednesday 18 Mar — Full market day. Brent spiked to $108.52 on South Pars attack. Gold crashed. Equities red. VIX bounced.
   kpis: {
-    brent:    { label: "Brent (ICE)",      price: 107.56, change: -3.7,   changePct: -3.33,  prevClose: 111.26, cssClass: "kpi-down",   note: "▼ -3.3% · Ceasefire relief · HL $107.70 · Hormuz: Closed" },
-    wti:      { label: "WTI (NYMEX)",      price: 103.38,  change: 3.45,   changePct: 3.45,  prevClose: 99.93,  cssClass: "kpi-up",   note: "▲ +3.5% · WTI premium persists (spread $4.18)" },
+    brent:    { label: "Brent (ICE)",      price: 107.75, change: -3.51,   changePct: -3.15,  prevClose: 111.26, cssClass: "kpi-down",   note: "▼ -3.1% · Ceasefire relief · HL $107.63 · Hormuz: Contested" },
+    wti:      { label: "WTI (NYMEX)",      price: 103.59,  change: 3.66,   changePct: 3.66,  prevClose: 99.93,  cssClass: "kpi-up",   note: "▲ +3.7% · WTI premium persists (spread $4.16)" },
     tnx:      { label: "US 10Y Yield",     price: 4.35,   change: 0.02,   changePct: 0.42,  prevClose: 4.34,   cssClass: "kpi-up", note: "4.35% · ▲ +0.4% · Yield steady amid ceasefire uncertainty", isPercent: true },
-    vix:      { label: "VIX",              price: 18.07,  change: 0.24,   changePct: 1.35,  prevClose: 17.83,  cssClass: "kpi-up", note: "▲ +1.4% · Low vol — ceasefire risk priced in", noDollar: true },
+    vix:      { label: "VIX",              price: 18.05,  change: 0.22,   changePct: 1.23,  prevClose: 17.83,  cssClass: "kpi-up", note: "▲ +1.2% · Low vol — ceasefire risk priced in", noDollar: true },
     hyg:      { label: "HY Spread (HYG)",  price: 80.4,  change: -0.11,  changePct: -0.14, prevClose: 80.51,  cssClass: "kpi-flat", note: "▼ -0.1% · Credit widening — stress watch" },
-    gold:     { label: "Gold Spot",        price: 4588.2,   change: -20.2,   changePct: -0.44, prevClose: 4608.4,   cssClass: "kpi-down",   note: "▼ -0.4% · $4,588 · Safe-haven demand easing on ceasefire", formatComma: true },
-    brentWtiSpread: { label: "Brent–WTI Spread", price: 4.18, change: -7.15, changePct: -63.11, prevClose: 11.33, cssClass: "kpi-down", note: "Spread $4.18 · Spread normalizing", noDollar: false },
+    gold:     { label: "Gold Spot",        price: 4587.5,   change: -20.9,   changePct: -0.45, prevClose: 4608.4,   cssClass: "kpi-down",   note: "▼ -0.5% · $4,588 · Safe-haven demand easing on ceasefire", formatComma: true },
+    brentWtiSpread: { label: "Brent–WTI Spread", price: 4.16, change: -7.17, changePct: -63.28, prevClose: 11.33, cssClass: "kpi-down", note: "Spread $4.16 · Spread normalizing", noDollar: false },
     ita:      { label: "ITA (Defense ETF)", price: 216.21, change: 0.17,   changePct: 0.08,  prevClose: 216.04, cssClass: "kpi-flat", note: "▲ +0.1% · Defense sector — ceasefire fragility hedge" }
   },
 
@@ -49,8 +49,8 @@ const DASHBOARD_DATA = {
   marketStrip: [
     {
       label: 'Brent',
-      value: '$107.56',
-      delta: '-3.3%',
+      value: '$107.75',
+      delta: '-3.1%',
       color: '#ef4444'
     },
     {
@@ -61,14 +61,14 @@ const DASHBOARD_DATA = {
     },
     {
       label: 'VIX',
-      value: '18.07',
-      delta: '+1.4%',
+      value: '18.05',
+      delta: '+1.2%',
       color: '#22c55e'
     },
     {
       label: 'Gold',
-      value: '$4,588.20',
-      delta: '-0.4%',
+      value: '$4,587.50',
+      delta: '-0.5%',
       color: '#ef4444'
     },
     {
@@ -2183,29 +2183,29 @@ const DASHBOARD_DATA = {
   gistBanner: {
     bullets: [
       {
-        text: 'Apr 28, 2026: Israeli airstrikes hit Hezbollah targets deep in Lebanon’s Beqaa Valley.',
-        color: 'red'
-      },
-      {
-        text: 'Apr 29, 2026: Iran’s Foreign Minister engaged in regional diplomacy involving Pakistan amid escalating tensions.',
-        color: 'red'
-      },
-      {
-        text: 'Apr 29, 2026: Israeli strikes hit southern Lebanon, complicating ceasefire efforts.',
-        color: 'red'
-      },
-      {
-        text: 'Ceasefire agreed on April 7, 2026, halting fighting but talks inconclusive.',
+        text: 'April 26: Iranian Foreign Minister Abbas Araghchi travelled to Muscat, Oman, to discuss Strait of Hormuz security with Sultan Haitham al Tariq.',
         color: 'yellow'
       },
       {
-        text: 'US weighing new Iranian proposal on unblocking Strait of Hormuz (April 28).',
+        text: 'April 26: Israel deployed Iron Dome battery and IDF personnel to UAE following Netanyahu\'s order after call with UAE President Mohammed bin Zayed.',
+        color: 'yellow'
+      },
+      {
+        text: 'April 25: US forces intercepted US-sanctioned Panamanian-flagged gas tanker Sevan in Arabian Sea for transporting Iranian oil.',
+        color: 'yellow'
+      },
+      {
+        text: 'US sending delegation including Jared Kushner and Steve Witkoff to Pakistan for talks; VP JD Vance on standby.',
+        color: 'yellow'
+      },
+      {
+        text: 'Iran\'s Foreign Minister states no direct talks.',
         color: 'yellow'
       }
     ],
     pills: [
       {
-        label: 'Brent $107.56',
+        label: 'Brent $107.75',
         color: 'amber'
       },
       {
@@ -2213,7 +2213,7 @@ const DASHBOARD_DATA = {
         color: 'amber'
       },
       {
-        label: 'VIX 18.07',
+        label: 'VIX 18.05',
         color: 'amber'
       },
       {
@@ -2221,8 +2221,8 @@ const DASHBOARD_DATA = {
         color: 'amber'
       },
       {
-        label: 'Hormuz CLOSED',
-        color: 'red'
+        label: 'Hormuz CONTESTED',
+        color: 'amber'
       },
       {
         label: 'CPI 3.3%',
@@ -2238,39 +2238,39 @@ const DASHBOARD_DATA = {
   // ── 2. NEWS-NOW CARDS ────────────────────────────────────────────────────────
   newsNow: [
     {
-      label: 'MILITARY',
-      title: 'Apr 28, 2026: Israeli airstrikes hit Hezbollah targets deep in Lebanon’s Beqaa Valley',
-      body: 'Apr 28, 2026: Israeli airstrikes hit Hezbollah targets deep in Lebanon’s Beqaa Valley.',
-      color: 'yellow'
-    },
-    {
-      label: 'TALKS',
-      title: 'Apr 29, 2026: Iran’s Foreign Minister engaged in regional diplomacy involving Pakistan ami',
-      body: 'Apr 29, 2026: Iran’s Foreign Minister engaged in regional diplomacy involving Pakistan amid escalating tensions.',
-      color: 'red'
-    },
-    {
-      label: 'CEASEFIRE',
-      title: 'Apr 29, 2026: Israeli strikes hit southern Lebanon, complicating ceasefire efforts',
-      body: 'Apr 29, 2026: Israeli strikes hit southern Lebanon, complicating ceasefire efforts.',
+      label: 'HORMUZ',
+      title: 'April 26: Iranian Foreign Minister Abbas Araghchi travelled to Muscat, Oman, to discuss St',
+      body: 'April 26: Iranian Foreign Minister Abbas Araghchi travelled to Muscat, Oman, to discuss Strait of Hormuz security with Sultan Haitham al Tariq.',
       color: 'yellow'
     },
     {
       label: 'CONFLICT',
-      title: 'Apr 26, 2026: Israeli Iron Dome battery and IDF personnel deployed to UAE following Netany',
-      body: 'Apr 26, 2026: Israeli Iron Dome battery and IDF personnel deployed to UAE following Netanyahu\'s order.',
+      title: 'April 26: Israel deployed Iron Dome battery and IDF personnel to UAE following Netanyahu\'s',
+      body: 'April 26: Israel deployed Iron Dome battery and IDF personnel to UAE following Netanyahu\'s order after call with UAE President Mohammed bin Zayed.',
+      color: 'yellow'
+    },
+    {
+      label: 'CONFLICT',
+      title: 'April 25: US forces intercepted US-sanctioned Panamanian-flagged gas tanker Sevan in Arabi',
+      body: 'April 25: US forces intercepted US-sanctioned Panamanian-flagged gas tanker Sevan in Arabian Sea for transporting Iranian oil.',
+      color: 'yellow'
+    },
+    {
+      label: 'MILITARY',
+      title: 'April 28: Israeli airstrikes hit Hezbollah targets in Lebanon\'s Beqaa Valley',
+      body: 'April 28: Israeli airstrikes hit Hezbollah targets in Lebanon\'s Beqaa Valley.',
       color: 'yellow'
     },
     {
       label: 'TALKS',
-      title: 'Ceasefire agreed on April 7, 2026, halting fighting but talks inconclusive',
-      body: 'Ceasefire agreed on April 7, 2026, halting fighting but talks inconclusive.',
+      title: 'US sending delegation including Jared Kushner and Steve Witkoff to Pakistan for talks; VP ',
+      body: 'US sending delegation including Jared Kushner and Steve Witkoff to Pakistan for talks; VP JD Vance on standby.',
       color: 'yellow'
     },
     {
       label: 'TALKS',
-      title: 'US weighing new Iranian proposal on unblocking Strait of Hormuz (April 28)',
-      body: 'US weighing new Iranian proposal on unblocking Strait of Hormuz (April 28).',
+      title: 'Iran\'s Foreign Minister states no direct talks',
+      body: 'Iran\'s Foreign Minister states no direct talks.',
       color: 'yellow'
     }
   ],
@@ -2282,7 +2282,7 @@ const DASHBOARD_DATA = {
       value: 'ACTIVE',
       score: 6,
       scoreColor: '#f59e0b',
-      detail: 'Ceasefire agreed on April 7, 2026, halting fighting but talks inconclusive.'
+      detail: 'US sending delegation including Jared Kushner and Steve Witkoff to Pakistan for talks; VP JD Vance on standby.'
     },
     {
       label: 'Rhetoric Temperature',
@@ -2394,29 +2394,29 @@ const DASHBOARD_DATA = {
   // ── 6. KEY TRIGGERS ──────────────────────────────────────────────────────────
   keyTriggers: [
     {
-      title: 'Apr 28, 2026: Israeli airstrikes hit Hezbollah targets deep in Lebanon’s Beqaa V',
+      title: 'April 26: Iranian Foreign Minister Abbas Araghchi travelled to Muscat, Oman, to ',
       titleColor: '#f59e0b',
-      body: 'Apr 28, 2026: Israeli airstrikes hit Hezbollah targets deep in Lebanon’s Beqaa Valley.'
+      body: 'April 26: Iranian Foreign Minister Abbas Araghchi travelled to Muscat, Oman, to discuss Strait of Hormuz security with Sultan Haitham al Tariq.'
     },
     {
-      title: 'Apr 29, 2026: Iran’s Foreign Minister engaged in regional diplomacy involving Pa',
-      titleColor: '#ef4444',
-      body: 'Apr 29, 2026: Iran’s Foreign Minister engaged in regional diplomacy involving Pakistan amid escalating tensions.'
+      title: 'April 26: Israel deployed Iron Dome battery and IDF personnel to UAE following N',
+      titleColor: '#f59e0b',
+      body: 'April 26: Israel deployed Iron Dome battery and IDF personnel to UAE following Netanyahu\'s order after call with UAE President Mohammed bin Zayed.'
     },
     {
-      title: 'Apr 29, 2026: Israeli strikes hit southern Lebanon, complicating ceasefire effor',
+      title: 'April 25: US forces intercepted US-sanctioned Panamanian-flagged gas tanker Seva',
       titleColor: '#f59e0b',
-      body: 'Apr 29, 2026: Israeli strikes hit southern Lebanon, complicating ceasefire efforts.'
+      body: 'April 25: US forces intercepted US-sanctioned Panamanian-flagged gas tanker Sevan in Arabian Sea for transporting Iranian oil.'
     },
     {
       title: 'Hormuz Passage',
       titleColor: '#22c55e',
-      body: 'Status: closed. Daily transits: N/A.'
+      body: 'Status: contested. Daily transits: N/A.'
     },
     {
       title: 'Diplomatic Outlook',
       titleColor: '#f59e0b',
-      body: 'Ceasefire agreed on April 7, 2026, halting fighting but talks inconclusive.. US weighing new Iranian proposal on unblocking Strait of Hormuz (April 28).. US naval blockade of Iranian ports enforced, with 34-38 vessels turned around (as of April 24-27).'
+      body: 'US sending delegation including Jared Kushner and Steve Witkoff to Pakistan for talks; VP JD Vance on standby.. Iran\'s Foreign Minister states no direct talks.. Unclear if US-Iran will meet again in Islamabad for diplomatic deal.'
     }
   ],
 
@@ -2431,16 +2431,16 @@ const DASHBOARD_DATA = {
           items: ['negotiations stalled; no breakthrough']
         },
         {
-          title: 'Ceasefire agreed on April 7, 2026, halting fighting but talks inconclusive',
-          items: ['Ceasefire agreed on April 7, 2026, halting fighting but talks inconclusive.']
+          title: 'US sending delegation including Jared Kushner and Steve Witkoff to Pakistan for ',
+          items: ['US sending delegation including Jared Kushner and Steve Witkoff to Pakistan for talks; VP JD Vance on standby.']
         },
         {
-          title: 'US weighing new Iranian proposal on unblocking Strait of Hormuz (April 28)',
-          items: ['US weighing new Iranian proposal on unblocking Strait of Hormuz (April 28).']
+          title: 'Iran\'s Foreign Minister states no direct talks',
+          items: ['Iran\'s Foreign Minister states no direct talks.']
         },
         {
-          title: 'US naval blockade of Iranian ports enforced, with 34-38 vessels turned around (a',
-          items: ['US naval blockade of Iranian ports enforced, with 34-38 vessels turned around (as of April 24-27).']
+          title: 'Unclear if US-Iran will meet again in Islamabad for diplomatic deal',
+          items: ['Unclear if US-Iran will meet again in Islamabad for diplomatic deal.']
         }
       ],
       sources: [
@@ -2483,12 +2483,12 @@ const DASHBOARD_DATA = {
       ]
     },
     energy: {
-      badge: 'CLOSED',
+      badge: 'CONTESTED',
       badgeColor: '#22c55e',
       sections: [
         {
           title: 'Energy & Shipping — Day 61',
-          items: ['Hormuz status: CLOSED', 'Daily transits: N/A']
+          items: ['Hormuz status: CONTESTED', 'Daily transits: N/A']
         }
       ],
       sources: [
@@ -2514,16 +2514,16 @@ const DASHBOARD_DATA = {
     catalysts: [
       {
         rank: '1',
-        title: 'Apr 28, 2026: Israeli airstrikes hit Hezbollah targets deep in Lebanon’s Beqaa V',
+        title: 'April 26: Iranian Foreign Minister Abbas Araghchi travelled to Muscat, Oman, to ',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: 'Apr 28, 2026: Israeli airstrikes hit Hezbollah targets deep in Lebanon’s Beqaa Valley.',
+        body: 'April 26: Iranian Foreign Minister Abbas Araghchi travelled to Muscat, Oman, to discuss Strait of Hormuz security with Sultan Haitham al Tariq.',
         color: 'yellow'
       },
       {
         rank: '2',
-        title: 'Apr 29, 2026: Iran’s Foreign Minister engaged in regional diplomacy involving Pa',
+        title: 'April 26: Israel deployed Iron Dome battery and IDF personnel to UAE following N',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: 'Apr 29, 2026: Iran’s Foreign Minister engaged in regional diplomacy involving Pakistan amid escalating tensions.',
+        body: 'April 26: Israel deployed Iron Dome battery and IDF personnel to UAE following Netanyahu\'s order after call with UAE President Mohammed bin Zayed.',
         color: 'yellow'
       },
       {
@@ -2537,14 +2537,14 @@ const DASHBOARD_DATA = {
         rank: '4',
         title: 'Hormuz Passage',
         outcomeLabel: 'OPEN vs BLOCKADE',
-        body: 'Current status: CLOSED. Transits: N/A/day.',
+        body: 'Current status: CONTESTED. Transits: N/A/day.',
         color: 'green'
       },
       {
         rank: '5',
         title: 'Diplomatic Track',
         outcomeLabel: 'RESUME vs STALL',
-        body: 'Ceasefire agreed on April 7, 2026, halting fighting but talks inconclusive.. US weighing new Iranian proposal on unblocking Strait of Hormuz (April 28).',
+        body: 'US sending delegation including Jared Kushner and Steve Witkoff to Pakistan for talks; VP JD Vance on standby.. Iran\'s Foreign Minister states no direct talks.',
         color: 'yellow'
       }
     ]
@@ -3672,11 +3672,11 @@ const DASHBOARD_DATA = {
       note: 'Specs net long 180k contracts, adding on dip; managed money covers shorts amid stalemate.'
     },
     brentWtiSpread: {
-      current: '+$4.09',
+      current: '+$4.16',
       preWar: '+$3.50',
-      widening: '+$0.59 widening',
-      brentPrice: '$107.48',
-      wtiPrice: '$103.39',
+      widening: '+$0.66 widening',
+      brentPrice: '$107.75',
+      wtiPrice: '$103.59',
       commentary: 'WTI premium at $2.64 — Brent $101.53 vs WTI $104.17. Spread widening as ceasefire fragility reprices US supply premium. Pre-war spread was +$3.50 (Brent premium). Inversion persists — US-specific supply disruption pricing.'
     },
     optionsIntelligence: {
@@ -3739,7 +3739,7 @@ const DASHBOARD_DATA = {
     indicators: [
       {
         indicator: 'Hormuz transit',
-        value: 'CLOSED',
+        value: 'CONTESTED',
         dir: '↓',
         dirClass: 'ind-down',
         notes: 'Daily transits: N/A'
@@ -4325,13 +4325,13 @@ const DASHBOARD_DATA = {
       steps: [
         {
           label: 'Oil Price Increase',
-          value: '+46.9%',
-          detail: '$107.56 vs $73.20 baseline',
+          value: '+47.2%',
+          detail: '$107.75 vs $73.20 baseline',
           color: '#f59e0b'
         },
         {
           label: 'Energy CPI Impact',
-          value: '+10.80%',
+          value: '+10.86%',
           detail: 'Fed passthrough coefficient: 0.23',
           color: '#f59e0b'
         },
@@ -4343,20 +4343,20 @@ const DASHBOARD_DATA = {
         },
         {
           label: 'With Second-Round',
-          value: '+1.11pp',
+          value: '+1.12pp',
           detail: '×1.27 multiplier + 0.15pp food',
           color: '#f59e0b'
         },
         {
           label: 'Estimated CPI',
           value: '3.5%',
-          detail: '2.4% baseline + 1.11pp war premium',
+          detail: '2.4% baseline + 1.12pp war premium',
           color: '#f59e0b'
         }
       ],
       result: {
         headline: '~3.5%',
-        explanation: 'Brent at $107.56 (+46.9% vs pre-war baseline). Oil-to-CPI passthrough model estimates headline CPI at ~3.5% (war premium +1.11pp over 2.4% baseline).'
+        explanation: 'Brent at $107.75 (+47.2% vs pre-war baseline). Oil-to-CPI passthrough model estimates headline CPI at ~3.5% (war premium +1.12pp over 2.4% baseline).'
       },
       methodology: 'Dallas Fed elasticity (10% oil → +0.23% energy CPI) × BLS energy weight (7%) × second-round multiplier (1.27) + food acceleration (0.15pp). Source: FEDS Notes 2024, Dallas Fed Working Paper 2023.'
     },
@@ -4523,9 +4523,9 @@ const DASHBOARD_DATA = {
       badge: 'DAY 61',
       asOf: '2026-04-10T05:42:00+08:00',
       day: 61,
-      tacoScore: 18,
+      tacoScore: 10,
       polyCeasefire: 100,
-      headline: 'Apr 28, 2026: Israeli airstrikes hit Hezbollah targets deep in Lebanon’s Beqaa Valley.'
+      headline: 'April 26: Iranian Foreign Minister Abbas Araghchi travelled to Muscat, Oman, to discuss Strait of Hormuz security with Sultan Haitham al Tariq.'
     },
     usDemands: [
       {
@@ -5065,13 +5065,13 @@ const DASHBOARD_DATA = {
     summaryKpis: [
       {
         label: 'Brent',
-        value: '$107.56',
+        value: '$107.75',
         detail: 'Live KPI',
         color: '#22c55e'
       },
       {
         label: 'Hormuz',
-        value: 'CLOSED',
+        value: 'CONTESTED',
         detail: 'Daily transits: N/A',
         color: '#ef4444'
       }
