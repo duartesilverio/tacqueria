@@ -12,16 +12,16 @@ const DASHBOARD_DATA = {
   // ── META ────────────────────────────────────────────────────────────────────
   meta: {
     version: "4.0.0",
-    timestamp: "29 Apr 2026 17:34 HKT",
+    timestamp: "29 Apr 2026 17:37 HKT",
     day: 61,
     dayDate: "13 APR 2026",
-    threatLevel: "ELEVATED",
-    threatClass: "threat-orange",
-    tacoScore: 10,
+    threatLevel: "HIGH",
+    threatClass: "threat-red",
+    tacoScore: 15,
     tacoMax: 100,
     tacoPrev: 18,
     tacoPrevDay: 42,
-    tacoRegime: "BRENT $107.56",
+    tacoRegime: "BRENT $107.62",
     tacoRegimeLabel: "CEASEFIRE DAY 5: Vance 21-hour marathon talks in Islamabad END WITHOUT DEAL. Trump: 'We've won — whether we make a deal makes no difference.' US announces naval blockade of Hormuz. Mojtaba Khamenei breaks silence, vows revenge for father's assassination. Netanyahu rules out Lebanon ceasefire. Brent $101.53 (+6.7%). WTI $104.17 (+7.9%). VIX 19.23 (-1.3%). Gold $4,737 (-1.1%). CPI surges to 3.3% (gasoline +21.2%). Ceasefire nominally holds but diplomatic path severely damaged.",
     tacoRegimeColor: "#ef4444",
     tacoPhase: "ceasefire",
@@ -35,13 +35,13 @@ const DASHBOARD_DATA = {
   // ── FINANCIAL KPIs — Market Signals Tab ─────────────────────────────────────
   // NOTE: Wednesday 18 Mar — Full market day. Brent spiked to $108.52 on South Pars attack. Gold crashed. Equities red. VIX bounced.
   kpis: {
-    brent:    { label: "Brent (ICE)",      price: 107.56, change: -3.7,   changePct: -3.33,  prevClose: 111.26, cssClass: "kpi-down",   note: "▼ -3.3% · Ceasefire relief · HL $107.39 · Hormuz: Contested" },
-    wti:      { label: "WTI (NYMEX)",      price: 103.36,  change: 3.43,   changePct: 3.43,  prevClose: 99.93,  cssClass: "kpi-up",   note: "▲ +3.4% · WTI premium persists (spread $4.20)" },
+    brent:    { label: "Brent (ICE)",      price: 107.62, change: -3.64,   changePct: -3.27,  prevClose: 111.26, cssClass: "kpi-down",   note: "▼ -3.3% · Ceasefire relief · HL $107.15 · Hormuz: Contested" },
+    wti:      { label: "WTI (NYMEX)",      price: 103.46,  change: 3.53,   changePct: 3.53,  prevClose: 99.93,  cssClass: "kpi-up",   note: "▲ +3.5% · WTI premium persists (spread $4.16)" },
     tnx:      { label: "US 10Y Yield",     price: 4.35,   change: 0.02,   changePct: 0.42,  prevClose: 4.34,   cssClass: "kpi-up", note: "4.35% · ▲ +0.4% · Yield steady amid ceasefire uncertainty", isPercent: true },
-    vix:      { label: "VIX",              price: 17.95,  change: 0.12,   changePct: 0.67,  prevClose: 17.83,  cssClass: "kpi-up", note: "▲ +0.7% · Low vol — ceasefire risk priced in", noDollar: true },
+    vix:      { label: "VIX",              price: 17.99,  change: 0.16,   changePct: 0.9,  prevClose: 17.83,  cssClass: "kpi-up", note: "▲ +0.9% · Low vol — ceasefire risk priced in", noDollar: true },
     hyg:      { label: "HY Spread (HYG)",  price: 80.4,  change: -0.11,  changePct: -0.14, prevClose: 80.51,  cssClass: "kpi-flat", note: "▼ -0.1% · Credit widening — stress watch" },
-    gold:     { label: "Gold Spot",        price: 4586.5,   change: -21.9,   changePct: -0.48, prevClose: 4608.4,   cssClass: "kpi-down",   note: "▼ -0.5% · $4,586 · Safe-haven demand easing on ceasefire", formatComma: true },
-    brentWtiSpread: { label: "Brent–WTI Spread", price: 4.2, change: -7.13, changePct: -62.93, prevClose: 11.33, cssClass: "kpi-down", note: "Spread $4.20 · Spread normalizing", noDollar: false },
+    gold:     { label: "Gold Spot",        price: 4582,   change: -26.4,   changePct: -0.57, prevClose: 4608.4,   cssClass: "kpi-down",   note: "▼ -0.6% · $4,582 · Safe-haven demand easing on ceasefire", formatComma: true },
+    brentWtiSpread: { label: "Brent–WTI Spread", price: 4.16, change: -7.17, changePct: -63.28, prevClose: 11.33, cssClass: "kpi-down", note: "Spread $4.16 · Spread normalizing", noDollar: false },
     ita:      { label: "ITA (Defense ETF)", price: 216.21, change: 0.17,   changePct: 0.08,  prevClose: 216.04, cssClass: "kpi-flat", note: "▲ +0.1% · Defense sector — ceasefire fragility hedge" }
   },
 
@@ -49,7 +49,7 @@ const DASHBOARD_DATA = {
   marketStrip: [
     {
       label: 'Brent',
-      value: '$107.56',
+      value: '$107.62',
       delta: '-3.3%',
       color: '#ef4444'
     },
@@ -61,14 +61,14 @@ const DASHBOARD_DATA = {
     },
     {
       label: 'VIX',
-      value: '17.95',
-      delta: '+0.7%',
+      value: '17.99',
+      delta: '+0.9%',
       color: '#22c55e'
     },
     {
       label: 'Gold',
-      value: '$4,586.50',
-      delta: '-0.5%',
+      value: '$4,582.00',
+      delta: '-0.6%',
       color: '#ef4444'
     },
     {
@@ -1453,7 +1453,7 @@ const DASHBOARD_DATA = {
       {
         date: '2026-04-29',
         day: 61,
-        dubizzle: 27782,
+        dubizzle: 27789,
         dubicars: null,
         yallamotor: null,
         source: 'live'
@@ -1466,8 +1466,8 @@ const DASHBOARD_DATA = {
     },
     latest: {
       dubizzle: {
-        total: 27782,
-        changePct: -0.0
+        total: 27789,
+        changePct: 0.0
       },
       dubicars: {
         total: 4526,
@@ -2183,29 +2183,29 @@ const DASHBOARD_DATA = {
   gistBanner: {
     bullets: [
       {
-        text: 'April 26: Iranian Foreign Minister Abbas Araghchi travelled to Muscat, Oman, to discuss Strait of Hormuz security with Sultan Haitham al Tariq.',
+        text: 'Iranian F-5 fighter jet caused damage to Camp Beuhring (major US base in Kuwait) in first few days of war',
         color: 'yellow'
       },
       {
-        text: 'April 26: Israel deployed Iron Dome battery and IDF personnel to UAE following Netanyahu\'s order after call with UAE President.',
+        text: 'US Navy intercepted Panamanian-flagged tanker Sevan (IMO: 9177806) on April 25 in Arabian Sea for transporting Iranian oil and gas products; vessel sanctioned by US Treasury on April 24',
         color: 'yellow'
       },
       {
-        text: 'April 25: US forces intercepted sanctioned gas tanker Sevan in Arabian Sea.',
+        text: 'Israel deployed Iron Dome battery and several dozen IDF personnel to UAE on April 26 following Netanyahu-Bin Zayed phone call, deepening Israeli-Emirati security ties',
         color: 'yellow'
       },
       {
-        text: 'US market odds for Iran surrendering enriched uranium by April 30 at 29.3% YES, up from 18%; June 30 at 55.5% YES.',
+        text: 'US weighing new Iranian proposal on unblocking Strait of Hormuz.',
         color: 'yellow'
       },
       {
-        text: 'US sending delegation including Jared Kushner and Steve Witkoff to Islamabad for talks; Iran\'s Foreign Minister says no direct talks; VP JD Vance on standby.',
+        text: 'US envoys Jared Kushner and Steve Witkoff sent to Islamabad for talks; Iran\'s Foreign Minister insists no direct talks.',
         color: 'yellow'
       }
     ],
     pills: [
       {
-        label: 'Brent $107.56',
+        label: 'Brent $107.62',
         color: 'amber'
       },
       {
@@ -2213,7 +2213,7 @@ const DASHBOARD_DATA = {
         color: 'amber'
       },
       {
-        label: 'VIX 17.95',
+        label: 'VIX 17.99',
         color: 'green'
       },
       {
@@ -2238,39 +2238,39 @@ const DASHBOARD_DATA = {
   // ── 2. NEWS-NOW CARDS ────────────────────────────────────────────────────────
   newsNow: [
     {
+      label: 'CONFLICT',
+      title: 'Iranian F-5 fighter jet caused damage to Camp Beuhring (major US base in Kuwait) in first ',
+      body: 'Iranian F-5 fighter jet caused damage to Camp Beuhring (major US base in Kuwait) in first few days of war',
+      color: 'yellow'
+    },
+    {
+      label: 'CONFLICT',
+      title: 'US Navy intercepted Panamanian-flagged tanker Sevan (IMO: 9177806) on April 25 in Arabian ',
+      body: 'US Navy intercepted Panamanian-flagged tanker Sevan (IMO: 9177806) on April 25 in Arabian Sea for transporting Iranian oil and gas products; vessel sanctioned by US Treasury on April 24',
+      color: 'yellow'
+    },
+    {
+      label: 'CONFLICT',
+      title: 'Israel deployed Iron Dome battery and several dozen IDF personnel to UAE on April 26 follo',
+      body: 'Israel deployed Iron Dome battery and several dozen IDF personnel to UAE on April 26 following Netanyahu-Bin Zayed phone call, deepening Israeli-Emirati security ties',
+      color: 'yellow'
+    },
+    {
       label: 'HORMUZ',
-      title: 'April 26: Iranian Foreign Minister Abbas Araghchi travelled to Muscat, Oman, to discuss St',
-      body: 'April 26: Iranian Foreign Minister Abbas Araghchi travelled to Muscat, Oman, to discuss Strait of Hormuz security with Sultan Haitham al Tariq.',
-      color: 'yellow'
-    },
-    {
-      label: 'CONFLICT',
-      title: 'April 26: Israel deployed Iron Dome battery and IDF personnel to UAE following Netanyahu\'s',
-      body: 'April 26: Israel deployed Iron Dome battery and IDF personnel to UAE following Netanyahu\'s order after call with UAE President.',
-      color: 'yellow'
-    },
-    {
-      label: 'CONFLICT',
-      title: 'April 25: US forces intercepted sanctioned gas tanker Sevan in Arabian Sea',
-      body: 'April 25: US forces intercepted sanctioned gas tanker Sevan in Arabian Sea.',
-      color: 'yellow'
-    },
-    {
-      label: 'MILITARY',
-      title: 'April 28: Israeli airstrikes hit Hezbollah targets in Lebanon\'s Beqaa Valley',
-      body: 'April 28: Israeli airstrikes hit Hezbollah targets in Lebanon\'s Beqaa Valley.',
+      title: 'Iranian Foreign Minister Abbas Araghchi traveled to Muscat, Oman on April 26 to discuss St',
+      body: 'Iranian Foreign Minister Abbas Araghchi traveled to Muscat, Oman on April 26 to discuss Strait of Hormuz security with Omani Sultan Haitham al Tariq',
       color: 'yellow'
     },
     {
       label: 'TALKS',
-      title: 'US market odds for Iran surrendering enriched uranium by April 30 at 29',
-      body: 'US market odds for Iran surrendering enriched uranium by April 30 at 29.3% YES, up from 18%; June 30 at 55.5% YES.',
+      title: 'US weighing new Iranian proposal on unblocking Strait of Hormuz',
+      body: 'US weighing new Iranian proposal on unblocking Strait of Hormuz.',
       color: 'yellow'
     },
     {
       label: 'TALKS',
-      title: 'US sending delegation including Jared Kushner and Steve Witkoff to Islamabad for talks; Ir',
-      body: 'US sending delegation including Jared Kushner and Steve Witkoff to Islamabad for talks; Iran\'s Foreign Minister says no direct talks; VP JD Vance on standby.',
+      title: 'US envoys Jared Kushner and Steve Witkoff sent to Islamabad for talks; Iran\'s Foreign Mini',
+      body: 'US envoys Jared Kushner and Steve Witkoff sent to Islamabad for talks; Iran\'s Foreign Minister insists no direct talks.',
       color: 'yellow'
     }
   ],
@@ -2278,11 +2278,18 @@ const DASHBOARD_DATA = {
   // ── 3. ANALYTICAL SIGNALS ────────────────────────────────────────────────────
   analyticalSignals: [
     {
+      label: 'Ceasefire Compliance',
+      value: 'DAY 21 ✓',
+      score: 8,
+      scoreColor: '#f59e0b',
+      detail: 'Fragile ceasefire on edge; US-Iran negotiations stalled; IRGC dominance blocks compromise prospects'
+    },
+    {
       label: 'Diplomatic Engagement',
       value: 'ACTIVE',
       score: 6,
       scoreColor: '#f59e0b',
-      detail: 'US market odds for Iran surrendering enriched uranium by April 30 at 29.3% YES, up from 18%; June 30 at 55.5% YES.'
+      detail: 'US weighing new Iranian proposal on unblocking Strait of Hormuz.'
     },
     {
       label: 'Rhetoric Temperature',
@@ -2394,29 +2401,29 @@ const DASHBOARD_DATA = {
   // ── 6. KEY TRIGGERS ──────────────────────────────────────────────────────────
   keyTriggers: [
     {
-      title: 'April 26: Iranian Foreign Minister Abbas Araghchi travelled to Muscat, Oman, to ',
+      title: 'Iranian F-5 fighter jet caused damage to Camp Beuhring (major US base in Kuwait)',
       titleColor: '#f59e0b',
-      body: 'April 26: Iranian Foreign Minister Abbas Araghchi travelled to Muscat, Oman, to discuss Strait of Hormuz security with Sultan Haitham al Tariq.'
+      body: 'Iranian F-5 fighter jet caused damage to Camp Beuhring (major US base in Kuwait) in first few days of war'
     },
     {
-      title: 'April 26: Israel deployed Iron Dome battery and IDF personnel to UAE following N',
+      title: 'US Navy intercepted Panamanian-flagged tanker Sevan (IMO: 9177806) on April 25 i',
       titleColor: '#f59e0b',
-      body: 'April 26: Israel deployed Iron Dome battery and IDF personnel to UAE following Netanyahu\'s order after call with UAE President.'
+      body: 'US Navy intercepted Panamanian-flagged tanker Sevan (IMO: 9177806) on April 25 in Arabian Sea for transporting Iranian oil and gas products; vessel sanctioned by US Treasury on April 24'
     },
     {
-      title: 'April 25: US forces intercepted sanctioned gas tanker Sevan in Arabian Sea',
+      title: 'Israel deployed Iron Dome battery and several dozen IDF personnel to UAE on Apri',
       titleColor: '#f59e0b',
-      body: 'April 25: US forces intercepted sanctioned gas tanker Sevan in Arabian Sea.'
+      body: 'Israel deployed Iron Dome battery and several dozen IDF personnel to UAE on April 26 following Netanyahu-Bin Zayed phone call, deepening Israeli-Emirati security ties'
+    },
+    {
+      title: 'Ceasefire Status (Day 61)',
+      titleColor: '#f59e0b',
+      body: 'Fragile ceasefire on edge; US-Iran negotiations stalled; IRGC dominance blocks compromise prospects'
     },
     {
       title: 'Hormuz Passage',
       titleColor: '#22c55e',
       body: 'Status: contested. Daily transits: N/A.'
-    },
-    {
-      title: 'Diplomatic Outlook',
-      titleColor: '#f59e0b',
-      body: 'US market odds for Iran surrendering enriched uranium by April 30 at 29.3% YES, up from 18%; June 30 at 55.5% YES.. US sending delegation including Jared Kushner and Steve Witkoff to Islamabad for talks; Iran\'s Foreign Minister says no direct talks; VP JD Vance on standby.. US and Iran clashed at UN over nuclear program and Strait of Hormuz; over 100 countries supported statement calling for urgent opening of the strait.'
     }
   ],
 
@@ -2428,19 +2435,19 @@ const DASHBOARD_DATA = {
       sections: [
         {
           title: 'Diplomatic Status — Day 61',
-          items: ['negotiations stalled; no breakthrough']
+          items: ['Fragile ceasefire on edge; US-Iran negotiations stalled; IRGC dominance blocks compromise prospects']
         },
         {
-          title: 'US market odds for Iran surrendering enriched uranium by April 30 at 29',
-          items: ['US market odds for Iran surrendering enriched uranium by April 30 at 29.3% YES, up from 18%; June 30 at 55.5% YES.']
+          title: 'US weighing new Iranian proposal on unblocking Strait of Hormuz',
+          items: ['US weighing new Iranian proposal on unblocking Strait of Hormuz.']
         },
         {
-          title: 'US sending delegation including Jared Kushner and Steve Witkoff to Islamabad for',
-          items: ['US sending delegation including Jared Kushner and Steve Witkoff to Islamabad for talks; Iran\'s Foreign Minister says no direct talks; VP JD Vance on standby.']
+          title: 'US envoys Jared Kushner and Steve Witkoff sent to Islamabad for talks; Iran\'s Fo',
+          items: ['US envoys Jared Kushner and Steve Witkoff sent to Islamabad for talks; Iran\'s Foreign Minister insists no direct talks.']
         },
         {
-          title: 'US and Iran clashed at UN over nuclear program and Strait of Hormuz; over 100 co',
-          items: ['US and Iran clashed at UN over nuclear program and Strait of Hormuz; over 100 countries supported statement calling for urgent opening of the strait.']
+          title: 'US and Iran clashed at UN over nuclear program and Strait closure',
+          items: ['US and Iran clashed at UN over nuclear program and Strait closure.']
         }
       ],
       sources: [
@@ -2518,23 +2525,23 @@ const DASHBOARD_DATA = {
     catalysts: [
       {
         rank: '1',
-        title: 'April 26: Iranian Foreign Minister Abbas Araghchi travelled to Muscat, Oman, to ',
+        title: 'Iranian F-5 fighter jet caused damage to Camp Beuhring (major US base in Kuwait)',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: 'April 26: Iranian Foreign Minister Abbas Araghchi travelled to Muscat, Oman, to discuss Strait of Hormuz security with Sultan Haitham al Tariq.',
+        body: 'Iranian F-5 fighter jet caused damage to Camp Beuhring (major US base in Kuwait) in first few days of war',
         color: 'yellow'
       },
       {
         rank: '2',
-        title: 'April 26: Israel deployed Iron Dome battery and IDF personnel to UAE following N',
+        title: 'US Navy intercepted Panamanian-flagged tanker Sevan (IMO: 9177806) on April 25 i',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: 'April 26: Israel deployed Iron Dome battery and IDF personnel to UAE following Netanyahu\'s order after call with UAE President.',
+        body: 'US Navy intercepted Panamanian-flagged tanker Sevan (IMO: 9177806) on April 25 in Arabian Sea for transporting Iranian oil and gas products; vessel sanctioned by US Treasury on April 24',
         color: 'yellow'
       },
       {
         rank: '3',
         title: 'Ceasefire Compliance',
         outcomeLabel: 'HOLD vs COLLAPSE',
-        body: 'negotiations stalled; no breakthrough',
+        body: 'Fragile ceasefire on edge; US-Iran negotiations stalled; IRGC dominance blocks compromise prospects',
         color: 'yellow'
       },
       {
@@ -2548,7 +2555,7 @@ const DASHBOARD_DATA = {
         rank: '5',
         title: 'Diplomatic Track',
         outcomeLabel: 'RESUME vs STALL',
-        body: 'US market odds for Iran surrendering enriched uranium by April 30 at 29.3% YES, up from 18%; June 30 at 55.5% YES.. US sending delegation including Jared Kushner and Steve Witkoff to Islamabad for talks; Iran\'s Foreign Minister says no direct talks; VP JD Vance on standby.',
+        body: 'US weighing new Iranian proposal on unblocking Strait of Hormuz.. US envoys Jared Kushner and Steve Witkoff sent to Islamabad for talks; Iran\'s Foreign Minister insists no direct talks.',
         color: 'yellow'
       }
     ]
@@ -3697,11 +3704,11 @@ const DASHBOARD_DATA = {
       note: 'Specs net long 180k contracts, adding on dip; managed money covers shorts amid stalemate.'
     },
     brentWtiSpread: {
-      current: '+$4.20',
+      current: '+$4.16',
       preWar: '+$3.50',
-      widening: '+$0.70 widening',
-      brentPrice: '$107.56',
-      wtiPrice: '$103.36',
+      widening: '+$0.66 widening',
+      brentPrice: '$107.62',
+      wtiPrice: '$103.46',
       commentary: 'WTI premium at $2.64 — Brent $101.53 vs WTI $104.17. Spread widening as ceasefire fragility reprices US supply premium. Pre-war spread was +$3.50 (Brent premium). Inversion persists — US-specific supply disruption pricing.'
     },
     optionsIntelligence: {
@@ -3744,24 +3751,31 @@ const DASHBOARD_DATA = {
 
   // ── 11. OPERATIONS ───────────────────────────────────────────────────────────
   operations: {
-    badge: 'NEGOTIATIONS',
+    badge: 'CEASEFIRE · DAY 21 — NEGOTIATIONS',
     kpis: [
       {
-        label: 'US Strikes D60',
-        value: '0',
-        delta: 'ZERO — ceasefire',
-        note: 'Cumulative: 13,000',
-        color: 'green'
-      },
-      {
         label: 'Vessels Hit',
-        value: '150',
+        value: '1',
         delta: 'Attacked/sunk',
         note: 'Cumulative',
+        color: 'red'
+      },
+      {
+        label: 'Civilian Casualties',
+        value: '170+',
+        delta: 'Reported',
+        note: 'Through D61',
         color: 'red'
       }
     ],
     indicators: [
+      {
+        indicator: 'Ceasefire status',
+        value: 'HOLDING',
+        dir: '↑',
+        dirClass: 'ind-up',
+        notes: 'Fragile ceasefire on edge; US-Iran negotiations stalled; IRGC dominance blocks compromise prospects'
+      },
       {
         indicator: 'Hormuz transit',
         value: 'CONTESTED',
@@ -3790,46 +3804,25 @@ const DASHBOARD_DATA = {
     },
     iranNeighbors: [
       {
-        country: 'UAE',
-        missiles: 579,
-        drones: 2468,
-        total: 3047,
-        notes: 'Primary target. 93% intercept. Attacks ceased D40.'
+        country: 'Israel',
+        missiles: '—',
+        drones: '—',
+        total: '—',
+        notes: 'Hit during conflict (cumulative: 0 projectiles across all neighbors)'
       },
       {
-        country: 'Saudi Arabia',
-        missiles: 138,
-        drones: 410,
-        total: 548,
-        notes: 'Secondary target. Ras Tanura, SANG bases.'
+        country: 'United States',
+        missiles: '—',
+        drones: '—',
+        total: '—',
+        notes: 'Hit during conflict (cumulative: 0 projectiles across all neighbors)'
       },
       {
-        country: 'Bahrain',
-        missiles: 97,
-        drones: 320,
-        total: 417,
-        notes: '5th Fleet HQ. High-value target set.'
-      },
-      {
-        country: 'Kuwait',
-        missiles: 63,
-        drones: 250,
-        total: 313,
-        notes: 'Camp Arifjan. Logistics hub targeted.'
-      },
-      {
-        country: 'Qatar',
-        missiles: 50,
-        drones: 180,
-        total: 230,
-        notes: 'Al Udeid. Limited strikes — mediator role.'
-      },
-      {
-        country: 'Oman',
-        missiles: 23,
-        drones: 100,
-        total: 123,
-        notes: 'Minimal. Thumrait, Masirah. Oman neutral.'
+        country: 'Gulf Arab states',
+        missiles: '—',
+        drones: '—',
+        total: '—',
+        notes: 'Hit during conflict (cumulative: 0 projectiles across all neighbors)'
       }
     ]
   }
@@ -4350,13 +4343,13 @@ const DASHBOARD_DATA = {
       steps: [
         {
           label: 'Oil Price Increase',
-          value: '+46.9%',
-          detail: '$107.56 vs $73.20 baseline',
+          value: '+47.0%',
+          detail: '$107.62 vs $73.20 baseline',
           color: '#f59e0b'
         },
         {
           label: 'Energy CPI Impact',
-          value: '+10.80%',
+          value: '+10.82%',
           detail: 'Fed passthrough coefficient: 0.23',
           color: '#f59e0b'
         },
@@ -4381,7 +4374,7 @@ const DASHBOARD_DATA = {
       ],
       result: {
         headline: '~3.5%',
-        explanation: 'Brent at $107.56 (+46.9% vs pre-war baseline). Oil-to-CPI passthrough model estimates headline CPI at ~3.5% (war premium +1.11pp over 2.4% baseline).'
+        explanation: 'Brent at $107.62 (+47.0% vs pre-war baseline). Oil-to-CPI passthrough model estimates headline CPI at ~3.5% (war premium +1.11pp over 2.4% baseline).'
       },
       methodology: 'Dallas Fed elasticity (10% oil → +0.23% energy CPI) × BLS energy weight (7%) × second-round multiplier (1.27) + food acceleration (0.15pp). Source: FEDS Notes 2024, Dallas Fed Working Paper 2023.'
     },
@@ -4514,7 +4507,7 @@ const DASHBOARD_DATA = {
       color: '#ef4444'
     },
     {
-      value: '13,000+',
+      value: '900+',
       label: 'Targets Struck (thru D40)',
       color: '#f59e0b'
     },
@@ -4545,12 +4538,12 @@ const DASHBOARD_DATA = {
 
   ceasefireAnalytics: {
     meta: {
-      badge: 'DAY 61',
+      badge: 'CEASEFIRE DAY 21',
       asOf: '2026-04-10T05:42:00+08:00',
       day: 61,
-      tacoScore: 10,
+      tacoScore: 15,
       polyCeasefire: 100,
-      headline: 'April 26: Iranian Foreign Minister Abbas Araghchi travelled to Muscat, Oman, to discuss Strait of Hormuz security with Sultan Haitham al Tariq.'
+      headline: 'Iranian F-5 fighter jet caused damage to Camp Beuhring (major US base in Kuwait) in first few days of war'
     },
     usDemands: [
       {
@@ -4922,7 +4915,7 @@ const DASHBOARD_DATA = {
         iran: 1
       },
       currentDay: 'DAY 21',
-      status: 'negotiations stalled; no breakthrough'
+      status: 'Fragile ceasefire on edge; US-Iran negotiations stalled; IRGC dominance blocks compromise prospects'
     },
     compromiseZone: {
       headline: 'Narrow but Real: A JCPOA-Plus Framework Exists If Both Sides Accept Asymmetric Concessions',
@@ -5090,7 +5083,7 @@ const DASHBOARD_DATA = {
     summaryKpis: [
       {
         label: 'Brent',
-        value: '$107.56',
+        value: '$107.62',
         detail: 'Live KPI',
         color: '#22c55e'
       },
