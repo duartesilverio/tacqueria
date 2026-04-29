@@ -650,7 +650,17 @@ Return JSON:
     "two_cuts_pct": <number>,
     "hike_pct": <number>
   }},
-  "key_notes": "<any relevant inflation/Fed commentary related to Iran war oil price impact>"
+  "key_notes": "<any relevant inflation/Fed commentary related to Iran war oil price impact>",
+  "cpi_breakdown": {{
+    "energy_yoy_pct": <number or null — Energy component CPI YoY %>,
+    "energy_pre_war_pct": <number or null — pre-war (Feb 2026) Energy CPI YoY % for delta context>,
+    "food_yoy_pct": <number or null>,
+    "food_pre_war_pct": <number or null>,
+    "shelter_yoy_pct": <number or null>,
+    "shelter_pre_war_pct": <number or null>,
+    "services_yoy_pct": <number or null>,
+    "services_pre_war_pct": <number or null>
+  }}
 }}"""
 
     return sonar_query("sonar", system, user)

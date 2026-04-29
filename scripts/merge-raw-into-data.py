@@ -510,6 +510,50 @@ def update_inflation_fed_rate(inflation_section: dict, raw_fed: dict) -> list[st
         inflation_section["sources"] = [str(s) for s in raw_sources[:8]]
         updates.append(f"sources({len(raw_sources)})")
 
+    # cpiBreakdown: refresh component rows from Sonar's cpi_breakdown block
+    cpi_b = raw_fed.get("cpi_breakdown")
+    if isinstance(cpi_b, dict):
+        components = [
+            ("Energy", cpi_b.get("energy_yoy_pct"), cpi_b.get("energy_pre_war_pct")),
+            ("Food", cpi_b.get("food_yoy_pct"), cpi_b.get("food_pre_war_pct")),
+            ("Shelter", cpi_b.get("shelter_yoy_pct"), cpi_b.get("shelter_pre_war_pct")),
+            ("Services", cpi_b.get("services_yoy_pct"), cpi_b.get("services_pre_war_pct")),
+        ]
+        existing_rows = inflation_section.get("cpiBreakdown") or []
+        existing_by_comp = {}
+        if isinstance(existing_rows, list):
+            for r in existing_rows:
+                if isinstance(r, dict) and r.get("component"):
+                    existing_by_comp[str(r["component"]).lower()] = r
+        new_rows = []
+        for comp, cur_v, prew_v in components:
+            prev_row = existing_by_comp.get(comp.lower(), {})
+            if cur_v is None and prew_v is None and not prev_row:
+                continue
+            try:
+                cur_str = f"{float(cur_v):.1f}%" if cur_v is not None else prev_row.get("current", "—")
+                prew_str = f"{float(prew_v):.1f}%" if prew_v is not None else prev_row.get("preWar", "—")
+                if cur_v is not None and prew_v is not None:
+                    delta = float(cur_v) - float(prew_v)
+                    delta_str = f"{'+' if delta >= 0 else ''}{delta:.1f}pp"
+                    delta_color = "#ef4444" if delta >= 2 else ("#f59e0b" if delta >= 0.5 else "#22c55e")
+                else:
+                    delta_str = prev_row.get("delta", "—")
+                    delta_color = prev_row.get("deltaColor", "#94a3b8")
+                new_rows.append({
+                    "component": comp,
+                    "preWar": prew_str,
+                    "current": cur_str,
+                    "delta": delta_str,
+                    "deltaColor": delta_color,
+                })
+            except (ValueError, TypeError):
+                if prev_row:
+                    new_rows.append(prev_row)
+        if new_rows:
+            inflation_section["cpiBreakdown"] = new_rows
+            updates.append(f"cpiBreakdown({len(new_rows)})")
+
     return [f"inflation: {', '.join(updates)}"] if updates else []
 
 
