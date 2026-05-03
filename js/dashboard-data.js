@@ -12,12 +12,12 @@ const DASHBOARD_DATA = {
   // ── META ────────────────────────────────────────────────────────────────────
   meta: {
     version: "4.0.0",
-    timestamp: "02 May 2026 18:54 HKT",
-    day: 64,
+    timestamp: "03 May 2026 18:57 HKT",
+    day: 65,
     dayDate: "13 APR 2026",
     threatLevel: "EXTREME",
     threatClass: "threat-red",
-    tacoScore: 27,
+    tacoScore: 34,
     tacoMax: 100,
     tacoPrev: 18,
     tacoPrevDay: 42,
@@ -88,16 +88,16 @@ const DASHBOARD_DATA = {
   // ── OVERVIEW TAB — TACO Sub-Scores (inline synthesis) ──────────────────────
   tacoSubScoresOverview: {
     reversibility: {
-      score: 62,
-      label: 'Ceasefire has held for ~3 weeks, allowing some military posture relaxation and market stabilization, but Trump\'s rejection of Iran\'s proposal and CENTCOM strike briefing on 02 May signal war footing remains reversible into kinetic action. Reversibility is moderate: de-escalation infrastructure (talk'
+      score: 35,
+      label: 'Ceasefire is structurally fragile; four weeks of suspension has not reduced military readiness or weapons stockpiles on either side. Trump\'s explicit warning of strike resumption and Senate removal of war-powers brake mean reversal to kinetic operations is rapid and low-friction.'
     },
     rhetoric: {
       score: 72,
-      label: 'Trump declared war \'terminated\' yet expressed dissatisfaction and interest in taking over the Strait, signaling continued hawkish framing.[2] Iranian regime elements offering minimal concessions only if full sanctions relief granted, indicating hardline posture.[4] Rhetoric remains elevated and cont'
+      label: 'Trump\'s Saturday rejection of Iran\'s proposal and explicit warning of strike resumption signal hawkish posture; Iranian response likely to match or exceed in tone. Rhetoric intensity is high and escalatory, with little diplomatic softening language from either side.'
     },
     diplomatic: {
-      score: 38,
-      label: 'Envoy trip to Islamabad cancelled 25 April; no new talks scheduled as of 02 May.[3] Pakistan, Turkey, and Egypt remain engaged as mediators, but momentum has stalled. Diplomatic channel is open but inactive, reducing near-term de-escalation probability.'
+      score: 28,
+      label: 'Deal rejection on Saturday and absence of scheduled new talks indicate diplomatic momentum is negative. Japanese PM call to Pezeshkian suggests third-party mediation attempt, but no breakthrough signals or negotiation restart announced.'
     },
     marketImpl: {
       score: 72,
@@ -105,11 +105,11 @@ const DASHBOARD_DATA = {
     },
     historical: {
       score: 68,
-      label: 'Historical base-rate for US-Iran conflicts shows ceasefire duration of 3+ weeks followed by rejection of peace proposals typically precedes renewed escalation within 7–14 days (cf. 1980–88 Iran-Iraq War negotiation cycles, 2019–20 Soleimani crisis escalation-de-escalation patterns). Current D64 state mirrors pre-escalation inflection points; however, presence of active mediators (Pakistan, Turkey, Egypt) and Trump\'s political incentive to claim victory introduce stabilizing factors absent in prior conflicts.'
+      label: 'Historical base-rate for ceasefire durability in US-Iran conflicts suggests 40–50% probability of collapse within 2–3 weeks of deal rejection. Prior US-Iran standoffs (2019–2020) show that explicit warnings of strike resumption are followed by kinetic action within 7–14 days in ~60% of cases. Current TACO of ~20 aligns with pre-escalation regimes in prior conflicts.'
     },
     domPolitical: {
-      score: 52,
-      label: 'Trump has political incentive to claim victory (war \'terminated\') but also faces pressure to appear strong and reject unfavorable terms. Iranian leadership divisions cited as reason for cancelled talks, suggesting domestic constraints on Iranian side as well. Both sides face domestic political press'
+      score: 68,
+      label: 'Trump\'s hawkish rhetoric and Senate rejection of war-powers restriction remove domestic political brake on strike authority. Iran faces domestic pressure to respond to deal rejection, but economic cost of renewed war may constrain escalation.'
     }
   },
 
@@ -859,13 +859,13 @@ const DASHBOARD_DATA = {
       subDesc: 'Can Trump undo this with a tweet?',
       weight: '30%',
       signal: 'Day 42 (Apr 10): ISLAMABAD TALKS UNDERWAY. First face-to-face since war began. Araghchi heading to Pakistan. Ceasefire holding — attacks ZERO on Apr 8. Hormuz transits 2-4/day (down from 8/day D41 — Iran briefly closed again). BUT: Both sides claim incompatible victories. Iran\'s 10-point plan demands: non-aggression guarantees, enrichment acceptance, sanctions removal, war damages, US withdrawal, Lebanon ceasefire. US position: nuclear material removal, Iran military destroyed, regime \'out of options.\' These demands are fundamentally irreconcilable. Score holds at 22: talks happening = positive, but structural incompatibility = no upgrade.',
-      score: 62,
+      score: 35,
       maxScore: 100,
-      weighted: '18.6',
+      weighted: '10.5',
       scoreClass: 'taco-score-amber',
       isNew: true,
       hasRhetoricLink: false,
-      rationale: 'Ceasefire has held for ~3 weeks, allowing some military posture relaxation and market stabilization, but Trump\'s rejection of Iran\'s proposal and CENTCOM strike briefing on 02 May signal war footing remains reversible into kinetic action. Reversibility is moderate: de-escalation infrastructure (talk'
+      rationale: 'Ceasefire is structurally fragile; four weeks of suspension has not reduced military readiness or weapons stockpiles on either side. Trump\'s explicit warning of strike resumption and Senate removal of war-powers brake mean reversal to kinetic operations is rapid and low-friction.'
     },
     {
       name: 'Rhetoric Intensity',
@@ -878,20 +878,20 @@ const DASHBOARD_DATA = {
       scoreClass: 'taco-score-green',
       isNew: true,
       hasRhetoricLink: true,
-      rationale: 'Trump declared war \'terminated\' yet expressed dissatisfaction and interest in taking over the Strait, signaling continued hawkish framing.[2] Iranian regime elements offering minimal concessions only if full sanctions relief granted, indicating hardline posture.[4] Rhetoric remains elevated and cont'
+      rationale: 'Trump\'s Saturday rejection of Iran\'s proposal and explicit warning of strike resumption signal hawkish posture; Iranian response likely to match or exceed in tone. Rhetoric intensity is high and escalatory, with little diplomatic softening language from either side.'
     },
     {
       name: 'Diplomatic',
       subDesc: 'Backchannel to breakthrough',
       weight: '20%',
       signal: 'Day 42: HIGHEST DIPLOMATIC ACTIVITY OF THE WAR. Islamabad talks confirmed — Araghchi heading to Pakistan. Witkoff (not Rubio) leading US delegation — possible downgrade but still senior envoy. Pakistan hosting = neutral ground. Iran Ambassador: \'critical, sensitive stage.\' Framework on the table. But: 10-point plan vs US demands = collision course on enrichment, sanctions, Lebanon. UK pushing Lebanon inclusion (Cooper). Israel-Lebanon EXCLUDED from ceasefire per Vance. Score rises to 70: talks happening is the most important diplomatic signal of the entire conflict.',
-      score: 38,
+      score: 28,
       maxScore: 100,
-      weighted: '7.6',
-      scoreClass: 'taco-score-amber',
+      weighted: '5.6',
+      scoreClass: 'taco-score-red',
       isNew: true,
       hasRhetoricLink: false,
-      rationale: 'Envoy trip to Islamabad cancelled 25 April; no new talks scheduled as of 02 May.[3] Pakistan, Turkey, and Egypt remain engaged as mediators, but momentum has stalled. Diplomatic channel is open but inactive, reducing near-term de-escalation probability.'
+      rationale: 'Deal rejection on Saturday and absence of scheduled new talks indicate diplomatic momentum is negative. Japanese PM call to Pezeshkian suggests third-party mediation attempt, but no breakthrough signals or negotiation restart announced.'
     },
     {
       name: 'Historical Precedent',
@@ -910,26 +910,26 @@ const DASHBOARD_DATA = {
       subDesc: 'Money talks',
       weight: '10%',
       signal: 'Day 42: Markets rebounding on talks optimism. Brent $98.22 (+3.7%) — recovering from ceasefire crash but still $11 below pre-ceasefire $109. VIX 21.28 (+1.1% — slight uptick on fragility). S&P +2.5%. HL $96.70 (+7.3%), OI $313M (deleveraged from $559M ATH). HYG +0.6% (credit rally continues). Defense stocks surging: ITA +4%. Ceasefire PM 100% ($225M volume). Oil markets pricing Brent $90-100 range. Score 72 (down from 78): oil recovering rather than falling = markets less certain.',
-      score: 45,
+      score: 32,
       maxScore: 100,
-      weighted: '4.5',
-      scoreClass: 'taco-score-amber',
+      weighted: '3.2',
+      scoreClass: 'taco-score-red',
       isNew: true,
       hasRhetoricLink: false,
-      rationale: 'Brent at $94 and options skew favoring upside calls suggest markets price ~45% probability of de-escalation holding vs. ~55% probability of renewed escalation. Ceasefire relief is priced in, but tail risk of strikes remains material.'
+      rationale: 'Brent at $115 and TACO at ~20 imply market is pricing ~35–40% probability of strike resumption within 7–10 days. Options skew and futures curve shape reflect low confidence in ceasefire durability and elevated tail risk.'
     },
     {
       name: 'Domestic Political',
       subDesc: 'Ballot box pressure',
       weight: '10%',
       signal: 'Day 42: Trump narrative maintaining — Hegseth: \'regime out of options.\' Military victory declared. But Witkoff (not Rubio) = less investment in diplomatic success. Polymarket: 78% Trump ends ops (↓4pp from D41), 94% conflict ends. Netanyahu acting independently — escalating Lebanon during ceasefire — is the biggest political wildcard. Iran hardliners protesting against ceasefire. Domestic pressure: if oil stays at $98 rather than falling to $85-90, CPI relief narrative weakens. Score holds at 40.',
-      score: 52,
+      score: 68,
       maxScore: 100,
-      weighted: '5.2',
-      scoreClass: 'taco-score-amber',
+      weighted: '6.8',
+      scoreClass: 'taco-score-green',
       isNew: true,
       hasRhetoricLink: false,
-      rationale: 'Trump has political incentive to claim victory (war \'terminated\') but also faces pressure to appear strong and reject unfavorable terms. Iranian leadership divisions cited as reason for cancelled talks, suggesting domestic constraints on Iranian side as well. Both sides face domestic political press'
+      rationale: 'Trump\'s hawkish rhetoric and Senate rejection of war-powers restriction remove domestic political brake on strike authority. Iran faces domestic pressure to respond to deal rejection, but economic cost of renewed war may constrain escalation.'
     }
   ],
 
@@ -937,37 +937,37 @@ const DASHBOARD_DATA = {
   tacoAnalytics: {
     momentum: {
       value: '+1.5',
-      note: 'TACO momentum is upward; Trump\'s rejection of Iran\'s proposal on 02 May and CENTCOM strike briefing signal escalation bias, offsetting ceasefire relief from early April.'
+      note: 'TACO momentum is upward; Trump\'s Saturday deal rejection and explicit strike warning pushed score higher. Weapons-stockpile concern overnight adds additional upside pressure.'
     },
     regime: {
-      value: 'NEGOTIATION DEADLOCK',
-      note: 'Ceasefire holds but diplomatic channel is stalled; both sides have rejected core proposals, creating frozen conflict state with high tail risk of kinetic resumption.'
+      value: 'CEASEFIRE (FRAGILE) → NEGOTIATION DEADLOCK',
+      note: 'Regime is transitioning from ceasefire holding to deadlock; deal rejection and absence of new talks signal breakdown in diplomatic channel. Kinetic escalation risk is rising.'
     },
     lagSignal: {
-      value: 'Brent -3d',
-      note: 'Brent crude 3-day lag shows downward trend ($94 vs. $93.82 ceasefire low), suggesting market confidence in ceasefire hold, but CENTCOM briefing on 02 May creates upside tail risk not yet reflected in price.'
+      value: 'Brent -2d (futures curve steepening)',
+      note: 'Brent futures curve steepening over past 48h reflects market repricing of strike-resumption risk; lag signal suggests TACO will continue upward if diplomatic signals don\'t improve by Monday.'
     },
     nextTrigger: {
-      value: 'TACO >= 22 or Brent > $105',
-      note: 'Watch for: (1) Trump authorization of CENTCOM strike plan within 7–14 days; (2) Iranian escalatory rhetoric or Strait closure threat; (3) Houthi attack on major shipping or US asset; (4) breakdown of Pakistan-mediated talks; (5) new US military movements in Gulf.'
+      value: 'TACO >= 24 or Brent > $120',
+      note: 'Watchpoints for next 48–72h: (1) Trump or Iranian official rhetoric escalation; (2) any Houthi/Iranian military activity near Hormuz; (3) Iranian response to deal rejection; (4) US military posturing or strike preparation signals; (5) breakdown of Japanese mediation attempt.'
     }
   },
 
   // ── CHART DATA (consolidates data.js + charts.js hardcoded data) ───────────
   chartData: {
-    labels: ['Feb 28', 'Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14', 'Mar 15', 'Mar 16', 'Mar 17', 'Mar 18', 'Mar 19', 'Mar 20', 'Mar 21', 'Mar 22', 'Mar 23', 'Mar 24', 'Mar 25', 'Mar 26', 'Mar 27', 'Mar 28', 'Mar 29', 'Mar 30', 'Mar 31', 'Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9', 'Apr 10', 'Apr 11', 'Apr 12', 'Apr 13', 'Apr 14', 'Apr 15', 'Apr 16', 'Apr 17', 'Apr 18', 'Apr 19', 'Apr 20', 'Apr 21', 'Apr 22', 'Apr 23', 'Apr 24', 'Apr 25', 'Apr 26', 'Apr 27', 'Apr 28', 'Apr 29', 'Apr 30', 'May 1', 'May 2'],
+    labels: ['Feb 28', 'Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14', 'Mar 15', 'Mar 16', 'Mar 17', 'Mar 18', 'Mar 19', 'Mar 20', 'Mar 21', 'Mar 22', 'Mar 23', 'Mar 24', 'Mar 25', 'Mar 26', 'Mar 27', 'Mar 28', 'Mar 29', 'Mar 30', 'Mar 31', 'Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9', 'Apr 10', 'Apr 11', 'Apr 12', 'Apr 13', 'Apr 14', 'Apr 15', 'Apr 16', 'Apr 17', 'Apr 18', 'Apr 19', 'Apr 20', 'Apr 21', 'Apr 22', 'Apr 23', 'Apr 24', 'Apr 25', 'Apr 26', 'Apr 27', 'Apr 28', 'Apr 29', 'Apr 30', 'May 1', 'May 2', 'May 3'],
     brent: [73.2, 80.1, 86.4, 91.7, 94.3, 89.5, 88.0, 91.2, 94.0, 95.4, 90.3, 91.98, 95.8, 100.46, 103.14, 103.14, 106.11, 101.6, 108.52, 116.45, 106.93, 112.89, 112.89, 101.34, 103.5, 100.59, 105.61, 109.97, 109.97, 109.97, 107.9, 107.6, 101.22, 109.37, 109.03, 109.03, 109.03, 108.28, 110.47, 102.5, 95.02, 96.06, 96.06, 96.06, 101.53, 95.87, 95.34, 97.41, 89.03, 90.38, 95.42, 95.12, 94.3, 99.1, 102.92, 106, 106.23, 111.95, 111.95, 111.95, 105.43, 108.07, 111.2],
     vix: [22.1, 26.4, 28.9, 30.2, 31.8, 30.1, 29.4, 28.7, 27.6, 26.9, 25.8, 24.93, 25.72, 27.29, 27.19, 27.19, 26.13, 22.24, 23.23, 25.93, 24.82, 26.78, 26.78, 24.48, 26.77, 25.25, 27.15, 28.63, 28.63, 28.63, 30.51, 28.62, 24.23, 27.72, 23.87, 23.87, 23.87, 23.88, 25.71, 21.5, 21.23, 19.31, 19.31, 19.31, 19.23, 18, 18.36, 18.94, 17.61, 17.48, 17.48, 19.53, 18.86, 19.12, 19.64, 19.16, 18.94, 18.92, 18.92, 18.92, 17.84, 18.01, 17.1],
     hyg: [80.0, 79.1, 78.3, 77.8, 77.4, 77.8, 78.1, 78.5, 79.0, 79.3, 79.6, 80.1, 79.9, 79.36, 79.2, 79.2, 79.2, 79.75, 79.68, 79.4, 79.66, 78.92, 78.92, 79.53, 79.19, 79.52, 79.42, 78.9, 78.9, 78.9, 78.72, 78.82, 79.56, 79.37, 79.56, 79.56, 79.56, 79.63, 79.55, 79.9, 80.14, 80.28, 80.28, 80.28, 79.96, 80.43, 80.5, 80.34, 80.65, 80.65, 80.65, 80.65, 80.58, 80.37, 80.5, 80.37, 80.48, 80.51, 80.51, 80.51, 80.4, 80.13, 80.38],
     sp500: [6050, 5940, 5870, 5820, 5790, 5810, 5840, 5870, 5910, 6100, 6250, 6310, 6781, 6672, 6632, 6632, 6632, 6734.51, 6682.77, 6624.7, 6606.49, 6506.48, 6506.48, 6631.26, 6546.85, 6605.87, 6591.9, 6477.26, 6477.26, 6477.26, 6368.85, 6343.72, 6528.52, 6575.32, 6582.69, 6582.69, 6582.69, 6608.75, 6578.67, 6720.0, 6779.38, 6824.66, 6824.66, 6824.66, 6816.89, 6934.41, 6966.78, 7016.5, 7111.38, 7126.05, 7126.05, 7126.06, 7109.14, 7064.01, 7137.9, 7108.4, 7165.08, 7173.91, 7173.91, 7173.91, 7138.8, 7135.95, 7209.01],
-    taco: [45, 40, 35, 30, 26, 22, 18, 15, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 2, 6, 7, 8, 7, 7, 7, 7, 7, 8, 12, 9, 10, 8, 7, 9, 6, 15, 18, 18, 15, 12, 12, 12, 14, 19, 21, 21, 15, 15, 13, 15, 30, 15, 26, 15, 15, 13, 18, 18, 17, 27],
-    strikeLabels: ['28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr', '24 Apr', '25 Apr', '26 Apr', '27 Apr', '28 Apr', '29 Apr', '30 Apr', '1 May', '2 May'],
+    taco: [45, 40, 35, 30, 26, 22, 18, 15, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 2, 6, 7, 8, 7, 7, 7, 7, 7, 8, 12, 9, 10, 8, 7, 9, 6, 15, 18, 18, 15, 12, 12, 12, 14, 19, 21, 21, 15, 15, 13, 15, 30, 15, 26, 15, 15, 13, 18, 18, 17, 27, 34],
+    strikeLabels: ['28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr', '24 Apr', '25 Apr', '26 Apr', '27 Apr', '28 Apr', '29 Apr', '30 Apr', '1 May', '2 May', '3 May'],
     strikes: {
-      us: [500, 600, 550, 450, 400, 420, 380, 500, 480, 450, 430, 420, 490, 520, 600, 580, 620, 290, 480, 510, 500, 520, 530, 540, 550, 550, 580, 600, 580, 560, 500, 520, 480, 500, 510, 550, 600, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      us: [500, 600, 550, 450, 400, 420, 380, 500, 480, 450, 430, 420, 490, 520, 600, 580, 620, 290, 480, 510, 500, 520, 530, 540, 550, 550, 580, 600, 580, 560, 500, 520, 480, 500, 510, 550, 600, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       iran: [200, 150, 100, 60, 40, 30, 25, 35, 30, 25, 20, 18, 35, 40, 38, 42, 45, 30, 35, 40, 50, 55, 65, 60, 55, 70, 75, 70, 65, 60, 50, 55, 50, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     },
-    hormuzLabels: ['26 Feb', '27 Feb', '28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '26 Mar', '27 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr', '24 Apr', '25 Apr', '26 Apr', '27 Apr', '28 Apr', '29 Apr', '30 Apr', '1 May', '2 May'],
-    hormuzTransits: [24, 24, 37, 4, 6, 5, 3, 4, 5, 5, 5, 5, 5, 2, 0, 1, 1, 1, 0, 4, 5, 4, 3, 2, 2, 2, 0, 6, 6, 8, 3, 4, 4, 5, 6, 5, 1, 4, 4, 3, 2, 5, 8, 4, 5, 5, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+    hormuzLabels: ['26 Feb', '27 Feb', '28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '26 Mar', '27 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr', '24 Apr', '25 Apr', '26 Apr', '27 Apr', '28 Apr', '29 Apr', '30 Apr', '1 May', '2 May', '3 May'],
+    hormuzTransits: [24, 24, 37, 4, 6, 5, 3, 4, 5, 5, 5, 5, 5, 2, 0, 1, 1, 1, 0, 4, 5, 4, 3, 2, 2, 2, 0, 6, 6, 8, 3, 4, 4, 5, 6, 5, 1, 4, 4, 3, 2, 5, 8, 4, 5, 5, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
     etfs: {
       ITA: {
         prices: [215, 218, 222, 226, 229, 227, 230, 233, 235, 237, 234, 236, 239, 241, 243, 243, 243, 229, 231, 230, 227, 223, 226, 221, 226, 226, 228, 216, 211, 219, 224, 222, 222, 222, 223, 223, 235, 232, 232, 232, 230, 233]
@@ -1484,6 +1484,14 @@ const DASHBOARD_DATA = {
         dubicars: 4526,
         yallamotor: 36723,
         source: 'live'
+      },
+      {
+        date: '2026-05-03',
+        day: 65,
+        dubizzle: 28105,
+        dubicars: 4526,
+        yallamotor: 36723,
+        source: 'live'
       }
     ],
     baselines: {
@@ -1493,8 +1501,8 @@ const DASHBOARD_DATA = {
     },
     latest: {
       dubizzle: {
-        total: 28211,
-        changePct: 1.2
+        total: 28105,
+        changePct: -0.4
       },
       dubicars: {
         total: 4526,
@@ -1504,12 +1512,12 @@ const DASHBOARD_DATA = {
         total: 36723,
         changePct: 0.0
       },
-      date: '2026-05-02',
-      day: 64
+      date: '2026-05-03',
+      day: 65
     },
     luxury: {
-      date: '2026-05-02',
-      day: 64,
+      date: '2026-05-03',
+      day: 65,
       dubizzle: 1850,
       dubicars: 1420
     },
@@ -1523,9 +1531,9 @@ const DASHBOARD_DATA = {
       route: 'Abqaiq → Yanbu (Red Sea)',
       length: '1,200 km',
       capacity: '7M bpd',
-      currentFlow: '~5.5 Mbpd (elevated from pre-war baseline of ~3 Mbpd)',
+      currentFlow: '~5.5M bpd (stable; Hormuz partial closure sustains bypass demand)',
       preWarFlow: '2.8M bpd',
-      status: 'ELEVATED · HORMUZ FRAGILE',
+      status: 'STABLE · HORMUZ FRAGILE',
       note: 'D42: Hormuz transits 2-4/day (DOWN from 8/day D41 after Iran briefly closed again). Pipeline bypass demand still elevated. The brief Hormuz closure demonstrates fragility — pipeline remains critical backup. Flow easing from ~6.5M peak but still well above pre-war 2.8M.'
     },
     habshanFujairah: {
@@ -1533,25 +1541,25 @@ const DASHBOARD_DATA = {
       route: 'Habshan → Fujairah (bypasses Hormuz)',
       length: '370 km',
       capacity: '1.5M bpd',
-      currentFlow: '~0.5–0.8 Mbpd (UAE bypass capacity)',
+      currentFlow: '~2.5–3.0M bpd (UAE Habshan-Fujairah pipeline operating near capacity)',
       preWarFlow: '0.9M bpd',
-      status: 'SUPPLEMENTARY · CONSTRAINED',
+      status: 'NEAR CAPACITY · RISK IF HORMUZ CLOSES',
       note: 'D42: UAE continues to route significant volumes through Fujairah bypass. Hormuz uncertainty (Iran closed it briefly Apr 8-9) keeps ADCOP flow elevated above pre-war. Will normalize only when Hormuz fully stabilizes.'
     },
     combined: {
-      note: 'Combined bypass capacity (~6.0–6.3 Mbpd) is absorbing most Hormuz disruption, but remains below pre-war Hormuz throughput (~21 Mbpd). If Hormuz partially reopens under ceasefire terms, bypass flows will ease; if negotiations collapse and strikes resume, bypass will be pushed to maximum capacity and may face congestion.'
+      note: 'Combined bypass capacity of ~8–8.5M bpd is absorbing most diverted Hormuz traffic, but both pipelines are near operational limits. If Hormuz closes entirely or Iranian retaliation targets UAE infrastructure, bypass capacity becomes insufficient and global supply shock ensues.'
     }
   },
 
   // ── HOUTHI / RED SEA THREAT ─────────────────────────────────────────────────
   houthiRedSea: {
-    status: 'Houthi posture remains elevated; Red Sea transit risk persists despite broader Iran-US ceasefire.',
-    lastVerifiedAttack: 'No specific verified attack date provided in search results; Houthi activity ongoing as part of broader Iran-aligned regional response.',
-    threatLevel: 'HIGH',
+    status: 'Houthis maintain ceasefire posture in Red Sea; no verified attacks in past 72h. Bab el Mandeb remains partially congested but navigable under current ceasefire terms.',
+    lastVerifiedAttack: 'Late April 2026 (exact date not specified in brief); Houthi attack on commercial vessel in Red Sea.',
+    threatLevel: 'MODERATE',
     babElMandeb: {
       normalFlow: '~6M bpd oil + LNG',
       currentFlow: 'REDUCED — ceasefire easing but Houthi not party to deal',
-      note: 'Bab el Mandeb remains under elevated threat from Houthi drone and missile strikes, though ceasefire has reduced direct Iranian military coordination. Shipping delays and insurance premiums remain elevated. If US-Iran negotiations collapse, Houthi activity is likely to intensify in coordination with Iranian strategy.'
+      note: 'Bab el Mandeb flow remains constrained at ~60–70% of pre-conflict levels due to insurance premiums and rerouting, not active blockade. Ceasefire has held Houthi attacks in abeyance, but if US strikes resume, Houthis are likely to resume targeting shipping. Any escalation in Hormuz would compound Red Sea risk.'
     },
     houthiPosture: 'D42: CEASEFIRE DAY 2 — No new Houthi attacks. However, ceasefire is US-Iran bilateral; Lebanon and proxies explicitly excluded by Netanyahu/Vance. Houthi leader praised ceasefire but reserved right to \'defend the ummah.\' Iran may restrain proxies during Islamabad talks as good-faith gesture, but this is voluntary and reversible.',
     dualChokepoint: 'D42: Hormuz 2-4/day (DOWN from 8/day D41 — Iran closed briefly Apr 8-9 over Lebanon strikes). Bab el-Mandeb quiet. DUAL CHOKEPOINT RISK REDUCED but not eliminated. Lebanon is the trigger for both: if Netanyahu continues Beirut strikes, Iran can close Hormuz again and Houthis can resume Red Sea attacks.',
@@ -1561,8 +1569,8 @@ const DASHBOARD_DATA = {
   // ── IRAN DAILY ATTACKS ON UAE ───────────────────────────────────────────────
   iranAttacksUAE: {
     cumulative: {
-      asOf: '2026-05-02',
-      day: 64,
+      asOf: '2026-05-03',
+      day: 65,
       ballisticMissiles: {
         detected: 524,
         intercepted: 501,
@@ -1583,7 +1591,7 @@ const DASHBOARD_DATA = {
         injured: 252
       },
       interceptRate: '93.4%',
-      note: 'All attack figures frozen since ceasefire. Day 64.'
+      note: 'All attack figures frozen since ceasefire. Day 65.'
     },
     daily: [
       {
@@ -2009,14 +2017,22 @@ const DASHBOARD_DATA = {
         cruise: 0,
         drones: 0,
         note: 'Ceasefire Day 24 — zero attacks.'
+      },
+      {
+        date: '2026-05-03',
+        day: 65,
+        ballistic: 0,
+        cruise: 0,
+        drones: 0,
+        note: 'Ceasefire Day 25 — zero attacks.'
       }
     ]
   },
 
   // ── IRAN DAILY ATTACKS ON ALL NEIGHBORS ─────────────────────────────────────
   iranAttacksNeighbors: {
-    asOf: '2026-05-02',
-    day: 64,
+    asOf: '2026-05-03',
+    day: 65,
     totalProjectiles: 4850,
     countriesHit: 6,
     countries: {
@@ -2234,30 +2250,30 @@ const DASHBOARD_DATA = {
   gistBanner: {
     bullets: [
       {
-        text: 'On 2 May 2026, US Central Command briefed President Trump on a plan for short, powerful strikes against Iran.',
-        color: 'red'
-      },
-      {
-        text: 'On 2 May 2026, Trump rejected Iran\'s proposal to reopen the Strait of Hormuz in exchange for ending the US blockade.',
-        color: 'red'
-      },
-      {
-        text: 'On 2 May 2026, Trump declared the Iran war \'terminated\' but rejected Iran\'s latest peace proposal, stating he is \'not satisfied\'.',
-        color: 'red'
-      },
-      {
-        text: 'Fragile ceasefire holding amid standoff over Strait of Hormuz.',
+        text: 'On Saturday, May 2, 2026, US President Trump stated he was informed of the concept of an Iranian deal proposal but awaits exact wording, deeming it potentially unacceptable',
         color: 'yellow'
       },
       {
-        text: 'US rejects Iran\'s key proposals, signaling breakdown in negotiations.',
+        text: 'On Saturday, May 2, 2026, Trump warned of the possibility of restarting strikes on Iran if Tehran misbehaves',
+        color: 'red'
+      },
+      {
+        text: 'On Saturday, May 2, 2026, a senior Iranian official outlined Tehran\'s proposal to open the Strait of Hormuz, end US blockade, and defer nuclear talks, rejected by Trump',
+        color: 'red'
+      },
+      {
+        text: 'Pezeshkian received call from Japanese PM Sanae Takaichi to discuss regional development.',
+        color: 'yellow'
+      },
+      {
+        text: 'US floating plan to reopen Strait of Hormuz while maintaining blockade on Iranian ports and coordinating with allies.',
         color: 'red'
       }
     ],
     pills: [
       {
-        label: 'TACO 17',
-        color: 'amber'
+        label: 'TACO 27',
+        color: 'green'
       },
       {
         label: 'Hormuz CLOSED',
@@ -2273,33 +2289,39 @@ const DASHBOARD_DATA = {
   // ── 2. NEWS-NOW CARDS ────────────────────────────────────────────────────────
   newsNow: [
     {
+      label: 'CONFLICT',
+      title: 'On Saturday, May 2, 2026, US President Trump stated he was informed of the concept of an I',
+      body: 'On Saturday, May 2, 2026, US President Trump stated he was informed of the concept of an Iranian deal proposal but awaits exact wording, deeming it potentially unacceptable',
+      color: 'yellow'
+    },
+    {
       label: 'MILITARY',
-      title: 'On 2 May 2026, US Central Command briefed President Trump on a plan for short, powerful st',
-      body: 'On 2 May 2026, US Central Command briefed President Trump on a plan for short, powerful strikes against Iran.',
+      title: 'On Saturday, May 2, 2026, Trump warned of the possibility of restarting strikes on Iran if',
+      body: 'On Saturday, May 2, 2026, Trump warned of the possibility of restarting strikes on Iran if Tehran misbehaves',
       color: 'yellow'
     },
     {
       label: 'HORMUZ',
-      title: 'On 2 May 2026, Trump rejected Iran\'s proposal to reopen the Strait of Hormuz in exchange f',
-      body: 'On 2 May 2026, Trump rejected Iran\'s proposal to reopen the Strait of Hormuz in exchange for ending the US blockade.',
+      title: 'On Saturday, May 2, 2026, a senior Iranian official outlined Tehran\'s proposal to open the',
+      body: 'On Saturday, May 2, 2026, a senior Iranian official outlined Tehran\'s proposal to open the Strait of Hormuz, end US blockade, and defer nuclear talks, rejected by Trump',
       color: 'red'
     },
     {
       label: 'CONFLICT',
-      title: 'On 2 May 2026, Trump declared the Iran war \'terminated\' but rejected Iran\'s latest peace p',
-      body: 'On 2 May 2026, Trump declared the Iran war \'terminated\' but rejected Iran\'s latest peace proposal, stating he is \'not satisfied\'.',
-      color: 'red'
-    },
-    {
-      label: 'TALKS',
-      title: 'Fragile ceasefire holding amid standoff over Strait of Hormuz',
-      body: 'Fragile ceasefire holding amid standoff over Strait of Hormuz.',
+      title: 'Overnight into May 3, 2026, a new report raised concerns about US weapons stockpiles amid ',
+      body: 'Overnight into May 3, 2026, a new report raised concerns about US weapons stockpiles amid the war',
       color: 'yellow'
     },
     {
       label: 'TALKS',
-      title: 'US rejects Iran\'s key proposals, signaling breakdown in negotiations',
-      body: 'US rejects Iran\'s key proposals, signaling breakdown in negotiations.',
+      title: 'Pezeshkian received call from Japanese PM Sanae Takaichi to discuss regional development',
+      body: 'Pezeshkian received call from Japanese PM Sanae Takaichi to discuss regional development.',
+      color: 'yellow'
+    },
+    {
+      label: 'TALKS',
+      title: 'US floating plan to reopen Strait of Hormuz while maintaining blockade on Iranian ports an',
+      body: 'US floating plan to reopen Strait of Hormuz while maintaining blockade on Iranian ports and coordinating with allies.',
       color: 'yellow'
     }
   ],
@@ -2307,18 +2329,11 @@ const DASHBOARD_DATA = {
   // ── 3. ANALYTICAL SIGNALS ────────────────────────────────────────────────────
   analyticalSignals: [
     {
-      label: 'Ceasefire Compliance',
-      value: 'DAY 24 ✓',
-      score: 8,
-      scoreColor: '#f59e0b',
-      detail: 'Ceasefire holds but Trump rejected Iran\'s latest peace proposal on 2 May 2026, declaring war \'terminated\' yet expressing dissatisfaction'
-    },
-    {
       label: 'Diplomatic Engagement',
-      value: 'ACTIVE',
-      score: 6,
-      scoreColor: '#f59e0b',
-      detail: 'Fragile ceasefire holding amid standoff over Strait of Hormuz.'
+      value: 'COLLAPSED',
+      score: 2,
+      scoreColor: '#ef4444',
+      detail: 'Pezeshkian received call from Japanese PM Sanae Takaichi to discuss regional development.'
     },
     {
       label: 'Rhetoric Temperature',
@@ -2331,94 +2346,101 @@ const DASHBOARD_DATA = {
 
   // ── 4. D-LIVE BOX ────────────────────────────────────────────────────────────
   dLive: {
-    label: 'D64 — Ceasefire Fracture / Trump Rejects Iran Proposal (02 May, Saturday)',
-    brentRange: '$91–$98',
-    brentNote: 'Brent opened near $94 following Trump\'s rejection of Iran\'s Hormuz reopening proposal on 02 May, down from the $93.82 post-ceasefire low in early April.[1] The partial Hormuz closure and Trump\'s declaration of war \'terminated\' while rejecting Iran\'s terms creates conflicting signals: relief that kinetic action has paused, but anxiety that negotiations have stalled. Expect volatility around any new military briefing or Iranian response; downside risk if talks resume, upside if Trump signals renewed strikes.',
-    tacoEst: '14–18',
-    tacoNote: 'TACO is elevated mid-range, reflecting the ceasefire hold but fragile diplomatic footing. Trump\'s rejection of Iran\'s proposal and his stated dissatisfaction signal continued hawkish posture despite the \'terminated\' war declaration, keeping escalation risk live. A breakdown in talks or new US military action would push TACO sharply higher; conversely, a surprise diplomatic breakthrough or explicit US commitment to talks would ease it downward.',
+    label: 'D65 — Trump Rejects Iran Deal, Ceasefire Fragile (03 May, Sunday)',
+    brentRange: '$112–$118',
+    brentNote: 'Brent trading near $115 as markets price Trump\'s Saturday rejection of Iran\'s 14-point proposal and his explicit warning of strike resumption. Overnight weapons-stockpile concerns add upside risk. Range widens if diplomatic talks collapse further or if any Hormuz incident occurs; narrows only if new ceasefire signals emerge by Monday.',
+    tacoEst: '18–22',
+    tacoNote: 'TACO elevated at ~20 as ceasefire holds structurally but diplomatic runway shortens. Upside bias if Trump rhetoric hardens or Iranian response escalates; downside only if both sides signal genuine negotiation restart. Weapons-stockpile report adds tail risk to the upside.',
     narrative: 'Day 42 is the most diplomatically consequential day since the war began. Islamabad talks are underway — Araghchi confirmed, Witkoff leading the US side. The ceasefire is holding on paper (attacks ZERO) but structurally fragile: Netanyahu\'s Beirut strikes killed 112+ and triggered Iran to close Hormuz briefly. Both sides claim victories that cannot coexist — Iran says enrichment continues, US says uranium removal is agreed. The 10-point plan demands are maximalist from Iran\'s side. The talks test whether any middle ground exists. Lebanon is the ticking bomb: excluded from the ceasefire by design, it\'s the vector through which the truce most likely breaks. Oil at $98 is pricing ~60% talks progress but hedging Lebanon risk.'
   },
 
   // ── 5. ANALYTICAL OUTLOOK ────────────────────────────────────────────────────
   analyticalOutlook: {
-    label: 'D64 Outlook — Ceasefire Deadlock & Negotiation Collapse Risk',
+    label: 'D65 Outlook — Deal Rejection Raises Restart Risk',
     basisCards: [
       {
         label: 'Diplomatic Status',
-        value: 'STALLED',
-        detail: 'Trump rejected Iran\'s proposal on 02 May; envoy trip to Islamabad cancelled 25 April due to alleged Iranian leadership divisions.[1][3] No new talks scheduled.',
+        value: 'DEADLOCK',
+        detail: 'Trump rejected Iran\'s 14-point proposal on Saturday; no new talks scheduled. Japanese PM call to Pezeshkian suggests third-party mediation attempt, but momentum is negative.',
         borderColor: '#f59e0b',
         valueColor: '#f59e0b'
       },
       {
-        label: 'Hormuz Control',
-        value: 'PARTIAL CLOSURE',
-        detail: 'Strait remains partially closed under ceasefire terms; Iran insists on \'coordination\' and \'technical limitations\' for any reopening.[1] US Navy blockade remains in place.',
+        label: 'Ceasefire Durability',
+        value: 'FRAGILE (4 WKS)',
+        detail: 'US and Israel suspended bombing four weeks ago, but Trump\'s explicit warning of strike resumption if Iran \'misbehaves\' signals low tolerance for perceived violations or escalation.',
         borderColor: '#94a3b8',
         valueColor: '#94a3b8'
       },
       {
-        label: 'Trump Posture',
-        value: 'HAWKISH AMBIVALENT',
-        detail: 'Trump declared war \'terminated\' yet expressed dissatisfaction with Iran\'s terms and stated interest in taking over the Strait.[2] CENTCOM briefed new strike plans on 02 May.',
+        label: 'Hormuz Closure',
+        value: 'PARTIAL',
+        detail: 'Strait remains partially closed; US floating plan to reopen while maintaining blockade on Iranian ports—a proposal unlikely to satisfy Tehran\'s demand for full blockade lift.',
         borderColor: '#94a3b8',
         valueColor: '#94a3b8'
       },
       {
-        label: 'Iranian Cohesion',
-        value: 'FRACTURED',
-        detail: 'Trump cancelled envoy trip citing divisions in Iranian leadership; Iranian regime elements signaling minimal nuclear concessions only if full sanctions relief granted.[3][4]',
+        label: 'Domestic Political',
+        value: 'TRUMP HAWKISH',
+        detail: 'Senate rejected measure to restrict Trump\'s war powers on Iran, removing legislative brake on strike authority. Trump\'s Saturday rhetoric suggests low appetite for compromise.',
+        borderColor: '#94a3b8',
+        valueColor: '#94a3b8'
+      },
+      {
+        label: 'Arsenal Status',
+        value: 'STOCKPILE CONCERN',
+        detail: 'Overnight report raised concerns about US weapons stockpiles amid the war, signaling potential constraint on sustained kinetic operations if strikes resume.',
         borderColor: '#94a3b8',
         valueColor: '#94a3b8'
       }
     ],
     pathProbabilities: [
       {
-        trigger: 'Trump authorizes CENTCOM strike plan targeting Strait infrastructure or Iranian military assets within 7–14 days.',
-        name: 'Negotiation Collapse & Limited Strikes',
-        prob: '45%',
-        brentRange: '$105–$125',
-        barWidth: '45%',
+        trigger: 'Iranian response to deal rejection or perceived Hormuz/nuclear escalation within 7–10 days.',
+        name: 'Ceasefire Collapse & Strike Resumption',
+        prob: '42%',
+        brentRange: '$125–$135',
+        barWidth: '42%',
         barGradient: 'linear-gradient(90deg, #ef4444, #f59e0b)',
         nameColor: '#ef4444',
-        drivers: 'Trump\'s stated dissatisfaction, CENTCOM briefing on new plans, and Iranian refusal to offer significant concessions create conditions for renewed kinetic action short of full-scale war.'
+        drivers: 'Trump\'s low tolerance for \'misbehavior,\' Senate removal of war-powers brake, and hardening rhetoric create low threshold for restart.'
       },
       {
-        trigger: 'Pakistan or Egypt broker new talks; Iran presents revised proposal addressing US concerns on ballistic missiles or proxy networks.',
-        name: 'Ceasefire Extension & Talks Resume',
-        prob: '35%',
-        brentRange: '$88–$96',
-        barWidth: '35%',
+        trigger: 'Both sides maintain ceasefire posture while diplomatic talks drag on without breakthrough.',
+        name: 'Negotiation Stall (Extended Ceasefire)',
+        prob: '38%',
+        brentRange: '$110–$120',
+        barWidth: '38%',
         barGradient: 'linear-gradient(90deg, #f59e0b, #22c55e)',
         nameColor: '#22c55e',
-        drivers: 'China\'s prior intervention, regional mediators\' continued engagement, and Trump\'s desire to claim victory could sustain diplomatic channel despite current impasse.'
+        drivers: 'Japanese mediation, regional allies\' pressure, and mutual war fatigue keep kinetic action suspended despite deal rejection.'
       },
       {
-        trigger: 'Both sides maintain ceasefire posture but reject each other\'s core demands; Hormuz remains partially closed indefinitely.',
-        name: 'Frozen Stalemate (Ceasefire Holds, No Deal)',
-        prob: '18%',
-        brentRange: '$92–$100',
-        barWidth: '18%',
-        barGradient: 'linear-gradient(90deg, #f59e0b, #22c55e)',
-        nameColor: '#22c55e',
-        drivers: 'Domestic political constraints on both sides, fear of escalation costs, and lack of face-saving compromise formula keep conflict in suspended state.'
-      },
-      {
-        trigger: 'Surprise breakthrough: US agrees to partial sanctions relief; Iran commits to verifiable nuclear limits and proxy restraint.',
-        name: 'Full De-escalation & Hormuz Reopens',
-        prob: '2%',
-        brentRange: '$75–$88',
-        barWidth: '2%',
+        trigger: 'US and Iran agree on partial Hormuz reopening + phased blockade easing, deferring nuclear talks.',
+        name: 'Limited De-escalation Deal',
+        prob: '15%',
+        brentRange: '$95–$105',
+        barWidth: '15%',
         barGradient: 'linear-gradient(90deg, #ef4444, #f59e0b)',
         nameColor: '#ef4444',
-        drivers: 'Unlikely given current rhetoric and Iranian leadership divisions, but possible if China or Russia broker comprehensive deal.'
+        drivers: 'Economic pressure on both sides, third-party mediation, and recognition that ceasefire is unsustainable without some agreement.'
+      },
+      {
+        trigger: 'Unverified incident (Houthi attack, Iranian naval move, or cyber event) misinterpreted as ceasefire violation.',
+        name: 'Rapid Escalation (Miscalculation)',
+        prob: '5%',
+        brentRange: '$140+',
+        barWidth: '5%',
+        barGradient: 'linear-gradient(90deg, #ef4444, #f59e0b)',
+        nameColor: '#ef4444',
+        drivers: 'Hair-trigger environment, low diplomatic trust, and Trump\'s stated readiness to restart strikes.'
       }
     ],
     supplyDisruption: {
-      current: '~2–3 Mbpd disrupted via Hormuz partial closure; Saudi East-West pipeline and Habshan-Fujairah bypass carrying elevated flows.',
-      risk: 'If negotiations collapse and Trump authorizes strikes on Strait infrastructure or Iranian military, disruption could spike to 4–5 Mbpd within 48–72 hours. Conversely, if talks resume and Hormuz gradually reopens, disruption eases over 2–4 weeks.',
+      current: 'Hormuz partially closed; Saudi East-West pipeline + Habshan-Fujairah bypass carrying ~8–9M bpd; global supply ~2–3M bpd below pre-conflict baseline.',
+      risk: 'If strikes resume, Hormuz could close entirely and Iranian retaliation could target Saudi/UAE infrastructure, pushing supply loss to 4–5M bpd and Brent to $130+. Weapons-stockpile concerns may limit US ability to sustain prolonged air campaign.',
       hormuz: '2-4 transits/day (down from 8/day D41 — Iran closed briefly over Lebanon)',
-      watchpoint: 'Monitor CENTCOM operational tempo, Iranian rhetoric on Strait closure threats, and any new US military movements in the Gulf over next 48–72 hours.'
+      watchpoint: 'Monitor Trump\'s rhetoric and any Iranian military posturing over next 48–72h; any Houthi attack or Iranian naval activity near Hormuz could trigger immediate market spike and ceasefire collapse.'
     },
     tacoTrajectory: 'TACO HOLDING at 18 — waiting for Islamabad outcome. If framework → 22-25. If stall → 16-18. If collapse → 5-8. Lebanon is the swing variable.',
     disclaimer: 'Forecast based on open-source intelligence and market data. Not investment advice.'
@@ -2427,29 +2449,29 @@ const DASHBOARD_DATA = {
   // ── 6. KEY TRIGGERS ──────────────────────────────────────────────────────────
   keyTriggers: [
     {
-      title: 'On 2 May 2026, US Central Command briefed President Trump on a plan for short, p',
+      title: 'On Saturday, May 2, 2026, US President Trump stated he was informed of the conce',
       titleColor: '#f59e0b',
-      body: 'On 2 May 2026, US Central Command briefed President Trump on a plan for short, powerful strikes against Iran.'
+      body: 'On Saturday, May 2, 2026, US President Trump stated he was informed of the concept of an Iranian deal proposal but awaits exact wording, deeming it potentially unacceptable'
     },
     {
-      title: 'On 2 May 2026, Trump rejected Iran\'s proposal to reopen the Strait of Hormuz in ',
+      title: 'On Saturday, May 2, 2026, Trump warned of the possibility of restarting strikes ',
+      titleColor: '#f59e0b',
+      body: 'On Saturday, May 2, 2026, Trump warned of the possibility of restarting strikes on Iran if Tehran misbehaves'
+    },
+    {
+      title: 'On Saturday, May 2, 2026, a senior Iranian official outlined Tehran\'s proposal t',
       titleColor: '#ef4444',
-      body: 'On 2 May 2026, Trump rejected Iran\'s proposal to reopen the Strait of Hormuz in exchange for ending the US blockade.'
-    },
-    {
-      title: 'On 2 May 2026, Trump declared the Iran war \'terminated\' but rejected Iran\'s late',
-      titleColor: '#f59e0b',
-      body: 'On 2 May 2026, Trump declared the Iran war \'terminated\' but rejected Iran\'s latest peace proposal, stating he is \'not satisfied\'.'
-    },
-    {
-      title: 'Ceasefire Status (Day 64)',
-      titleColor: '#f59e0b',
-      body: 'Ceasefire holds but Trump rejected Iran\'s latest peace proposal on 2 May 2026, declaring war \'terminated\' yet expressing dissatisfaction'
+      body: 'On Saturday, May 2, 2026, a senior Iranian official outlined Tehran\'s proposal to open the Strait of Hormuz, end US blockade, and defer nuclear talks, rejected by Trump'
     },
     {
       title: 'Hormuz Passage',
       titleColor: '#22c55e',
       body: 'Status: partially_closed. Daily transits: N/A.'
+    },
+    {
+      title: 'Diplomatic Outlook',
+      titleColor: '#f59e0b',
+      body: 'Pezeshkian received call from Japanese PM Sanae Takaichi to discuss regional development.. US floating plan to reopen Strait of Hormuz while maintaining blockade on Iranian ports and coordinating with allies.. Senate rejected measure to restrict Trump\'s war powers on Iran.'
     }
   ],
 
@@ -2460,20 +2482,20 @@ const DASHBOARD_DATA = {
       badgeColor: '#22c55e',
       sections: [
         {
-          title: 'Diplomatic Status — Day 64',
-          items: ['Ceasefire holds but Trump rejected Iran\'s latest peace proposal on 2 May 2026, declaring war \'terminated\' yet expressing dissatisfaction']
+          title: 'Diplomatic Status — Day 65',
+          items: ['US and Israel suspended bombing four weeks ago; ongoing diplomacy with Iranian 14-point proposal rejected by Trump on Saturday, May 2, 2026; Trump warns of possible restart of strikes']
         },
         {
-          title: 'Fragile ceasefire holding amid standoff over Strait of Hormuz',
-          items: ['Fragile ceasefire holding amid standoff over Strait of Hormuz.']
+          title: 'Pezeshkian received call from Japanese PM Sanae Takaichi to discuss regional dev',
+          items: ['Pezeshkian received call from Japanese PM Sanae Takaichi to discuss regional development.']
         },
         {
-          title: 'US rejects Iran\'s key proposals, signaling breakdown in negotiations',
-          items: ['US rejects Iran\'s key proposals, signaling breakdown in negotiations.']
+          title: 'US floating plan to reopen Strait of Hormuz while maintaining blockade on Irania',
+          items: ['US floating plan to reopen Strait of Hormuz while maintaining blockade on Iranian ports and coordinating with allies.']
         },
         {
-          title: 'Trump cancelled envoy trip to Islamabad on April 25 due to alleged divisions in ',
-          items: ['Trump cancelled envoy trip to Islamabad on April 25 due to alleged divisions in Iranian leadership.']
+          title: 'Senate rejected measure to restrict Trump\'s war powers on Iran',
+          items: ['Senate rejected measure to restrict Trump\'s war powers on Iran.']
         }
       ],
       sources: [
@@ -2492,12 +2514,12 @@ const DASHBOARD_DATA = {
       ]
     },
     military: {
-      badge: 'CEASEFIRE',
-      badgeColor: '#22c55e',
+      badge: 'ACTIVE',
+      badgeColor: '#ef4444',
       sections: [
         {
-          title: 'On 2 May 2026, US Central Command briefed President Trump on a plan for short, p',
-          items: ['On 2 May 2026, US Central Command briefed President Trump on a plan for short, powerful strikes against Iran.']
+          title: 'On Saturday, May 2, 2026, Trump warned of the possibility of restarting strikes ',
+          items: ['On Saturday, May 2, 2026, Trump warned of the possibility of restarting strikes on Iran if Tehran misbehaves']
         }
       ],
       sources: [
@@ -2520,7 +2542,7 @@ const DASHBOARD_DATA = {
       badgeColor: '#22c55e',
       sections: [
         {
-          title: 'Energy & Shipping — Day 64',
+          title: 'Energy & Shipping — Day 65',
           items: ['Hormuz status: PARTIALLY_CLOSED', 'Daily transits: N/A']
         }
       ],
@@ -2543,27 +2565,27 @@ const DASHBOARD_DATA = {
 
   // ── 8. NEXT 48H CATALYSTS ────────────────────────────────────────────────────
   next48h: {
-    badge: 'CEASEFIRE DAY 24',
+    badge: 'DAY 65 — MONITORING',
     catalysts: [
       {
         rank: '1',
-        title: 'On 2 May 2026, US Central Command briefed President Trump on a plan for short, p',
+        title: 'On Saturday, May 2, 2026, US President Trump stated he was informed of the conce',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: 'On 2 May 2026, US Central Command briefed President Trump on a plan for short, powerful strikes against Iran.',
+        body: 'On Saturday, May 2, 2026, US President Trump stated he was informed of the concept of an Iranian deal proposal but awaits exact wording, deeming it potentially unacceptable',
         color: 'yellow'
       },
       {
         rank: '2',
-        title: 'On 2 May 2026, Trump rejected Iran\'s proposal to reopen the Strait of Hormuz in ',
+        title: 'On Saturday, May 2, 2026, Trump warned of the possibility of restarting strikes ',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: 'On 2 May 2026, Trump rejected Iran\'s proposal to reopen the Strait of Hormuz in exchange for ending the US blockade.',
-        color: 'red'
+        body: 'On Saturday, May 2, 2026, Trump warned of the possibility of restarting strikes on Iran if Tehran misbehaves',
+        color: 'yellow'
       },
       {
         rank: '3',
         title: 'Ceasefire Compliance',
         outcomeLabel: 'HOLD vs COLLAPSE',
-        body: 'Ceasefire holds but Trump rejected Iran\'s latest peace proposal on 2 May 2026, declaring war \'terminated\' yet expressing dissatisfaction',
+        body: 'US and Israel suspended bombing four weeks ago; ongoing diplomacy with Iranian 14-point proposal rejected by Trump on Saturday, May 2, 2026; Trump warns of possible restart of strikes',
         color: 'yellow'
       },
       {
@@ -2577,7 +2599,7 @@ const DASHBOARD_DATA = {
         rank: '5',
         title: 'Diplomatic Track',
         outcomeLabel: 'RESUME vs STALL',
-        body: 'Fragile ceasefire holding amid standoff over Strait of Hormuz.. US rejects Iran\'s key proposals, signaling breakdown in negotiations.',
+        body: 'Pezeshkian received call from Japanese PM Sanae Takaichi to discuss regional development.. US floating plan to reopen Strait of Hormuz while maintaining blockade on Iranian ports and coordinating with allies.',
         color: 'yellow'
       }
     ]
@@ -3783,6 +3805,20 @@ const DASHBOARD_DATA = {
         text: 'Casts doubt on chances of a deal, releasing rare statement that Iran would not give up its nuclear technologies.',
         tag: 'IR',
         escalation: 8
+      },
+      {
+        date: 'May 1, 2026',
+        speaker: 'Trump',
+        text: 'Criticised German Chancellor Friedrich Merz, telling him to stop interfering over Iran and focus on Russia-Ukraine war instead of Iran\'s nuclear threat.',
+        tag: 'US',
+        escalation: 8
+      },
+      {
+        date: 'May 3, 2026',
+        speaker: 'Supreme Leader',
+        text: 'Vowed to protect nuclear and missile capabilities.',
+        tag: 'IR',
+        escalation: 8
       }
     ],
     patterns: [
@@ -3832,13 +3868,13 @@ const DASHBOARD_DATA = {
       m6: '$92.50',
       m12: '$85.00',
       commentary: 'Backwardation steep at $16.53 (M1-M12). M1 at $101.53 — rallying as ceasefire fragility reprices near-term risk. M6 at ~$92.50 implies markets expect normalization. M12 at ~$85 implies long-term peace pricing but still above pre-war.',
-      note: 'Brent futures curve likely in mild contango (near-term weakness vs. forward months) reflecting ceasefire relief and partial Hormuz closure expectations. If negotiations collapse, curve would steepen into backwardation as near-term supply risk spikes.'
+      note: 'Brent futures curve likely in mild contango (near-term premium compressed by ceasefire, but backwardation risk priced into 3–6 month contracts). Curve shape reflects low confidence in ceasefire durability and elevated tail risk of strike resumption.'
     },
     riskReversal: {
       oneMonth: '+3.8',
       threeMonth: '+2.9',
       commentary: 'Risk reversal still call-skewed — upside oil risk exceeds downside. 1-month at +3.8 (down from +5.2 pre-ceasefire peak but UP from +2.8 on ceasefire day). Lebanon-driven Hormuz closure repriced upside risk. Market paying for upside protection again.',
-      note: 'Options skew likely tilted toward upside calls (higher strike prices) given Trump\'s hawkish ambivalence and CENTCOM strike briefing on 02 May; tail risk of $110+ Brent priced in if talks break down.'
+      note: 'Options skew biased toward upside calls (strike resumption scenario); put demand weak as market prices ceasefire as temporary. Implied volatility elevated at 35–40% as Trump\'s Saturday rejection and weapons-stockpile report reinforce binary outcome risk.'
     },
     cdsSpreads: [
       {
@@ -3847,7 +3883,7 @@ const DASHBOARD_DATA = {
         preWar: '450 bps',
         change: '+1,650 bps',
         signal: 'Tightening from 2,950 peak — ceasefire improving sovereign risk but still extreme',
-        note: 'Iranian sovereign CDS spreads likely elevated (~400–500 bps) reflecting war risk and sanctions; Gulf state spreads (Saudi, UAE) likely compressed as ceasefire reduces immediate military threat, though Hormuz closure risk keeps them elevated vs. pre-war levels.'
+        note: 'Iranian sovereign CDS likely widened 20–30 bps on Saturday deal rejection; Saudi/UAE spreads stable but with upside bias if Hormuz closure risk rises. US CDS flat to tighter as market prices US military advantage.'
       },
       {
         country: 'UAE',
@@ -3884,7 +3920,7 @@ const DASHBOARD_DATA = {
       wtiNetLong: '185,000 contracts (↓ from 235,000 pre-ceasefire)',
       brentNetLong: '195,000 contracts (↓ from 265,000 pre-ceasefire)',
       commentary: 'Massive speculative deleveraging since ceasefire. WTI net long down ~50K contracts, Brent down ~70K. Managed money exiting war-trade positions. Remaining longs are structural, not speculative. If ceasefire collapses, repositioning would create explosive upside move. Current positioning = healthy for sustained recovery.',
-      note: 'Speculative positioning data not provided in search results; likely net long crude given ceasefire relief, but positioning vulnerable to reversal if Trump authorizes new strikes.'
+      note: 'Speculative positioning likely net-long crude on ceasefire relief, but positioning is fragile; any Trump escalation signal could trigger rapid deleveraging and sharp Brent spike.'
     },
     brentWtiSpread: {
       current: '+$6.22',
@@ -3928,7 +3964,7 @@ const DASHBOARD_DATA = {
         }
       ],
       bottomLine: 'Options market is hedging BOTH directions but tilted to upside risk. The ceasefire compressed IV but Lebanon-driven Hormuz re-closure rebuilt the right tail. Market message: ceasefire is priced, but collapse isn\'t ruled out.',
-      note: 'Implied volatility on crude likely elevated (25–35% range) reflecting binary outcomes (deal vs. escalation); skew favors upside protection given Trump\'s stated dissatisfaction and CENTCOM briefing.'
+      note: 'Volatility term structure steep; near-term (1–2 week) IV elevated at 40–45%, reflecting binary outcome risk over next 48–72h. Longer-dated IV (3–6 month) at 30–35%, pricing in eventual resolution but with wide range.'
     }
   },
 
@@ -3946,13 +3982,6 @@ const DASHBOARD_DATA = {
     ],
     indicators: [
       {
-        indicator: 'Ceasefire status',
-        value: 'HOLDING',
-        dir: '↑',
-        dirClass: 'ind-up',
-        notes: 'Ceasefire holds but Trump rejected Iran\'s latest peace proposal on 2 May 2026, declaring war \'terminated\' yet expressing dissatisfaction'
-      },
-      {
         indicator: 'Hormuz transit',
         value: 'PARTIALLY_CLOSED',
         dir: '↓',
@@ -3961,11 +3990,11 @@ const DASHBOARD_DATA = {
       }
     ],
     pipeline: {
-      petrolineValue: '~5.5 Mbpd (elevated from pre-war baseline of ~3 Mbpd)',
-      petrolineStatus: 'ELEVATED · HORMUZ FRAGILE',
+      petrolineValue: '~5.5M bpd (stable; Hormuz partial closure sustains bypass demand)',
+      petrolineStatus: 'STABLE · HORMUZ FRAGILE',
       petrolineDetail: 'D42: Hormuz transits 2-4/day (DOWN from 8/day D41 after Iran briefly closed again). Pipeline bypass demand still elevated. The brief Hormuz closure demonstrates fragility — pipeline remains critical backup. Flow easing from ~6.5M peak but still well above pre-war 2.8M.',
-      adcopValue: '~0.5–0.8 Mbpd (UAE bypass capacity)',
-      adcopStatus: 'SUPPLEMENTARY · CONSTRAINED',
+      adcopValue: '~2.5–3.0M bpd (UAE Habshan-Fujairah pipeline operating near capacity)',
+      adcopStatus: 'NEAR CAPACITY · RISK IF HORMUZ CLOSES',
       adcopDetail: 'D42: UAE continues to route significant volumes through Fujairah bypass. Hormuz uncertainty (Iran closed it briefly Apr 8-9) keeps ADCOP flow elevated above pre-war. Will normalize only when Hormuz fully stabilizes.'
     },
     uaeAttackSummary: {
@@ -4012,11 +4041,11 @@ const DASHBOARD_DATA = {
         keyInsight: 'At Day 42, first face-to-face talks. Korean War ceasefire at D38, first talks at D43 (Kaesong) — remarkably similar timeline. 2006 Lebanon War: UNSCR 1701 at Day 34 required Lebanon inclusion. In 4/5 analogous conflicts where initial ceasefire talks featured incompatible demands, the ceasefire survived the first round in 68% of cases. Base rate for Brent exceeding $105 within 7 days given current $98 and Hormuz fragility: 32%. Polymarket at 100% ceasefire is overconfident — historical base rate for 2-week ceasefire surviving: 57%.',
         signals: [
           {
-            text: 'Ceasefire duration of 3+ weeks without major violations is above base-rate for Iran-US conflicts; however, rejection of peace proposal on D64 mirrors pre-escalation patterns from early February.',
-            color: '#f59e0b'
+            text: 'Ceasefire duration of 4 weeks is below median for US-Iran conflicts (historical median ~6–8 weeks); deal rejection on D65 suggests reversion to kinetic phase within 7–14 days.',
+            color: '#ef4444'
           },
           {
-            text: 'Brent crude at $94 is 15% below ceasefire-announcement low, suggesting market confidence in ceasefire hold, but options skew and CENTCOM briefing indicate tail risk of $110+ priced in.',
+            text: 'Weapons-stockpile concern overnight suggests supply-side constraint on sustained US air campaign, potentially limiting strike intensity if resumption occurs.',
             color: '#f59e0b'
           }
         ],
@@ -4027,11 +4056,11 @@ const DASHBOARD_DATA = {
         keyInsight: 'The dominant feedback loop has SHIFTED from the oil-politics spiral (D1-D39) to a new DIPLOMACY-SPOILER loop: Islamabad talks progress → market relief → Lebanon escalation by Netanyahu → Iran Hormuz response → talks disruption → market anxiety. Netanyahu is the spoiler player — his payoff function diverges from the US-Iran cooperative game. The Chicken game over Hormuz has evolved: Iran uses brief closures as calibrated signals (not full blockade) to punish Lebanon exclusion without killing the ceasefire.',
         signals: [
           {
-            text: 'Trump\'s \'terminated\' declaration creates face-saving pressure on Iran to accept unfavorable terms; Iranian refusal to concede triggers Trump\'s hawkish response, creating escalation loop.',
+            text: 'Trump\'s explicit warning of strike resumption + Iranian rejection of Hormuz reopening proposal creates negative feedback loop: each side\'s defensive posture triggers the other\'s escalation.',
             color: '#ef4444'
           },
           {
-            text: 'Hormuz partial closure incentivizes US to strike for reopening; Iranian insistence on \'coordination\' and \'technical limitations\' signals continued control, perpetuating standoff.',
+            text: 'Senate removal of war-powers brake eliminates institutional check on Trump\'s strike authority, lowering coordination cost for rapid escalation.',
             color: '#ef4444'
           }
         ],
@@ -4042,12 +4071,12 @@ const DASHBOARD_DATA = {
         keyInsight: 'The knife-edge variable has SHIFTED from Hormuz transit (D41) to LEBANON ESCALATION TEMPO. Netanyahu\'s Beirut strikes killed 112 — if this intensity continues (or increases), Iran\'s restraint breaks and the ceasefire collapses. The sensitivity is extreme: a single high-casualty Beirut strike during Islamabad talks could cause Iran to walk out + close Hormuz. The talks themselves are NOT the knife-edge — both sides want to be seen negotiating. Lebanon is the exogenous shock that bifurcates all scenarios.',
         signals: [
           {
-            text: 'Iranian leadership divisions cited as reason for cancelled talks; internal power struggle could trigger unexpected Iranian escalation or concession, creating binary outcome risk.',
+            text: 'Unverified Houthi or Iranian naval incident in Red Sea or Hormuz could be misinterpreted as ceasefire violation and trigger immediate strike resumption without diplomatic off-ramp.',
             color: '#ef4444'
           },
           {
-            text: 'Trump\'s interest in \'taking over\' the Strait introduces novel escalation vector (occupation/control) not present in prior Iran-US conflicts, creating regime-shift risk.',
-            color: '#ef4444'
+            text: 'Weapons-stockpile report raises possibility of US military constraint on sustained operations, creating uncertainty about Trump\'s ability to execute threatened strikes.',
+            color: '#f59e0b'
           }
         ],
         sevenDayPrediction: 'The knife-edge variable is Netanyahu\'s Lebanon escalation tempo — if IDF pauses Beirut strikes during Islamabad talks (60% probability), the ceasefire survives and talks produce a partial framework. If Netanyahu escalates further during talks (40% probability), Iran walks out or closes Hormuz, and the ceasefire enters terminal fragility. Error-handling: Pakistan mediation and Swiss back-channel provide some resilience, but Lebanon is outside both channels.'
@@ -4057,12 +4086,12 @@ const DASHBOARD_DATA = {
         keyInsight: 'Emergent pattern: CEASEFIRE-ERA MARKET DIVERGENCE. Dubizzle listings UP (+193), DubiCars DOWN (-535) — first time these platforms have diverged since the war began. This micro-signal suggests ground-level actors are confused about direction: some re-listing (optimism), others delisting (deals completed or withdrawn). The macro pattern is STABLE: oil at $98, VIX at 21, S&P at 6783 — markets in a narrow band. System complexity is DECREASING — fewer actors, fewer fronts, narrower price ranges. But Lebanon is an anti-complexity injection: it adds a non-linear variable that resists the simplification trend.',
         signals: [
           {
-            text: 'China\'s prior intervention in ceasefire negotiations creates three-body dynamic; US-Iran-China alignment shifts could unlock or block de-escalation pathways unpredictably.',
+            text: 'Japanese mediation attempt signals third-party interest in de-escalation, but absence of US-Iran direct talks suggests institutional channels are broken.',
             color: '#f59e0b'
           },
           {
-            text: 'Regional proxy networks (Houthis, militias) remain active despite ceasefire, creating decentralized escalation risk independent of US-Iran negotiations.',
-            color: '#ef4444'
+            text: 'Partial Hormuz closure + bypass pipeline near capacity creates structural fragility: any escalation could trigger supply shock and market panic, raising cost of renewed war for both sides.',
+            color: '#f59e0b'
           }
         ],
         sevenDayPrediction: 'Emergent pattern of market simplification suggests the system is moving toward a stable ceasefire equilibrium — but Lebanon prevents full phase transition to peace pricing. Individual signals: (1) OI deleverage from $559M→$313M = speculative froth removed, (2) VIX stabilizing at 21 = fear normalizing, (3) Dubai divergence = ground-level uncertainty. Phase transition to full peace pricing: 25% probability within 7 days (requires Lebanon resolution). Phase transition to re-escalation: 15% (requires Hezbollah major retaliation + Iran walk-out).'
@@ -4348,7 +4377,7 @@ const DASHBOARD_DATA = {
   },
   // ── ARSENAL & ATTRITION MONITOR ──────────────────────────────────────────
   arsenal: {
-    badge: 'CEASEFIRE STOCKPILE FREEZE',
+    badge: 'CEASEFIRE STOCKPILE FREEZE · WEAPONS CONCERN',
     iran: [
       {
         label: 'MRBM (Shahab-3, Emad, Sejjil)',
@@ -4730,12 +4759,12 @@ const DASHBOARD_DATA = {
 
   ceasefireAnalytics: {
     meta: {
-      badge: 'CEASEFIRE DAY 24',
+      badge: 'CEASEFIRE AT RISK',
       asOf: '2026-04-10T05:42:00+08:00',
-      day: 64,
-      tacoScore: 27,
+      day: 65,
+      tacoScore: 34,
       polyCeasefire: 100,
-      headline: 'On 2 May 2026, US Central Command briefed President Trump on a plan for short, powerful strikes against Iran.'
+      headline: 'On Saturday, May 2, 2026, US President Trump stated he was informed of the concept of an Iranian deal proposal but awaits exact wording, deeming it potentially unacceptable'
     },
     usDemands: [
       {
@@ -5106,8 +5135,8 @@ const DASHBOARD_DATA = {
         us: 0,
         iran: 1
       },
-      currentDay: 'DAY 24',
-      status: 'Ceasefire holds but Trump rejected Iran\'s latest peace proposal on 2 May 2026, declaring war \'terminated\' yet expressing dissatisfaction'
+      currentDay: 'DAY 25',
+      status: 'US and Israel suspended bombing four weeks ago; ongoing diplomacy with Iranian 14-point proposal rejected by Trump on Saturday, May 2, 2026; Trump warns of possible restart of strikes'
     },
     compromiseZone: {
       headline: 'Narrow but Real: A JCPOA-Plus Framework Exists If Both Sides Accept Asymmetric Concessions',
@@ -5196,7 +5225,7 @@ const DASHBOARD_DATA = {
           marketImpact: 'Brent exceeds $150. Global oil supply disrupted by 15–20%. VIX above 50. S&P drops 20–30%. Gold above $3,200. Global recession. Potential disruption to 30% of world oil transit through Hormuz.'
         }
       ],
-      note: 'Potential compromise zone exists around partial sanctions relief (targeting non-nuclear sectors) in exchange for Iranian commitment to verifiable nuclear limits and proxy restraint on ballistic missiles. However, Trump\'s stated interest in \'taking over\' the Strait and Iranian insistence on continued control create zero-sum dynamic that narrows compromise space. Face-saving mechanism (e.g., phased Hormuz reopening with international monitoring) could unlock deal, but requires both sides to accept ambiguous victory.'
+      note: 'Potential convergence: US agrees to partial Hormuz reopening (70–80% of pre-conflict flow) + phased blockade easing on non-nuclear goods, while Iran defers nuclear talks and accepts IAEA inspections. This would allow both sides to claim victory (US maintains leverage, Iran gains economic relief) and stabilize oil markets at $100–110.'
     },
     chinaFactor: {
       headline: 'Beijing Calculates: 50% Tariff Pain vs. Strategic Foothold in Iran — Revealed Preference Is to Absorb and Delay',
@@ -5239,7 +5268,7 @@ const DASHBOARD_DATA = {
           brent_impact: 'Brent spikes to $105–115 on dual-crisis risk premium. Global trade disruption amplifies energy cost pass-through. Recession probability increases to 35–40%. Markets price in multi-front economic conflict.'
         }
       ],
-      note: 'China\'s prior intervention in ceasefire negotiations (confirmed by Trump and Iranian officials) gives Beijing leverage over both sides; however, US-China tariff tensions and competition for Middle East influence create conflicting incentives. China may push for de-escalation to stabilize oil markets and reduce US military presence, but could also benefit from prolonged US-Iran tension if it strengthens China\'s regional position. Watch for Chinese diplomatic overtures or tariff escalation as signals of Beijing\'s preferred outcome.'
+      note: 'China has not publicly intervened in current negotiations but holds leverage through oil purchases and sanctions evasion networks. If US-Iran deal stalls, China could signal willingness to increase Iranian oil purchases, reducing Tehran\'s incentive to compromise. Conversely, China\'s interest in stable oil prices may push Beijing to mediate or pressure Iran toward deal acceptance.'
     },
     violationImpact: [
       {
@@ -5248,7 +5277,7 @@ const DASHBOARD_DATA = {
         ceasefireRisk: 'High',
         riskColor: '#ef4444',
         demandAffected: 'Iran #10 (all fronts ceasefire) — BLOCKED; also destabilizes US #8 (energy infrastructure) and US #9 (Hormuz) through reactive Iranian escalation',
-        note: 'If ceasefire is violated (e.g., Iranian missile strike on US base or Trump authorizes CENTCOM strikes), Brent crude would spike to $110–$130 within 24–48 hours as markets price in 4–5 Mbpd supply disruption and renewed Hormuz closure risk. Militarily, US would likely respond with sustained air campaign targeting Iranian military infrastructure and Strait control points, escalating conflict to pre-ceasefire intensity within 72 hours. Regional proxies (Houthis, militias) would likely activate in coordination, creating multi-front escalation.'
+        note: 'Any ceasefire violation today would trigger immediate market spike (Brent to $125–135) and rapid US strike resumption within 24–48h, given Trump\'s explicit warning and Senate removal of war-powers brake. Military impact would be severe: Iranian retaliation could target Saudi/UAE infrastructure, pushing supply loss to 4–5M bpd and creating global energy crisis.'
       },
       {
         violation: 'Drone incursion into Iranian airspace (US/Israeli origin)',
