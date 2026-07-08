@@ -12,16 +12,16 @@ const DASHBOARD_DATA = {
   // ── META ────────────────────────────────────────────────────────────────────
   meta: {
     version: "4.0.0",
-    timestamp: "07 Jul 2026 20:28 HKT",
-    day: 130,
+    timestamp: "08 Jul 2026 19:47 HKT",
+    day: 131,
     dayDate: "13 APR 2026",
     threatLevel: "HIGH",
     threatClass: "threat-red",
-    tacoScore: 19,
+    tacoScore: 22,
     tacoMax: 100,
     tacoPrev: 18,
     tacoPrevDay: 42,
-    tacoRegime: "BRENT $72.6",
+    tacoRegime: "BRENT $78.08",
     tacoRegimeLabel: "CEASEFIRE DAY 5: Vance 21-hour marathon talks in Islamabad END WITHOUT DEAL. Trump: 'We've won — whether we make a deal makes no difference.' US announces naval blockade of Hormuz. Mojtaba Khamenei breaks silence, vows revenge for father's assassination. Netanyahu rules out Lebanon ceasefire. Brent $101.53 (+6.7%). WTI $104.17 (+7.9%). VIX 19.23 (-1.3%). Gold $4,737 (-1.1%). CPI surges to 3.3% (gasoline +21.2%). Ceasefire nominally holds but diplomatic path severely damaged.",
     tacoRegimeColor: "#ef4444",
     tacoPhase: "ceasefire",
@@ -35,81 +35,81 @@ const DASHBOARD_DATA = {
   // ── FINANCIAL KPIs — Market Signals Tab ─────────────────────────────────────
   // NOTE: Wednesday 18 Mar — Full market day. Brent spiked to $108.52 on South Pars attack. Gold crashed. Equities red. VIX bounced.
   kpis: {
-    brent:    { label: "Brent (ICE)",      price: 72.6, change: 0.61,   changePct: 0.85,  prevClose: 71.99, cssClass: "kpi-up",   note: "▲ +0.8% · Ceasefire relief · HL $72.64 · Hormuz: Open" },
-    wti:      { label: "WTI (NYMEX)",      price: 69.03,  change: 0.48,   changePct: 0.7,  prevClose: 68.55,  cssClass: "kpi-up",   note: "▲ +0.7% · WTI premium persists (spread $3.57)" },
-    tnx:      { label: "US 10Y Yield",     price: 4.49,   change: 0.02,   changePct: 0.36,  prevClose: 4.48,   cssClass: "kpi-up", note: "4.49% · ▲ +0.4% · Yield steady amid ceasefire uncertainty", isPercent: true },
-    vix:      { label: "VIX",              price: 15.83,  change: 0.26,   changePct: 1.67,  prevClose: 15.57,  cssClass: "kpi-up", note: "▲ +1.7% · Low vol — ceasefire risk priced in", noDollar: true },
-    hyg:      { label: "HY Spread (HYG)",  price: 79.87,  change: 0.16,  changePct: 0.2, prevClose: 79.71,  cssClass: "kpi-flat", note: "▲ +0.2% · Credit steady — no stress signal" },
-    gold:     { label: "Gold Spot",        price: 4183,   change: 15.5,   changePct: 0.37, prevClose: 4167.5,   cssClass: "kpi-up",   note: "▲ +0.4% · $4,183 · Safe-haven bid — ceasefire doubts", formatComma: true },
-    brentWtiSpread: { label: "Brent–WTI Spread", price: 3.57, change: 0.13, changePct: 3.78, prevClose: 3.44, cssClass: "kpi-up", note: "Spread $3.57 · Spread normalizing", noDollar: false },
-    ita:      { label: "ITA (Defense ETF)", price: 250.78, change: 2.59,   changePct: 1.04,  prevClose: 248.19, cssClass: "kpi-up", note: "▲ +1.0% · Defense sector — ceasefire fragility hedge" }
+    brent:    { label: "Brent (ICE)",      price: 78.08, change: 3.92,   changePct: 5.29,  prevClose: 74.16, cssClass: "kpi-up",   note: "▲ +5.3% · Ceasefire relief · HL $78.06 · Hormuz: Contested" },
+    wti:      { label: "WTI (NYMEX)",      price: 74.03,  change: 1.82,   changePct: 2.52,  prevClose: 72.21,  cssClass: "kpi-up",   note: "▲ +2.5% · WTI premium persists (spread $4.05)" },
+    tnx:      { label: "US 10Y Yield",     price: 4.53,   change: 0.05,   changePct: 1.14,  prevClose: 4.48,   cssClass: "kpi-up", note: "4.53% · ▲ +1.1% · Yield steady amid ceasefire uncertainty", isPercent: true },
+    vix:      { label: "VIX",              price: 18.31,  change: 2.18,   changePct: 13.52,  prevClose: 16.13,  cssClass: "kpi-up", note: "▲ +13.5% · Risk repricing on ceasefire fragility", noDollar: true },
+    hyg:      { label: "HY Spread (HYG)",  price: 79.76,  change: -0.11,  changePct: -0.14, prevClose: 79.87,  cssClass: "kpi-flat", note: "▼ -0.1% · Credit widening — stress watch" },
+    gold:     { label: "Gold Spot",        price: 4054.7,   change: -102.7,   changePct: -2.47, prevClose: 4157.4,   cssClass: "kpi-down",   note: "▼ -2.5% · $4,055 · Safe-haven demand easing on ceasefire", formatComma: true },
+    brentWtiSpread: { label: "Brent–WTI Spread", price: 4.05, change: 2.1, changePct: 107.69, prevClose: 1.95, cssClass: "kpi-up", note: "Spread $4.05 · Spread normalizing", noDollar: false },
+    ita:      { label: "ITA (Defense ETF)", price: 245.11, change: -5.67,   changePct: -2.26,  prevClose: 250.78, cssClass: "kpi-down", note: "▼ -2.3% · Defense sector pullback on peace hopes" }
   },
 
   // ── COMPACT MARKET STRIP (Overview tab) ─────────────────────────────────────
   marketStrip: [
     {
       label: 'Brent',
-      value: '$72.60',
-      delta: '+0.8%',
+      value: '$78.08',
+      delta: '+5.3%',
       color: '#22c55e'
     },
     {
       label: 'S&P 500',
-      value: '$7,537.43',
-      delta: '+0.7%',
-      color: '#22c55e'
+      value: '$7,503.85',
+      delta: '-0.5%',
+      color: '#ef4444'
     },
     {
       label: 'VIX',
-      value: '15.83',
-      delta: '+1.7%',
+      value: '18.31',
+      delta: '+13.5%',
       color: '#22c55e'
     },
     {
       label: 'Gold',
-      value: '$4,183.00',
-      delta: '+0.4%',
-      color: '#22c55e'
+      value: '$4,054.70',
+      delta: '-2.5%',
+      color: '#ef4444'
     },
     {
       label: '10Y',
-      value: '4.49',
-      delta: '+0.4%',
+      value: '4.53',
+      delta: '+1.1%',
       color: '#22c55e'
     },
     {
       label: 'HYG',
-      value: '$79.87',
-      delta: '+0.2%',
-      color: '#22c55e'
+      value: '$79.76',
+      delta: '-0.1%',
+      color: '#ef4444'
     }
   ],
 
   // ── OVERVIEW TAB — TACO Sub-Scores (inline synthesis) ──────────────────────
   tacoSubScoresOverview: {
     reversibility: {
-      score: 65,
-      label: 'The current war footing is relatively reversible because major kinetic operations are halted and technical talks are fleshing out mechanisms to keep Hormuz open and unlock economic channels.[1][2][6][7] However, lingering port blockades and unresolved nuclear and sanctions files mean the system coul'
+      score: 38,
+      label: 'The current war footing is still reversible because diplomatic channels are not closed and the escalation is being driven by discrete maritime incidents. However, the more the cycle shifts into strikes against radar, command-and-control, and vessels, the harder it becomes to unwind quickly.'
     },
     rhetoric: {
-      score: 45,
-      label: 'Public rhetoric from Trump and Iranian officials is mixed: Trump speaks of \'very good meetings\' and denuclearisation progress, while Tehran emphasises conditions and frozen assets, but neither side is currently using maximalist war-like language.[1][3][6][8] This keeps rhetorical heat below crisis l'
+      score: 72,
+      label: 'Rhetoric is intense on both sides, with the U.S. framing strikes as self-defense and Iran threatening decisive retaliation. Trump’s reported statement that the ceasefire is over reinforces a high-temperature signaling environment.'
     },
     diplomatic: {
-      score: 80,
-      label: 'Diplomatic activity is intense, with Qatar and Pakistan mediating indirect technical talks, a structured MoU framework in place, and plans to continue discussions after the Iranian funeral period.[1][2][3][6][8] The existence of a 60-day negotiation window and High Level Committee plans indicates in'
+      score: 44,
+      label: 'Pakistan says talks could resume in coming days, and Qatar remains active, so diplomacy has not died. Still, the talks are clearly trailing the battlefield rather than leading it.'
     },
     marketImpl: {
       score: 72,
       label: 'Markets cautiously optimistic: Brent $98.22 (+3.7% — recovering but $11 below pre-ceasefire). VIX 21.28 (stable). S&P +2.5%. HL $96.70 (+7.3%). OI $313M (deleveraged from $559M ATH). Credit rally continuing. Defense stocks surging (+4%) on fragility concerns.'
     },
     historical: {
-      score: 62,
-      label: 'The current state resembles prior Middle East conflicts that transitioned into extended ceasefires with technical negotiations, such as post-2006 Lebanon or later phases of the Iran nuclear talks, where base rates favoured muddling-through over immediate relapse into major war.[6][7] Statistically, such phases often yield partial settlements and frozen conflicts rather than fully resolved peace, implying a medium probability of durable but imperfect de-escalation.'
+      score: 34,
+      label: 'Recent maritime crises and short-fuse Gulf escalations typically produce a temporary de-risking window only after visible restraint, not after rhetoric alone. The base-rate framing favors partial reversals and negotiated pauses over sustained open-ended conflict, but only once both sides absorb enough economic pain to prioritize shipping stability.'
     },
     domPolitical: {
-      score: 55,
-      label: 'Trump faces electoral incentives to secure a deal that combines denuclearisation claims with economic pressure relief, but also confronts hawkish constituencies wary of concessions.[4][6] In Iran, leadership transitions and economic strain create pressure to unlock funds and sanctions relief, yet id'
+      score: 41,
+      label: 'U.S. domestic pressure favors visible deterrence after shipping attacks, while Iran’s leadership has incentives to show it is not yielding under pressure. At the same time, both sides have political reasons to avoid a prolonged disruption of oil flows and regional trade.'
     }
   },
 
@@ -859,39 +859,39 @@ const DASHBOARD_DATA = {
       subDesc: 'Can Trump undo this with a tweet?',
       weight: '30%',
       signal: 'Day 42 (Apr 10): ISLAMABAD TALKS UNDERWAY. First face-to-face since war began. Araghchi heading to Pakistan. Ceasefire holding — attacks ZERO on Apr 8. Hormuz transits 2-4/day (down from 8/day D41 — Iran briefly closed again). BUT: Both sides claim incompatible victories. Iran\'s 10-point plan demands: non-aggression guarantees, enrichment acceptance, sanctions removal, war damages, US withdrawal, Lebanon ceasefire. US position: nuclear material removal, Iran military destroyed, regime \'out of options.\' These demands are fundamentally irreconcilable. Score holds at 22: talks happening = positive, but structural incompatibility = no upgrade.',
-      score: 65,
+      score: 38,
       maxScore: 100,
-      weighted: '19.5',
+      weighted: '11.4',
       scoreClass: 'taco-score-amber',
       isNew: true,
       hasRhetoricLink: false,
-      rationale: 'The current war footing is relatively reversible because major kinetic operations are halted and technical talks are fleshing out mechanisms to keep Hormuz open and unlock economic channels.[1][2][6][7] However, lingering port blockades and unresolved nuclear and sanctions files mean the system coul'
+      rationale: 'The current war footing is still reversible because diplomatic channels are not closed and the escalation is being driven by discrete maritime incidents. However, the more the cycle shifts into strikes against radar, command-and-control, and vessels, the harder it becomes to unwind quickly.'
     },
     {
       name: 'Rhetoric Intensity',
       subDesc: 'Words before weapons',
       weight: '20%',
       signal: 'Day 42: Hegseth — \'New regime is out of options and out of time, so they cut a deal.\' Nuclear material removal framed as agreed. Iran: \'Enrichment won\'t be curtailed\' — direct contradiction. Iran Ambassador to Pakistan: \'critical, sensitive stage.\' UK FM Cooper: Lebanon should be covered. Vance agreed Lebanon NOT covered. Netanyahu intensifying Beirut strikes (112 killed, 300+ wounded). Rhetoric is mixed: ceasefire-supporting on US-Iran bilateral front, but Lebanon front = escalatory. Score 48 (down from 52): net neutral-to-negative as Lebanon rhetoric intensifies.',
-      score: 45,
+      score: 72,
       maxScore: 100,
-      weighted: '9.0',
-      scoreClass: 'taco-score-amber',
+      weighted: '14.4',
+      scoreClass: 'taco-score-green',
       isNew: true,
       hasRhetoricLink: true,
-      rationale: 'Public rhetoric from Trump and Iranian officials is mixed: Trump speaks of \'very good meetings\' and denuclearisation progress, while Tehran emphasises conditions and frozen assets, but neither side is currently using maximalist war-like language.[1][3][6][8] This keeps rhetorical heat below crisis l'
+      rationale: 'Rhetoric is intense on both sides, with the U.S. framing strikes as self-defense and Iran threatening decisive retaliation. Trump’s reported statement that the ceasefire is over reinforces a high-temperature signaling environment.'
     },
     {
       name: 'Diplomatic',
       subDesc: 'Backchannel to breakthrough',
       weight: '20%',
       signal: 'Day 42: HIGHEST DIPLOMATIC ACTIVITY OF THE WAR. Islamabad talks confirmed — Araghchi heading to Pakistan. Witkoff (not Rubio) leading US delegation — possible downgrade but still senior envoy. Pakistan hosting = neutral ground. Iran Ambassador: \'critical, sensitive stage.\' Framework on the table. But: 10-point plan vs US demands = collision course on enrichment, sanctions, Lebanon. UK pushing Lebanon inclusion (Cooper). Israel-Lebanon EXCLUDED from ceasefire per Vance. Score rises to 70: talks happening is the most important diplomatic signal of the entire conflict.',
-      score: 80,
+      score: 44,
       maxScore: 100,
-      weighted: '16.0',
-      scoreClass: 'taco-score-green',
+      weighted: '8.8',
+      scoreClass: 'taco-score-amber',
       isNew: true,
       hasRhetoricLink: false,
-      rationale: 'Diplomatic activity is intense, with Qatar and Pakistan mediating indirect technical talks, a structured MoU framework in place, and plans to continue discussions after the Iranian funeral period.[1][2][3][6][8] The existence of a 60-day negotiation window and High Level Committee plans indicates in'
+      rationale: 'Pakistan says talks could resume in coming days, and Qatar remains active, so diplomacy has not died. Still, the talks are clearly trailing the battlefield rather than leading it.'
     },
     {
       name: 'Historical Precedent',
@@ -910,64 +910,64 @@ const DASHBOARD_DATA = {
       subDesc: 'Money talks',
       weight: '10%',
       signal: 'Day 42: Markets rebounding on talks optimism. Brent $98.22 (+3.7%) — recovering from ceasefire crash but still $11 below pre-ceasefire $109. VIX 21.28 (+1.1% — slight uptick on fragility). S&P +2.5%. HL $96.70 (+7.3%), OI $313M (deleveraged from $559M ATH). HYG +0.6% (credit rally continues). Defense stocks surging: ITA +4%. Ceasefire PM 100% ($225M volume). Oil markets pricing Brent $90-100 range. Score 72 (down from 78): oil recovering rather than falling = markets less certain.',
-      score: 70,
+      score: 33,
       maxScore: 100,
-      weighted: '7.0',
-      scoreClass: 'taco-score-green',
+      weighted: '3.3',
+      scoreClass: 'taco-score-amber',
       isNew: true,
       hasRhetoricLink: false,
-      rationale: 'Market pricing in crude and regional risk assets suggests investors assign relatively high odds to continued de-escalation: backwardation is moderating and spreads are tighter than at the height of the conflict.[6][7] Still, options skew and residual volatility indicate that traders keep meaningful '
+      rationale: 'Market pricing still reflects some probability of stabilization, but today’s renewed strikes have materially reduced de-escalation odds. The implied message is that traders are treating negotiations as real but fragile, not decisive.'
     },
     {
       name: 'Domestic Political',
       subDesc: 'Ballot box pressure',
       weight: '10%',
       signal: 'Day 42: Trump narrative maintaining — Hegseth: \'regime out of options.\' Military victory declared. But Witkoff (not Rubio) = less investment in diplomatic success. Polymarket: 78% Trump ends ops (↓4pp from D41), 94% conflict ends. Netanyahu acting independently — escalating Lebanon during ceasefire — is the biggest political wildcard. Iran hardliners protesting against ceasefire. Domestic pressure: if oil stays at $98 rather than falling to $85-90, CPI relief narrative weakens. Score holds at 40.',
-      score: 55,
+      score: 41,
       maxScore: 100,
-      weighted: '5.5',
+      weighted: '4.1',
       scoreClass: 'taco-score-amber',
       isNew: true,
       hasRhetoricLink: false,
-      rationale: 'Trump faces electoral incentives to secure a deal that combines denuclearisation claims with economic pressure relief, but also confronts hawkish constituencies wary of concessions.[4][6] In Iran, leadership transitions and economic strain create pressure to unlock funds and sanctions relief, yet id'
+      rationale: 'U.S. domestic pressure favors visible deterrence after shipping attacks, while Iran’s leadership has incentives to show it is not yielding under pressure. At the same time, both sides have political reasons to avoid a prolonged disruption of oil flows and regional trade.'
     }
   ],
 
   // ── TACO ANALYTICS KPIs ────────────────────────────────────────────────────
   tacoAnalytics: {
     momentum: {
-      value: '-1.0',
-      note: 'TACO momentum is gently downward as successive reports from Doha and mediators emphasise \'positive progress\', reducing near-term escalation risk even though core disputes remain.[1][2][3][6]'
+      value: '-3.4',
+      note: 'Momentum has turned sharply lower because the ceasefire is functionally broken and the latest escalation is centered on shipping.'
     },
     regime: {
-      value: 'CEASEFIRE (HOLDING)',
-      note: 'The regime is a holding ceasefire anchored by an MoU and active mediation, with open Hormuz and technical talks tempering risk while political and nuclear issues keep the situation from transitioning into stable peace.[1][2][6][7]'
+      value: 'KINETIC ESCALATION',
+      note: 'The regime is now defined by tit-for-tat strikes with commercial maritime exposure, not by a stable ceasefire.'
     },
     lagSignal: {
-      value: 'Brent -3d',
-      note: 'Brent’s drift lower over the past few days as ceasefire talks advanced confirms that market stress is abating, supporting a lower TACO but also highlighting sensitivity if headlines turn negative again.[1][2][3][6][7]'
+      value: 'Brent +1d',
+      note: 'Oil is likely to follow the latest strike sequence with a lag, so today’s price action should continue reflecting yesterday’s shipping and retaliation headlines.'
     },
     nextTrigger: {
-      value: 'TACO <= 10',
-      note: 'Key watchpoints for the next 48–72 hours include any signing and publication of the MoU extension text, changes to the U.S. blockade on Iranian ports, indications of progress or deadlock on nuclear and sanctions issues, mediator statements after the funeral period, and any unexpected security incidents at sea.'
+      value: 'TACO >= 25',
+      note: 'Watch for verified ship transits, no new U.S. strikes, no fresh Iranian vessel attacks, and a mediator-announced pause over the next 48-72 hours.'
     }
   },
 
   // ── CHART DATA (consolidates data.js + charts.js hardcoded data) ───────────
   chartData: {
-    labels: ['Feb 28', 'Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14', 'Mar 15', 'Mar 16', 'Mar 17', 'Mar 18', 'Mar 19', 'Mar 20', 'Mar 21', 'Mar 22', 'Mar 23', 'Mar 24', 'Mar 25', 'Mar 26', 'Mar 27', 'Mar 28', 'Mar 29', 'Mar 30', 'Mar 31', 'Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9', 'Apr 10', 'Apr 11', 'Apr 12', 'Apr 13', 'Apr 14', 'Apr 15', 'Apr 16', 'Apr 17', 'Apr 18', 'Apr 19', 'Apr 20', 'Apr 21', 'Apr 22', 'Apr 23', 'Apr 24', 'Apr 25', 'Apr 26', 'Apr 27', 'Apr 28', 'Apr 29', 'Apr 30', 'May 1', 'May 2', 'May 3', 'May 4', 'May 5', 'May 6', 'May 7', 'May 8', 'May 9', 'May 10', 'May 11', 'May 12', 'May 13', 'May 14', 'May 15', 'May 16', 'May 17', 'May 18', 'May 19', 'May 20', 'May 21', 'May 22', 'May 23', 'May 24', 'May 25', 'May 27', 'May 28', 'May 29', 'May 30', 'May 31', 'Jun 1', 'Jun 2', 'Jun 3', 'Jun 4', 'Jun 5', 'Jun 6', 'Jun 7', 'Jun 8', 'Jun 9', 'Jun 10', 'Jun 11', 'Jun 12', 'Jun 13', 'Jun 14', 'Jun 15', 'Jun 16', 'Jun 17', 'Jun 18', 'Jun 19', 'Jun 20', 'Jun 21', 'Jun 22', 'Jun 23', 'Jun 24', 'Jun 25', 'Jun 26', 'Jun 27', 'Jun 28', 'Jun 29', 'Jun 30', 'Jul 1', 'Jul 2', 'Jul 3', 'Jul 4', 'Jul 5', 'Jul 6', 'Jul 7'],
-    brent: [73.2, 80.1, 86.4, 91.7, 94.3, 89.5, 88.0, 91.2, 94.0, 95.4, 90.3, 91.98, 95.8, 100.46, 103.14, 103.14, 106.11, 101.6, 108.52, 116.45, 106.93, 112.89, 112.89, 101.34, 103.5, 100.59, 105.61, 109.97, 109.97, 109.97, 107.9, 107.6, 101.22, 109.37, 109.03, 109.03, 109.03, 108.28, 110.47, 102.5, 95.02, 96.06, 96.06, 96.06, 101.53, 95.87, 95.34, 97.41, 89.03, 90.38, 95.42, 95.12, 94.3, 99.1, 102.92, 106, 106.23, 111.95, 111.95, 111.95, 105.43, 108.07, 111.2, 112.4, 113.49, 99.5, 97.84, 99.93, 103.61, 107.52, 107.38, 105.42, 108.31, 108.05, 110.52, 108.18, 106.87, 103.04, 98.29, 92.55, 94.46, 91.05, 96.95, 94.91, 97.56, 94.83, 94.87, 94.38, 92.75, 92.09, 92.22, 88.38, 83.03, 80.08, 80.09, 78.55, 79.66, 77.04, 76.94, 74.47, 73.43, 73.11, 73.38, 74.41, 72.02, 70.38, 71.51, 72.02, 72.6],
-    vix: [22.1, 26.4, 28.9, 30.2, 31.8, 30.1, 29.4, 28.7, 27.6, 26.9, 25.8, 24.93, 25.72, 27.29, 27.19, 27.19, 26.13, 22.24, 23.23, 25.93, 24.82, 26.78, 26.78, 24.48, 26.77, 25.25, 27.15, 28.63, 28.63, 28.63, 30.51, 28.62, 24.23, 27.72, 23.87, 23.87, 23.87, 23.88, 25.71, 21.5, 21.23, 19.31, 19.31, 19.31, 19.23, 18, 18.36, 18.94, 17.61, 17.48, 17.48, 19.53, 18.86, 19.12, 19.64, 19.16, 18.94, 18.92, 18.92, 18.92, 17.84, 18.01, 17.1, 18.06, 17.75, 16.23, 17.48, 17.09, 18.18, 18.75, 17.86, 17.88, 18.88, 18.76, 18.01, 17.99, 17.71, 16.96, 16.63, 16.8, 16.17, 15.79, 16, 16.04, 15.99, 16.52, 15.76, 18.72, 18.15, 20.8, 21.1, 19.34, 16.33, 15.84, 16.41, 17.15, 16.91, 17.5, 19.73, 18.83, 18.01, 20.18, 18.52, 17.41, 16.69, 16.56, 15.95, 16.32, 15.83],
-    hyg: [80.0, 79.1, 78.3, 77.8, 77.4, 77.8, 78.1, 78.5, 79.0, 79.3, 79.6, 80.1, 79.9, 79.36, 79.2, 79.2, 79.2, 79.75, 79.68, 79.4, 79.66, 78.92, 78.92, 79.53, 79.19, 79.52, 79.42, 78.9, 78.9, 78.9, 78.72, 78.82, 79.56, 79.37, 79.56, 79.56, 79.56, 79.63, 79.55, 79.9, 80.14, 80.28, 80.28, 80.28, 79.96, 80.43, 80.5, 80.34, 80.65, 80.65, 80.65, 80.65, 80.58, 80.37, 80.5, 80.37, 80.48, 80.51, 80.51, 80.51, 80.4, 80.13, 80.38, 80.06, 79.8, 79.92, 80.16, 79.86, 80.14, 79.98, 79.87, 79.91, 79.85, 79.62, 79.54, 79.35, 79.86, 79.9, 79.91, 80.18, 80.08, 80.23, 79.74, 79.84, 79.72, 79.68, 79.83, 79.57, 79.54, 79.62, 79.64, 79.94, 80.14, 80.03, 80.03, 79.73, 80.01, 79.94, 79.94, 79.87, 79.85, 79.88, 79.92, 80.01, 79.97, 79.59, 79.71, 79.78, 79.87],
-    sp500: [6050, 5940, 5870, 5820, 5790, 5810, 5840, 5870, 5910, 6100, 6250, 6310, 6781, 6672, 6632, 6632, 6632, 6734.51, 6682.77, 6624.7, 6606.49, 6506.48, 6506.48, 6631.26, 6546.85, 6605.87, 6591.9, 6477.26, 6477.26, 6477.26, 6368.85, 6343.72, 6528.52, 6575.32, 6582.69, 6582.69, 6582.69, 6608.75, 6578.67, 6720.0, 6779.38, 6824.66, 6824.66, 6824.66, 6816.89, 6934.41, 6966.78, 7016.5, 7111.38, 7126.05, 7126.05, 7126.06, 7109.14, 7064.01, 7137.9, 7108.4, 7165.08, 7173.91, 7173.91, 7173.91, 7138.8, 7135.95, 7209.01, 7230.12, 7200.75, 7259.22, 7365.12, 7337.11, 7398.93, 7412.84, 7400.96, 7444.25, 7501.24, 7404.44, 7403.05, 7353.61, 7432.97, 7445.72, 7473.47, 7519.12, 7519.91, 7563.63, 7585.95, 7593.96, 7584.88, 7553.68, 7584.31, 7434.97, 7405.73, 7386.65, 7310.88, 7394.3, 7569.07, 7545.6, 7519.79, 7420.1, 7500.58, 7477.34, 7472.79, 7365.46, 7358.22, 7357.49, 7390.06, 7440.43, 7499.36, 7483.23, 7483.24, 7512.55, 7537.43],
-    taco: [45, 40, 35, 30, 26, 22, 18, 15, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 2, 6, 7, 8, 7, 7, 7, 7, 7, 8, 12, 9, 10, 8, 7, 9, 6, 15, 18, 18, 15, 12, 12, 12, 14, 19, 21, 21, 15, 15, 13, 15, 30, 15, 26, 15, 15, 13, 18, 18, 17, 27, 34, 15, 14, 13, 19, 17, 12, 10, 23, 23, 14, 17, 19, 15, 17, 22, 19, 13, 15, 18, 15, 18, 32, 15, 15, 18, 19, 15, 27, 13, 27, 14, 15, 15, 22, 22, 26, 11, 19, 13, 15, 18, 21, 28, 21, 18, 13, 22, 10, 10, 13, 22, 13, 22, 30, 22, 8, 13, 18, 21, 18, 21, 13, 28, 19],
-    strikeLabels: ['28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr', '24 Apr', '25 Apr', '26 Apr', '27 Apr', '28 Apr', '29 Apr', '30 Apr', '1 May', '2 May', '3 May', '4 May', '5 May', '6 May', '7 May', '8 May', '9 May', '10 May', '11 May', '12 May', '13 May', '14 May', '15 May', '16 May', '17 May', '18 May', '19 May', '20 May', '21 May', '22 May', '23 May', '24 May', '25 May', '27 May', '28 May', '29 May', '30 May', '31 May', '1 Jun', '2 Jun', '3 Jun', '4 Jun', '5 Jun', '6 Jun', '7 Jun', '8 Jun', '9 Jun', '10 Jun', '11 Jun', '12 Jun', '13 Jun', '14 Jun', '15 Jun', '16 Jun', '17 Jun', '18 Jun', '19 Jun', '20 Jun', '21 Jun', '22 Jun', '23 Jun', '24 Jun', '25 Jun', '26 Jun', '27 Jun', '28 Jun', '29 Jun', '30 Jun', '1 Jul', '2 Jul', '3 Jul', '4 Jul', '5 Jul', '6 Jul', '7 Jul'],
+    labels: ['Feb 28', 'Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14', 'Mar 15', 'Mar 16', 'Mar 17', 'Mar 18', 'Mar 19', 'Mar 20', 'Mar 21', 'Mar 22', 'Mar 23', 'Mar 24', 'Mar 25', 'Mar 26', 'Mar 27', 'Mar 28', 'Mar 29', 'Mar 30', 'Mar 31', 'Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9', 'Apr 10', 'Apr 11', 'Apr 12', 'Apr 13', 'Apr 14', 'Apr 15', 'Apr 16', 'Apr 17', 'Apr 18', 'Apr 19', 'Apr 20', 'Apr 21', 'Apr 22', 'Apr 23', 'Apr 24', 'Apr 25', 'Apr 26', 'Apr 27', 'Apr 28', 'Apr 29', 'Apr 30', 'May 1', 'May 2', 'May 3', 'May 4', 'May 5', 'May 6', 'May 7', 'May 8', 'May 9', 'May 10', 'May 11', 'May 12', 'May 13', 'May 14', 'May 15', 'May 16', 'May 17', 'May 18', 'May 19', 'May 20', 'May 21', 'May 22', 'May 23', 'May 24', 'May 25', 'May 27', 'May 28', 'May 29', 'May 30', 'May 31', 'Jun 1', 'Jun 2', 'Jun 3', 'Jun 4', 'Jun 5', 'Jun 6', 'Jun 7', 'Jun 8', 'Jun 9', 'Jun 10', 'Jun 11', 'Jun 12', 'Jun 13', 'Jun 14', 'Jun 15', 'Jun 16', 'Jun 17', 'Jun 18', 'Jun 19', 'Jun 20', 'Jun 21', 'Jun 22', 'Jun 23', 'Jun 24', 'Jun 25', 'Jun 26', 'Jun 27', 'Jun 28', 'Jun 29', 'Jun 30', 'Jul 1', 'Jul 2', 'Jul 3', 'Jul 4', 'Jul 5', 'Jul 6', 'Jul 7', 'Jul 8'],
+    brent: [73.2, 80.1, 86.4, 91.7, 94.3, 89.5, 88.0, 91.2, 94.0, 95.4, 90.3, 91.98, 95.8, 100.46, 103.14, 103.14, 106.11, 101.6, 108.52, 116.45, 106.93, 112.89, 112.89, 101.34, 103.5, 100.59, 105.61, 109.97, 109.97, 109.97, 107.9, 107.6, 101.22, 109.37, 109.03, 109.03, 109.03, 108.28, 110.47, 102.5, 95.02, 96.06, 96.06, 96.06, 101.53, 95.87, 95.34, 97.41, 89.03, 90.38, 95.42, 95.12, 94.3, 99.1, 102.92, 106, 106.23, 111.95, 111.95, 111.95, 105.43, 108.07, 111.2, 112.4, 113.49, 99.5, 97.84, 99.93, 103.61, 107.52, 107.38, 105.42, 108.31, 108.05, 110.52, 108.18, 106.87, 103.04, 98.29, 92.55, 94.46, 91.05, 96.95, 94.91, 97.56, 94.83, 94.87, 94.38, 92.75, 92.09, 92.22, 88.38, 83.03, 80.08, 80.09, 78.55, 79.66, 77.04, 76.94, 74.47, 73.43, 73.11, 73.38, 74.41, 72.02, 70.38, 71.51, 72.02, 72.6, 78.08],
+    vix: [22.1, 26.4, 28.9, 30.2, 31.8, 30.1, 29.4, 28.7, 27.6, 26.9, 25.8, 24.93, 25.72, 27.29, 27.19, 27.19, 26.13, 22.24, 23.23, 25.93, 24.82, 26.78, 26.78, 24.48, 26.77, 25.25, 27.15, 28.63, 28.63, 28.63, 30.51, 28.62, 24.23, 27.72, 23.87, 23.87, 23.87, 23.88, 25.71, 21.5, 21.23, 19.31, 19.31, 19.31, 19.23, 18, 18.36, 18.94, 17.61, 17.48, 17.48, 19.53, 18.86, 19.12, 19.64, 19.16, 18.94, 18.92, 18.92, 18.92, 17.84, 18.01, 17.1, 18.06, 17.75, 16.23, 17.48, 17.09, 18.18, 18.75, 17.86, 17.88, 18.88, 18.76, 18.01, 17.99, 17.71, 16.96, 16.63, 16.8, 16.17, 15.79, 16, 16.04, 15.99, 16.52, 15.76, 18.72, 18.15, 20.8, 21.1, 19.34, 16.33, 15.84, 16.41, 17.15, 16.91, 17.5, 19.73, 18.83, 18.01, 20.18, 18.52, 17.41, 16.69, 16.56, 15.95, 16.32, 15.83, 18.31],
+    hyg: [80.0, 79.1, 78.3, 77.8, 77.4, 77.8, 78.1, 78.5, 79.0, 79.3, 79.6, 80.1, 79.9, 79.36, 79.2, 79.2, 79.2, 79.75, 79.68, 79.4, 79.66, 78.92, 78.92, 79.53, 79.19, 79.52, 79.42, 78.9, 78.9, 78.9, 78.72, 78.82, 79.56, 79.37, 79.56, 79.56, 79.56, 79.63, 79.55, 79.9, 80.14, 80.28, 80.28, 80.28, 79.96, 80.43, 80.5, 80.34, 80.65, 80.65, 80.65, 80.65, 80.58, 80.37, 80.5, 80.37, 80.48, 80.51, 80.51, 80.51, 80.4, 80.13, 80.38, 80.06, 79.8, 79.92, 80.16, 79.86, 80.14, 79.98, 79.87, 79.91, 79.85, 79.62, 79.54, 79.35, 79.86, 79.9, 79.91, 80.18, 80.08, 80.23, 79.74, 79.84, 79.72, 79.68, 79.83, 79.57, 79.54, 79.62, 79.64, 79.94, 80.14, 80.03, 80.03, 79.73, 80.01, 79.94, 79.94, 79.87, 79.85, 79.88, 79.92, 80.01, 79.97, 79.59, 79.71, 79.78, 79.87, 79.76],
+    sp500: [6050, 5940, 5870, 5820, 5790, 5810, 5840, 5870, 5910, 6100, 6250, 6310, 6781, 6672, 6632, 6632, 6632, 6734.51, 6682.77, 6624.7, 6606.49, 6506.48, 6506.48, 6631.26, 6546.85, 6605.87, 6591.9, 6477.26, 6477.26, 6477.26, 6368.85, 6343.72, 6528.52, 6575.32, 6582.69, 6582.69, 6582.69, 6608.75, 6578.67, 6720.0, 6779.38, 6824.66, 6824.66, 6824.66, 6816.89, 6934.41, 6966.78, 7016.5, 7111.38, 7126.05, 7126.05, 7126.06, 7109.14, 7064.01, 7137.9, 7108.4, 7165.08, 7173.91, 7173.91, 7173.91, 7138.8, 7135.95, 7209.01, 7230.12, 7200.75, 7259.22, 7365.12, 7337.11, 7398.93, 7412.84, 7400.96, 7444.25, 7501.24, 7404.44, 7403.05, 7353.61, 7432.97, 7445.72, 7473.47, 7519.12, 7519.91, 7563.63, 7585.95, 7593.96, 7584.88, 7553.68, 7584.31, 7434.97, 7405.73, 7386.65, 7310.88, 7394.3, 7569.07, 7545.6, 7519.79, 7420.1, 7500.58, 7477.34, 7472.79, 7365.46, 7358.22, 7357.49, 7390.06, 7440.43, 7499.36, 7483.23, 7483.24, 7512.55, 7537.43, 7503.85],
+    taco: [45, 40, 35, 30, 26, 22, 18, 15, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 2, 6, 7, 8, 7, 7, 7, 7, 7, 8, 12, 9, 10, 8, 7, 9, 6, 15, 18, 18, 15, 12, 12, 12, 14, 19, 21, 21, 15, 15, 13, 15, 30, 15, 26, 15, 15, 13, 18, 18, 17, 27, 34, 15, 14, 13, 19, 17, 12, 10, 23, 23, 14, 17, 19, 15, 17, 22, 19, 13, 15, 18, 15, 18, 32, 15, 15, 18, 19, 15, 27, 13, 27, 14, 15, 15, 22, 22, 26, 11, 19, 13, 15, 18, 21, 28, 21, 18, 13, 22, 10, 10, 13, 22, 13, 22, 30, 22, 8, 13, 18, 21, 18, 21, 13, 28, 19, 22],
+    strikeLabels: ['28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr', '24 Apr', '25 Apr', '26 Apr', '27 Apr', '28 Apr', '29 Apr', '30 Apr', '1 May', '2 May', '3 May', '4 May', '5 May', '6 May', '7 May', '8 May', '9 May', '10 May', '11 May', '12 May', '13 May', '14 May', '15 May', '16 May', '17 May', '18 May', '19 May', '20 May', '21 May', '22 May', '23 May', '24 May', '25 May', '27 May', '28 May', '29 May', '30 May', '31 May', '1 Jun', '2 Jun', '3 Jun', '4 Jun', '5 Jun', '6 Jun', '7 Jun', '8 Jun', '9 Jun', '10 Jun', '11 Jun', '12 Jun', '13 Jun', '14 Jun', '15 Jun', '16 Jun', '17 Jun', '18 Jun', '19 Jun', '20 Jun', '21 Jun', '22 Jun', '23 Jun', '24 Jun', '25 Jun', '26 Jun', '27 Jun', '28 Jun', '29 Jun', '30 Jun', '1 Jul', '2 Jul', '3 Jul', '4 Jul', '5 Jul', '6 Jul', '7 Jul', '8 Jul'],
     strikes: {
-      us: [500, 600, 550, 450, 400, 420, 380, 500, 480, 450, 430, 420, 490, 520, 600, 580, 620, 290, 480, 510, 500, 520, 530, 540, 550, 550, 580, 600, 580, 560, 500, 520, 480, 500, 510, 550, 600, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      us: [500, 600, 550, 450, 400, 420, 380, 500, 480, 450, 430, 420, 490, 520, 600, 580, 620, 290, 480, 510, 500, 520, 530, 540, 550, 550, 580, 600, 580, 560, 500, 520, 480, 500, 510, 550, 600, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       iran: [200, 150, 100, 60, 40, 30, 25, 35, 30, 25, 20, 18, 35, 40, 38, 42, 45, 30, 35, 40, 50, 55, 65, 60, 55, 70, 75, 70, 65, 60, 50, 55, 50, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     },
-    hormuzLabels: ['26 Feb', '27 Feb', '28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '26 Mar', '27 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr', '24 Apr', '25 Apr', '26 Apr', '27 Apr', '28 Apr', '29 Apr', '30 Apr', '1 May', '2 May', '3 May', '4 May', '5 May', '6 May', '7 May', '8 May', '9 May', '10 May', '11 May', '12 May', '13 May', '14 May', '15 May', '16 May', '17 May', '18 May', '19 May', '20 May', '21 May', '22 May', '23 May', '24 May', '25 May', '27 May', '28 May', '29 May', '30 May', '31 May', '1 Jun', '2 Jun', '3 Jun', '4 Jun', '5 Jun', '6 Jun', '7 Jun', '8 Jun', '9 Jun', '10 Jun', '11 Jun', '12 Jun', '13 Jun', '14 Jun', '15 Jun', '16 Jun', '17 Jun', '18 Jun', '19 Jun', '20 Jun', '21 Jun', '22 Jun', '23 Jun', '24 Jun', '25 Jun', '26 Jun', '27 Jun', '28 Jun', '29 Jun', '30 Jun', '1 Jul', '2 Jul', '3 Jul', '4 Jul', '5 Jul', '6 Jul', '7 Jul'],
-    hormuzTransits: [24, 24, 37, 4, 6, 5, 3, 4, 5, 5, 5, 5, 5, 2, 0, 1, 1, 1, 0, 4, 5, 4, 3, 2, 2, 2, 0, 6, 6, 8, 3, 4, 4, 5, 6, 5, 1, 4, 4, 3, 2, 5, 8, 4, 5, 5, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 33, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 25, 4, 4, 4, 15, 4, 4, 4, 115, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+    hormuzLabels: ['26 Feb', '27 Feb', '28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '26 Mar', '27 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr', '24 Apr', '25 Apr', '26 Apr', '27 Apr', '28 Apr', '29 Apr', '30 Apr', '1 May', '2 May', '3 May', '4 May', '5 May', '6 May', '7 May', '8 May', '9 May', '10 May', '11 May', '12 May', '13 May', '14 May', '15 May', '16 May', '17 May', '18 May', '19 May', '20 May', '21 May', '22 May', '23 May', '24 May', '25 May', '27 May', '28 May', '29 May', '30 May', '31 May', '1 Jun', '2 Jun', '3 Jun', '4 Jun', '5 Jun', '6 Jun', '7 Jun', '8 Jun', '9 Jun', '10 Jun', '11 Jun', '12 Jun', '13 Jun', '14 Jun', '15 Jun', '16 Jun', '17 Jun', '18 Jun', '19 Jun', '20 Jun', '21 Jun', '22 Jun', '23 Jun', '24 Jun', '25 Jun', '26 Jun', '27 Jun', '28 Jun', '29 Jun', '30 Jun', '1 Jul', '2 Jul', '3 Jul', '4 Jul', '5 Jul', '6 Jul', '7 Jul', '8 Jul'],
+    hormuzTransits: [24, 24, 37, 4, 6, 5, 3, 4, 5, 5, 5, 5, 5, 2, 0, 1, 1, 1, 0, 4, 5, 4, 3, 2, 2, 2, 0, 6, 6, 8, 3, 4, 4, 5, 6, 5, 1, 4, 4, 3, 2, 5, 8, 4, 5, 5, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 33, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 25, 4, 4, 4, 15, 4, 4, 4, 115, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
     etfs: {
       ITA: {
         prices: [215, 218, 222, 226, 229, 227, 230, 233, 235, 237, 234, 236, 239, 241, 243, 243, 243, 229, 231, 230, 227, 223, 226, 221, 226, 226, 228, 216, 211, 219, 224, 222, 222, 222, 223, 223, 235, 232, 232, 232, 230, 233]
@@ -2004,6 +2004,14 @@ const DASHBOARD_DATA = {
         dubicars: 4526,
         yallamotor: 35757,
         source: 'live'
+      },
+      {
+        date: '2026-07-08',
+        day: 131,
+        dubizzle: 27739,
+        dubicars: 4526,
+        yallamotor: 35757,
+        source: 'live'
       }
     ],
     baselines: {
@@ -2024,12 +2032,12 @@ const DASHBOARD_DATA = {
         total: 35757,
         changePct: 0.0
       },
-      date: '2026-07-07',
-      day: 130
+      date: '2026-07-08',
+      day: 131
     },
     luxury: {
-      date: '2026-07-07',
-      day: 130,
+      date: '2026-07-08',
+      day: 131,
       dubizzle: 1850,
       dubicars: 1420
     },
@@ -2043,9 +2051,9 @@ const DASHBOARD_DATA = {
       route: 'Abqaiq → Yanbu (Red Sea)',
       length: '1,200 km',
       capacity: '7M bpd',
-      currentFlow: '~5–6M bpd (running near capacity as a strategic hedge)',
+      currentFlow: '~5.5M bpd (strategic backstop active)',
       preWarFlow: '2.8M bpd',
-      status: 'STEADY · HORMUZ OPEN',
+      status: 'HOLDING · HORMUZ FRAGILE',
       note: 'D42: Hormuz transits 2-4/day (DOWN from 8/day D41 after Iran briefly closed again). Pipeline bypass demand still elevated. The brief Hormuz closure demonstrates fragility — pipeline remains critical backup. Flow easing from ~6.5M peak but still well above pre-war 2.8M.'
     },
     habshanFujairah: {
@@ -2053,25 +2061,25 @@ const DASHBOARD_DATA = {
       route: 'Habshan → Fujairah (bypasses Hormuz)',
       length: '370 km',
       capacity: '1.5M bpd',
-      currentFlow: '~1.5–1.8M bpd (utilised but less critical as Hormuz risk fades)',
+      currentFlow: '~1.5-1.8M bpd (bypass available)',
       preWarFlow: '0.9M bpd',
-      status: 'STABLE UTILISATION',
+      status: 'AVAILABLE · PARTIAL BUFFER',
       note: 'D42: UAE continues to route significant volumes through Fujairah bypass. Hormuz uncertainty (Iran closed it briefly Apr 8-9) keeps ADCOP flow elevated above pre-war. Will normalize only when Hormuz fully stabilizes.'
     },
     combined: {
-      note: 'With Hormuz open but Iranian ports still under blockade, Gulf producers continue to lean on overland and Fujairah bypass routes as insurance, even as risk premia ease.[2][6][7] Combined bypass capacity remains sufficient to cushion moderate shocks, but a durable settlement would be needed before operators fully re-risk back through Hormuz.'
+      note: 'The Saudi and UAE bypass routes can cushion part of the shock, but they cannot fully replace threatened Hormuz transit volumes. Their main value today is to soften the market’s tail risk, not eliminate it.'
     }
   },
 
   // ── HOUTHI / RED SEA THREAT ─────────────────────────────────────────────────
   houthiRedSea: {
-    status: 'Attacks in the Red Sea theatre are currently subdued under the broader ceasefire atmosphere, but posture remains militarised.',
-    lastVerifiedAttack: 'Unknown — recent open-source reporting in the last 72 hours has focused on Hormuz and Doha, not on a specific new Houthi strike.',
+    status: 'Red Sea threat remains elevated but secondary to Hormuz.',
+    lastVerifiedAttack: 'No new verified Houthi attack was provided in the current brief; the latest cited maritime escalation is centered on Hormuz-linked vessel strikes.',
     threatLevel: 'MODERATE',
     babElMandeb: {
       normalFlow: '~6M bpd oil + LNG',
       currentFlow: 'REDUCED — ceasefire easing but Houthi not party to deal',
-      note: 'Flows through Bab el Mandeb are likely stable, supported by the wider de-escalation push and attention on securing Gulf shipping lanes.[1][6][7] However, without a dedicated Red Sea component in the MoU, Houthi-aligned forces retain capacity to harass traffic, and any stall in US–Iran talks could quickly re-energise asymmetric pressure on this corridor.[6][7]'
+      note: 'Flow through Bab el Mandeb is not the main stress point today, but any U.S.-Iran widening could re-activate the Red Sea pressure channel. For now, the market is pricing Hormuz-first risk, with Bab el Mandeb as an escalation hedge rather than the primary driver.'
     },
     houthiPosture: 'D42: CEASEFIRE DAY 2 — No new Houthi attacks. However, ceasefire is US-Iran bilateral; Lebanon and proxies explicitly excluded by Netanyahu/Vance. Houthi leader praised ceasefire but reserved right to \'defend the ummah.\' Iran may restrain proxies during Islamabad talks as good-faith gesture, but this is voluntary and reversible.',
     dualChokepoint: 'D42: Hormuz 2-4/day (DOWN from 8/day D41 — Iran closed briefly Apr 8-9 over Lebanon strikes). Bab el-Mandeb quiet. DUAL CHOKEPOINT RISK REDUCED but not eliminated. Lebanon is the trigger for both: if Netanyahu continues Beirut strikes, Iran can close Hormuz again and Houthis can resume Red Sea attacks.',
@@ -2081,8 +2089,8 @@ const DASHBOARD_DATA = {
   // ── IRAN DAILY ATTACKS ON UAE ───────────────────────────────────────────────
   iranAttacksUAE: {
     cumulative: {
-      asOf: '2026-07-07',
-      day: 130,
+      asOf: '2026-07-08',
+      day: 131,
       ballisticMissiles: {
         detected: 524,
         intercepted: 501,
@@ -2103,7 +2111,7 @@ const DASHBOARD_DATA = {
         injured: 252
       },
       interceptRate: '93.4%',
-      note: 'All attack figures frozen since ceasefire. Day 130.'
+      note: 'All attack figures frozen since ceasefire. Day 131.'
     },
     daily: [
       {
@@ -3057,14 +3065,22 @@ const DASHBOARD_DATA = {
         cruise: 0,
         drones: 0,
         note: 'Ceasefire Day 90 — zero attacks.'
+      },
+      {
+        date: '2026-07-08',
+        day: 131,
+        ballistic: 0,
+        cruise: 0,
+        drones: 0,
+        note: 'Ceasefire Day 91 — zero attacks.'
       }
     ]
   },
 
   // ── IRAN DAILY ATTACKS ON ALL NEIGHBORS ─────────────────────────────────────
   iranAttacksNeighbors: {
-    asOf: '2026-07-07',
-    day: 130,
+    asOf: '2026-07-08',
+    day: 131,
     totalProjectiles: 4850,
     countriesHit: 6,
     countries: {
@@ -3282,46 +3298,46 @@ const DASHBOARD_DATA = {
   gistBanner: {
     bullets: [
       {
-        text: '2 July: Qatar said the indirect US-Iran technical talks in Doha made \'positive progress\' on issues tied to the memorandum of understanding signed on 17 June.',
-        color: 'yellow'
-      },
-      {
-        text: '6 July: Trump and Pakistani Prime Minister Shehbaz Sharif were reported as saying a deal was expected to be signed on Sunday, with CBS describing the sides as close to a broader peace agreement.',
-        color: 'yellow'
-      },
-      {
-        text: '6 July: CBS reported the U.S. Central Command had redirected 141 vessels since the Hormuz blockade began, two more than the prior day.',
+        text: '8 Jul 2026: Al Jazeera reported renewed U.S. strikes on Sirik, Qeshm, and Bandar Abbas after attacks on vessels in the Strait of Hormuz.',
         color: 'red'
       },
       {
-        text: 'US and Iran concluded indirect technical talks in Doha on July 1, 2026, focusing on Strait of Hormuz maritime traffic and unfreezing Iran\'s funds.',
+        text: '8 Jul 2026: The U.S. said its strikes were in response to attacks on three ships in the Strait of Hormuz, including Qatari and Saudi tankers.',
+        color: 'red'
+      },
+      {
+        text: '8 Jul 2026: Al Jazeera reported Iran said it targeted \'85 US military installations\' after attacks on Hormozgan province and the port city of Mahshahr.',
+        color: 'red'
+      },
+      {
+        text: 'Pakistan announces US-Iran talks \'in coming days\'',
         color: 'yellow'
       },
       {
-        text: 'A framework memorandum of understanding (MoU) to end the war was secured in late June 2026, halting military operations and ending the US blockade of the Strait of Hormuz.',
-        color: 'red'
+        text: 'NATO gathering in Ankara to discuss security in the Strait of Hormuz',
+        color: 'yellow'
       }
     ],
     pills: [
       {
-        label: 'Brent $72.60',
+        label: 'Brent $78.08',
+        color: 'red'
+      },
+      {
+        label: 'TACO 19',
         color: 'amber'
       },
       {
-        label: 'TACO 28',
-        color: 'green'
-      },
-      {
-        label: 'VIX 15.83',
-        color: 'green'
-      },
-      {
-        label: 'Talks ACTIVE',
+        label: 'VIX 18.31',
         color: 'amber'
       },
       {
-        label: 'Hormuz OPEN',
-        color: 'green'
+        label: 'Talks COLLAPSED',
+        color: 'red'
+      },
+      {
+        label: 'Hormuz CONTESTED',
+        color: 'amber'
       },
       {
         label: 'CPI 4.2%',
@@ -3333,39 +3349,39 @@ const DASHBOARD_DATA = {
   // ── 2. NEWS-NOW CARDS ────────────────────────────────────────────────────────
   newsNow: [
     {
-      label: 'TALKS',
-      title: '2 July: Qatar said the indirect US-Iran technical talks in Doha made \'positive progress\' o',
-      body: '2 July: Qatar said the indirect US-Iran technical talks in Doha made \'positive progress\' on issues tied to the memorandum of understanding signed on 17 June.',
-      color: 'yellow'
-    },
-    {
-      label: 'CONFLICT',
-      title: '6 July: Trump and Pakistani Prime Minister Shehbaz Sharif were reported as saying a deal w',
-      body: '6 July: Trump and Pakistani Prime Minister Shehbaz Sharif were reported as saying a deal was expected to be signed on Sunday, with CBS describing the sides as close to a broader peace agreement.',
-      color: 'yellow'
-    },
-    {
       label: 'HORMUZ',
-      title: '6 July: CBS reported the U',
-      body: '6 July: CBS reported the U.S. Central Command had redirected 141 vessels since the Hormuz blockade began, two more than the prior day.',
+      title: '8 Jul 2026: Al Jazeera reported renewed U',
+      body: '8 Jul 2026: Al Jazeera reported renewed U.S. strikes on Sirik, Qeshm, and Bandar Abbas after attacks on vessels in the Strait of Hormuz.',
       color: 'red'
     },
     {
       label: 'HORMUZ',
-      title: '6 July: CBS said the U',
-      body: '6 July: CBS said the U.S. blockade on Iranian ports in the Strait of Hormuz was still in place even as negotiations moved toward completion.',
+      title: '8 Jul 2026: The U',
+      body: '8 Jul 2026: The U.S. said its strikes were in response to attacks on three ships in the Strait of Hormuz, including Qatari and Saudi tankers.',
       color: 'red'
     },
     {
-      label: 'TALKS',
-      title: 'US and Iran concluded indirect technical talks in Doha on July 1, 2026, focusing on Strait',
-      body: 'US and Iran concluded indirect technical talks in Doha on July 1, 2026, focusing on Strait of Hormuz maritime traffic and unfreezing Iran\'s funds.',
+      label: 'MILITARY',
+      title: '8 Jul 2026: Al Jazeera reported Iran said it targeted \'85 US military installations\' after',
+      body: '8 Jul 2026: Al Jazeera reported Iran said it targeted \'85 US military installations\' after attacks on Hormozgan province and the port city of Mahshahr.',
+      color: 'red'
+    },
+    {
+      label: 'MILITARY',
+      title: '8 Jul 2026: ABC News reported CENTCOM had conducted \'self-defense\' strikes over the weeken',
+      body: '8 Jul 2026: ABC News reported CENTCOM had conducted \'self-defense\' strikes over the weekend against Iranian radar and drone command-and-control sites on Qeshm Island and in Goruk.',
       color: 'yellow'
     },
     {
       label: 'TALKS',
-      title: 'A framework memorandum of understanding (MoU) to end the war was secured in late June 2026',
-      body: 'A framework memorandum of understanding (MoU) to end the war was secured in late June 2026, halting military operations and ending the US blockade of the Strait of Hormuz.',
+      title: 'Pakistan announces US-Iran talks \'in coming days\'',
+      body: 'Pakistan announces US-Iran talks \'in coming days\'',
+      color: 'yellow'
+    },
+    {
+      label: 'TALKS',
+      title: 'NATO gathering in Ankara to discuss security in the Strait of Hormuz',
+      body: 'NATO gathering in Ankara to discuss security in the Strait of Hormuz',
       color: 'yellow'
     }
   ],
@@ -3374,24 +3390,17 @@ const DASHBOARD_DATA = {
   analyticalSignals: [
     {
       label: 'Ceasefire Compliance',
-      value: 'DAY 90 ✓',
-      score: 8,
-      scoreColor: '#f59e0b',
-      detail: 'Indirect US-Iran technical talks in Doha reported \'positive progress\' on 2 July; CBS reported that a memorandum of understanding was expected to extend the ceasefire, reopen the Strait of Hormuz, and '
+      value: 'AT RISK',
+      score: 3,
+      scoreColor: '#ef4444',
+      detail: 'Ceasefire/MoU reported as effectively collapsed or \'over\' on 8 Jul 2026, with renewed U.S. strikes and fresh Iranian attacks reported the same day.'
     },
     {
       label: 'Diplomatic Engagement',
-      value: 'COLLAPSED',
-      score: 2,
-      scoreColor: '#ef4444',
-      detail: 'US and Iran concluded indirect technical talks in Doha on July 1, 2026, focusing on Strait of Hormuz maritime traffic and unfreezing Iran\'s funds.'
-    },
-    {
-      label: 'Hormuz Passage',
-      value: 'OPEN',
-      score: 7,
-      scoreColor: '#22c55e',
-      detail: 'Strait status: open'
+      value: 'ACTIVE',
+      score: 6,
+      scoreColor: '#f59e0b',
+      detail: 'Pakistan announces US-Iran talks \'in coming days\''
     },
     {
       label: 'Rhetoric Temperature',
@@ -3404,101 +3413,94 @@ const DASHBOARD_DATA = {
 
   // ── 4. D-LIVE BOX ────────────────────────────────────────────────────────────
   dLive: {
-    label: 'D130 — Ceasefire Talks in Finalization Phase',
-    brentRange: '$97–$103',
-    brentNote: 'Brent is likely trading just under the $100 mark, with risk premia compressing as markets price an extension of the ceasefire and formalization of the Hormuz reopening framework.[1][3][6] Price action today should be relatively range-bound, but headlines on the MoU text release or any sign of slippage in Doha-driven follow-on talks could push intraday swings of $3–5.[1][3] Persistence of the U.S. blockade on Iranian ports, despite Hormuz being open, keeps a mild upside bias because full normalisation of Gulf exports is not yet locked in.[2][3]',
-    tacoEst: '10–14',
-    tacoNote: 'TACO is biased lower in the de-escalatory band as technical talks in Doha are described by mediators as making \'positive progress\' and Trump publicly signals that a broader peace deal is close.[1][2][3] The score is capped from falling further because the actual MoU text is not yet public and the U.S. blockade on Iranian ports remains in place, leaving room for disruption if talks stall.[2][3] A signed implementation annex that codifies sanctions relief, frozen asset releases, and maritime security arrangements would drive TACO toward single digits, while any sudden breakdown in Doha follow-up or renewed missile activity would push it back above 15.[1][4][6]',
+    label: 'D131 — Hormuz Reflare (Wed, Jul 8)',
+    brentRange: '$102–$112',
+    brentNote: 'Brent is being pulled higher by renewed strikes, fresh vessel attacks in the Strait of Hormuz, and the market’s focus on whether shipping disruption spreads beyond isolated incidents. The most likely intraday band is $102–$112, with spikes toward the top of the range if more tankers are hit or if the U.S. expands strike targets again.[1][2][3]',
+    tacoEst: '18–24',
+    tacoNote: 'TACO is lower than yesterday’s de-escalation pulse because the ceasefire is now being described as effectively over, but it is not zero because Pakistan and Qatar still have active mediation channels. A move back above 25 would need a credible pause in strikes plus verified ship transits; a drop toward the low teens would come from sustained attacks or explicit rejection of talks by either side.[1][2][10]',
     narrative: 'Day 42 is the most diplomatically consequential day since the war began. Islamabad talks are underway — Araghchi confirmed, Witkoff leading the US side. The ceasefire is holding on paper (attacks ZERO) but structurally fragile: Netanyahu\'s Beirut strikes killed 112+ and triggered Iran to close Hormuz briefly. Both sides claim victories that cannot coexist — Iran says enrichment continues, US says uranium removal is agreed. The 10-point plan demands are maximalist from Iran\'s side. The talks test whether any middle ground exists. Lebanon is the ticking bomb: excluded from the ceasefire by design, it\'s the vector through which the truce most likely breaks. Oil at $98 is pricing ~60% talks progress but hedging Lebanon risk.'
   },
 
   // ── 5. ANALYTICAL OUTLOOK ────────────────────────────────────────────────────
   analyticalOutlook: {
-    label: 'D130 Outlook — Technical Ceasefire, Political Risk Still in Play',
+    label: 'D131 Outlook — Contested Escalation',
     basisCards: [
       {
-        label: 'Doha technical track',
-        value: 'ADVANCING',
-        detail: 'Qatar and Pakistan report \'positive progress\' in indirect technical talks on Hormuz flows and frozen assets, with parties agreeing to continue discussions after the Iranian funeral period.[1][2][3][8]',
+        label: 'Ceasefire',
+        value: 'COLLAPSED',
+        detail: 'Renewed U.S. strikes and Iranian attacks on shipping have ended the practical ceasefire footing.',
+        borderColor: '#ef4444',
+        valueColor: '#ef4444'
+      },
+      {
+        label: 'Hormuz',
+        value: 'CONTESTED',
+        detail: 'The Strait remains the key flashpoint, with vessel attacks and retaliation driving the near-term risk premium.',
         borderColor: '#94a3b8',
         valueColor: '#94a3b8'
       },
       {
-        label: 'Hormuz navigation',
-        value: 'REOPENED BUT TENSE',
-        detail: 'The Strait of Hormuz is open under the ceasefire framework, but CBS notes the U.S. blockade on Iranian ports in the strait is still in place, limiting full normalisation.[2][7]',
-        borderColor: '#22c55e',
-        valueColor: '#22c55e'
-      },
-      {
-        label: 'MoU implementation',
-        value: 'INCOMPLETE TEXT',
-        detail: 'A framework MoU extending the ceasefire and reopening Hormuz exists, but key implementation details and the latest extension memorandum have not been publicly released, leaving legal and political ambiguity.[6][7]',
+        label: 'Diplomacy',
+        value: 'ACTIVE',
+        detail: 'Pakistan-mediated talks and Qatar’s channel remain open, but they are now behind the kinetic cycle.',
         borderColor: '#94a3b8',
         valueColor: '#94a3b8'
       },
       {
-        label: 'Nuclear portfolio',
-        value: 'PARKED FOR NOW',
-        detail: 'Reuters reports the Doha talks remained technical and did not address Iran’s nuclear program directly, even as Trump claims denuclearisation is \'moving along well\', highlighting a messaging gap.[1][3][6]',
-        borderColor: '#94a3b8',
-        valueColor: '#94a3b8'
-      },
-      {
-        label: 'US domestic politics',
-        value: 'PRESSURE MIXED',
-        detail: 'NBC and other reporting indicate Trump faces conflicting pressures: desire to claim a sanctions-relief and security \'win\' ahead of elections versus hawkish constraints that could revive threats if Iran is seen as stalling.[4][6]',
+        label: 'Sanctions',
+        value: 'REINSTATED',
+        detail: 'The U.S. has restored oil sanctions pressure, tightening Iran’s room to trade for restraint.',
         borderColor: '#94a3b8',
         valueColor: '#94a3b8'
       }
     ],
     pathProbabilities: [
       {
-        trigger: 'Signature and public release of an MoU annex that codifies the 60-day extension, formal Hormuz security arrangements, and phased access to frozen assets.[1][2][6][7]',
-        name: 'Structured ceasefire extension & partial economic opening',
+        trigger: 'Limited strikes continue but shipping remains partly open and mediators keep talks alive.',
+        name: 'Managed escalation',
         prob: '45%',
-        brentRange: '$94–$100',
+        brentRange: '$100-112',
         barWidth: '45%',
-        barGradient: 'linear-gradient(90deg, #f59e0b, #22c55e)',
-        nameColor: '#22c55e',
-        drivers: 'Strong mediator engagement, Trump’s need for a diplomatic win, and Iran’s priority to unlock funds while avoiding immediate nuclear concessions.[1][2][3][6]'
+        barGradient: 'linear-gradient(90deg, #ef4444, #f59e0b)',
+        nameColor: '#ef4444',
+        drivers: 'This path is favored if both sides keep attacking select military and maritime targets without targeting core export infrastructure.'
       },
       {
-        trigger: 'Prolonged delay in issuing the MoU text, continued U.S. port blockade, and lack of progress on nuclear and sanctions files despite technical meetings.[1][2][4][6]',
-        name: 'Negotiation drift with fragile calm',
+        trigger: 'Another successful attack on a tanker or closure attempt in Hormuz.',
+        name: 'Shipping shock',
         prob: '30%',
-        brentRange: '$98–$106',
+        brentRange: '$110-125',
         barWidth: '30%',
         barGradient: 'linear-gradient(90deg, #ef4444, #f59e0b)',
         nameColor: '#f59e0b',
-        drivers: 'Mutual mistrust, domestic political constraints, and tactical use of ambiguity over implementation to retain leverage.[1][4][6]'
+        drivers: 'Insurance, freight, and supply fears would jump if multiple commercial vessels are struck or if escorts fail to contain risk.'
       },
       {
-        trigger: 'A significant ceasefire violation at sea or in the region prompting Trump to act on threats to restart strikes if talks fail.[4][6][7]',
-        name: 'Limited breakdown and targeted military incidents',
-        prob: '15%',
-        brentRange: '$105–$118',
-        barWidth: '15%',
+        trigger: 'A verified stand-down follows fresh mediator intervention and ship traffic stabilizes.',
+        name: 'Tactical pause',
+        prob: '20%',
+        brentRange: '$95-104',
+        barWidth: '20%',
         barGradient: 'linear-gradient(90deg, #ef4444, #f59e0b)',
         nameColor: '#f59e0b',
-        drivers: 'Spoiler actions by hardliners, miscalculation in maritime patrols, or public exposure of perceived Iranian non-compliance on nuclear or regional commitments.[4][6]'
+        drivers: 'This requires visible restraint from both Washington and Tehran, plus a stronger signal from Qatar or Pakistan.'
       },
       {
-        trigger: 'Breakthrough tying a temporary nuclear moratorium and verification to substantial sanctions relief and long-term Hormuz security guarantees.[6][7]',
-        name: 'Broad de-escalation framework with nuclear understandings',
-        prob: '10%',
-        brentRange: '$88–$95',
-        barWidth: '10%',
+        trigger: 'Strikes widen to energy infrastructure or U.S. regional bases.',
+        name: 'Broader regional spillover',
+        prob: '5%',
+        brentRange: '$125-140',
+        barWidth: '5%',
         barGradient: 'linear-gradient(90deg, #ef4444, #f59e0b)',
-        nameColor: '#ef4444',
-        drivers: 'Sustained mediator pressure, U.S. willingness to phase sanctions relief, and Iran’s calculation that economic stabilisation outweighs nuclear brinkmanship.[1][2][6]'
+        nameColor: '#f59e0b',
+        drivers: 'This remains a tail-risk scenario unless either side broadens the target set beyond the current maritime-and-air-defense cycle.'
       }
     ],
     supplyDisruption: {
-      current: 'Physical oil and LNG flows through Hormuz are largely restored, but Iranian export capacity remains constrained by the continuing U.S. port blockade.[2][6][7]',
-      risk: 'Short-term disruption risk is moderate: a signed extension and maritime security protocol would reduce it, but unresolved sanctions and nuclear issues keep the possibility of targeted interference alive.[1][2][4][6][7]',
+      current: 'Hormuz flow is disrupted but not fully shut.',
+      risk: 'The immediate risk is intermittent interruption rather than total closure, but the corridor is still fragile and prone to sudden pauses in traffic. The combination of renewed strikes, vessel hits, and sanctions raises the odds of insurance-led de facto tightening even without a formal blockade.',
       hormuz: '2-4 transits/day (down from 8/day D41 — Iran closed briefly over Lebanon)',
-      watchpoint: 'Monitor any announcement on lifting or adjusting the U.S. blockade on Iranian ports, plus signals from Doha and Lake Lucerne follow-on formats about maritime security guarantees.[1][2][3][6][7]'
+      watchpoint: 'Watch for repeat tanker incidents, AIS gaps, and any announcement of new protective convoying or exclusion zones over the next 48 hours.'
     },
     tacoTrajectory: 'TACO HOLDING at 18 — waiting for Islamabad outcome. If framework → 22-25. If stall → 16-18. If collapse → 5-8. Lebanon is the swing variable.',
     disclaimer: 'Forecast based on open-source intelligence and market data. Not investment advice.'
@@ -3507,53 +3509,53 @@ const DASHBOARD_DATA = {
   // ── 6. KEY TRIGGERS ──────────────────────────────────────────────────────────
   keyTriggers: [
     {
-      title: '2 July: Qatar said the indirect US-Iran technical talks in Doha made \'positive p',
-      titleColor: '#f59e0b',
-      body: '2 July: Qatar said the indirect US-Iran technical talks in Doha made \'positive progress\' on issues tied to the memorandum of understanding signed on 17 June.'
-    },
-    {
-      title: '6 July: Trump and Pakistani Prime Minister Shehbaz Sharif were reported as sayin',
-      titleColor: '#f59e0b',
-      body: '6 July: Trump and Pakistani Prime Minister Shehbaz Sharif were reported as saying a deal was expected to be signed on Sunday, with CBS describing the sides as close to a broader peace agreement.'
-    },
-    {
-      title: '6 July: CBS reported the U',
+      title: '8 Jul 2026: Al Jazeera reported renewed U',
       titleColor: '#ef4444',
-      body: '6 July: CBS reported the U.S. Central Command had redirected 141 vessels since the Hormuz blockade began, two more than the prior day.'
+      body: '8 Jul 2026: Al Jazeera reported renewed U.S. strikes on Sirik, Qeshm, and Bandar Abbas after attacks on vessels in the Strait of Hormuz.'
     },
     {
-      title: 'Ceasefire Status (Day 130)',
-      titleColor: '#f59e0b',
-      body: 'Indirect US-Iran technical talks in Doha reported \'positive progress\' on 2 July; CBS reported that a memorandum of understanding was expected to extend the ceasefire, reopen the Strait of Hormuz, and begin about 60 days of talks, but the text was still not publicly released as of the latest reports.'
+      title: '8 Jul 2026: The U',
+      titleColor: '#ef4444',
+      body: '8 Jul 2026: The U.S. said its strikes were in response to attacks on three ships in the Strait of Hormuz, including Qatari and Saudi tankers.'
+    },
+    {
+      title: '8 Jul 2026: Al Jazeera reported Iran said it targeted \'85 US military installati',
+      titleColor: '#ef4444',
+      body: '8 Jul 2026: Al Jazeera reported Iran said it targeted \'85 US military installations\' after attacks on Hormozgan province and the port city of Mahshahr.'
+    },
+    {
+      title: 'Ceasefire Status (Day 131)',
+      titleColor: '#ef4444',
+      body: 'Ceasefire/MoU reported as effectively collapsed or \'over\' on 8 Jul 2026, with renewed U.S. strikes and fresh Iranian attacks reported the same day.'
     },
     {
       title: 'Hormuz Passage',
       titleColor: '#22c55e',
-      body: 'Status: open. Daily transits: N/A.'
+      body: 'Status: contested. Daily transits: N/A.'
     }
   ],
 
   // ── 7. INTELLIGENCE TAB ──────────────────────────────────────────────────────
   intelligence: {
     diplomatic: {
-      badge: 'TALKS',
-      badgeColor: '#22c55e',
+      badge: 'COLLAPSED',
+      badgeColor: '#ef4444',
       sections: [
         {
-          title: 'Diplomatic Status — Day 130',
-          items: ['Indirect US-Iran technical talks in Doha reported \'positive progress\' on 2 July; CBS reported that a memorandum of understanding was expected to extend the ceasefire, reopen the Strait of Hormuz, and begin about 60 days of talks, but the text was still not publicly released as of the latest reports.']
+          title: 'Diplomatic Status — Day 131',
+          items: ['Ceasefire/MoU reported as effectively collapsed or \'over\' on 8 Jul 2026, with renewed U.S. strikes and fresh Iranian attacks reported the same day.']
         },
         {
-          title: 'US and Iran concluded indirect technical talks in Doha on July 1, 2026, focusing',
-          items: ['US and Iran concluded indirect technical talks in Doha on July 1, 2026, focusing on Strait of Hormuz maritime traffic and unfreezing Iran\'s funds.']
+          title: 'Pakistan announces US-Iran talks \'in coming days\'',
+          items: ['Pakistan announces US-Iran talks \'in coming days\'']
         },
         {
-          title: 'A framework memorandum of understanding (MoU) to end the war was secured in late',
-          items: ['A framework memorandum of understanding (MoU) to end the war was secured in late June 2026, halting military operations and ending the US blockade of the Strait of Hormuz.']
+          title: 'NATO gathering in Ankara to discuss security in the Strait of Hormuz',
+          items: ['NATO gathering in Ankara to discuss security in the Strait of Hormuz']
         },
         {
-          title: 'The MoU includes a 60-day window for negotiations over Iran\'s nuclear program, w',
-          items: ['The MoU includes a 60-day window for negotiations over Iran\'s nuclear program, with Trump threatening to restart military attacks if talks fail.']
+          title: 'US reinstated sanctions on Iranian oil exports',
+          items: ['US reinstated sanctions on Iranian oil exports']
         }
       ],
       sources: [
@@ -3576,12 +3578,12 @@ const DASHBOARD_DATA = {
       badgeColor: '#22c55e',
       sections: [
         {
-          title: 'Around Sunday morning (within the last 24–48 hours), Iran’s foreign ministry pub',
-          items: ['Around Sunday morning (within the last 24–48 hours), Iran’s foreign ministry publicly accused the United States of continuing to violate the ceasefire after recent US strikes on a southern Iranian port area, vowing to take whatever measures it deems necessary to defend national security.']
+          title: '8 Jul 2026: Al Jazeera reported renewed U',
+          items: ['8 Jul 2026: Al Jazeera reported renewed U.S. strikes on Sirik, Qeshm, and Bandar Abbas after attacks on vessels in the Strait of Hormuz.']
         },
         {
-          title: 'Over the weekend preceding Sunday, US Central Command reported launching “self-d',
-          items: ['Over the weekend preceding Sunday, US Central Command reported launching “self-defense strikes” against Iranian radar installations and command-and-control nodes associated with drones, indicating localized flare‑ups despite the broader ceasefire framework.']
+          title: '8 Jul 2026: The U',
+          items: ['8 Jul 2026: The U.S. said its strikes were in response to attacks on three ships in the Strait of Hormuz, including Qatari and Saudi tankers.']
         }
       ],
       sources: [
@@ -3600,12 +3602,12 @@ const DASHBOARD_DATA = {
       ]
     },
     energy: {
-      badge: 'OPEN',
+      badge: 'CONTESTED',
       badgeColor: '#22c55e',
       sections: [
         {
-          title: 'Energy & Shipping — Day 130',
-          items: ['Hormuz status: OPEN', 'Daily transits: N/A']
+          title: 'Energy & Shipping — Day 131',
+          items: ['Hormuz status: CONTESTED', 'Daily transits: N/A']
         }
       ],
       sources: [
@@ -3627,41 +3629,41 @@ const DASHBOARD_DATA = {
 
   // ── 8. NEXT 48H CATALYSTS ────────────────────────────────────────────────────
   next48h: {
-    badge: 'NEGOTIATIONS — OUTCOME PENDING',
+    badge: 'TALKS COLLAPSED — ESCALATION WATCH',
     catalysts: [
       {
         rank: '1',
-        title: '2 July: Qatar said the indirect US-Iran technical talks in Doha made \'positive p',
+        title: '8 Jul 2026: Al Jazeera reported renewed U',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: '2 July: Qatar said the indirect US-Iran technical talks in Doha made \'positive progress\' on issues tied to the memorandum of understanding signed on 17 June.',
-        color: 'yellow'
+        body: '8 Jul 2026: Al Jazeera reported renewed U.S. strikes on Sirik, Qeshm, and Bandar Abbas after attacks on vessels in the Strait of Hormuz.',
+        color: 'red'
       },
       {
         rank: '2',
-        title: '6 July: Trump and Pakistani Prime Minister Shehbaz Sharif were reported as sayin',
+        title: '8 Jul 2026: The U',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: '6 July: Trump and Pakistani Prime Minister Shehbaz Sharif were reported as saying a deal was expected to be signed on Sunday, with CBS describing the sides as close to a broader peace agreement.',
-        color: 'yellow'
+        body: '8 Jul 2026: The U.S. said its strikes were in response to attacks on three ships in the Strait of Hormuz, including Qatari and Saudi tankers.',
+        color: 'red'
       },
       {
         rank: '3',
         title: 'Ceasefire Compliance',
         outcomeLabel: 'HOLD vs COLLAPSE',
-        body: 'Indirect US-Iran technical talks in Doha reported \'positive progress\' on 2 July; CBS reported that a memorandum of understanding was expected to extend the ceasefire, reopen the Strait of Hormuz, and begin about 60 days of talks, but the text was still not publicly released as of the latest reports.',
-        color: 'yellow'
+        body: 'Ceasefire/MoU reported as effectively collapsed or \'over\' on 8 Jul 2026, with renewed U.S. strikes and fresh Iranian attacks reported the same day.',
+        color: 'red'
       },
       {
         rank: '4',
         title: 'Hormuz Passage',
         outcomeLabel: 'OPEN vs BLOCKADE',
-        body: 'Current status: OPEN. Transits: N/A/day.',
+        body: 'Current status: CONTESTED. Transits: N/A/day.',
         color: 'green'
       },
       {
         rank: '5',
         title: 'Diplomatic Track',
         outcomeLabel: 'RESUME vs STALL',
-        body: 'US and Iran concluded indirect technical talks in Doha on July 1, 2026, focusing on Strait of Hormuz maritime traffic and unfreezing Iran\'s funds.. A framework memorandum of understanding (MoU) to end the war was secured in late June 2026, halting military operations and ending the US blockade of the Strait of Hormuz.',
+        body: 'Pakistan announces US-Iran talks \'in coming days\'. NATO gathering in Ankara to discuss security in the Strait of Hormuz',
         color: 'yellow'
       }
     ]
@@ -5777,6 +5779,13 @@ const DASHBOARD_DATA = {
         text: 'President Trump made a major announcement from the White House regarding United States policy towards Iran, signing new executive orders aimed at increasing pressure on Tehran, including new sanctions and strategic directives for the Pentagon and Sta',
         tag: 'US',
         escalation: 5
+      },
+      {
+        date: '2026-07-08',
+        speaker: 'Trump',
+        text: 'MoU to end Iran war is \'over\'',
+        tag: 'US',
+        escalation: 8
       }
     ],
     patterns: [
@@ -5826,13 +5835,13 @@ const DASHBOARD_DATA = {
       m6: '$92.50',
       m12: '$85.00',
       commentary: 'Backwardation steep at $16.53 (M1-M12). M1 at $101.53 — rallying as ceasefire fragility reprices near-term risk. M6 at ~$92.50 implies markets expect normalization. M12 at ~$85 implies long-term peace pricing but still above pre-war.',
-      note: 'The Brent curve is mildly backwardated, reflecting a fading but still-present near-term risk premium tied to ceasefire durability and residual uncertainty over US port restrictions on Iran.[2][6][7] The curve’s flattening relative to peak crisis levels signals markets increasingly price a managed de-escalation rather than renewed large-scale disruption.[1][3][6]'
+      note: 'The curve should remain in a firmer backwardated shape or a backwardation-leaning flattening if prompt supply fear stays elevated. That structure implies immediate physical tightness risk is still being priced ahead of any longer-dated normalization.'
     },
     riskReversal: {
       oneMonth: '+3.8',
       threeMonth: '+2.9',
       commentary: 'Risk reversal still call-skewed — upside oil risk exceeds downside. 1-month at +3.8 (down from +5.2 pre-ceasefire peak but UP from +2.8 on ceasefire day). Lebanon-driven Hormuz closure repriced upside risk. Market paying for upside protection again.',
-      note: 'Risk reversals have likely normalised from extreme upside-crude skews, though calls still trade at a premium to puts given non-trivial tail risk of ceasefire slippage or a sanctions shock.[6][7] Any public MoU extension and evidence of sanctions relief would compress upside skew further as hedging demand drops.'
+      note: 'Skew should remain bid for calls over puts, reflecting demand for upside protection against sudden supply shocks. If the market begins to discount a durable pause, that skew should ease quickly.'
     },
     cdsSpreads: [
       {
@@ -5841,7 +5850,7 @@ const DASHBOARD_DATA = {
         preWar: '450 bps',
         change: '+1,650 bps',
         signal: 'Tightening from 2,950 peak — ceasefire improving sovereign risk but still extreme',
-        note: 'Regional sovereign CDS spreads, particularly for Gulf exporters, are likely tighter than at the height of the conflict but still wider than pre-war, pricing residual geopolitical risk around Iran and US policy.[6][7] A visible enforcement mechanism for the MoU would be a key catalyst for further spread tightening.'
+        note: 'Regional sovereign and bank CDS should stay wider for Gulf names most exposed to shipping and energy revenue volatility. Any deterioration in shipping security would likely widen spreads first for the most trade-sensitive issuers.'
       },
       {
         country: 'UAE',
@@ -5878,14 +5887,14 @@ const DASHBOARD_DATA = {
       wtiNetLong: '185,000 contracts (↓ from 235,000 pre-ceasefire)',
       brentNetLong: '195,000 contracts (↓ from 265,000 pre-ceasefire)',
       commentary: 'Massive speculative deleveraging since ceasefire. WTI net long down ~50K contracts, Brent down ~70K. Managed money exiting war-trade positions. Remaining longs are structural, not speculative. If ceasefire collapses, repositioning would create explosive upside move. Current positioning = healthy for sustained recovery.',
-      note: 'CFTC-positioning style data likely shows reduced net-long speculative exposure compared to the war’s peak as traders take profit on crisis trades and rotate into more neutral positioning.[6][7] Persistent long bias in crude remains as a hedge against potential breakdown in talks or non-oil shocks that could spill into energy.'
+      note: 'Spec positioning is likely to stay tactically long crude or reduced on the short side, but no fresh CFTC read was provided in the brief. The key signal is whether managed money adds to front-month exposure on the new escalation.'
     },
     brentWtiSpread: {
-      current: '+$3.57',
+      current: '+$4.05',
       preWar: '+$3.50',
-      widening: '+$0.07 in line',
-      brentPrice: '$72.60',
-      wtiPrice: '$69.03',
+      widening: '+$0.55 widening',
+      brentPrice: '$78.08',
+      wtiPrice: '$74.03',
       commentary: 'WTI premium at $2.64 — Brent $101.53 vs WTI $104.17. Spread widening as ceasefire fragility reprices US supply premium. Pre-war spread was +$3.50 (Brent premium). Inversion persists — US-specific supply disruption pricing.'
     },
     optionsIntelligence: {
@@ -5922,17 +5931,17 @@ const DASHBOARD_DATA = {
         }
       ],
       bottomLine: 'Options market is hedging BOTH directions but tilted to upside risk. The ceasefire compressed IV but Lebanon-driven Hormuz re-closure rebuilt the right tail. Market message: ceasefire is priced, but collapse isn\'t ruled out.',
-      note: 'Implied volatility has stepped down from crisis highs into an elevated but non-panicked regime, consistent with a market that sees negotiations as credible but not yet locked in.[1][3][6][7] A signed, transparent extension of the MoU would push front-month vol lower, whereas any surprise breakdown or attack would immediately reprice short-dated upside.'
+      note: 'Implied volatility should remain elevated, with event-driven front-end pricing dominating the curve. A sustained drop in IV would require several sessions of uneventful shipping and no follow-on strikes.'
     }
   },
 
   // ── 11. OPERATIONS ───────────────────────────────────────────────────────────
   operations: {
-    badge: 'CEASEFIRE · DAY 90 — NEGOTIATIONS',
+    badge: 'CEASEFIRE · DAY 91 — TALKS COLLAPSED',
     kpis: [
       {
         label: 'Vessels Hit',
-        value: '2',
+        value: '3',
         delta: 'Attacked/sunk',
         note: 'Cumulative',
         color: 'red'
@@ -5944,22 +5953,22 @@ const DASHBOARD_DATA = {
         value: 'HOLDING',
         dir: '↑',
         dirClass: 'ind-up',
-        notes: 'Indirect US-Iran technical talks in Doha reported \'positive progress\' on 2 July; CBS reported that a memorandum of understanding was expecte'
+        notes: 'Ceasefire/MoU reported as effectively collapsed or \'over\' on 8 Jul 2026, with renewed U.S. strikes and fresh Iranian attacks reported the sa'
       },
       {
         indicator: 'Hormuz transit',
-        value: 'OPEN',
-        dir: '↑',
-        dirClass: 'ind-up',
+        value: 'CONTESTED',
+        dir: '↓',
+        dirClass: 'ind-down',
         notes: 'Daily transits: N/A'
       }
     ],
     pipeline: {
-      petrolineValue: '~5–6M bpd (running near capacity as a strategic hedge)',
-      petrolineStatus: 'STEADY · HORMUZ OPEN',
+      petrolineValue: '~5.5M bpd (strategic backstop active)',
+      petrolineStatus: 'HOLDING · HORMUZ FRAGILE',
       petrolineDetail: 'D42: Hormuz transits 2-4/day (DOWN from 8/day D41 after Iran briefly closed again). Pipeline bypass demand still elevated. The brief Hormuz closure demonstrates fragility — pipeline remains critical backup. Flow easing from ~6.5M peak but still well above pre-war 2.8M.',
-      adcopValue: '~1.5–1.8M bpd (utilised but less critical as Hormuz risk fades)',
-      adcopStatus: 'STABLE UTILISATION',
+      adcopValue: '~1.5-1.8M bpd (bypass available)',
+      adcopStatus: 'AVAILABLE · PARTIAL BUFFER',
       adcopDetail: 'D42: UAE continues to route significant volumes through Fujairah bypass. Hormuz uncertainty (Iran closed it briefly Apr 8-9) keeps ADCOP flow elevated above pre-war. Will normalize only when Hormuz fully stabilizes.'
     },
     uaeAttackSummary: {
@@ -5977,14 +5986,14 @@ const DASHBOARD_DATA = {
     },
     iranNeighbors: [
       {
-        country: 'Bahrain',
+        country: 'Qatar',
         missiles: '—',
         drones: '—',
         total: '—',
-        notes: 'Hit during conflict (cumulative: 328 projectiles across all neighbors)'
+        notes: 'Hit during conflict (cumulative: 0 projectiles across all neighbors)'
       },
       {
-        country: 'Kuwait',
+        country: 'Saudi Arabia',
         missiles: '—',
         drones: '—',
         total: '—',
@@ -6002,8 +6011,8 @@ const DASHBOARD_DATA = {
         keyInsight: 'At Day 42, first face-to-face talks. Korean War ceasefire at D38, first talks at D43 (Kaesong) — remarkably similar timeline. 2006 Lebanon War: UNSCR 1701 at Day 34 required Lebanon inclusion. In 4/5 analogous conflicts where initial ceasefire talks featured incompatible demands, the ceasefire survived the first round in 68% of cases. Base rate for Brent exceeding $105 within 7 days given current $98 and Hormuz fragility: 32%. Polymarket at 100% ceasefire is overconfident — historical base rate for 2-week ceasefire surviving: 57%.',
         signals: [
           {
-            text: 'Historically, conflicts that enter structured ceasefire-plus-talks phases with defined timelines and mediator frameworks show a higher base-rate of gradual de-escalation than of rapid reversion to full-scale war.',
-            color: '#22c55e'
+            text: 'Maritime conflicts after a brief truce often re-escalate in short bursts before any durable pause forms.',
+            color: '#ef4444'
           }
         ],
         sevenDayPrediction: 'Based on 5 analogous conflict ceasefires, the base rate for this ceasefire surviving through Apr 17 is 57%. The Islamabad talks most closely mirror Kaesong (July 1951) — initial talks produced no framework but both sides maintained the ceasefire for 3 months. Brent likely range-trades $94-104 with Lebanon as the exogenous shock variable. TACO rises to 20-22 if talks produce any framework, holds 16-18 if stalemate.'
@@ -6013,7 +6022,7 @@ const DASHBOARD_DATA = {
         keyInsight: 'The dominant feedback loop has SHIFTED from the oil-politics spiral (D1-D39) to a new DIPLOMACY-SPOILER loop: Islamabad talks progress → market relief → Lebanon escalation by Netanyahu → Iran Hormuz response → talks disruption → market anxiety. Netanyahu is the spoiler player — his payoff function diverges from the US-Iran cooperative game. The Chicken game over Hormuz has evolved: Iran uses brief closures as calibrated signals (not full blockade) to punish Lebanon exclusion without killing the ceasefire.',
         signals: [
           {
-            text: 'Current dynamics resemble a mutual-hostage bargaining game where each side keeps some leverage (blockades, nuclear ambiguity) but is incentivised by mediators and domestic politics to avoid moves that collapse the negotiation set.',
+            text: 'Each retaliatory strike raises the cost of backing down, but also raises the incentive to seek a mediator-led off-ramp before more commercial losses accumulate.',
             color: '#f59e0b'
           }
         ],
@@ -6024,7 +6033,7 @@ const DASHBOARD_DATA = {
         keyInsight: 'The knife-edge variable has SHIFTED from Hormuz transit (D41) to LEBANON ESCALATION TEMPO. Netanyahu\'s Beirut strikes killed 112 — if this intensity continues (or increases), Iran\'s restraint breaks and the ceasefire collapses. The sensitivity is extreme: a single high-casualty Beirut strike during Islamabad talks could cause Iran to walk out + close Hormuz. The talks themselves are NOT the knife-edge — both sides want to be seen negotiating. Lebanon is the exogenous shock that bifurcates all scenarios.',
         signals: [
           {
-            text: 'Leadership transition in Iran and US electoral cycles introduce nonlinear risk that a sudden shift in internal power balances or an unanticipated incident could rapidly override the apparent progress in Doha.',
+            text: 'A single additional tanker hit or misread air-defense event could abruptly shift the regime from managed escalation to corridor shutdown risk.',
             color: '#ef4444'
           }
         ],
@@ -6035,8 +6044,8 @@ const DASHBOARD_DATA = {
         keyInsight: 'Emergent pattern: CEASEFIRE-ERA MARKET DIVERGENCE. Dubizzle listings UP (+193), DubiCars DOWN (-535) — first time these platforms have diverged since the war began. This micro-signal suggests ground-level actors are confused about direction: some re-listing (optimism), others delisting (deals completed or withdrawn). The macro pattern is STABLE: oil at $98, VIX at 21, S&P at 6783 — markets in a narrow band. System complexity is DECREASING — fewer actors, fewer fronts, narrower price ranges. But Lebanon is an anti-complexity injection: it adds a non-linear variable that resists the simplification trend.',
         signals: [
           {
-            text: 'The emerging institutional architecture—MoU, High Level Committee, multi-state mediation—creates path dependence toward managed de-escalation but remains vulnerable to spoilers across multiple regional theatres.',
-            color: '#22c55e'
+            text: 'The system is now being shaped by military signaling, insurance pricing, sanctions, and mediator credibility at the same time.',
+            color: '#f59e0b'
           }
         ],
         sevenDayPrediction: 'Emergent pattern of market simplification suggests the system is moving toward a stable ceasefire equilibrium — but Lebanon prevents full phase transition to peace pricing. Individual signals: (1) OI deleverage from $559M→$313M = speculative froth removed, (2) VIX stabilizing at 21 = fear normalizing, (3) Dubai divergence = ground-level uncertainty. Phase transition to full peace pricing: 25% probability within 7 days (requires Lebanon resolution). Phase transition to re-escalation: 15% (requires Hezbollah major retaliation + Iran walk-out).'
@@ -6322,7 +6331,7 @@ const DASHBOARD_DATA = {
   },
   // ── ARSENAL & ATTRITION MONITOR ──────────────────────────────────────────
   arsenal: {
-    badge: 'CEASEFIRE STOCKPILE FREEZE',
+    badge: 'ACTIVE DEPLETION',
     iran: [
       {
         label: 'MRBM (Shahab-3, Emad, Sejjil)',
@@ -6509,47 +6518,47 @@ const DASHBOARD_DATA = {
       steps: [
         {
           label: 'Oil Price Increase',
-          value: '+-0.8%',
-          detail: '$72.60 vs $73.20 baseline',
+          value: '+6.7%',
+          detail: '$78.08 vs $73.20 baseline',
           color: '#f59e0b'
         },
         {
           label: 'Energy CPI Impact',
-          value: '+-0.19%',
+          value: '+1.53%',
           detail: 'Fed passthrough coefficient: 0.23',
           color: '#f59e0b'
         },
         {
           label: 'Headline Direct',
-          value: '+-0.01pp',
+          value: '+0.11pp',
           detail: 'BLS energy weight: 7%',
           color: '#f59e0b'
         },
         {
           label: 'With Second-Round',
-          value: '+0.13pp',
+          value: '+0.29pp',
           detail: '×1.27 multiplier + 0.15pp food',
           color: '#f59e0b'
         },
         {
           label: 'Estimated CPI',
-          value: '2.5%',
-          detail: '2.4% baseline + 0.13pp war premium',
+          value: '2.7%',
+          detail: '2.4% baseline + 0.29pp war premium',
           color: '#f59e0b'
         }
       ],
       result: {
-        headline: '~2.5%',
-        explanation: 'Brent at $72.6 (-0.8% vs pre-war baseline). Oil-to-CPI passthrough model estimates headline CPI at ~2.5% (war premium +0.13pp over 2.4% baseline).'
+        headline: '~2.7%',
+        explanation: 'Brent at $78.08 (+6.7% vs pre-war baseline). Oil-to-CPI passthrough model estimates headline CPI at ~2.7% (war premium +0.29pp over 2.4% baseline).'
       },
       methodology: 'Dallas Fed elasticity (10% oil → +0.23% energy CPI) × BLS energy weight (7%) × second-round multiplier (1.27) + food acceleration (0.15pp). Source: FEDS Notes 2024, Dallas Fed Working Paper 2023.'
     },
     cpiBreakdown: [
       {
         component: 'Energy',
-        preWar: '17.9%',
+        preWar: '10.9%',
         current: '23.5%',
-        delta: '+5.6pp',
+        delta: '+12.6pp',
         deltaColor: '#ef4444'
       },
       {
@@ -6584,8 +6593,8 @@ const DASHBOARD_DATA = {
         },
         {
           label: 'Next FOMC',
-          value: '2026-07-28',
-          detail: 'Inflation accelerated to 4.2% in May 2026, driven by a 23.5% surge in energy costs triggered by the Iran conflict energy shock, with gasoline up 40.5% and fuel oil up 58.9%; shelter and food inflation',
+          value: 'July 28, 2026',
+          detail: 'Headline inflation rose to 4.2% in May 2026, the highest since April 2023, driven by a 23.5% year-over-year surge in energy costs triggered by the Iran conflict energy shock. Energy prices accounted f',
           color: '#f59e0b'
         },
         {
@@ -6704,21 +6713,21 @@ const DASHBOARD_DATA = {
 
   ceasefireAnalytics: {
     meta: {
-      badge: 'CEASEFIRE DAY 90',
+      badge: 'CEASEFIRE DAY 91',
       asOf: '2026-04-10T05:42:00+08:00',
-      day: 130,
-      tacoScore: 19,
+      day: 131,
+      tacoScore: 22,
       polyCeasefire: 100,
-      headline: '2 July: Qatar said the indirect US-Iran technical talks in Doha made \'positive progress\' on issues tied to the memorandum of understanding signed on 17 June.'
+      headline: '8 Jul 2026: Al Jazeera reported renewed U.S. strikes on Sirik, Qeshm, and Bandar Abbas after attacks on vessels in the Strait of Hormuz.'
     },
     usDemands: [
       {
         id: 1,
         text: '30-day ceasefire',
         category: 'Military',
-        status: 'PARTIAL',
-        statusLabel: 'Day 90 of ceasefire',
-        statusColor: '#f59e0b',
+        status: 'AT RISK',
+        statusLabel: 'Ceasefire fragile — Day 131',
+        statusColor: '#ef4444',
         probability30d: 72,
         probability60d: 55,
         probability90d: 48,
@@ -7080,8 +7089,8 @@ const DASHBOARD_DATA = {
         us: 0,
         iran: 1
       },
-      currentDay: 'DAY 90',
-      status: 'Indirect US-Iran technical talks in Doha reported \'positive progress\' on 2 July; CBS reported that a memorandum of understanding was expected to extend the ceasefire, reopen the Strait of Hormuz, and '
+      currentDay: 'DAY 91',
+      status: 'Ceasefire/MoU reported as effectively collapsed or \'over\' on 8 Jul 2026, with renewed U.S. strikes and fresh Iranian attacks reported the same day.'
     },
     compromiseZone: {
       headline: 'Narrow but Real: A JCPOA-Plus Framework Exists If Both Sides Accept Asymmetric Concessions',
@@ -7170,7 +7179,7 @@ const DASHBOARD_DATA = {
           marketImpact: 'Brent exceeds $150. Global oil supply disrupted by 15–20%. VIX above 50. S&P drops 20–30%. Gold above $3,200. Global recession. Potential disruption to 30% of world oil transit through Hormuz.'
         }
       ],
-      note: 'A plausible compromise zone lies in a package where Iran accepts time-bound nuclear constraints and enhanced monitoring in exchange for phased sanctions relief, structured access to frozen assets, and codified guarantees on Hormuz navigation.[1][2][6][7] The Doha technical track can bridge implementation gaps on shipping and funds while deferring the most contentious nuclear details to a later phase within the 60-day window.[1][6][7][8]'
+      note: 'The narrow deal zone is a temporary shipping guarantee paired with phased sanctions relief or licensing flexibility on oil exports. That can work only if both sides can claim a tactical win: Iran gets revenue relief, and the U.S. gets lower maritime risk.'
     },
     chinaFactor: {
       headline: 'Beijing Calculates: 50% Tariff Pain vs. Strategic Foothold in Iran — Revealed Preference Is to Absorb and Delay',
@@ -7213,7 +7222,7 @@ const DASHBOARD_DATA = {
           brent_impact: 'Brent spikes to $105–115 on dual-crisis risk premium. Global trade disruption amplifies energy cost pass-through. Recession probability increases to 35–40%. Markets price in multi-front economic conflict.'
         }
       ],
-      note: 'China’s leverage stems from its role as a major buyer of Gulf and Iranian-linked barrels and its broader interest in stable energy prices; it can quietly encourage both sides to lock in maritime security to avoid supply shocks that would harm its economy.[6][7] Beijing’s positioning on sanctions and tariff policies, alongside any back-channel diplomacy, can either reinforce de-escalation incentives or complicate US calculations if it offers Iran alternative economic lifelines.'
+      note: 'China matters mainly as an oil-demand backstop and a potential buyer of sanctioned crude, which gives it indirect leverage over Iran’s cost-benefit calculus. Any signal that Beijing will tolerate tighter enforcement or reduced purchases would raise pressure on Tehran to accept a shipping pause.'
     },
     violationImpact: [
       {
@@ -7222,7 +7231,7 @@ const DASHBOARD_DATA = {
         ceasefireRisk: 'High',
         riskColor: '#ef4444',
         demandAffected: 'Iran #10 (all fronts ceasefire) — BLOCKED; also destabilizes US #8 (energy infrastructure) and US #9 (Hormuz) through reactive Iranian escalation',
-        note: 'A meaningful ceasefire violation today—such as a serious maritime incident or missile exchange—would likely trigger a sharp upward repricing in Brent and volatility as markets reassess the reliability of Hormuz flows and discount a return to strikes.[4][6][7] Militarily, it would empower hawks in Washington and Tehran, potentially suspending talks and putting the MoU framework at risk unless mediators can rapidly contain and reframe the episode as an aberration.'
+        note: 'A new ceasefire violation today would likely trigger immediate retaliatory strikes, wider insurance exclusions, and a sharper Brent spike on front-month contracts. Militarily, the response would probably focus on air defenses, radar, and anti-ship capabilities before either side risks broader strategic infrastructure.'
       },
       {
         violation: 'Drone incursion into Iranian airspace (US/Israeli origin)',
@@ -7249,15 +7258,15 @@ const DASHBOARD_DATA = {
     summaryKpis: [
       {
         label: 'Brent',
-        value: '$72.6',
+        value: '$78.08',
         detail: 'Live KPI',
         color: '#22c55e'
       },
       {
         label: 'Hormuz',
-        value: 'OPEN',
+        value: 'CONTESTED',
         detail: 'Daily transits: N/A',
-        color: '#22c55e'
+        color: '#ef4444'
       }
     ],
     bottomLine: 'The Iran-US ceasefire is a genuine but fragile tactical achievement — the first pause in 42 days of active conflict. Polymarket\'s 100% confidence reflects the narrow truth that the GCC-front pause is holding on Day 3. But this number masks four compounding violations that are eroding the ceasefire\'s structural integrity from within. The Lebanon front remains an active war zone with 112 killed in Beirut, and Netanyahu\'s explicit rejection of ceasefire coverage — endorsed by VP Vance — means the ceasefire is structurally incomplete by design. The enrichment text divergence (Farsi vs. English) is a crisis deferred, not resolved. The drone incursion poisons the trust environment. And the China tariff ultimatum opens a second-order game that could either accelerate a deal (if China complies, weakening Iran) or entrench the stalemate (if China absorbs, sustaining Iran). The compromise zone is narrow but real: a JCPOA-Plus framework with enrichment caps at 3.67%, IAEA access, phased sanctions relief, and a non-aggression executive agreement — explicitly excluding Lebanon, Israel recognition, full dismantlement, and troop withdrawal. This deal has approximately a 22% probability of materializing within 90 days. The more likely outcome (42%) is an indefinite series of ceasefire renewals without a comprehensive deal — a managed stalemate that keeps Brent in the $92–98 corridor and leaves all fundamental issues unresolved. The 28% collapse probability is not trivial: each day the four violations accumulate without resolution, the ceasefire\'s load-bearing capacity diminishes. The analytical bottom line: this is a ceasefire in search of a peace process, not a peace process producing a ceasefire. The Islamabad talks must bridge the enrichment gap and produce a single authoritative text within the 12 remaining days of the pause, or the window closes and both sides return to their pre-April 7 postures.',
