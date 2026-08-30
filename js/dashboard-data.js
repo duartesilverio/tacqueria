@@ -12,12 +12,12 @@ const DASHBOARD_DATA = {
   // ── META ────────────────────────────────────────────────────────────────────
   meta: {
     version: "4.0.0",
-    timestamp: "29 Aug 2026 18:11 HKT",
-    day: 183,
+    timestamp: "30 Aug 2026 18:12 HKT",
+    day: 184,
     dayDate: "13 APR 2026",
-    threatLevel: "HIGH",
+    threatLevel: "EXTREME",
     threatClass: "threat-red",
-    tacoScore: 18,
+    tacoScore: 30,
     tacoMax: 100,
     tacoPrev: 18,
     tacoPrevDay: 42,
@@ -955,19 +955,19 @@ const DASHBOARD_DATA = {
 
   // ── CHART DATA (consolidates data.js + charts.js hardcoded data) ───────────
   chartData: {
-    labels: ['Feb 28', 'Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14', 'Mar 15', 'Mar 16', 'Mar 17', 'Mar 18', 'Mar 19', 'Mar 20', 'Mar 21', 'Mar 22', 'Mar 23', 'Mar 24', 'Mar 25', 'Mar 26', 'Mar 27', 'Mar 28', 'Mar 29', 'Mar 30', 'Mar 31', 'Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9', 'Apr 10', 'Apr 11', 'Apr 12', 'Apr 13', 'Apr 14', 'Apr 15', 'Apr 16', 'Apr 17', 'Apr 18', 'Apr 19', 'Apr 20', 'Apr 21', 'Apr 22', 'Apr 23', 'Apr 24', 'Apr 25', 'Apr 26', 'Apr 27', 'Apr 28', 'Apr 29', 'Apr 30', 'May 1', 'May 2', 'May 3', 'May 4', 'May 5', 'May 6', 'May 7', 'May 8', 'May 9', 'May 10', 'May 11', 'May 12', 'May 13', 'May 14', 'May 15', 'May 16', 'May 17', 'May 18', 'May 19', 'May 20', 'May 21', 'May 22', 'May 23', 'May 24', 'May 25', 'May 27', 'May 28', 'May 29', 'May 30', 'May 31', 'Jun 1', 'Jun 2', 'Jun 3', 'Jun 4', 'Jun 5', 'Jun 6', 'Jun 7', 'Jun 8', 'Jun 9', 'Jun 10', 'Jun 11', 'Jun 12', 'Jun 13', 'Jun 14', 'Jun 15', 'Jun 16', 'Jun 17', 'Jun 18', 'Jun 19', 'Jun 20', 'Jun 21', 'Jun 22', 'Jun 23', 'Jun 24', 'Jun 25', 'Jun 26', 'Jun 27', 'Jun 28', 'Jun 29', 'Jun 30', 'Jul 1', 'Jul 2', 'Jul 3', 'Jul 4', 'Jul 5', 'Jul 6', 'Jul 7', 'Jul 8', 'Jul 9', 'Jul 10', 'Jul 11', 'Jul 12', 'Jul 13', 'Jul 14', 'Jul 15', 'Jul 16', 'Jul 17', 'Jul 18', 'Jul 19', 'Jul 20', 'Jul 21', 'Jul 22', 'Jul 23', 'Jul 24', 'Jul 26', 'Jul 27', 'Jul 28', 'Jul 29', 'Jul 30', 'Jul 31', 'Aug 1', 'Aug 2', 'Aug 3', 'Aug 4', 'Aug 5', 'Aug 6', 'Aug 7', 'Aug 8', 'Aug 9', 'Aug 10', 'Aug 11', 'Aug 12', 'Aug 13', 'Aug 14', 'Aug 15', 'Aug 16', 'Aug 17', 'Aug 18', 'Aug 19', 'Aug 20', 'Aug 21', 'Aug 22', 'Aug 23', 'Aug 24', 'Aug 25', 'Aug 26', 'Aug 27', 'Aug 28', 'Aug 29'],
+    labels: ['Feb 28', 'Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14', 'Mar 15', 'Mar 16', 'Mar 17', 'Mar 18', 'Mar 19', 'Mar 20', 'Mar 21', 'Mar 22', 'Mar 23', 'Mar 24', 'Mar 25', 'Mar 26', 'Mar 27', 'Mar 28', 'Mar 29', 'Mar 30', 'Mar 31', 'Apr 1', 'Apr 2', 'Apr 3', 'Apr 4', 'Apr 5', 'Apr 6', 'Apr 7', 'Apr 8', 'Apr 9', 'Apr 10', 'Apr 11', 'Apr 12', 'Apr 13', 'Apr 14', 'Apr 15', 'Apr 16', 'Apr 17', 'Apr 18', 'Apr 19', 'Apr 20', 'Apr 21', 'Apr 22', 'Apr 23', 'Apr 24', 'Apr 25', 'Apr 26', 'Apr 27', 'Apr 28', 'Apr 29', 'Apr 30', 'May 1', 'May 2', 'May 3', 'May 4', 'May 5', 'May 6', 'May 7', 'May 8', 'May 9', 'May 10', 'May 11', 'May 12', 'May 13', 'May 14', 'May 15', 'May 16', 'May 17', 'May 18', 'May 19', 'May 20', 'May 21', 'May 22', 'May 23', 'May 24', 'May 25', 'May 27', 'May 28', 'May 29', 'May 30', 'May 31', 'Jun 1', 'Jun 2', 'Jun 3', 'Jun 4', 'Jun 5', 'Jun 6', 'Jun 7', 'Jun 8', 'Jun 9', 'Jun 10', 'Jun 11', 'Jun 12', 'Jun 13', 'Jun 14', 'Jun 15', 'Jun 16', 'Jun 17', 'Jun 18', 'Jun 19', 'Jun 20', 'Jun 21', 'Jun 22', 'Jun 23', 'Jun 24', 'Jun 25', 'Jun 26', 'Jun 27', 'Jun 28', 'Jun 29', 'Jun 30', 'Jul 1', 'Jul 2', 'Jul 3', 'Jul 4', 'Jul 5', 'Jul 6', 'Jul 7', 'Jul 8', 'Jul 9', 'Jul 10', 'Jul 11', 'Jul 12', 'Jul 13', 'Jul 14', 'Jul 15', 'Jul 16', 'Jul 17', 'Jul 18', 'Jul 19', 'Jul 20', 'Jul 21', 'Jul 22', 'Jul 23', 'Jul 24', 'Jul 26', 'Jul 27', 'Jul 28', 'Jul 29', 'Jul 30', 'Jul 31', 'Aug 1', 'Aug 2', 'Aug 3', 'Aug 4', 'Aug 5', 'Aug 6', 'Aug 7', 'Aug 8', 'Aug 9', 'Aug 10', 'Aug 11', 'Aug 12', 'Aug 13', 'Aug 14', 'Aug 15', 'Aug 16', 'Aug 17', 'Aug 18', 'Aug 19', 'Aug 20', 'Aug 21', 'Aug 22', 'Aug 23', 'Aug 24', 'Aug 25', 'Aug 26', 'Aug 27', 'Aug 28', 'Aug 29', 'Aug 30'],
     brent: [73.2, 80.1, 86.4, 91.7, 94.3, 89.5, 88.0, 91.2, 94.0, 95.4, 90.3, 91.98, 95.8, 100.46, 103.14, 103.14, 106.11, 101.6, 108.52, 116.45, 106.93, 112.89, 112.89, 101.34, 103.5, 100.59, 105.61, 109.97, 109.97, 109.97, 107.9, 107.6, 101.22, 109.37, 109.03, 109.03, 109.03, 108.28, 110.47, 102.5, 95.02, 96.06, 96.06, 96.06, 101.53, 95.87, 95.34, 97.41, 89.03, 90.38, 95.42, 95.12, 94.3, 99.1, 102.92, 106, 106.23, 111.95, 111.95, 111.95, 105.43, 108.07, 111.2, 112.4, 113.49, 99.5, 97.84, 99.93, 103.61, 107.52, 107.38, 105.42, 108.31, 108.05, 110.52, 108.18, 106.87, 103.04, 98.29, 92.55, 94.46, 91.05, 96.95, 94.91, 97.56, 94.83, 94.87, 94.38, 92.75, 92.09, 92.22, 88.38, 83.03, 80.08, 80.09, 78.55, 79.66, 77.04, 76.94, 74.47, 73.43, 73.11, 73.38, 74.41, 72.02, 70.38, 71.51, 72.02, 72.6, 78.08, 78.68, 76.49, 79.1, 86.47, 85.35, 84.59, 85.97, 88.25, 90.71, 94.55, 98.46, 97.46, 90.61, 84.59, 87.89, 87.07, 88.33, 83, 81.44, 80.1, 80.32, 81.85, 84.8, 88.82, 89.01, 87.19, 87, 88.94, 91.05, 92.08, 93.82, 93.59, 90.92, 88.13, 85.07, 88.59, 88.28],
     vix: [22.1, 26.4, 28.9, 30.2, 31.8, 30.1, 29.4, 28.7, 27.6, 26.9, 25.8, 24.93, 25.72, 27.29, 27.19, 27.19, 26.13, 22.24, 23.23, 25.93, 24.82, 26.78, 26.78, 24.48, 26.77, 25.25, 27.15, 28.63, 28.63, 28.63, 30.51, 28.62, 24.23, 27.72, 23.87, 23.87, 23.87, 23.88, 25.71, 21.5, 21.23, 19.31, 19.31, 19.31, 19.23, 18, 18.36, 18.94, 17.61, 17.48, 17.48, 19.53, 18.86, 19.12, 19.64, 19.16, 18.94, 18.92, 18.92, 18.92, 17.84, 18.01, 17.1, 18.06, 17.75, 16.23, 17.48, 17.09, 18.18, 18.75, 17.86, 17.88, 18.88, 18.76, 18.01, 17.99, 17.71, 16.96, 16.63, 16.8, 16.17, 15.79, 16, 16.04, 15.99, 16.52, 15.76, 18.72, 18.15, 20.8, 21.1, 19.34, 16.33, 15.84, 16.41, 17.15, 16.91, 17.5, 19.73, 18.83, 18.01, 20.18, 18.52, 17.41, 16.69, 16.56, 15.95, 16.32, 15.83, 18.31, 16.72, 15.96, 16.42, 17.54, 16.38, 16.01, 18.06, 18.03, 17.76, 17.47, 18.14, 18.78, 17.76, 19.13, 18.35, 19.16, 17.01, 15.99, 15.62, 16.66, 15.95, 15.26, 15.44, 15.5, 15.41, 14.6, 14.53, 14.97, 15.93, 15.86, 15.15, 15.74, 15.93, 15.87, 15.71, 14.49, 14.43],
     hyg: [80.0, 79.1, 78.3, 77.8, 77.4, 77.8, 78.1, 78.5, 79.0, 79.3, 79.6, 80.1, 79.9, 79.36, 79.2, 79.2, 79.2, 79.75, 79.68, 79.4, 79.66, 78.92, 78.92, 79.53, 79.19, 79.52, 79.42, 78.9, 78.9, 78.9, 78.72, 78.82, 79.56, 79.37, 79.56, 79.56, 79.56, 79.63, 79.55, 79.9, 80.14, 80.28, 80.28, 80.28, 79.96, 80.43, 80.5, 80.34, 80.65, 80.65, 80.65, 80.65, 80.58, 80.37, 80.5, 80.37, 80.48, 80.51, 80.51, 80.51, 80.4, 80.13, 80.38, 80.06, 79.8, 79.92, 80.16, 79.86, 80.14, 79.98, 79.87, 79.91, 79.85, 79.62, 79.54, 79.35, 79.86, 79.9, 79.91, 80.18, 80.08, 80.23, 79.74, 79.84, 79.72, 79.68, 79.83, 79.57, 79.54, 79.62, 79.64, 79.94, 80.14, 80.03, 80.03, 79.73, 80.01, 79.94, 79.94, 79.87, 79.85, 79.88, 79.92, 80.01, 79.97, 79.59, 79.71, 79.78, 79.87, 79.76, 79.66, 79.75, 79.71, 79.52, 79.68, 79.81, 79.8, 79.65, 79.68, 79.65, 79.52, 79.23, 79.23, 79.27, 79.42, 79.24, 79.47, 79.48, 79.31, 79.55, 79.52, 79.46, 79.61, 79.48, 79.51, 79.61, 79.79, 79.71, 79.61, 79.53, 79.71, 79.56, 79.61, 79.7, 79.92, 79.86, 79.74],
     sp500: [6050, 5940, 5870, 5820, 5790, 5810, 5840, 5870, 5910, 6100, 6250, 6310, 6781, 6672, 6632, 6632, 6632, 6734.51, 6682.77, 6624.7, 6606.49, 6506.48, 6506.48, 6631.26, 6546.85, 6605.87, 6591.9, 6477.26, 6477.26, 6477.26, 6368.85, 6343.72, 6528.52, 6575.32, 6582.69, 6582.69, 6582.69, 6608.75, 6578.67, 6720.0, 6779.38, 6824.66, 6824.66, 6824.66, 6816.89, 6934.41, 6966.78, 7016.5, 7111.38, 7126.05, 7126.05, 7126.06, 7109.14, 7064.01, 7137.9, 7108.4, 7165.08, 7173.91, 7173.91, 7173.91, 7138.8, 7135.95, 7209.01, 7230.12, 7200.75, 7259.22, 7365.12, 7337.11, 7398.93, 7412.84, 7400.96, 7444.25, 7501.24, 7404.44, 7403.05, 7353.61, 7432.97, 7445.72, 7473.47, 7519.12, 7519.91, 7563.63, 7585.95, 7593.96, 7584.88, 7553.68, 7584.31, 7434.97, 7405.73, 7386.65, 7310.88, 7394.3, 7569.07, 7545.6, 7519.79, 7420.1, 7500.58, 7477.34, 7472.79, 7365.46, 7358.22, 7357.49, 7390.06, 7440.43, 7499.36, 7483.23, 7483.24, 7512.55, 7537.43, 7503.85, 7482.71, 7543.64, 7575.39, 7515.34, 7543.59, 7572.4, 7533.77, 7457.69, 7443.28, 7509.2, 7498.96, 7408.3, 7411.98, 7413.18, 7428.78, 7316.15, 7437.63, 7489.72, 7600.5, 7736.52, 7723.55, 7709.96, 7757.64, 7753.11, 7728.2, 7748.5, 7798.99, 7785.76, 7745.06, 7691.76, 7707.98, 7641.16, 7674.37, 7652.86, 7677.28, 7730.11, 7709.9],
-    taco: [45, 40, 35, 30, 26, 22, 18, 15, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 2, 6, 7, 8, 7, 7, 7, 7, 7, 8, 12, 9, 10, 8, 7, 9, 6, 15, 18, 18, 15, 12, 12, 12, 14, 19, 21, 21, 15, 15, 13, 15, 30, 15, 26, 15, 15, 13, 18, 18, 17, 27, 34, 15, 14, 13, 19, 17, 12, 10, 23, 23, 14, 17, 19, 15, 17, 22, 19, 13, 15, 18, 15, 18, 32, 15, 15, 18, 19, 15, 27, 13, 27, 14, 15, 15, 22, 22, 26, 11, 19, 13, 15, 18, 21, 28, 21, 18, 13, 22, 10, 10, 13, 22, 13, 22, 30, 22, 8, 13, 18, 21, 18, 21, 13, 28, 19, 22, 17, 19, 22, 15, 19, 23, 19, 26, 22, 15, 15, 26, 15, 19, 23, 30, 22, 15, 8, 22, 15, 23, 30, 15, 12, 23, 26, 17, 23, 18, 10, 25, 19, 17, 23, 15, 15, 30, 30, 13, 34, 23, 12, 23, 15, 30, 23, 23, 18, 15, 18],
-    strikeLabels: ['28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr', '24 Apr', '25 Apr', '26 Apr', '27 Apr', '28 Apr', '29 Apr', '30 Apr', '1 May', '2 May', '3 May', '4 May', '5 May', '6 May', '7 May', '8 May', '9 May', '10 May', '11 May', '12 May', '13 May', '14 May', '15 May', '16 May', '17 May', '18 May', '19 May', '20 May', '21 May', '22 May', '23 May', '24 May', '25 May', '27 May', '28 May', '29 May', '30 May', '31 May', '1 Jun', '2 Jun', '3 Jun', '4 Jun', '5 Jun', '6 Jun', '7 Jun', '8 Jun', '9 Jun', '10 Jun', '11 Jun', '12 Jun', '13 Jun', '14 Jun', '15 Jun', '16 Jun', '17 Jun', '18 Jun', '19 Jun', '20 Jun', '21 Jun', '22 Jun', '23 Jun', '24 Jun', '25 Jun', '26 Jun', '27 Jun', '28 Jun', '29 Jun', '30 Jun', '1 Jul', '2 Jul', '3 Jul', '4 Jul', '5 Jul', '6 Jul', '7 Jul', '8 Jul', '9 Jul', '10 Jul', '11 Jul', '12 Jul', '13 Jul', '14 Jul', '15 Jul', '16 Jul', '17 Jul', '18 Jul', '19 Jul', '20 Jul', '21 Jul', '22 Jul', '23 Jul', '24 Jul', '26 Jul', '27 Jul', '28 Jul', '29 Jul', '30 Jul', '31 Jul', '1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug', '7 Aug', '8 Aug', '9 Aug', '10 Aug', '11 Aug', '12 Aug', '13 Aug', '14 Aug', '15 Aug', '16 Aug', '17 Aug', '18 Aug', '19 Aug', '20 Aug', '21 Aug', '22 Aug', '23 Aug', '24 Aug', '25 Aug', '26 Aug', '27 Aug', '28 Aug', '29 Aug'],
+    taco: [45, 40, 35, 30, 26, 22, 18, 15, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 2, 2, 2, 2, 6, 7, 8, 7, 7, 7, 7, 7, 8, 12, 9, 10, 8, 7, 9, 6, 15, 18, 18, 15, 12, 12, 12, 14, 19, 21, 21, 15, 15, 13, 15, 30, 15, 26, 15, 15, 13, 18, 18, 17, 27, 34, 15, 14, 13, 19, 17, 12, 10, 23, 23, 14, 17, 19, 15, 17, 22, 19, 13, 15, 18, 15, 18, 32, 15, 15, 18, 19, 15, 27, 13, 27, 14, 15, 15, 22, 22, 26, 11, 19, 13, 15, 18, 21, 28, 21, 18, 13, 22, 10, 10, 13, 22, 13, 22, 30, 22, 8, 13, 18, 21, 18, 21, 13, 28, 19, 22, 17, 19, 22, 15, 19, 23, 19, 26, 22, 15, 15, 26, 15, 19, 23, 30, 22, 15, 8, 22, 15, 23, 30, 15, 12, 23, 26, 17, 23, 18, 10, 25, 19, 17, 23, 15, 15, 30, 30, 13, 34, 23, 12, 23, 15, 30, 23, 23, 18, 15, 18, 30],
+    strikeLabels: ['28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr', '24 Apr', '25 Apr', '26 Apr', '27 Apr', '28 Apr', '29 Apr', '30 Apr', '1 May', '2 May', '3 May', '4 May', '5 May', '6 May', '7 May', '8 May', '9 May', '10 May', '11 May', '12 May', '13 May', '14 May', '15 May', '16 May', '17 May', '18 May', '19 May', '20 May', '21 May', '22 May', '23 May', '24 May', '25 May', '27 May', '28 May', '29 May', '30 May', '31 May', '1 Jun', '2 Jun', '3 Jun', '4 Jun', '5 Jun', '6 Jun', '7 Jun', '8 Jun', '9 Jun', '10 Jun', '11 Jun', '12 Jun', '13 Jun', '14 Jun', '15 Jun', '16 Jun', '17 Jun', '18 Jun', '19 Jun', '20 Jun', '21 Jun', '22 Jun', '23 Jun', '24 Jun', '25 Jun', '26 Jun', '27 Jun', '28 Jun', '29 Jun', '30 Jun', '1 Jul', '2 Jul', '3 Jul', '4 Jul', '5 Jul', '6 Jul', '7 Jul', '8 Jul', '9 Jul', '10 Jul', '11 Jul', '12 Jul', '13 Jul', '14 Jul', '15 Jul', '16 Jul', '17 Jul', '18 Jul', '19 Jul', '20 Jul', '21 Jul', '22 Jul', '23 Jul', '24 Jul', '26 Jul', '27 Jul', '28 Jul', '29 Jul', '30 Jul', '31 Jul', '1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug', '7 Aug', '8 Aug', '9 Aug', '10 Aug', '11 Aug', '12 Aug', '13 Aug', '14 Aug', '15 Aug', '16 Aug', '17 Aug', '18 Aug', '19 Aug', '20 Aug', '21 Aug', '22 Aug', '23 Aug', '24 Aug', '25 Aug', '26 Aug', '27 Aug', '28 Aug', '29 Aug', '30 Aug'],
     strikes: {
-      us: [500, 600, 550, 450, 400, 420, 380, 500, 480, 450, 430, 420, 490, 520, 600, 580, 620, 290, 480, 510, 500, 520, 530, 540, 550, 550, 580, 600, 580, 560, 500, 520, 480, 500, 510, 550, 600, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      us: [500, 600, 550, 450, 400, 420, 380, 500, 480, 450, 430, 420, 490, 520, 600, 580, 620, 290, 480, 510, 500, 520, 530, 540, 550, 550, 580, 600, 580, 560, 500, 520, 480, 500, 510, 550, 600, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       iran: [200, 150, 100, 60, 40, 30, 25, 35, 30, 25, 20, 18, 35, 40, 38, 42, 45, 30, 35, 40, 50, 55, 65, 60, 55, 70, 75, 70, 65, 60, 50, 55, 50, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     },
-    hormuzLabels: ['26 Feb', '27 Feb', '28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '26 Mar', '27 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr', '24 Apr', '25 Apr', '26 Apr', '27 Apr', '28 Apr', '29 Apr', '30 Apr', '1 May', '2 May', '3 May', '4 May', '5 May', '6 May', '7 May', '8 May', '9 May', '10 May', '11 May', '12 May', '13 May', '14 May', '15 May', '16 May', '17 May', '18 May', '19 May', '20 May', '21 May', '22 May', '23 May', '24 May', '25 May', '27 May', '28 May', '29 May', '30 May', '31 May', '1 Jun', '2 Jun', '3 Jun', '4 Jun', '5 Jun', '6 Jun', '7 Jun', '8 Jun', '9 Jun', '10 Jun', '11 Jun', '12 Jun', '13 Jun', '14 Jun', '15 Jun', '16 Jun', '17 Jun', '18 Jun', '19 Jun', '20 Jun', '21 Jun', '22 Jun', '23 Jun', '24 Jun', '25 Jun', '26 Jun', '27 Jun', '28 Jun', '29 Jun', '30 Jun', '1 Jul', '2 Jul', '3 Jul', '4 Jul', '5 Jul', '6 Jul', '7 Jul', '8 Jul', '9 Jul', '10 Jul', '11 Jul', '12 Jul', '13 Jul', '14 Jul', '15 Jul', '16 Jul', '17 Jul', '18 Jul', '19 Jul', '20 Jul', '21 Jul', '22 Jul', '23 Jul', '24 Jul', '26 Jul', '27 Jul', '28 Jul', '29 Jul', '30 Jul', '31 Jul', '1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug', '7 Aug', '8 Aug', '9 Aug', '10 Aug', '11 Aug', '12 Aug', '13 Aug', '14 Aug', '15 Aug', '16 Aug', '17 Aug', '18 Aug', '19 Aug', '20 Aug', '21 Aug', '22 Aug', '23 Aug', '24 Aug', '25 Aug', '26 Aug', '27 Aug', '28 Aug', '29 Aug'],
-    hormuzTransits: [24, 24, 37, 4, 6, 5, 3, 4, 5, 5, 5, 5, 5, 2, 0, 1, 1, 1, 0, 4, 5, 4, 3, 2, 2, 2, 0, 6, 6, 8, 3, 4, 4, 5, 6, 5, 1, 4, 4, 3, 2, 5, 8, 4, 5, 5, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 33, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 25, 4, 4, 4, 15, 4, 4, 4, 115, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 10, 4, 10, 4, 14, 4, 4, 4, 6, 45, 6, 4, 7, 4, 4, 6, 4, 8, 4, 8, 4, 4, 4, 4, 9, 9, 4, 9, 4, 4, 4, 4, 4, 4],
+    hormuzLabels: ['26 Feb', '27 Feb', '28 Feb', '1 Mar', '2 Mar', '3 Mar', '4 Mar', '5 Mar', '6 Mar', '7 Mar', '8 Mar', '9 Mar', '10 Mar', '11 Mar', '12 Mar', '13 Mar', '14 Mar', '15 Mar', '16 Mar', '17 Mar', '18 Mar', '19 Mar', '20 Mar', '21 Mar', '22 Mar', '23 Mar', '24 Mar', '25 Mar', '26 Mar', '27 Mar', '28 Mar', '29 Mar', '30 Mar', '31 Mar', '1 Apr', '2 Apr', '3 Apr', '4 Apr', '5 Apr', '6 Apr', '7 Apr', '8 Apr', '9 Apr', '10 Apr', '11 Apr', '12 Apr', '13 Apr', '14 Apr', '15 Apr', '16 Apr', '17 Apr', '18 Apr', '19 Apr', '20 Apr', '21 Apr', '22 Apr', '23 Apr', '24 Apr', '25 Apr', '26 Apr', '27 Apr', '28 Apr', '29 Apr', '30 Apr', '1 May', '2 May', '3 May', '4 May', '5 May', '6 May', '7 May', '8 May', '9 May', '10 May', '11 May', '12 May', '13 May', '14 May', '15 May', '16 May', '17 May', '18 May', '19 May', '20 May', '21 May', '22 May', '23 May', '24 May', '25 May', '27 May', '28 May', '29 May', '30 May', '31 May', '1 Jun', '2 Jun', '3 Jun', '4 Jun', '5 Jun', '6 Jun', '7 Jun', '8 Jun', '9 Jun', '10 Jun', '11 Jun', '12 Jun', '13 Jun', '14 Jun', '15 Jun', '16 Jun', '17 Jun', '18 Jun', '19 Jun', '20 Jun', '21 Jun', '22 Jun', '23 Jun', '24 Jun', '25 Jun', '26 Jun', '27 Jun', '28 Jun', '29 Jun', '30 Jun', '1 Jul', '2 Jul', '3 Jul', '4 Jul', '5 Jul', '6 Jul', '7 Jul', '8 Jul', '9 Jul', '10 Jul', '11 Jul', '12 Jul', '13 Jul', '14 Jul', '15 Jul', '16 Jul', '17 Jul', '18 Jul', '19 Jul', '20 Jul', '21 Jul', '22 Jul', '23 Jul', '24 Jul', '26 Jul', '27 Jul', '28 Jul', '29 Jul', '30 Jul', '31 Jul', '1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug', '7 Aug', '8 Aug', '9 Aug', '10 Aug', '11 Aug', '12 Aug', '13 Aug', '14 Aug', '15 Aug', '16 Aug', '17 Aug', '18 Aug', '19 Aug', '20 Aug', '21 Aug', '22 Aug', '23 Aug', '24 Aug', '25 Aug', '26 Aug', '27 Aug', '28 Aug', '29 Aug', '30 Aug'],
+    hormuzTransits: [24, 24, 37, 4, 6, 5, 3, 4, 5, 5, 5, 5, 5, 2, 0, 1, 1, 1, 0, 4, 5, 4, 3, 2, 2, 2, 0, 6, 6, 8, 3, 4, 4, 5, 6, 5, 1, 4, 4, 3, 2, 5, 8, 4, 5, 5, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 33, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 25, 4, 4, 4, 15, 4, 4, 4, 115, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 10, 4, 10, 4, 14, 4, 4, 4, 6, 45, 6, 4, 7, 4, 4, 6, 4, 8, 4, 8, 4, 4, 4, 4, 9, 9, 4, 9, 4, 4, 4, 4, 4, 4, 4],
     etfs: {
       ITA: {
         prices: [215, 218, 222, 226, 229, 227, 230, 233, 235, 237, 234, 236, 239, 241, 243, 243, 243, 229, 231, 230, 227, 223, 226, 221, 226, 226, 228, 216, 211, 219, 224, 222, 222, 222, 223, 223, 235, 232, 232, 232, 230, 233]
@@ -2420,6 +2420,14 @@ const DASHBOARD_DATA = {
         dubicars: 4526,
         yallamotor: 35757,
         source: 'live'
+      },
+      {
+        date: '2026-08-30',
+        day: 184,
+        dubizzle: 27739,
+        dubicars: 4526,
+        yallamotor: 35757,
+        source: 'live'
       }
     ],
     baselines: {
@@ -2440,12 +2448,12 @@ const DASHBOARD_DATA = {
         total: 35757,
         changePct: 0.0
       },
-      date: '2026-08-29',
-      day: 183
+      date: '2026-08-30',
+      day: 184
     },
     luxury: {
-      date: '2026-08-29',
-      day: 183,
+      date: '2026-08-30',
+      day: 184,
       dubizzle: 1850,
       dubicars: 1420
     },
@@ -2497,8 +2505,8 @@ const DASHBOARD_DATA = {
   // ── IRAN DAILY ATTACKS ON UAE ───────────────────────────────────────────────
   iranAttacksUAE: {
     cumulative: {
-      asOf: '2026-08-29',
-      day: 183,
+      asOf: '2026-08-30',
+      day: 184,
       ballisticMissiles: {
         detected: 524,
         intercepted: 501,
@@ -2519,7 +2527,7 @@ const DASHBOARD_DATA = {
         injured: 252
       },
       interceptRate: '93.4%',
-      note: 'All attack figures frozen since ceasefire. Day 183.'
+      note: 'All attack figures frozen since ceasefire. Day 184.'
     },
     daily: [
       {
@@ -3897,14 +3905,22 @@ const DASHBOARD_DATA = {
         cruise: 0,
         drones: 0,
         note: 'Ceasefire Day 143 — zero attacks.'
+      },
+      {
+        date: '2026-08-30',
+        day: 184,
+        ballistic: 0,
+        cruise: 0,
+        drones: 0,
+        note: 'Ceasefire Day 144 — zero attacks.'
       }
     ]
   },
 
   // ── IRAN DAILY ATTACKS ON ALL NEIGHBORS ─────────────────────────────────────
   iranAttacksNeighbors: {
-    asOf: '2026-08-29',
-    day: 183,
+    asOf: '2026-08-30',
+    day: 184,
     totalProjectiles: 4850,
     countriesHit: 6,
     countries: {
@@ -4122,29 +4138,29 @@ const DASHBOARD_DATA = {
   gistBanner: {
     bullets: [
       {
-        text: '2026-08-28: An Iranian armed forces outlet reported that Tehran and Muscat reached an understanding on a temporary joint maritime corridor through the Strait of Hormuz to resume limited commercial shipping; Iran emphasized this does not constitute a full reopening of the waterway, and the U.S. has not accepted the proposal while maintaining its naval blockade of Iranian ports.',
-        color: 'red'
-      },
-      {
-        text: '2026-08-28: The United Kingdom Maritime Trade Operations Centre reported 23 projectile strike incidents against vessels in and around the Strait of Hormuz since early July, mostly in the Southern Omani route, with traffic remaining well below normal levels despite U.S. efforts to secure the waterway.',
-        color: 'red'
-      },
-      {
-        text: '2026-08-28: U.S. Central Command stated that by Aug 28 American forces had redirected 82 commercial vessels, disabled three commercial ships, and boarded two others while enforcing the naval blockade against Iran in and around the Strait of Hormuz.',
-        color: 'red'
-      },
-      {
-        text: 'U.S. imposed new economic sanctions on Iran on Aug. 28-29, intensifying pressure.',
+        text: '25–28 Aug 2026: Iran’s deputy foreign minister reiterates that the Strait of Hormuz remains closed and that an understanding with Oman on a temporary route will not be implemented until the US returns to its commitments under the Islamabad MoU; any vessel passing must coordinate with Iran.',
         color: 'yellow'
       },
       {
-        text: 'Iranian leadership publicly emphasized unity and social cohesion while acknowledging economic hardship.',
+        text: '28–30 Aug 2026: Iranian officials and media state that Hormuz remains closed pending US compliance with the Islamabad MoU, with Kazem Gharibabadi saying that any vessel transit through the strait is conducted in coordination with Iran.',
         color: 'yellow'
+      },
+      {
+        text: '29 Aug 2026: The IRGC Navy announces it has full control over the Strait of Hormuz and that the waterway is closed to vessels that are not coordinated with Iran, reinforcing Iran’s blockade posture.',
+        color: 'red'
+      },
+      {
+        text: 'Trump said talks with Iran were underway in early August and linked any pause in strikes to rapid progress on a deal.',
+        color: 'red'
+      },
+      {
+        text: 'Reports described a possible agreement framework involving reopening the Strait of Hormuz and limiting Iran’s nuclear threat.',
+        color: 'red'
       }
     ],
     pills: [
       {
-        label: 'TACO 15',
+        label: 'TACO 18',
         color: 'amber'
       },
       {
@@ -4156,7 +4172,7 @@ const DASHBOARD_DATA = {
         color: 'red'
       },
       {
-        label: 'CPI 3.4%',
+        label: 'CPI 3.0%',
         color: 'amber'
       }
     ]
@@ -4166,38 +4182,38 @@ const DASHBOARD_DATA = {
   newsNow: [
     {
       label: 'HORMUZ',
-      title: '2026-08-28: An Iranian armed forces outlet reported that Tehran and Muscat reached an unde',
-      body: '2026-08-28: An Iranian armed forces outlet reported that Tehran and Muscat reached an understanding on a temporary joint maritime corridor through the Strait of Hormuz to resume limited commercial shipping; Iran emphasized this does not constitute a full reopening of the waterway, and the U.S. has not accepted the proposal while maintaining its naval blockade of Iranian ports.',
-      color: 'red'
-    },
-    {
-      label: 'HORMUZ',
-      title: '2026-08-28: The United Kingdom Maritime Trade Operations Centre reported 23 projectile str',
-      body: '2026-08-28: The United Kingdom Maritime Trade Operations Centre reported 23 projectile strike incidents against vessels in and around the Strait of Hormuz since early July, mostly in the Southern Omani route, with traffic remaining well below normal levels despite U.S. efforts to secure the waterway.',
+      title: '25–28 Aug 2026: Iran’s deputy foreign minister reiterates that the Strait of Hormuz remain',
+      body: '25–28 Aug 2026: Iran’s deputy foreign minister reiterates that the Strait of Hormuz remains closed and that an understanding with Oman on a temporary route will not be implemented until the US returns to its commitments under the Islamabad MoU; any vessel passing must coordinate with Iran.',
       color: 'yellow'
     },
     {
       label: 'HORMUZ',
-      title: '2026-08-28: U',
-      body: '2026-08-28: U.S. Central Command stated that by Aug 28 American forces had redirected 82 commercial vessels, disabled three commercial ships, and boarded two others while enforcing the naval blockade against Iran in and around the Strait of Hormuz.',
-      color: 'red'
+      title: '28–30 Aug 2026: Iranian officials and media state that Hormuz remains closed pending US co',
+      body: '28–30 Aug 2026: Iranian officials and media state that Hormuz remains closed pending US compliance with the Islamabad MoU, with Kazem Gharibabadi saying that any vessel transit through the strait is conducted in coordination with Iran.',
+      color: 'yellow'
     },
     {
       label: 'HORMUZ',
-      title: '2026-08-28: Live updates from regional media indicated that Iran and Oman agreed to work o',
-      body: '2026-08-28: Live updates from regional media indicated that Iran and Oman agreed to work on a joint mine‑clearing operation and a temporary maritime corridor allowing only commercial vessels, while Iran continues to regard the Strait of Hormuz as officially and militarily closed.',
+      title: '29 Aug 2026: The IRGC Navy announces it has full control over the Strait of Hormuz and tha',
+      body: '29 Aug 2026: The IRGC Navy announces it has full control over the Strait of Hormuz and that the waterway is closed to vessels that are not coordinated with Iran, reinforcing Iran’s blockade posture.',
+      color: 'red'
+    },
+    {
+      label: 'CONFLICT',
+      title: 'Up to 27–30 Aug 2026: Reuters reports that six months into the war, 18 US service members ',
+      body: 'Up to 27–30 Aug 2026: Reuters reports that six months into the war, 18 US service members have been killed and over 750 injured, highlighting ongoing but largely stalemated hostilities.',
       color: 'yellow'
     },
     {
       label: 'TALKS',
-      title: 'U',
-      body: 'U.S. imposed new economic sanctions on Iran on Aug. 28-29, intensifying pressure.',
+      title: 'Trump said talks with Iran were underway in early August and linked any pause in strikes t',
+      body: 'Trump said talks with Iran were underway in early August and linked any pause in strikes to rapid progress on a deal.',
       color: 'yellow'
     },
     {
       label: 'TALKS',
-      title: 'Iranian leadership publicly emphasized unity and social cohesion while acknowledging econo',
-      body: 'Iranian leadership publicly emphasized unity and social cohesion while acknowledging economic hardship.',
+      title: 'Reports described a possible agreement framework involving reopening the Strait of Hormuz ',
+      body: 'Reports described a possible agreement framework involving reopening the Strait of Hormuz and limiting Iran’s nuclear threat.',
       color: 'yellow'
     }
   ],
@@ -4205,11 +4221,18 @@ const DASHBOARD_DATA = {
   // ── 3. ANALYTICAL SIGNALS ────────────────────────────────────────────────────
   analyticalSignals: [
     {
+      label: 'Ceasefire Compliance',
+      value: 'AT RISK',
+      score: 3,
+      scoreColor: '#ef4444',
+      detail: 'Pakistan-mediated MoU ceasefire framework exists but is effectively defunct; Iran says US violated the MoU and that there was no 60-day ceasefire to extend, and current talks over Hormuz and broader s'
+    },
+    {
       label: 'Diplomatic Engagement',
       value: 'ACTIVE',
       score: 6,
       scoreColor: '#f59e0b',
-      detail: 'U.S. imposed new economic sanctions on Iran on Aug. 28-29, intensifying pressure.'
+      detail: 'Trump said talks with Iran were underway in early August and linked any pause in strikes to rapid progress on a deal.'
     },
     {
       label: 'Rhetoric Temperature',
@@ -4318,29 +4341,29 @@ const DASHBOARD_DATA = {
   // ── 6. KEY TRIGGERS ──────────────────────────────────────────────────────────
   keyTriggers: [
     {
-      title: '2026-08-28: An Iranian armed forces outlet reported that Tehran and Muscat reach',
-      titleColor: '#ef4444',
-      body: '2026-08-28: An Iranian armed forces outlet reported that Tehran and Muscat reached an understanding on a temporary joint maritime corridor through the Strait of Hormuz to resume limited commercial shipping; Iran emphasized this does not constitute a full reopening of the waterway, and the U.S. has not accepted the proposal while maintaining its naval blockade of Iranian ports.'
-    },
-    {
-      title: '2026-08-28: The United Kingdom Maritime Trade Operations Centre reported 23 proj',
+      title: '25–28 Aug 2026: Iran’s deputy foreign minister reiterates that the Strait of Hor',
       titleColor: '#f59e0b',
-      body: '2026-08-28: The United Kingdom Maritime Trade Operations Centre reported 23 projectile strike incidents against vessels in and around the Strait of Hormuz since early July, mostly in the Southern Omani route, with traffic remaining well below normal levels despite U.S. efforts to secure the waterway.'
+      body: '25–28 Aug 2026: Iran’s deputy foreign minister reiterates that the Strait of Hormuz remains closed and that an understanding with Oman on a temporary route will not be implemented until the US returns to its commitments under the Islamabad MoU; any vessel passing must coordinate with Iran.'
     },
     {
-      title: '2026-08-28: U',
+      title: '28–30 Aug 2026: Iranian officials and media state that Hormuz remains closed pen',
+      titleColor: '#f59e0b',
+      body: '28–30 Aug 2026: Iranian officials and media state that Hormuz remains closed pending US compliance with the Islamabad MoU, with Kazem Gharibabadi saying that any vessel transit through the strait is conducted in coordination with Iran.'
+    },
+    {
+      title: '29 Aug 2026: The IRGC Navy announces it has full control over the Strait of Horm',
       titleColor: '#ef4444',
-      body: '2026-08-28: U.S. Central Command stated that by Aug 28 American forces had redirected 82 commercial vessels, disabled three commercial ships, and boarded two others while enforcing the naval blockade against Iran in and around the Strait of Hormuz.'
+      body: '29 Aug 2026: The IRGC Navy announces it has full control over the Strait of Hormuz and that the waterway is closed to vessels that are not coordinated with Iran, reinforcing Iran’s blockade posture.'
+    },
+    {
+      title: 'Ceasefire Status (Day 184)',
+      titleColor: '#f59e0b',
+      body: 'Pakistan-mediated MoU ceasefire framework exists but is effectively defunct; Iran says US violated the MoU and that there was no 60-day ceasefire to extend, and current talks over Hormuz and broader settlement remain stalled.'
     },
     {
       title: 'Hormuz Passage',
       titleColor: '#22c55e',
       body: 'Status: closed. Daily transits: N/A.'
-    },
-    {
-      title: 'Diplomatic Outlook',
-      titleColor: '#f59e0b',
-      body: 'U.S. imposed new economic sanctions on Iran on Aug. 28-29, intensifying pressure.. Iranian leadership publicly emphasized unity and social cohesion while acknowledging economic hardship.. Pezeshkian signaled willingness to negotiate, but only on reciprocal terms.'
     }
   ],
 
@@ -4351,20 +4374,20 @@ const DASHBOARD_DATA = {
       badgeColor: '#22c55e',
       sections: [
         {
-          title: 'Diplomatic Status — Day 183',
-          items: ['Talks reportedly stalled as of mid‑August; no new progress reported by Aug 29, 2026.']
+          title: 'Diplomatic Status — Day 184',
+          items: ['Pakistan-mediated MoU ceasefire framework exists but is effectively defunct; Iran says US violated the MoU and that there was no 60-day ceasefire to extend, and current talks over Hormuz and broader settlement remain stalled.']
         },
         {
-          title: 'U',
-          items: ['U.S. imposed new economic sanctions on Iran on Aug. 28-29, intensifying pressure.']
+          title: 'Trump said talks with Iran were underway in early August and linked any pause in',
+          items: ['Trump said talks with Iran were underway in early August and linked any pause in strikes to rapid progress on a deal.']
         },
         {
-          title: 'Iranian leadership publicly emphasized unity and social cohesion while acknowled',
-          items: ['Iranian leadership publicly emphasized unity and social cohesion while acknowledging economic hardship.']
+          title: 'Reports described a possible agreement framework involving reopening the Strait ',
+          items: ['Reports described a possible agreement framework involving reopening the Strait of Hormuz and limiting Iran’s nuclear threat.']
         },
         {
-          title: 'Pezeshkian signaled willingness to negotiate, but only on reciprocal terms',
-          items: ['Pezeshkian signaled willingness to negotiate, but only on reciprocal terms.']
+          title: 'By mid-August, Trump said no talks were taking place, suggesting diplomacy had s',
+          items: ['By mid-August, Trump said no talks were taking place, suggesting diplomacy had stalled.']
         }
       ],
       sources: [
@@ -4415,7 +4438,7 @@ const DASHBOARD_DATA = {
       badgeColor: '#22c55e',
       sections: [
         {
-          title: 'Energy & Shipping — Day 183',
+          title: 'Energy & Shipping — Day 184',
           items: ['Hormuz status: CLOSED', 'Daily transits: N/A']
         }
       ],
@@ -4442,23 +4465,23 @@ const DASHBOARD_DATA = {
     catalysts: [
       {
         rank: '1',
-        title: '2026-08-28: An Iranian armed forces outlet reported that Tehran and Muscat reach',
+        title: '25–28 Aug 2026: Iran’s deputy foreign minister reiterates that the Strait of Hor',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: '2026-08-28: An Iranian armed forces outlet reported that Tehran and Muscat reached an understanding on a temporary joint maritime corridor through the Strait of Hormuz to resume limited commercial shipping; Iran emphasized this does not constitute a full reopening of the waterway, and the U.S. has not accepted the proposal while maintaining its naval blockade of Iranian ports.',
-        color: 'red'
+        body: '25–28 Aug 2026: Iran’s deputy foreign minister reiterates that the Strait of Hormuz remains closed and that an understanding with Oman on a temporary route will not be implemented until the US returns to its commitments under the Islamabad MoU; any vessel passing must coordinate with Iran.',
+        color: 'yellow'
       },
       {
         rank: '2',
-        title: '2026-08-28: The United Kingdom Maritime Trade Operations Centre reported 23 proj',
+        title: '28–30 Aug 2026: Iranian officials and media state that Hormuz remains closed pen',
         outcomeLabel: 'ESCALATION vs DE-ESCALATION',
-        body: '2026-08-28: The United Kingdom Maritime Trade Operations Centre reported 23 projectile strike incidents against vessels in and around the Strait of Hormuz since early July, mostly in the Southern Omani route, with traffic remaining well below normal levels despite U.S. efforts to secure the waterway.',
+        body: '28–30 Aug 2026: Iranian officials and media state that Hormuz remains closed pending US compliance with the Islamabad MoU, with Kazem Gharibabadi saying that any vessel transit through the strait is conducted in coordination with Iran.',
         color: 'yellow'
       },
       {
         rank: '3',
         title: 'Ceasefire Compliance',
         outcomeLabel: 'HOLD vs COLLAPSE',
-        body: 'Talks reportedly stalled as of mid‑August; no new progress reported by Aug 29, 2026.',
+        body: 'Pakistan-mediated MoU ceasefire framework exists but is effectively defunct; Iran says US violated the MoU and that there was no 60-day ceasefire to extend, and current talks over Hormuz and broader settlement remain stalled.',
         color: 'yellow'
       },
       {
@@ -4472,7 +4495,7 @@ const DASHBOARD_DATA = {
         rank: '5',
         title: 'Diplomatic Track',
         outcomeLabel: 'RESUME vs STALL',
-        body: 'U.S. imposed new economic sanctions on Iran on Aug. 28-29, intensifying pressure.. Iranian leadership publicly emphasized unity and social cohesion while acknowledging economic hardship.',
+        body: 'Trump said talks with Iran were underway in early August and linked any pause in strikes to rapid progress on a deal.. Reports described a possible agreement framework involving reopening the Strait of Hormuz and limiting Iran’s nuclear threat.',
         color: 'yellow'
       }
     ]
@@ -7124,17 +7147,24 @@ const DASHBOARD_DATA = {
 
   // ── 11. OPERATIONS ───────────────────────────────────────────────────────────
   operations: {
-    badge: 'NEGOTIATIONS',
+    badge: 'CEASEFIRE · DAY 144 — NEGOTIATIONS',
     kpis: [
       {
         label: 'US KIA',
         value: '18',
         delta: '',
-        note: 'Through D183',
+        note: 'Through D184',
         color: 'red'
       }
     ],
     indicators: [
+      {
+        indicator: 'Ceasefire status',
+        value: 'HOLDING',
+        dir: '↑',
+        dirClass: 'ind-up',
+        notes: 'Pakistan-mediated MoU ceasefire framework exists but is effectively defunct; Iran says US violated the MoU and that there was no 60-day ceas'
+      },
       {
         indicator: 'Hormuz transit',
         value: 'CLOSED',
@@ -7886,12 +7916,12 @@ const DASHBOARD_DATA = {
 
   ceasefireAnalytics: {
     meta: {
-      badge: 'DAY 183',
+      badge: 'CEASEFIRE DAY 144',
       asOf: '2026-04-10T05:42:00+08:00',
-      day: 183,
-      tacoScore: 18,
+      day: 184,
+      tacoScore: 30,
       polyCeasefire: 100,
-      headline: '2026-08-28: An Iranian armed forces outlet reported that Tehran and Muscat reached an understanding on a temporary joint maritime corridor through the Strait of Hormuz to resume limited commercial shipping; Iran emphasized this does not constitute a full reopening of the waterway, and the U.S. has n'
+      headline: '25–28 Aug 2026: Iran’s deputy foreign minister reiterates that the Strait of Hormuz remains closed and that an understanding with Oman on a temporary route will not be implemented until the US returns to its commitments under the Islamabad MoU; any vessel passing must coordinate with Iran.'
     },
     usDemands: [
       {
@@ -7899,7 +7929,7 @@ const DASHBOARD_DATA = {
         text: '30-day ceasefire',
         category: 'Military',
         status: 'PARTIAL',
-        statusLabel: 'Day 142 of ceasefire',
+        statusLabel: 'Day 144 of ceasefire',
         statusColor: '#f59e0b',
         probability30d: 72,
         probability60d: 55,
@@ -8262,8 +8292,8 @@ const DASHBOARD_DATA = {
         us: 0,
         iran: 1
       },
-      currentDay: 'DAY 143',
-      status: 'Talks reportedly stalled as of mid‑August; no new progress reported by Aug 29, 2026.'
+      currentDay: 'DAY 144',
+      status: 'Pakistan-mediated MoU ceasefire framework exists but is effectively defunct; Iran says US violated the MoU and that there was no 60-day ceasefire to extend, and current talks over Hormuz and broader s'
     },
     compromiseZone: {
       headline: 'Narrow but Real: A JCPOA-Plus Framework Exists If Both Sides Accept Asymmetric Concessions',
@@ -8444,7 +8474,7 @@ const DASHBOARD_DATA = {
       {
         label: 'US KIA',
         value: '18',
-        detail: 'Through D183',
+        detail: 'Through D184',
         color: '#ef4444'
       }
     ],
